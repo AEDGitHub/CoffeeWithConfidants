@@ -1,16 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import configureStore from "./store/store";
+import Root from "./components/root";
 // ----- imports below are for window testing only, remove before production push!
 import { postApiSession, postApiConfidant, deleteApiSession} from './utils/session_api_utils';
 // ----- window testing after creating actions, reducers, store
 import { login, logout, signup} from "./actions/session_actions";
-import configureStore from "./store/store";
+
 
 
 document.addEventListener("DOMContentLoaded", ()=> {
     const store = configureStore();
-    const root = document.getElementById("root");
-    ReactDOM.render(<h1>Welcome to CWC!</h1>, root);
+    const rootEle = document.getElementById("root");
+    ReactDOM.render(<Root store={store} />, rootEle);
+
 
     // -------- declarations below this line for window testing only
     window.testUser1 = {username: "testUser1", password: "hunter12", email: "fakemail@fakemail.com", location_id: 1};
