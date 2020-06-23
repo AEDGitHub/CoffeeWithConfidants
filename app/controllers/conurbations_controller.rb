@@ -1,0 +1,2 @@
+class ConurbationsController < ApplicationController
+end

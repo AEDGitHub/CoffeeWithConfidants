@@ -1,0 +1,2 @@
+module ConfidantsHelper
+end
