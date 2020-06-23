@@ -1,2 +1,20 @@
 class Api::ConfidantsController < ApplicationController
+    before_action :require_login, except: [:new, :create]
+    skip_before_action :verify_authenticity_token
+
+    def create
+        @confidant = User.new(confidant_params)
+        if @confidant.save
+            login(@confidant)
+            render :show
+        else
+            render json: @confidant.errors.full_messages, status: 401
+        end
+    end
+
+    private
+
+    def confidant_params
+        params.require(:confidant).permit(:username, :password, :email)
+    end
 end
