@@ -1,7 +1,7 @@
 class Confidant < ApplicationRecord
     attr_reader :password
 
-    validates :username, :password_digest, :email, :session_token, prescence: true
+    validates :username, :password_digest, :email, :session_token, :location_id, presence: true
     validates :username, :email, :session_token, uniqueness: true
     validates :password, length: {minimum: 7}, allow_nil: true
 

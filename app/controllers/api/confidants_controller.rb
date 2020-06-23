@@ -3,7 +3,7 @@ class Api::ConfidantsController < ApplicationController
     skip_before_action :verify_authenticity_token
 
     def create
-        @confidant = User.new(confidant_params)
+        @confidant = Confidant.new(confidant_params)
         if @confidant.save
             login(@confidant)
             render :show

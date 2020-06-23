@@ -1,8 +1,8 @@
 class Conurbation < ApplicationRecord
 
-    validates :name, unique: true, prescence: true
+    validates :name, uniqueness: true, presence: true
 
-    has_many :confidants
+    has_many :confidants,
         foreign_key: :location_id
 
 end
