@@ -2,8 +2,8 @@ class Api::SessionsController < ApplicationController
 
     def create
         @confidant = Confidant.find_by_credentials(
-            login_params[:confidant][:username],
-            login_params[:confidant][:password]
+            params[:confidant][:username],
+            params[:confidant][:password]
         )
         if @confidant
             login(@confidant)
@@ -23,9 +23,9 @@ class Api::SessionsController < ApplicationController
         end
     end
 
-    private
+    # private
 
-    def login_params
-        params.require(:confidant).permit(:username, :password)
-    end
+    # def login_params
+    #     params.require(:confidant).permit(:username, :password)
+    # end
 end

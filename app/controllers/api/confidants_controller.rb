@@ -15,6 +15,6 @@ class Api::ConfidantsController < ApplicationController
     private
 
     def confidant_params
-        params.require(:confidant).permit(:username, :password, :email)
+        params.require(:confidant).permit(:username, :password, :email, :location_id)
     end
 end
