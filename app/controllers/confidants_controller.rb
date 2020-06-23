@@ -1,2 +1,0 @@
-class ConfidantsController < ApplicationController
-end

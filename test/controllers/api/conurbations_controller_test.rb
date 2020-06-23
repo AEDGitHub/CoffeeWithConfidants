@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ConurbationsControllerTest < ActionDispatch::IntegrationTest
+class Api::ConurbationsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

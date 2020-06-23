@@ -1,0 +1,2 @@
+module Api::ConfidantsHelper
+end
