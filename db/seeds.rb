@@ -5,3 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Conurbation.destroy_all
+Confidant.destroy_all
+
+urb1 = Conurbation.create!(
+    name: "San Francisco Bay Area, California"
+)
+
+demo_user = Confidant.create!(
+    username: "Joker",
+    password: "hunter12",
+    email: "breakintobreakout@fakemail.com",
+    location_id: 1
+)
