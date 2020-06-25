@@ -5,6 +5,7 @@ import {
 
 const _blankState = {
     ccId: null,
+    flash: [],
 };
 
 const sessionReducer = (oldState = _blankState, action) => {

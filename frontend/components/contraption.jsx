@@ -1,9 +1,15 @@
 import React from 'react';
+import Concenter from "./concenter/concenter";
+import Concerto from "./concerto/concerto";
+import Conclusion from "./conclusion/conclusion";
 
 const Contraption = () => (
     <>
-        <h1>Coffee With Confidants! Welcome!</h1>
+        <Concenter />
+        <Concerto />
+        <Conclusion />
     </>
+    
 )
 
 export default Contraption;
