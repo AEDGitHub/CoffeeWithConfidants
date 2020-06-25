@@ -17,5 +17,5 @@ demo_user = Confidant.create!(
     username: "Joker",
     password: "hunter12",
     email: "breakintobreakout@fakemail.com",
-    location_id: 1
+    location_id: urb1.id
 )

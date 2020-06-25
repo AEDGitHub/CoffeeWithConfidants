@@ -15,7 +15,7 @@ const NavLinks = ({currentConfidant, logout}) => {
     );
 
     return(
-        <nav>
+        <nav className="nav-right">
             {navLinksDisplay}
         </nav>
     )

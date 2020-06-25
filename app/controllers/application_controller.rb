@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
     # protect_from_forgery with: :exception #taken out for testing purposes
-
     helper_method :current_confidant, :logged_in?
 
     private
