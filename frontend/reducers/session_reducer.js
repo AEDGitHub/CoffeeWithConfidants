@@ -11,10 +11,10 @@ const _blankState = {
 const sessionReducer = (oldState = _blankState, action) => {
     Object.freeze(oldState);
     switch (action.type) {
-        case RECEIVE_CURRENT_CONFIDANT:
-            return Object.assign({}, { ccId: action.confidant.id });
         case LOGOUT_CURRENT_CONFIDANT:
             return _blankState;
+        case RECEIVE_CURRENT_CONFIDANT:
+            return Object.assign({}, { ccId: action.confidant.id });
         default:
             return oldState;
     };
