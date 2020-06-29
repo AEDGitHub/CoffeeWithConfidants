@@ -7,9 +7,10 @@ import Root from "./components/root";
 // ----- imports below are for window testing only, remove before production push!
 import { postApiSession, postApiConfidant, deleteApiSession } from './utils/session_api_utils';
 
-
 // ----- window testing after creating actions, reducers, store
 import { signin, logout, signup } from "./actions/session_actions";
+import { getAllApiConurbations } from "./actions/conurbations_actions";
+
 
 
 document.addEventListener("DOMContentLoaded", ()=> {
@@ -20,11 +21,13 @@ document.addEventListener("DOMContentLoaded", ()=> {
 
     
     // -------- declarations below this line for window testing only
+    window.demoUser0 = {username: "Joker", password: "hunter12", email: "breakintobreakout@fakemail.com", location_id: 1 };
     window.testUser0 = {username: "testUser0", password: "hunter12", email: "fakemail0@fakemail.com", location_id: 3};
     window.testUser1 = {username: "testUser1", password: "hunter12", email: "fakemail1@fakemail.com", location_id: 3};
     window.postApiSession = postApiSession;
     window.deleteApiSession = deleteApiSession;
     window.postApiConfidant = postApiConfidant;
+    
 
 
     // -------- window testing after creating actions, reducers, store
@@ -35,5 +38,6 @@ document.addEventListener("DOMContentLoaded", ()=> {
     window.signin = signin;
     window.logout = logout;
     window.signup = signup;
+    window.getAllApiConurbations = getAllApiConurbations;
 
 });

@@ -1,8 +1,4 @@
-import {
-    postApiConfidant,
-    postApiSession,
-    deleteApiSession,
-} from '../utils/session_api_utils';
+import * as SessionApiUtils from '../utils/session_api_utils';
 
 // Confidant Actions
 export const RECEIVE_CURRENT_CONFIDANT = 'RECEIVE_CURRENT_CONFIDANT'
@@ -32,11 +28,32 @@ const receiveErrors = errors => {
 }
 
 //Thunk Action Creators
-export const signup = formConfidant => dispatch => postApiConfidant(formConfidant)
-    .then(confidant => dispatch(receiveCurrentConfidant(confidant)));
+export const signup = formConfidant => {
+    return dispatch => {
+        return SessionApiUtils.postApiConfidant(formConfidant)
+            .then(confidant => {
+                dispatch(receiveCurrentConfidant(confidant))
+            }
+        );
+    }
+}
 
-export const signin = formConfidant => dispatch => postApiSession(formConfidant)
-    .then(confidant => dispatch(receiveCurrentConfidant(confidant)));
+export const signin = formConfidant => {
+    return dispatch => {
+        return SessionApiUtils.postApiSession(formConfidant)
+            .then(confidant => {
+                dispatch(receiveCurrentConfidant(confidant))
+            }
+        );
+    }
+}
 
-export const logout = () => dispatch => deleteApiSession()
-    .then(() => dispatch(logoutCurrentConfidant()));
+export const logout = () => {
+    return dispatch => {
+        return SessionApiUtils.deleteApiSession()
+            .then(() => {
+                dispatch(logoutCurrentConfidant())
+            }
+        );
+    }
+}

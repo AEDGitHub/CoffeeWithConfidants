@@ -9,11 +9,16 @@ class SessionForm extends React.Component {
             password: '',
             location_id: 3,
         }
+        this.conurbationsList = [];
         // this.update = this.update.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
         this.emailField = this.emailField.bind(this);
         this.homeCityField = this.homeCityField.bind(this);
+    }
+
+    componentDidMount(){
+
     }
 
     update(field){
@@ -48,6 +53,7 @@ class SessionForm extends React.Component {
         } else {
             return(
                 <input
+                    required
                     type="text"
                     className="sessionform-form-field"
                     onChange={this.update('email')}
@@ -81,6 +87,7 @@ class SessionForm extends React.Component {
             </div>;
 
         const usernameField = <input
+            required
             type="text"
             className="sessionform-form-field"
             onChange={this.update('username')}
@@ -89,6 +96,7 @@ class SessionForm extends React.Component {
         />;
 
         const passwordField = <input
+            required
             type="password"
             className="sessionform-form-field"
             onChange={this.update('password')}
