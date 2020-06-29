@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import NavLinksContainer from "./navlinks/navlinks_container";
 
 class Concenter extends React.Component {
@@ -16,7 +17,7 @@ class Concenter extends React.Component {
             <>
                 <header>
                     <div className="header-inner">
-                        <nav className="nav-left">Coffee With Confidants Logo</nav>
+                        <Link className="link-logo" to="/">Coffee With Confidants</Link>
                         <NavLinksContainer />
                     </div>
                 </header>

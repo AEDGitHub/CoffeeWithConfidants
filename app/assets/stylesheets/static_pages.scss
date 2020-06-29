@@ -1,3 +1,173 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// reset
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    outline: 0;
+    background: transparent;
+    font: inherit;
+    font-weight: inherit;
+    text-align: inherit;
+    text-decoration: inherit;
+    color: inherit;
+    box-sizing: border-box;
+}
+
+a {
+    cursor: pointer
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap');
+
+body {
+    font-family: Roboto;
+    font-weight: 500;
+}
+
+// Concenter
+
+div {
+    display: block;
+}
+
+header {
+    background-color: #efefef;
+    border-bottom: solid 5px #070707;
+    border-top: solid 5px #070707;
+}
+
+header > * {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 5rem;  
+}
+
+.header-inner {
+    max-width: 1111px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.333rem;
+}
+
+.nav-right {
+    display: inline-block;
+    color: #070707;
+    margin-left: 1.333rem;
+}
+
+.link-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #070707;
+    text-shadow: 2px 2px 0 #efefef;
+}
+
+.link-normal {
+    margin-left: inherit;
+}
+
+.link-signup {
+    padding: 0.667rem 1.333rem;
+    margin-left: inherit;
+    border: 2px solid #efefef;
+    border-collapse: separate;
+    background-color: #ee0000;
+    color: #ffffff;
+}
+
+.link-signup:hover {
+    background-color: #efefef;
+    border: 2px solid #ee0000;
+    color: #ee0000;
+    transition-duration: 0.1s;
+    transition-timing-function: linear;
+}
+
+//Concerto
+
+//color palette:
+// #070707 (p5black)
+// #aa0004 (p5crimson)
+// #ee0000 (p5red)
+// #717370 (p5grey)
+// #512e59 (p5royalPurple)
+// #51210e (p5royalBrown)
+// #eeff00 (p5royalYellow)
+section{
+    background-color: #efefef;
+    display: flex;
+}
+
+.sessionform-form-container{
+    margin: 0 auto;
+    min-width: 777px;
+    padding: 3rem 0rem;
+}
+
+.sessionform-form-container * {
+    display: block;
+    padding: 0rem 1rem;
+}
+
+.sessionform-main-msg{
+    font-size: 1.777rem;
+    font-weight: 700;
+    color: #512e59;
+    padding: 1.5rem 1rem;
+}
+
+.sessionform-sub-msg{
+    display: block;
+    max-width: 777px;
+    font-weight: 300;
+    width: 100%
+}
+
+.sessionform-form-field{
+    margin-top: 1rem;
+    background-color: #ffffff;
+    padding: 1.333rem;
+    display: block;
+    width: 100%;
+    border: 1px solid #717370;
+    border-radius: 4px;
+}
+
+.sessionform-submit-button{
+    background-color: #ee0000;
+    margin-top: 1rem;
+    padding: 1.333rem;
+    font-size: 1.111rem;
+    color: #efefef;
+    display: block;
+    text-align: center;
+    width: 100%;
+    border-radius: 11px;
+    cursor: pointer;
+}
+
+.sessionform-swap-link{
+    margin-top: 1.667rem;
+    display: block;
+    text-align: center;
+    color: #512e59;
+}
+
+.sessionform-submit-button:hover{
+    background-color: #aa0004;
+}
+
+.sessionform-swap-link:hover{
+    color: #3a1c41;
+}
+//Conclusion
+
+// footer{
+
+// }

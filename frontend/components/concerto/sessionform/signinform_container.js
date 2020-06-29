@@ -8,14 +8,19 @@ const mSTP = ({errors}) => {
     return {
         errors: errors.session,
         formType: 'signin',
-        navLink: <Link to="/signup" className="form-link">Not a confidant yet? Squad up here!</Link>,
+        mainMsg: "Take your time...",
+        subMsg: "Welcome back, Confidant! Let's get this caffeine.",
+        unPlaceholder: "Username",
         pwPlaceholder: "Password",
+        submitButtonText: "SIGN IN",
+        navLink: <Link to="/signup" className="sessionform-swap-link">Not a confidant yet? Squad up here</Link>,
     }
 }
 
 const mDTP = dispatch => {
     return {
-        processForm: confidant => dispatch(signin(confidant)),
+        processMainForm: confidant => dispatch(signin(confidant)),
+        processDemoForm: confidant => dispatch(signin(confidant)),
     }
 }
 
