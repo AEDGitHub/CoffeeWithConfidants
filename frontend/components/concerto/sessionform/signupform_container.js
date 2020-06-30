@@ -14,7 +14,7 @@ const mSTP = state => {
     return {
         conurbations: getAllConurbations(state),
         conurbationsAreLoaded: areConurbationsLoaded(state),
-        demoConfidantConurbationId: getParticularConurbation(state, "San Francisco Bay Area, California"),
+        demoConfidantConurbationId: getParticularConurbation(state, "Quarantine Cosmopolis, San Francisco Bay Area, California"),
         errors: state.errors.session,
         formType: 'signup',
         mainMsg: "Ready to squad up?",
