@@ -14,8 +14,19 @@ import { getAllApiConurbations } from "./actions/conurbations_actions";
 
 
 document.addEventListener("DOMContentLoaded", ()=> {
-
-    const store = configureStore();
+    let store;
+    if (window.currentConfidant) {
+        const preloadedState = {
+            session: { ccId: window.currentConfidant.id },
+            entities: {
+                confidants: { [window.currentConfidant.id]: window.currentConfidant }
+            }
+        };
+        store = configureStore(preloadedState);
+        delete window.currentConfidant;
+    } else {
+        store = configureStore();
+    }
     const rootEle = document.getElementById("root");
     ReactDOM.render(<Root store={store} />, rootEle);
 
