@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_23_175945) do
+ActiveRecord::Schema.define(version: 2020_06_30_221841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "confabs", force: :cascade do |t|
+    t.integer "host_id", null: false
+    t.text "description", null: false
+    t.integer "max_capacity", null: false
+    t.datetime "start_time", null: false
+    t.datetime "end_time", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["end_time"], name: "index_confabs_on_end_time"
+    t.index ["host_id", "start_time"], name: "index_confabs_on_host_id_and_start_time", unique: true
+    t.index ["start_time"], name: "index_confabs_on_start_time"
+  end
 
   create_table "confidants", force: :cascade do |t|
     t.string "username", null: false

@@ -1,0 +1,2 @@
+class Confab < ApplicationRecord
+end
