@@ -10,6 +10,11 @@ class Confidant < ApplicationRecord
     belongs_to :conurbation,
         foreign_key: :location_id
 
+    has_many :confabs_hosted, 
+        dependent: :destroy,
+        foreign_key: :host_id,
+        class_name: :Confab
+
     def self.find_by_credentials(username, password)
         confidant = Confidant.find_by(username: username)
         confidant && confidant.is_password?(password) ? confidant : nil
