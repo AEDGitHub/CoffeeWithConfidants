@@ -1,12 +1,20 @@
 import React from 'react';
+import { 
+    areConurbationsLoaded,
+    getAllConurbations, 
+    getParticularConurbation, } from '../../../reducers/selectors';
+import { getAllApiConurbations } from '../../../actions/conurbations_actions';
 import { signin } from '../../../actions/session_actions';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import SessionForm from './sessionform';
 
-const mSTP = ({errors}) => {
+const mSTP = state => {
     return {
-        errors: errors.session,
+        conurbations: getAllConurbations(state),
+        conurbationsAreLoaded: areConurbationsLoaded(state),
+        demoConfidantConurbationId: getParticularConurbation(state, "San Francisco Bay Area, California"),
+        errors: state.errors.session,
         formType: 'signin',
         mainMsg: "Take your time...",
         subMsg: "Welcome back, Confidant! Let's get this caffeine.",
@@ -19,6 +27,7 @@ const mSTP = ({errors}) => {
 
 const mDTP = dispatch => {
     return {
+        loadConurbations: () => dispatch(getAllApiConurbations()),
         processMainForm: confidant => dispatch(signin(confidant)),
         processDemoForm: confidant => dispatch(signin(confidant)),
     }

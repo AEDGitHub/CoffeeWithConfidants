@@ -7,22 +7,23 @@ class SessionForm extends React.Component {
             username: '',
             email: '',
             password: '',
-            location_id: 3,
+            location_id: null,
+            demoUserCityId: null,
         }
-        this.conurbationsList = [];
-        // this.update = this.update.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
         this.emailField = this.emailField.bind(this);
         this.homeCityField = this.homeCityField.bind(this);
+        this.homeCityFieldOptions = this.homeCityFieldOptions.bind(this);
     }
 
     componentDidMount(){
-
+        if (!this.props.conurbationsAreLoaded){  
+            this.props.loadConurbations()
+        }; //questions: best way to keep this from firing if not needed
     }
 
     update(field){
-        // debugger;
         return e => this.setState({
             [field]: e.target.value
         })
@@ -30,7 +31,12 @@ class SessionForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const confidant = Object.assign({}, this.state);
+        const confidant = {
+            username: this.state.username,
+            email: this.state.email,
+            password: this.state.password,
+            location_id: this.state.location_id,
+        };
         this.props.processMainForm(confidant);
     }
 
@@ -39,7 +45,7 @@ class SessionForm extends React.Component {
         const demoConfidant = {
             username: 'Joker',
             email: 'breakintobreakout@fakemail.com',
-            location_id: 3, //This will be a problem upon pushing to Heroku!!!
+            location_id: this.props.demoConfidantConurbationId,
             password: 'hunter12',
         }
         this.props.processDemoForm(demoConfidant);
@@ -68,9 +74,32 @@ class SessionForm extends React.Component {
         if (this.props.formType === 'signin') {
             return <></>;
         } else {
-            return <></>; //future home of select conurbation functionality!
+            return(
+            <div className="sessionform-dropdown">
+                <select
+                    required
+                    defaultValue="Home conurbation"
+                    onChange={this.update('location_id')}>
+                    <option 
+                        disabled="disabled"
+                        >Home conurbation
+                    </option>
+                    {this.homeCityFieldOptions()}
+                </select>
+            </div>
+            );
         }
     }
+
+    homeCityFieldOptions() {
+        return this.props.conurbations.map((conurbation, idx) => 
+            <option 
+                value={conurbation.id} 
+                key={idx}>{conurbation.name}</option>
+        );
+    }
+
+
 
     render() {
 
@@ -112,24 +141,24 @@ class SessionForm extends React.Component {
 
         const demoUserButton = <input
             type="submit"
-            className = "sessionform-submit-button"
-            value = "SIGN IN DEMO USER"
+            className="sessionform-submit-button"
+            value="SIGN IN DEMO USER"
         />;
 
         return(
             <div className='sessionform-form-container'>
                 {mainMsgDisplay}
                 {subMsgDisplay}
-                    <form onSubmit={this.handleSubmit}>
-                        {usernameField}
-                        {this.emailField()}
-                        {passwordField}
-                        {this.homeCityField()}
-                        {submitFormButton}
-                    </form>
-                    <form onSubmit={this.handleDemoSubmit}>
-                        {demoUserButton}
-                    </form>
+                <form onSubmit={this.handleSubmit}>
+                    {usernameField}
+                    {this.emailField()}
+                    {passwordField}
+                    {this.homeCityField()}
+                    {submitFormButton}
+                </form>
+                <form onSubmit={this.handleDemoSubmit}>
+                    {demoUserButton}
+                </form>
                 {this.props.navLink}
             </div>
         );

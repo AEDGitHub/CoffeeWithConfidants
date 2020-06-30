@@ -9,11 +9,11 @@
 Conurbation.destroy_all
 Confidant.destroy_all
 
-urb1 = Conurbation.create!(name: "San Francisco Bay Area, California")
-urb2 = Conurbation.create!(name: "Phoenix Desert Metropolis, Arizona")
-urb3 = Conurbation.create!(name: "Malmstrom Frozen Hellscape, Montana")
-urb4 = Conurbation.create!(name: "Denver Rocky Mountain Utopia, Colorado")
-urb5 = Conurbation.create!(name: "Naha Island Occupation Zone, Okinawa")
+urb1 = Conurbation.create!(name: "Quarantine Cosmopolis, San Francisco Bay Area, California")
+urb2 = Conurbation.create!(name: "Desert Metropolis, Phoenix-Tucson Corridor, Arizona")
+urb3 = Conurbation.create!(name: "Everdark Frozen Hellscape, Great Falls, Montana")
+urb4 = Conurbation.create!(name: "Rocky Mountain Utopia, Denver-Springs Corridor, Colorado")
+urb5 = Conurbation.create!(name: "Pacific Postwar Occupation Zone, Ryukyu Islands, Japan")
 
 demo_user = Confidant.create!(
     username: "Joker",

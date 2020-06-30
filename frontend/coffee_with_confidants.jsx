@@ -24,12 +24,10 @@ document.addEventListener("DOMContentLoaded", ()=> {
     window.demoUser0 = {username: "Joker", password: "hunter12", email: "breakintobreakout@fakemail.com", location_id: 1 };
     window.testUser0 = {username: "testUser0", password: "hunter12", email: "fakemail0@fakemail.com", location_id: 3};
     window.testUser1 = {username: "testUser1", password: "hunter12", email: "fakemail1@fakemail.com", location_id: 3};
-    window.postApiSession = postApiSession;
-    window.deleteApiSession = deleteApiSession;
-    window.postApiConfidant = postApiConfidant;
+    // window.postApiSession = postApiSession;
+    // window.deleteApiSession = deleteApiSession;
+    // window.postApiConfidant = postApiConfidant;
     
-
-
     // -------- window testing after creating actions, reducers, store
     window.testUser2 = { username: "testUser2", password: "hunter12", email: "fakemail2@fakemail.com", location_id: 3};
     window.testUser3 = { username: "testUser3", password: "hunter12", email: "fakemail3@fakemail.com", location_id: 3};

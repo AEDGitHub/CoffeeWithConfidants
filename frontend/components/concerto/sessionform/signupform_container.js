@@ -1,12 +1,21 @@
 import React from 'react';
-import { signup } from '../../../actions/session_actions';
+import {
+    areConurbationsLoaded,
+    getAllConurbations,
+    getParticularConurbation,
+} from '../../../reducers/selectors';
+import { getAllApiConurbations } from '../../../actions/conurbations_actions';
+import { signin, signup } from '../../../actions/session_actions';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import SessionForm from './sessionform';
 
-const mSTP = ({errors}) => {
+const mSTP = state => {
     return {
-        errors: errors.session,
+        conurbations: getAllConurbations(state),
+        conurbationsAreLoaded: areConurbationsLoaded(state),
+        demoConfidantConurbationId: getParticularConurbation(state, "San Francisco Bay Area, California"),
+        errors: state.errors.session,
         formType: 'signup',
         mainMsg: "Ready to squad up?",
         subMsg: "Literally dozens of App Academy students and my friends have signed up out of sheer boredom. Create an account to be as underwhelmed by my talents as they are!",
@@ -19,6 +28,7 @@ const mSTP = ({errors}) => {
 
 const mDTP = dispatch => {
     return {
+        loadConurbations: () => dispatch(getAllApiConurbations()),
         processMainForm: confidant => dispatch(signup(confidant)),
         processDemoForm: confidant => dispatch(signin(confidant)),
     }
