@@ -81,8 +81,7 @@ class SessionForm extends React.Component {
                     defaultValue="Home conurbation"
                     onChange={this.update('location_id')}>
                     <option 
-                        disabled="disabled"
-                        >Home conurbation
+                        disabled="disabled">Home conurbation
                     </option>
                     {this.homeCityFieldOptions()}
                 </select>
