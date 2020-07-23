@@ -2,31 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// reset
-* {
-    margin: 0;
-    border: 0;
-    padding: 0;
-    outline: 0;
-    background: transparent;
-    font: inherit;
-    font-weight: inherit;
-    text-align: inherit;
-    text-decoration: inherit;
-    color: inherit;
-    box-sizing: border-box;
-}
-
-a {
-    cursor: pointer
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap');
-
-body {
-    font-family: Roboto;
-    font-weight: 500;
-}
+@import "base/mixins.scss";
+@import "base/reset.scss";
+@import "base/contraption.scss";
+@import "styles/concenter.scss";
+@import "styles/concerto.scss";
+@import "styles/conclusion.scss";
 
 // Concenter
 
