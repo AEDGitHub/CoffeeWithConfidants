@@ -4,6 +4,6 @@ const Conclusion = () => (
     <>
         <footer></footer>
     </>
-)
+);
 
 export default Conclusion;

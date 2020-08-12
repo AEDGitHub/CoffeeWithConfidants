@@ -1,24 +1,25 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-const NavLinks = ({currentConfidant, logout}) => {
-
+const NavLinks = ({ currentConfidant, logout }) => {
     const navLinksDisplay = currentConfidant ? (
         <>
-            <a className="link-normal" onClick={logout}>SIGN OUT</a>
+            <a className="link-normal" onClick={logout}>
+                SIGN OUT
+            </a>
         </>
     ) : (
         <>
-            <Link className="link-normal" to="/signin">SIGN IN</Link>
-            <Link className="link-signup" to="/signup">SIGN UP</Link>
+            <Link className="link-normal" to="/signin">
+                SIGN IN
+            </Link>
+            <Link className="link-signup" to="/signup">
+                SIGN UP
+            </Link>
         </>
     );
 
-    return(
-        <nav className="nav-right">
-            {navLinksDisplay}
-        </nav>
-    )
-}
+    return <nav className="nav-right">{navLinksDisplay}</nav>;
+};
 
 export default NavLinks;

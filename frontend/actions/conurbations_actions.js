@@ -1,22 +1,22 @@
-import * as ConurbationsApiUtils from '../utils/conurbations_api_utils';
+import * as ConurbationsApiUtils from "../utils/conurbations_api_utils";
 
 // Conurbation Actions
-export const RECEIVE_ALL_CONURBATIONS = 'RECEIVE_ALL_CONURBATIONS'
+export const RECEIVE_ALL_CONURBATIONS = "RECEIVE_ALL_CONURBATIONS";
 
-const receiveAllConurbations = conurbations => {
+const receiveAllConurbations = (conurbations) => {
     return {
         type: RECEIVE_ALL_CONURBATIONS,
-        conurbations
+        conurbations,
     };
-}
+};
 
 // Thunk Action Creators
 export const getAllApiConurbations = () => {
-    return dispatch => {
-        return ConurbationsApiUtils.getAllApiConurbations()
-            .then(conurbations => {
-                dispatch(receiveAllConurbations(conurbations))
+    return (dispatch) => {
+        return ConurbationsApiUtils.getAllApiConurbations().then(
+            (conurbations) => {
+                dispatch(receiveAllConurbations(conurbations));
             }
         );
-    }
-}
+    };
+};

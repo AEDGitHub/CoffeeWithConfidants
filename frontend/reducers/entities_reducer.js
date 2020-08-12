@@ -1,6 +1,6 @@
-import { combineReducers } from 'redux';
-import confidantsReducer from './confidants_reducer';
-import conurbationsReducer from './conurbations_reducer';
+import { combineReducers } from "redux";
+import confidantsReducer from "./confidants_reducer";
+import conurbationsReducer from "./conurbations_reducer";
 
 const entitiesReducer = combineReducers({
     confidants: confidantsReducer,

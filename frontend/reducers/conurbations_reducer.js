@@ -1,6 +1,4 @@
-import {
-    RECEIVE_ALL_CONURBATIONS,
-} from '../actions/conurbations_actions'
+import { RECEIVE_ALL_CONURBATIONS } from "../actions/conurbations_actions";
 
 const conurbationsReducer = (oldState = {}, action) => {
     Object.freeze(oldState);
@@ -10,6 +8,6 @@ const conurbationsReducer = (oldState = {}, action) => {
         default:
             return oldState;
     }
-}
+};
 
 export default conurbationsReducer;

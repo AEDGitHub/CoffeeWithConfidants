@@ -3,26 +3,25 @@ import { Link } from "react-router-dom";
 import NavLinksContainer from "./navlinks/navlinks_container";
 
 class Concenter extends React.Component {
-    
-    constructor(props){
-        super(props)
+    constructor(props) {
+        super(props);
     }
 
-    componentDidMount(){
-        
-    }
+    componentDidMount() {}
 
-    render(){
-        return(
+    render() {
+        return (
             <>
                 <header>
                     <div className="header-inner">
-                        <Link className="link-logo" to="/">Coffee With Confidants</Link>
+                        <Link className="link-logo" to="/">
+                            Coffee With Confidants
+                        </Link>
                         <NavLinksContainer />
                     </div>
                 </header>
             </>
-        )
+        );
     }
 }
 

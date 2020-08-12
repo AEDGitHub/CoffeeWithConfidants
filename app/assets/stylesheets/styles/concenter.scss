@@ -8,59 +8,60 @@
 // #eeff00 (p5royalYellow)
 
 div {
-  display: block;
+    display: block;
 }
 
 header {
-  background-color: #efefef;
-  border-bottom: solid 5px #070707;
-  border-top: solid 5px #070707;
-  > * {
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 5rem;
-  }
-
-  .header-inner {
-    max-width: 1111px;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 1.333rem;
-  }
-
-  .nav-right {
-    display: inline-block;
-    color: #070707;
-    margin-left: 1.333rem;
-  }
-
-  .link-logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #070707;
-    text-shadow: 2px 2px 0 #efefef;
-  }
-
-  .link-normal {
-    margin-left: inherit;
-  }
-
-  .link-signup {
-    padding: 0.667rem 1.333rem;
-    margin-left: inherit;
-    border: 2px solid #efefef;
-    border-collapse: separate;
-    background-color: #ee0000;
-    color: #ffffff;
-  }
-
-  .link-signup:hover {
     background-color: #efefef;
-    border: 2px solid #ee0000;
-    color: #ee0000;
-    transition-duration: 0.1s;
-    transition-timing-function: linear;
-  }
+    border-bottom: solid 5px #070707;
+    border-top: solid 5px #070707;
+    > div,
+    nav {
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 5rem;
+    }
+
+    .header-inner {
+        max-width: 1111px;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 1.333rem;
+    }
+
+    .nav-right {
+        display: inline-block;
+        color: #070707;
+        margin-left: 1.333rem;
+    }
+
+    .link-logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #070707;
+        text-shadow: 2px 2px 0 #efefef;
+    }
+
+    .link-normal {
+        margin-left: inherit;
+    }
+
+    .link-signup {
+        padding: 0.667rem 1.333rem;
+        margin-left: inherit;
+        border: 2px solid #efefef;
+        border-collapse: separate;
+        background-color: #ee0000;
+        color: #ffffff;
+    }
+
+    .link-signup:hover {
+        background-color: #efefef;
+        border: 2px solid #ee0000;
+        color: #ee0000;
+        transition-duration: 0.1s;
+        transition-timing-function: linear;
+    }
 }
