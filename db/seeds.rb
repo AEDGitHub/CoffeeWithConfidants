@@ -8,6 +8,7 @@
 
 Conurbation.destroy_all
 Confidant.destroy_all
+Confab.destroy_all
 
 urb1 = Conurbation.create!(name: "Quarantine Cosmopolis, San Francisco Bay Area, California")
 urb2 = Conurbation.create!(name: "Desert Metropolis, Phoenix-Tucson Corridor, Arizona")
