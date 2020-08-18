@@ -8,21 +8,17 @@
 // #eeff00 (p5royalYellow)
 
 section {
-    background-color: #efefef;
     display: flex;
-    .splash-container {
+    flex-direction: column;
+    .splash-photo-container {
         background-image: url("p5-leblanc-background");
         background-size: cover;
         background-position: 50% 40%;
         min-width: 100%;
-        padding: 9rem 0rem;
-
-        flex-direction: column;
+        padding: 7rem 0rem 7rem 0rem;
         text-align: center;
         .splash-msg {
             margin: auto;
-            // flex: 1;
-            // text-align: center;
             width: 69%;
             max-width: 777px;
             color: #efefef;
@@ -45,11 +41,27 @@ section {
                 cursor: pointer;
             }
         }
+    }
+    .splash-runner-container {
+        background-color: #efefef;
+        text-align: center;
+        padding: 2rem 1rem;
+        margin-bottom: 3rem;
         .splash-runner {
+            justify-content: space-between;
+            display: flex;
+            padding: 0rem 1rem;
+            align-items: flex-start;
             .splash-runner-item {
+                width: 31.113%;
                 .splash-runner-item-headline {
+                    font-size: 1.667rem;
+                    font-weight: 700;
+                    color: #ee0000;
+                    margin-bottom: 1rem;
                 }
                 .splash-runner-item-subtext {
+                    line-height: 1.667rem;
                 }
             }
         }
