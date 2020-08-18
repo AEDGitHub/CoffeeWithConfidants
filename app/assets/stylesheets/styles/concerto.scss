@@ -9,30 +9,40 @@
 
 section {
     background-color: #efefef;
-    // display: flex;
+    display: flex;
     .splash-container {
         background-image: url("p5-leblanc-background");
         background-size: cover;
         background-position: 50% 40%;
         min-width: 100%;
-        padding: 11rem 0rem;
-        display: flex;
+        padding: 9rem 0rem;
+
         flex-direction: column;
         text-align: center;
         .splash-msg {
-            flex: 1;
-            text-align: center;
+            margin: auto;
+            // flex: 1;
+            // text-align: center;
             width: 69%;
             max-width: 777px;
+            color: #efefef;
             .title-text {
-                font-size: 36px;
-                font-weight: bold;
-                color: #efefef;
+                font-size: 3rem;
+                font-weight: 700;
+                margin-bottom: 0.777rem;
             }
             .subtitle-text {
+                font-size: 1.111rem;
+                margin-bottom: 2.333rem;
             }
             .main-index-button {
-                color: #efefef;
+                margin: auto;
+                background-color: #ee0000;
+                padding: 1.111rem;
+                font-size: 1.111rem;
+                width: 19rem;
+                border-radius: 11px;
+                cursor: pointer;
             }
         }
         .splash-runner {

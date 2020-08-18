@@ -5,10 +5,9 @@ const Splash = () => (
     <>
         <div className="splash-container">
             <div className="splash-msg">
-                <div className="title-text">Others want change</div>
+                <div className="title-text">Life will change</div>
                 <div className="subtitle-text">
-                    But you'll never know them until you get up and get out
-                    there.
+                    If you wake up, get up, and get out there.
                 </div>
                 <div className="main-index-button">
                     <Link to="/coffee_times" className="splash-index-button">
