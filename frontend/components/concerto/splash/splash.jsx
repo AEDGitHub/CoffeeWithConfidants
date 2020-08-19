@@ -23,7 +23,7 @@ const Splash = () => (
                         Show up to a confab
                     </div>
                     <div className="splash-runner-item-subtext">
-                        You and some allies-to-be squad up to meet at a cafe.
+                        You and some allies-to-be squad up.
                     </div>
                 </div>
                 <div className="splash-runner-item">

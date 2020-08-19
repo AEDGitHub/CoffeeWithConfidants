@@ -13,7 +13,7 @@ class Concenter extends React.Component {
         return (
             <>
                 <header>
-                    <div className="header-inner">
+                    <div className="header-container">
                         <Link className="link-logo" to="/">
                             Coffee With Confidants
                         </Link>

@@ -40,6 +40,9 @@ section {
                 border-radius: 11px;
                 cursor: pointer;
             }
+            .main-index-button:hover {
+                background-color: #aa0004;
+            }
         }
     }
     .splash-runner-container {
@@ -48,10 +51,12 @@ section {
         padding: 2rem 1rem;
         margin-bottom: 3rem;
         .splash-runner {
+            margin: 0 auto;
             justify-content: space-between;
             display: flex;
             padding: 0rem 1rem;
-            align-items: flex-start;
+            max-width: 999px;
+            // align-items: flex-start;
             .splash-runner-item {
                 width: 31.113%;
                 .splash-runner-item-headline {
