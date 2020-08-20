@@ -61,7 +61,7 @@ class SessionForm extends React.Component {
             return (
                 <input
                     required
-                    type="text"
+                    type="email"
                     className="sessionform-form-field"
                     onChange={this.update("email")}
                     placeholder="Email address"

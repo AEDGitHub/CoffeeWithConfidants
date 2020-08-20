@@ -31,7 +31,7 @@ const Splash = () => (
                         Converse about anything
                     </div>
                     <div className="splash-runner-item-subtext">
-                        Wax poetic for two hours, no dedicated topics.
+                        Wax poetic for two hours.
                     </div>
                 </div>
                 <div className="splash-runner-item">
