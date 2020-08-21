@@ -5,137 +5,88 @@ class Conclusion extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            // linkArray: [
-            //     "About",
-            //     "Coffee Times",
-            //     "GitHub",
-            //     "LinkedIn",
-            //     "AngelList",
-            //     "",
-            //     "Acknowledgements",
-            //     "Thank You",
-            // ],
             content: "About",
         }
+        this.generateButton = this.generateButton.bind(this)
+        this.generateOffsiteLink = this.generateOffsiteLink.bind(this)
         this.determineContent = this.determineContent.bind(this)
-        // this.footerLinks = this.footerLinks.bind(this);
-        // this.update = this.update.bind(this);
+        this.updateContent = this.updateContent.bind(this)
     }
 
-    componentDidUpdate() {
-        // this.determineContent();
+    generateButton(buttonName) {
+        return (
+            <div>
+                <button onClick={this.updateContent} value={buttonName}>
+                    {buttonName}
+                </button>
+            </div>
+        )
     }
 
-    update(field) {
-        // debugger
-        return (e) =>
-            this.setState({
-                [field]: e.target.value,
-            })
+    generateOffsiteLink(linkName, linkUrl) {
+        return (
+            <div>
+                <a target="_blank" rel="noopener noreferrer" href={linkUrl}>
+                    {linkName}
+                </a>
+            </div>
+        )
     }
 
-    // footerLinks() {
-    //     return this.state.linkArray.map((link, idx) => (
-    //         <li key={idx}>{link}</li>
-    //     ));
-    // }
+    updateContent(e) {
+        e.preventDefault()
+        this.setState({ content: e.target.value })
+    }
 
     determineContent() {
-        // debugger
-        let stateContent = this.state.content
-        switch (stateContent) {
+        switch (this.state.content) {
             case "About":
-                return <div>This is the about stuff.</div>
+                return <div>THIS IS THE ABOUT STUFF</div>
             case "Acknowledgements":
-                return <div>These are the acknowledgements.</div>
+                return <div>HERE ARE SOME ACKNOWLEDGEMENTS</div>
+            case "Thank You":
+                return <div>THANKS FAM</div>
             default:
                 return <div>SOMETHING'S GONE HORRIBLY WRONG</div>
         }
     }
 
     render() {
-        // debugger
-
-        const about = (
-            <li>
-                <a onClick={this.update("content")} value="About">
-                    About
-                </a>
-            </li>
-        )
-
-        const coffee = (
-            <li>
+        const coffeeTimes = (
+            <div>
                 <Link to="/coffee_times">Coffee Times</Link>
-            </li>
+            </div>
         )
 
-        const github = (
-            <li>
-                <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="https://github.com/AEDGitHub"
-                >
-                    GitHub
-                </a>
-            </li>
+        const github = this.generateOffsiteLink(
+            "GitHub",
+            "https://github.com/AEDGitHub"
         )
 
-        const linkedin = (
-            <li>
-                <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="https://www.linkedin.com/in/eric-arndt-9850281a5/"
-                >
-                    LinkedIn
-                </a>
-            </li>
+        const linkedin = this.generateOffsiteLink(
+            "LinkedIn",
+            "https://www.linkedin.com/in/eric-arndt-9850281a5/"
         )
 
-        const angellist = (
-            <li>
-                <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="https://angel.co/u/eric-daniel-arndt"
-                >
-                    AngelList
-                </a>
-            </li>
-        )
-
-        const acknowledge = (
-            <li>
-                <a onClick={this.update("content")} value="Acknowledgements">
-                    Acknowledgements
-                </a>
-            </li>
-        )
-
-        const thanks = (
-            <li>
-                <a onClick={this.update("content")} value="Thank You">
-                    Thank You
-                </a>
-            </li>
+        const angellist = this.generateOffsiteLink(
+            "AngelList",
+            "https://angel.co/u/eric-daniel-arndt"
         )
 
         return (
             <>
                 <footer>
                     <div className="footer-container">
-                        <ul className="footer-links">
-                            {about}
-                            {coffee}
+                        <div className="footer-links">
+                            {this.generateButton("About")}
+                            {coffeeTimes}
                             {github}
                             {linkedin}
                             {angellist}
-                            <li></li>
-                            {acknowledge}
-                            {thanks}
-                        </ul>
+                            <br></br>
+                            {this.generateButton("Acknowledgements")}
+                            {this.generateButton("Thank You")}
+                        </div>
                         <div className="footer-content">
                             {this.determineContent()}
                         </div>
