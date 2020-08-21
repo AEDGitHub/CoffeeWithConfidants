@@ -5,16 +5,22 @@ div {
 footer {
     background-color: #19081d;
     color: #efefef;
+    overflow: auto;
+    padding: 2rem 0rem;
     .footer-container {
         margin: 0 auto;
         display: flex;
-        flex-direction: column;
-        flex: 1;
-        max-width: 999px;
+        justify-content: center;
+
+        max-width: 888px;
         padding: 1rem 1.333rem;
+        line-height: 1.618;
+        font-size: 1.111rem;
         .footer-links {
-            width: 31%;
+            padding: 0rem 2rem 2rem 0rem;
+            width: 24.442%;
             div {
+                font-weight: bold;
                 a {
                 }
                 button {
@@ -22,7 +28,8 @@ footer {
             }
         }
         .footer-content {
-            width: 69%;
+            font-weight: 400;
+            width: 75.557%;
         }
     }
 }

@@ -41,7 +41,11 @@ class Conclusion extends React.Component {
     determineContent() {
         switch (this.state.content) {
             case "About":
-                return <div>THIS IS THE ABOUT STUFF</div>
+                return (
+                    <div>
+                        <p>PLACEHOLDER ABOUT TEXT</p>
+                    </div>
+                )
             case "Acknowledgements":
                 return <div>HERE ARE SOME ACKNOWLEDGEMENTS</div>
             case "Thank You":
