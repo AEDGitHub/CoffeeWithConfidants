@@ -1,25 +1,25 @@
-import React from "react";
+import React from "react"
 
 class SessionForm extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             username: "",
             email: "",
             password: "",
             location_id: null,
             demoUserCityId: null,
-        };
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
-        this.emailField = this.emailField.bind(this);
-        this.homeCityField = this.homeCityField.bind(this);
-        this.homeCityFieldOptions = this.homeCityFieldOptions.bind(this);
+        }
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleDemoSubmit = this.handleDemoSubmit.bind(this)
+        this.emailField = this.emailField.bind(this)
+        this.homeCityField = this.homeCityField.bind(this)
+        this.homeCityFieldOptions = this.homeCityFieldOptions.bind(this)
     }
 
     componentDidMount() {
         if (!this.props.conurbationsAreLoaded) {
-            this.props.loadConurbations();
+            this.props.loadConurbations()
         } //questions: best way to keep this from firing if not needed
     }
 
@@ -27,36 +27,36 @@ class SessionForm extends React.Component {
         return (e) =>
             this.setState({
                 [field]: e.target.value,
-            });
+            })
     }
 
     handleSubmit(e) {
-        e.preventDefault();
+        e.preventDefault()
         const confidant = {
             username: this.state.username,
             email: this.state.email,
             password: this.state.password,
             location_id: this.state.location_id,
-        };
-        this.props.processMainForm(confidant);
+        }
+        this.props.processMainForm(confidant)
     }
 
     handleDemoSubmit(e) {
-        e.preventDefault();
+        e.preventDefault()
         const demoConfidant = {
             username: "Joker",
             email: "breakintobreakout@fakemail.com",
             location_id: this.props.demoConfidantConurbationId,
             password: "hunter12",
-        };
-        this.props.processDemoForm(demoConfidant);
+        }
+        this.props.processDemoForm(demoConfidant)
     }
 
     // Displays, Fields, and Buttons with constant logic
 
     emailField() {
         if (this.props.formType === "signin") {
-            return <></>;
+            return <></>
         } else {
             return (
                 <input
@@ -67,13 +67,13 @@ class SessionForm extends React.Component {
                     placeholder="Email address"
                     value={this.state.email}
                 />
-            );
+            )
         }
     }
 
     homeCityField() {
         if (this.props.formType === "signin") {
-            return <></>;
+            return <></>
         } else {
             return (
                 <div className="sessionform-dropdown">
@@ -86,7 +86,7 @@ class SessionForm extends React.Component {
                         {this.homeCityFieldOptions()}
                     </select>
                 </div>
-            );
+            )
         }
     }
 
@@ -95,7 +95,7 @@ class SessionForm extends React.Component {
             <option value={conurbation.id} key={idx}>
                 {conurbation.name}
             </option>
-        ));
+        ))
     }
 
     render() {
@@ -103,11 +103,11 @@ class SessionForm extends React.Component {
 
         const mainMsgDisplay = (
             <div className="sessionform-main-msg">{this.props.mainMsg}</div>
-        );
+        )
 
         const subMsgDisplay = (
             <div className="sessionform-sub-msg">{this.props.subMsg}</div>
-        );
+        )
 
         const usernameField = (
             <input
@@ -118,7 +118,7 @@ class SessionForm extends React.Component {
                 placeholder={this.props.unPlaceholder}
                 value={this.state.username}
             />
-        );
+        )
 
         const passwordField = (
             <input
@@ -129,7 +129,7 @@ class SessionForm extends React.Component {
                 placeholder={this.props.pwPlaceholder}
                 value={this.state.password}
             />
-        );
+        )
 
         const submitFormButton = (
             <input
@@ -137,7 +137,7 @@ class SessionForm extends React.Component {
                 className="sessionform-submit-button"
                 value={this.props.submitButtonText}
             />
-        );
+        )
 
         const demoUserButton = (
             <input
@@ -145,7 +145,7 @@ class SessionForm extends React.Component {
                 className="sessionform-submit-button"
                 value="SIGN IN DEMO USER"
             />
-        );
+        )
 
         return (
             <div className="sessionform-form-container">
@@ -161,8 +161,8 @@ class SessionForm extends React.Component {
                 <form onSubmit={this.handleDemoSubmit}>{demoUserButton}</form>
                 {this.props.navLink}
             </div>
-        );
+        )
     }
 }
 
-export default SessionForm;
+export default SessionForm

@@ -1,9 +1,9 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from "react"
+import { Link } from "react-router-dom"
 
 class Conclusion extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             // linkArray: [
             //     "About",
@@ -16,20 +16,22 @@ class Conclusion extends React.Component {
             //     "Thank You",
             // ],
             content: "About",
-        };
-        // this.selectedContent = this.selectedContent.bind(this);
+        }
+        this.determineContent = this.determineContent.bind(this)
         // this.footerLinks = this.footerLinks.bind(this);
+        // this.update = this.update.bind(this);
     }
 
-    componentDidMount() {}
-
-    componentDidUpdate() {}
+    componentDidUpdate() {
+        // this.determineContent();
+    }
 
     update(field) {
+        // debugger
         return (e) =>
             this.setState({
                 [field]: e.target.value,
-            });
+            })
     }
 
     // footerLinks() {
@@ -38,22 +40,35 @@ class Conclusion extends React.Component {
     //     ));
     // }
 
-    displayContent() {}
+    determineContent() {
+        // debugger
+        let stateContent = this.state.content
+        switch (stateContent) {
+            case "About":
+                return <div>This is the about stuff.</div>
+            case "Acknowledgements":
+                return <div>These are the acknowledgements.</div>
+            default:
+                return <div>SOMETHING'S GONE HORRIBLY WRONG</div>
+        }
+    }
 
     render() {
+        // debugger
+
         const about = (
             <li>
                 <a onClick={this.update("content")} value="About">
                     About
                 </a>
             </li>
-        );
+        )
 
         const coffee = (
             <li>
                 <Link to="/coffee_times">Coffee Times</Link>
             </li>
-        );
+        )
 
         const github = (
             <li>
@@ -65,7 +80,7 @@ class Conclusion extends React.Component {
                     GitHub
                 </a>
             </li>
-        );
+        )
 
         const linkedin = (
             <li>
@@ -77,7 +92,7 @@ class Conclusion extends React.Component {
                     LinkedIn
                 </a>
             </li>
-        );
+        )
 
         const angellist = (
             <li>
@@ -89,7 +104,7 @@ class Conclusion extends React.Component {
                     AngelList
                 </a>
             </li>
-        );
+        )
 
         const acknowledge = (
             <li>
@@ -97,7 +112,7 @@ class Conclusion extends React.Component {
                     Acknowledgements
                 </a>
             </li>
-        );
+        )
 
         const thanks = (
             <li>
@@ -105,7 +120,7 @@ class Conclusion extends React.Component {
                     Thank You
                 </a>
             </li>
-        );
+        )
 
         return (
             <>
@@ -122,13 +137,13 @@ class Conclusion extends React.Component {
                             {thanks}
                         </ul>
                         <div className="footer-content">
-                            {/* {this.displayContent} */}
+                            {this.determineContent()}
                         </div>
                     </div>
                 </footer>
             </>
-        );
+        )
     }
 }
 
-export default Conclusion;
+export default Conclusion
