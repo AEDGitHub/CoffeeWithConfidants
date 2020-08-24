@@ -10,51 +10,51 @@ Conurbation.destroy_all
 Confidant.destroy_all
 Confab.destroy_all
 
-urb1 = Conurbation.create!(name: "Quarantine Cosmopolis, San Francisco Bay Area, California")
-urb2 = Conurbation.create!(name: "Desert Metropolis, Phoenix-Tucson Corridor, Arizona")
-urb3 = Conurbation.create!(name: "Everdark Frozen Hellscape, Great Falls, Montana")
-urb4 = Conurbation.create!(name: "Rocky Mountain Utopia, Denver-Springs Corridor, Colorado")
-urb5 = Conurbation.create!(name: "Pacific Postwar Occupation Zone, Ryukyu Islands, Japan")
+urb0 = Conurbation.create!(name: "Quarantine Cosmopolis, San Francisco Bay Area, California")
+urb1 = Conurbation.create!(name: "Desert Metropolis, Phoenix-Tucson Corridor, Arizona")
+urb2 = Conurbation.create!(name: "Everdark Frozen Hellscape, Great Falls, Montana")
+urb3 = Conurbation.create!(name: "Rocky Mountain Utopia, Denver-Springs Corridor, Colorado")
+urb4 = Conurbation.create!(name: "Pacific Postwar Occupation Zone, Ryukyu Islands, Japan")
 
-fid1_the_demo_confidant = Confidant.create!(
+fid0_the_demo_confidant = Confidant.create!(
     username: "Joker",
     password: "hunter12",
     email: "breakintobreakout@fakemail.com",
+    location_id: urb0.id
+)
+
+fid1 = Confidant.create!(
+    username: "Ryuji",
+    password: "hunter12",
+    email: "nomorules@fakemail.com",
     location_id: urb1.id
 )
 
 fid2 = Confidant.create!(
-    username: "Ryuji",
-    password: "hunter12",
-    email: "nomorules@fakemail.com",
-    location_id: urb2.id
-)
-
-fid3 = Confidant.create!(
     username: "Ann",
     password: "hunter12",
     email: "lastsurprise@fakemail.com",
-    location_id: urb3.id
+    location_id: urb2.id
 )
 
-party_time1 = Time.new(1999, 12, 31, 22, 00, 00)
-end_time1 = Time.new(1999, 12, 31, 23, 00, 00)
+party_time0 = Time.new(1999, 12, 31, 22, 00, 00)
+end_time0 = Time.new(1999, 12, 31, 23, 00, 00)
 
-party_time2 = Time.new(2020, 12, 31, 22, 00, 00)
-end_time2 = Time.new(2020, 12, 31, 23, 00, 00)
+party_time0 = Time.new(2020, 12, 31, 22, 00, 00)
+end_time0 = Time.new(2020, 12, 31, 23, 00, 00)
 
-fab1 = Confab.create!(
-    host_id: fid1_the_demo_confidant.id,
+fab0 = Confab.create!(
+    host_id: fid0_the_demo_confidant.id,
     description: "Party like it's 1999!",
     max_capacity: 8,
-    start_time: party_time1,
-    end_time: end_time1
+    start_time: party_time0,
+    end_time: end_time0
 )
 
-fab2 = Confab.create!(
-    host_id: fid2.id,
+fab1 = Confab.create!(
+    host_id: fid1.id,
     description: "Cry me a river in the desert.",
     max_capacity: 7,
-    start_time: party_time2,
-    end_time: end_time2
+    start_time: party_time1,
+    end_time: end_time1
 )
