@@ -1,8 +1,14 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from "react"
+import { Link } from "react-router-dom"
 
 const NavLinks = ({ currentConfidant, logout }) => {
-    const navLinksDisplay = currentConfidant ? (
+    const constantLinks = (
+        <Link className="link-normal" to="/coffee_times">
+            COFFEE TIMES
+        </Link>
+    )
+
+    const variableLinks = currentConfidant ? (
         <>
             <a className="link-normal" onClick={logout}>
                 SIGN OUT
@@ -17,9 +23,14 @@ const NavLinks = ({ currentConfidant, logout }) => {
                 SIGN UP
             </Link>
         </>
-    );
+    )
 
-    return <nav className="nav-right">{navLinksDisplay}</nav>;
-};
+    return (
+        <nav className="nav-right">
+            {constantLinks}
+            {variableLinks}
+        </nav>
+    )
+}
 
-export default NavLinks;
+export default NavLinks
