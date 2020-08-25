@@ -1,12 +1,13 @@
-import { combineReducers } from "redux";
-import entitiesReducer from "./entities_reducer";
-import errorsReducer from "./errors_reducer";
-import sessionReducer from "./session_reducer";
+const { default: appReducer } = require("./app_reducer")
 
-const rootReducer = combineReducers({
-    entities: entitiesReducer,
-    errors: errorsReducer,
-    session: sessionReducer,
-});
+import { LOGOUT_CURRENT_CONFIDANT } from "../actions/session_actions"
 
-export default rootReducer;
+const rootReducer = (state, action) => {
+    if (action.type === LOGOUT_CURRENT_CONFIDANT) {
+        state = undefined
+    }
+
+    return appReducer(state, action)
+}
+
+export default rootReducer

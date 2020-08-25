@@ -4,6 +4,7 @@ class CoffeeSchedule extends React.Component {
     constructor(props) {
         super(props)
         this.state = {}
+        // this.confabsListTest = this.confabsListTest.bind(this);
     }
 
     componentDidMount() {
@@ -12,10 +13,18 @@ class CoffeeSchedule extends React.Component {
         }
     }
 
-    render() {
-        const testMsg = <p>{this.props.testState}</p>
+    componentWillUnmount() {
+        this.props.unloadConfabs()
+    }
 
-        return <>{testMsg}</>
+    confabsListTest() {
+        return this.props.confabs.map((confab, idx) => (
+            <li key={confab.id}>{confab.description}</li>
+        ))
+    }
+
+    render() {
+        return <ul>{this.confabsListTest()}</ul>
     }
 }
 
