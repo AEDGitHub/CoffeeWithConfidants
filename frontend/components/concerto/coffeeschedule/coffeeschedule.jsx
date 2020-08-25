@@ -6,10 +6,16 @@ class CoffeeSchedule extends React.Component {
         this.state = {}
     }
 
-    render() {
-        const testMsg = <p>{this.props.testMsg}</p>
+    componentDidMount() {
+        if (!this.props.confabsAreLoaded) {
+            this.props.loadConfabs()
+        }
+    }
 
-        return <>testMsg</>
+    render() {
+        const testMsg = <p>{this.props.testState}</p>
+
+        return <>{testMsg}</>
     }
 }
 

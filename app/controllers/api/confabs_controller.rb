@@ -1,7 +1,8 @@
 class Api::ConfabsController < ApplicationController
 
     def index
-        @conurbation = Conurbation.findElementById(params(:conurbation_id))
+        @confabs = Confab.all
+        render :index
     end
 
 end
