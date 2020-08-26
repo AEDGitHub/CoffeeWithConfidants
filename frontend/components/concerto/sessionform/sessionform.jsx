@@ -23,6 +23,10 @@ class SessionForm extends React.Component {
         } //questions: best way to keep this from firing if not needed
     }
 
+    componentWillUnmount() {
+        this.props.unloadConurbations()
+    }
+
     update(field) {
         return (e) =>
             this.setState({

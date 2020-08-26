@@ -1,6 +1,6 @@
 import {
     RECEIVE_ALL_CONFABS,
-    UNLOAD_ALL_CONFABS,
+    CLEAR_ALL_CONFABS,
 } from "../actions/confabs_actions"
 
 const confabsReducer = (oldState = {}, action) => {
@@ -8,7 +8,7 @@ const confabsReducer = (oldState = {}, action) => {
     switch (action.type) {
         case RECEIVE_ALL_CONFABS:
             return Object.assign({}, oldState, action.confabs)
-        case UNLOAD_ALL_CONFABS:
+        case CLEAR_ALL_CONFABS:
             return {}
         default:
             return oldState
