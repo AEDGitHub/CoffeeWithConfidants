@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from "react"
+import { Link } from "react-router-dom"
 
 const Splash = () => (
     <>
@@ -9,11 +9,9 @@ const Splash = () => (
                 <div className="subtitle-text">
                     If you wake up, get up, and get out there.
                 </div>
-                <div className="main-index-button">
-                    <Link to="/coffee_times" className="splash-index-button">
-                        FIND A CONFAB
-                    </Link>
-                </div>
+                <Link to="/coffee_times" className="splash-index-button">
+                    <div className="main-index-button">FIND A CONFAB</div>
+                </Link>
             </div>
         </div>
         <div className="splash-runner-container">
@@ -45,6 +43,6 @@ const Splash = () => (
             </div>
         </div>
     </>
-);
+)
 
-export default Splash;
+export default Splash
