@@ -1,12 +1,12 @@
 import { combineReducers } from "redux"
-import confidantsReducer from "./confidants_reducer"
-import conurbationsReducer from "./conurbations_reducer"
-import confabsReducer from "./confabs_reducer"
+import confidants from "./confidants_reducer"
+import conurbations from "./conurbations_reducer"
+import confabs from "./confabs_reducer"
 
 const entitiesReducer = combineReducers({
-    confidants: confidantsReducer,
-    conurbations: conurbationsReducer,
-    confabs: confabsReducer,
+    confidants,
+    conurbations,
+    confabs,
 })
 
 export default entitiesReducer

@@ -1,18 +1,20 @@
 import {
     RECEIVE_CURRENT_CONFIDANT,
     RECEIVE_SESSION_ERRORS,
-} from "../actions/session_actions";
+} from "../actions/session_actions"
 
 const sessionErrorsReducer = (oldState = [], action) => {
-    Object.freeze(oldState);
+    Object.freeze(oldState)
     switch (action.type) {
         case RECEIVE_CURRENT_CONFIDANT:
-            return Object.assign({}, oldState, { errors: [] });
+            return { ...oldState, errors: [] }
+        // return Object.assign({}, oldState, { errors: [] });
         case RECEIVE_SESSION_ERRORS:
-            return Object.assign({}, oldState, { errors: action.errors });
+            return { ...oldState, errors: action.errors }
+        // return Object.assign({}, oldState, { errors: action.errors });
         default:
-            return oldState;
+            return oldState
     }
-};
+}
 
-export default sessionErrorsReducer;
+export default sessionErrorsReducer

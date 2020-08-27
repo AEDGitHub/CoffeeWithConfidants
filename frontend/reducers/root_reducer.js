@@ -1,4 +1,4 @@
-const { default: appReducer } = require("./app_reducer")
+import appReducer from "./app_reducer"
 
 import { LOGOUT_CURRENT_CONFIDANT } from "../actions/session_actions"
 

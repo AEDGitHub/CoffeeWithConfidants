@@ -1,23 +1,23 @@
 import {
     LOGOUT_CURRENT_CONFIDANT,
     RECEIVE_CURRENT_CONFIDANT,
-} from '../actions/session_actions'
+} from "../actions/session_actions"
 
 const _blankState = {
     ccId: null,
     flash: [],
-};
+}
 
 const sessionReducer = (oldState = _blankState, action) => {
-    Object.freeze(oldState);
+    Object.freeze(oldState)
     switch (action.type) {
         case LOGOUT_CURRENT_CONFIDANT:
-            return _blankState;
+            return _blankState
         case RECEIVE_CURRENT_CONFIDANT:
-            return Object.assign({}, { ccId: action.confidant.id });
+            return { ...oldState, ccId: action.confidant.id }
         default:
-            return oldState;
-    };
-};
+            return oldState
+    }
+}
 
-export default sessionReducer;
+export default sessionReducer
