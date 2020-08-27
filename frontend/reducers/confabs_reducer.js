@@ -7,13 +7,11 @@ const confabsReducer = (oldState = {}, action) => {
     Object.freeze(oldState)
     switch (action.type) {
         case RECEIVE_ALL_CONFABS:
-            // return { ...oldState, confabs: action.confabs } // <- I want this one to work
-            // return Object.assign({}, oldState, { confabs: action.confabs })
-            return Object.assign({}, oldState, action.confabs) // <- this one works
+            return { ...oldState, ...action.confabs }
         case CLEAR_ALL_CONFABS:
             return {}
         default:
-            return oldState
+            return { ...oldState }
     }
 }
 

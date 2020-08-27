@@ -16,7 +16,7 @@ const sessionReducer = (oldState = _blankState, action) => {
         case RECEIVE_CURRENT_CONFIDANT:
             return { ...oldState, ccId: action.confidant.id }
         default:
-            return oldState
+            return { ...oldState }
     }
 }
 

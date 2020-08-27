@@ -5,11 +5,8 @@ const confidantsReducer = (oldState = {}, action) => {
     switch (action.type) {
         case RECEIVE_CURRENT_CONFIDANT:
             return { ...oldState, [action.confidant.id]: action.confidant }
-        // return Object.assign({}, oldState, {
-        //     [action.confidant.id]: action.confidant,
-        // });
         default:
-            return oldState
+            return { ...oldState }
     }
 }
 

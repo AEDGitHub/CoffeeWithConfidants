@@ -8,8 +8,7 @@ const conurbationsReducer = (oldState = {}, action) => {
     // debugger
     switch (action.type) {
         case RECEIVE_ALL_CONURBATIONS:
-            // return { ...oldState, conurbations: action.conurbations } // <- I want this one to work
-            return Object.assign({}, oldState, action.conurbations) // <- this one works
+            return { ...oldState, ...action.conurbations }
         case CLEAR_ALL_CONURBATIONS:
             return {}
         default:
