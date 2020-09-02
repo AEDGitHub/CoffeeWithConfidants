@@ -4,10 +4,7 @@ import {
     getAllConurbations,
     getParticularConurbation,
 } from "../../../reducers/selectors"
-import {
-    getAllApiConurbations,
-    ditchAllConurbations,
-} from "../../../actions/conurbations_actions"
+import { getAllApiConurbations } from "../../../actions/conurbations_actions"
 import { signin } from "../../../actions/session_actions"
 import { Link } from "react-router-dom"
 import { connect } from "react-redux"
@@ -21,7 +18,7 @@ const mSTP = (state) => {
             state,
             "Quarantine Cosmopolis, San Francisco Bay Area, California"
         ),
-        errors: state.errors.session,
+        flash: state.session.flash,
         formType: "signin",
         mainMsg: "Take your time...",
         subMsg: "Welcome back, Confidant! Let's get this caffeine.",
@@ -39,7 +36,6 @@ const mSTP = (state) => {
 const mDTP = (dispatch) => {
     return {
         loadConurbations: () => dispatch(getAllApiConurbations()),
-        unloadConurbations: () => dispatch(ditchAllConurbations()),
         processMainForm: (confidant) => dispatch(signin(confidant)),
         processDemoForm: (confidant) => dispatch(signin(confidant)),
     }

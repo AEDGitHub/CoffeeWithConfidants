@@ -12,19 +12,25 @@ class SessionForm extends React.Component {
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleDemoSubmit = this.handleDemoSubmit.bind(this)
+        this.flashBanner = this.flashBanner.bind(this)
         this.emailField = this.emailField.bind(this)
         this.homeCityField = this.homeCityField.bind(this)
         this.homeCityFieldOptions = this.homeCityFieldOptions.bind(this)
     }
 
     componentDidMount() {
-        if (!this.props.conurbationsAreLoaded) {
+        if (
+            this.props.formType === "signup" &&
+            !this.props.conurbationsAreLoaded
+        ) {
             this.props.loadConurbations()
         } //questions: best way to keep this from firing if not needed
     }
 
     componentWillUnmount() {
-        this.props.unloadConurbations()
+        if (this.props.conurbationsAreLoaded) {
+            this.props.unloadConurbations()
+        }
     }
 
     update(field) {
@@ -57,6 +63,16 @@ class SessionForm extends React.Component {
     }
 
     // Displays, Fields, and Buttons with constant logic
+
+    flashBanner() {
+        if (this.props.flash.length === 0) {
+            return <></>
+        } else {
+            return this.props.flash.map((message, idx) => (
+                <div key={idx}>{message}</div>
+            ))
+        }
+    }
 
     emailField() {
         if (this.props.formType === "signin") {
@@ -153,6 +169,7 @@ class SessionForm extends React.Component {
 
         return (
             <div className="sessionform-form-container">
+                {this.flashBanner()}
                 {mainMsgDisplay}
                 {subMsgDisplay}
                 <form onSubmit={this.handleSubmit}>

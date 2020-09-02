@@ -3,13 +3,16 @@ import {
     RECEIVE_SESSION_ERRORS,
 } from "../actions/session_actions"
 
-const sessionErrorsReducer = (oldState = [], action) => {
+const sessionErrorsReducer = (oldState = {}, action) => {
     Object.freeze(oldState)
     switch (action.type) {
         case RECEIVE_CURRENT_CONFIDANT:
-            return { ...oldState, errors: [] }
+            return {}
         case RECEIVE_SESSION_ERRORS:
-            return { ...oldState, errors: action.errors }
+            // const errorsArray = [...oldState]
+            // errorsArray.push(action.errors.responseText)
+            // return errorsArray
+            return { ...oldState, ...action.errors }
         default:
             return { ...oldState }
     }

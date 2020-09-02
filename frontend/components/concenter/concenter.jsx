@@ -1,13 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import NavLinksContainer from "./navlinks/navlinks_container";
+import React from "react"
+import { Link } from "react-router-dom"
+import NavLinksContainer from "./navlinks/navlinks_container"
 
 class Concenter extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
     }
-
-    componentDidMount() {}
 
     render() {
         return (
@@ -21,8 +19,8 @@ class Concenter extends React.Component {
                     </div>
                 </header>
             </>
-        );
+        )
     }
 }
 
-export default Concenter;
+export default Concenter

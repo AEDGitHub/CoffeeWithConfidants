@@ -9,7 +9,7 @@ class Api::SessionsController < ApplicationController
             login(@confidant)
             render "api/confidants/show"
         else
-            render json: ["That username and password combination could not be found. Please try again!"], status: 422
+            render json: "That username and password combination could not be found. Please try again!", status: 422
         end
     end
 
@@ -19,7 +19,7 @@ class Api::SessionsController < ApplicationController
             render json: {}
             # render "api/confidants/show"
         else
-            render json: ["There was no one signed in! You've got to log in to logout!"], status: 404
+            render json: "There was no one signed in! You've got to log in to logout!", status: 404
         end
     end
 
