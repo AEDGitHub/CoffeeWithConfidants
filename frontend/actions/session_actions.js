@@ -19,6 +19,7 @@ const logoutCurrentConfidant = () => {
 
 // Session Actions
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS"
+export const CLEAR_SESSION_ERRORS = "CLEAR_SESSION_ERRORS"
 
 const receiveErrors = (errors) => {
     return {
@@ -27,28 +28,42 @@ const receiveErrors = (errors) => {
     }
 }
 
+export const clearSessionErrors = () => {
+    return {
+        type: CLEAR_SESSION_ERRORS,
+    }
+}
+
 //Thunk Action Creators
 export const signup = (formConfidant) => {
     return (dispatch) => {
-        return SessionApiUtils.postApiConfidant(formConfidant)
-            .then((confidant) => {
+        return SessionApiUtils.postApiConfidant(formConfidant).then(
+            (confidant) => {
                 dispatch(receiveCurrentConfidant(confidant))
-            })
-            .fail((errors) => {
-                dispatch(receiveErrors(errors))
-            })
+            },
+            (err) => {
+                dispatch(receiveErrors(err.responseJSON))
+            }
+        )
+        // .fail((errors) => {
+        //     dispatch(receiveErrors(errors))
+        // })
     }
 }
 
 export const signin = (formConfidant) => {
     return (dispatch) => {
-        return SessionApiUtils.postApiSession(formConfidant)
-            .then((confidant) => {
+        return SessionApiUtils.postApiSession(formConfidant).then(
+            (confidant) => {
                 dispatch(receiveCurrentConfidant(confidant))
-            })
-            .fail((errors) => {
-                dispatch(receiveErrors(errors))
-            })
+            },
+            (err) => {
+                dispatch(receiveErrors(err.responseJSON))
+            }
+        )
+        // .fail((errors) => {
+        //     dispatch(receiveErrors(errors))
+        // })
     }
 }
 
@@ -57,5 +72,11 @@ export const logout = () => {
         return SessionApiUtils.deleteApiSession().then(() => {
             dispatch(logoutCurrentConfidant())
         })
+    }
+}
+
+export const ditchSessionErrors = () => {
+    return (dispatch) => {
+        dispatch(clearSessionErrors())
     }
 }

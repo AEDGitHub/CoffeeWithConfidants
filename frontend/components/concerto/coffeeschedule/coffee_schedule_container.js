@@ -6,7 +6,7 @@ import {
 } from "../../../reducers/selectors"
 import {
     getAllApiConfabs,
-    ditchAllConfabs,
+    ditchConfabs,
 } from "../../../actions/confabs_actions"
 import { connect } from "react-redux"
 import CoffeeSchedule from "./coffeeschedule"
@@ -22,7 +22,7 @@ const mSTP = (state) => {
 const mDTP = (dispatch) => {
     return {
         loadConfabs: () => dispatch(getAllApiConfabs()),
-        unloadConfabs: () => dispatch(ditchAllConfabs()),
+        unloadConfabs: () => dispatch(ditchConfabs()),
     }
 }
 

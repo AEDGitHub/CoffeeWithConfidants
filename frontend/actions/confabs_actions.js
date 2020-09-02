@@ -26,7 +26,7 @@ export const getAllApiConfabs = () => {
     }
 }
 
-export const ditchAllConfabs = () => {
+export const ditchConfabs = () => {
     return (dispatch) => {
         dispatch(clearAllConfabs())
     }

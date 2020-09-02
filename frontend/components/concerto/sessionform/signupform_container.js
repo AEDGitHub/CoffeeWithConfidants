@@ -6,9 +6,13 @@ import {
 } from "../../../reducers/selectors"
 import {
     getAllApiConurbations,
-    ditchAllConurbations,
+    ditchConurbations,
 } from "../../../actions/conurbations_actions"
-import { signin, signup } from "../../../actions/session_actions"
+import {
+    signin,
+    signup,
+    ditchSessionErrors,
+} from "../../../actions/session_actions"
 import { Link } from "react-router-dom"
 import { connect } from "react-redux"
 import SessionForm from "./sessionform"
@@ -21,7 +25,7 @@ const mSTP = (state) => {
             state,
             "Quarantine Cosmopolis, San Francisco Bay Area, California"
         ),
-        errors: state.errors.session,
+        sessionErrors: state.errors.session,
         formType: "signup",
         mainMsg: "Ready to squad up?",
         subMsg:
@@ -40,7 +44,8 @@ const mSTP = (state) => {
 const mDTP = (dispatch) => {
     return {
         loadConurbations: () => dispatch(getAllApiConurbations()),
-        unloadConurbations: () => dispatch(ditchAllConurbations()),
+        unloadConurbations: () => dispatch(ditchConurbations()),
+        unloadSessionErrors: () => dispatch(ditchSessionErrors()),
         processMainForm: (confidant) => dispatch(signup(confidant)),
         processDemoForm: (confidant) => dispatch(signin(confidant)),
     }

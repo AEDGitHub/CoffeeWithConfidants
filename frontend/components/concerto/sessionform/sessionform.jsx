@@ -12,7 +12,7 @@ class SessionForm extends React.Component {
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleDemoSubmit = this.handleDemoSubmit.bind(this)
-        this.flashBanner = this.flashBanner.bind(this)
+        this.errorsFlash = this.errorsFlash.bind(this)
         this.emailField = this.emailField.bind(this)
         this.homeCityField = this.homeCityField.bind(this)
         this.homeCityFieldOptions = this.homeCityFieldOptions.bind(this)
@@ -30,6 +30,9 @@ class SessionForm extends React.Component {
     componentWillUnmount() {
         if (this.props.conurbationsAreLoaded) {
             this.props.unloadConurbations()
+        }
+        if (this.props.sessionErrors.length > 0) {
+            this.props.unloadSessionErrors()
         }
     }
 
@@ -64,11 +67,11 @@ class SessionForm extends React.Component {
 
     // Displays, Fields, and Buttons with constant logic
 
-    flashBanner() {
-        if (this.props.flash.length === 0) {
+    errorsFlash() {
+        if (this.props.sessionErrors.length === 0) {
             return <></>
         } else {
-            return this.props.flash.map((message, idx) => (
+            return this.props.sessionErrors.map((message, idx) => (
                 <div key={idx}>{message}</div>
             ))
         }
@@ -169,7 +172,7 @@ class SessionForm extends React.Component {
 
         return (
             <div className="sessionform-form-container">
-                {this.flashBanner()}
+                {this.errorsFlash()}
                 {mainMsgDisplay}
                 {subMsgDisplay}
                 <form onSubmit={this.handleSubmit}>

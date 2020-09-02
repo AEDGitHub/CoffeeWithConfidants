@@ -28,7 +28,7 @@ export const getAllApiConurbations = () => {
     }
 }
 
-export const ditchAllConurbations = () => {
+export const ditchConurbations = () => {
     return (dispatch) => {
         dispatch(clearAllConurbations())
     }
