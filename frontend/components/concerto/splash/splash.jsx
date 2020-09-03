@@ -9,14 +9,14 @@ import { Link } from "react-router-dom"
 const Splash = () => (
     <>
         <div className="splash-photo-container">
-            <div className="splash-msg">
+            <div className="splash-msg-container">
                 <div className="title-text">Life will change</div>
                 <div className="subtitle-text">
                     If you wake up, get up, and get out there.
                 </div>
-                <Link to="/coffee_times" className="splash-index-button">
-                    <div className="main-index-button">FIND A CONFAB</div>
-                </Link>
+                <div className="main-index-button">
+                    <Link to="/coffee_times">FIND A CONFAB</Link>
+                </div>
             </div>
         </div>
         <div className="splash-runner-container">
