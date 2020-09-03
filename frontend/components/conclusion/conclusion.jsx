@@ -1,3 +1,9 @@
+/*
+Next steps: Fill in filler text. I'd actually like to use a container here to 
+map in the social media info and the placeholder text for about, thanks and
+acknowledgements sections
+*/
+
 import React from "react"
 import { Link } from "react-router-dom"
 

@@ -1,3 +1,7 @@
+/*
+Next steps: Get rid of all window testing utils/variables
+*/
+
 import React from "react"
 import configureStore from "./store/store"
 import ReactDOM from "react-dom"

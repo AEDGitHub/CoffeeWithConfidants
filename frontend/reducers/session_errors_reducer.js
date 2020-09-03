@@ -16,7 +16,6 @@ const sessionErrorsReducer = (oldState = [], action) => {
             action.errors.forEach((error) => {
                 errorsArray.push(error)
             })
-            // errorsArray.push(action.errors.responseText)
             return errorsArray
         default:
             return oldState

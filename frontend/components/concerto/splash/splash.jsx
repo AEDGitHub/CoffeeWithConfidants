@@ -1,3 +1,8 @@
+/* 
+Next steps: DRY this out. Functional comp -> class comp -> container with mSTP 
+holding all of this, absolute eyesore to look at at the moment.
+*/
+
 import React from "react"
 import { Link } from "react-router-dom"
 

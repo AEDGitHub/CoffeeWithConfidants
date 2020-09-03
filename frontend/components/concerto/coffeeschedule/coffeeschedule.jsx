@@ -1,3 +1,8 @@
+/*
+Next steps: build the thing
+destructure props coming in
+*/
+
 import React from "react"
 
 class CoffeeSchedule extends React.Component {
@@ -24,7 +29,12 @@ class CoffeeSchedule extends React.Component {
     }
 
     render() {
-        return <ul>{this.confabsListTest()}</ul>
+        return (
+            <>
+                <div></div>
+            </>
+        )
+        // return <ul>{this.confabsListTest()}</ul>
     }
 }
 
