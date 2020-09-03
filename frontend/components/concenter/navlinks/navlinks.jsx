@@ -26,7 +26,7 @@ const NavLinks = ({ currentConfidant, logout }) => {
     )
 
     return (
-        <nav className="nav-right">
+        <nav>
             {constantLinks}
             {variableLinks}
         </nav>

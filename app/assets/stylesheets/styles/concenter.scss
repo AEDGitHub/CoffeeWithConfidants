@@ -13,57 +13,49 @@
 
 header {
     background-color: #19081d;
-    > div,
-    > nav {
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        height: 5rem;
-    }
-
+    display: flex;
+    height: 5rem;
     .header-container {
+        display: flex;
+        width: 69%;
         max-width: 999px;
-        justify-content: space-between;
         align-items: center;
-        padding: 1rem 1.333rem;
-    }
-
-    .nav-right {
-        display: inline-block;
-        color: #efefef;
-        margin-left: 1.333rem;
-    }
-
-    .link-logo {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: #efefef;
-        // text-shadow: 2px 2px 0 #efefef;
-    }
-
-    .link-normal {
-        margin-left: 1.333rem;
-    }
-
-    .link-signup {
-        // box-sizing: content-box;
-        padding: 0.667rem 1.333rem;
-        margin-left: 1.333rem;
-        border: 2px solid #efefef;
-        border-radius: 3px;
-        border-collapse: separate;
-        background-color: #efefef;
-        color: #19081d;
-    }
-
-    .link-signup:hover {
-        background-color: #19081d;
-        // box-sizing: content-box;
-        border-radius: 3px;
-        border: 2px solid #efefef;
-        color: #efefef;
-        transition-duration: 0.1s;
-        transition-timing-function: linear;
+        padding: 1.333rem 1rem;
+        margin: 0 auto;
+        justify-content: space-around;
+        .link-logo {
+            flex: 1 auto;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #efefef;
+            margin: 1rem 0rem;
+        }
+        nav {
+            display: flex;
+            flex: 1 auto;
+            justify-content: flex-end;
+            align-items: center;
+            color: #efefef;
+            .link-normal {
+                margin-left: 1.333rem;
+            }
+            .link-signup {
+                padding: 0.667rem 1.333rem;
+                margin-left: 1.333rem;
+                border: 2px solid #efefef;
+                border-radius: 3px;
+                border-collapse: separate;
+                background-color: #efefef;
+                color: #19081d;
+            }
+            .link-signup:hover {
+                background-color: #19081d;
+                border-radius: 3px;
+                border: 2px solid #efefef;
+                color: #efefef;
+                transition-duration: 0.1s;
+                transition-timing-function: linear;
+            }
+        }
     }
 }
