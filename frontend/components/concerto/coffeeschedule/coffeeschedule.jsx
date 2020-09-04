@@ -19,19 +19,26 @@ class CoffeeSchedule extends React.Component {
     }
 
     componentWillUnmount() {
-        this.props.unloadConfabs()
+        if (this.props.confabsAreLoaded) {
+            this.props.unloadConfabs()
+        }
     }
 
-    confabsListTest() {
-        return this.props.confabs.map((confab, idx) => (
-            <li key={confab.id}>{confab.description}</li>
-        ))
-    }
+    // confabsListTest() {
+    //     return this.props.confabs.map((confab, idx) => (
+    //         <li key={confab.id}>{confab.description}</li>
+    //     ))
+    // }
 
     render() {
         return (
             <>
-                <div></div>
+                <div className="coffeeschedule-photo-container">
+                    <div className="coffeeschedule-msg-container">
+                        <div className="title-text"></div>
+                        <div className="subtitle-text"></div>
+                    </div>
+                </div>
             </>
         )
         // return <ul>{this.confabsListTest()}</ul>
