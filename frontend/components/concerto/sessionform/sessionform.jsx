@@ -67,7 +67,9 @@ class SessionForm extends React.Component {
             password: this.state.password,
             location_id: this.state.location_id,
         }
+
         this.props.processMainForm(confidant)
+        this.props.unloadSessionErrors()
     }
 
     handleDemoSubmit(e) {
@@ -78,6 +80,7 @@ class SessionForm extends React.Component {
             location_id: this.props.demoConfidantConurbationId,
             password: "hunter12",
         }
+
         this.props.processDemoForm(demoConfidant)
     }
 
@@ -85,10 +88,12 @@ class SessionForm extends React.Component {
 
     errorsFlash() {
         if (this.props.sessionErrors.length === 0) {
-            return <></>
+            return <div className="sessionform-errors-flash-empty"></div>
         } else {
             return this.props.sessionErrors.map((message, idx) => (
-                <div key={idx}>{message}</div>
+                <div className="sessionform-errors-flash" key={idx}>
+                    {message}
+                </div>
             ))
         }
     }
@@ -187,20 +192,24 @@ class SessionForm extends React.Component {
         )
 
         return (
-            <div className="sessionform-form-container">
+            <>
                 {this.errorsFlash()}
-                {mainMsgDisplay}
-                {subMsgDisplay}
-                <form onSubmit={this.handleSubmit}>
-                    {usernameField}
-                    {this.emailField()}
-                    {passwordField}
-                    {this.homeCityField()}
-                    {submitFormButton}
-                </form>
-                <form onSubmit={this.handleDemoSubmit}>{demoUserButton}</form>
-                {this.props.navLink}
-            </div>
+                <div className="sessionform-form-container">
+                    {mainMsgDisplay}
+                    {subMsgDisplay}
+                    <form onSubmit={this.handleSubmit}>
+                        {usernameField}
+                        {this.emailField()}
+                        {passwordField}
+                        {this.homeCityField()}
+                        {submitFormButton}
+                    </form>
+                    <form onSubmit={this.handleDemoSubmit}>
+                        {demoUserButton}
+                    </form>
+                    {this.props.navLink}
+                </div>
+            </>
         )
     }
 }

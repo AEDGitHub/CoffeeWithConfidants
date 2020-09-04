@@ -8,7 +8,7 @@ class Api::ConfidantsController < ApplicationController
             login(@confidant)
             render :show
         else
-            render json: @confidant.errors.full_messages, status: 401
+            render json: ["Invalid username or email."], status: 401
         end
     end
 

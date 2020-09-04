@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Route, Redirect, withRouter } from "react-router-dom";
+import React, { Component } from "react"
+import { connect } from "react-redux"
+import { Route, Redirect, withRouter } from "react-router-dom"
 
 const Auth = ({ component: Component, path, loggedIn, exact }) => {
     return (
@@ -12,11 +12,11 @@ const Auth = ({ component: Component, path, loggedIn, exact }) => {
                     <Component {...props} />
                 ) : (
                     <Redirect to="/" />
-                );
+                )
             }}
         />
-    );
-};
+    )
+}
 
 const Protected = ({ component: Component, path, loggedIn, exact }) => {
     return (
@@ -27,16 +27,16 @@ const Protected = ({ component: Component, path, loggedIn, exact }) => {
                 return loggedIn ? (
                     <Component {...props} />
                 ) : (
-                    <Redirect to="/login" />
-                );
+                    <Redirect to="/signin" />
+                )
             }}
         />
-    );
-};
+    )
+}
 
 const mSTP = (state) => {
-    return { loggedIn: Boolean(state.session.ccId) };
-};
+    return { loggedIn: Boolean(state.session.ccId) }
+}
 
-export const AuthRoute = withRouter(connect(mSTP)(Auth));
-export const ProtectedRoute = withRouter(connect(mSTP))(Protected);
+export const AuthRoute = withRouter(connect(mSTP)(Auth))
+export const ProtectedRoute = withRouter(connect(mSTP))(Protected)

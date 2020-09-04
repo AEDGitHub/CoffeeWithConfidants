@@ -70,6 +70,29 @@ section {
             }
         }
     }
+    .sessionform-errors-flash {
+        height: 2.5rem;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0.555rem 1rem;
+        border-top: 2px solid #efefef;
+        border-bottom: 2px solid #efefef;
+        font-size: 1.111rem;
+        text-align: center;
+        background-color: #ee0000;
+        color: #ffffff;
+    }
+    .sessionform-errors-flash-empty {
+        height: 2.5rem;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0.555rem 1rem;
+        border-top: 2px solid #ffffff;
+        border-bottom: 2px solid #ffffff;
+        font-size: 1.111rem;
+        text-align: center;
+        background-color: #ffffff;
+    }
     .sessionform-form-container {
         margin: 0 auto;
         min-width: 777px;
