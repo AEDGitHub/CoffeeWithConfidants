@@ -193,21 +193,23 @@ class SessionForm extends React.Component {
 
         return (
             <>
-                {this.errorsFlash()}
-                <div className="sessionform-form-container">
-                    {mainMsgDisplay}
-                    {subMsgDisplay}
-                    <form onSubmit={this.handleSubmit}>
-                        {usernameField}
-                        {this.emailField()}
-                        {passwordField}
-                        {this.homeCityField()}
-                        {submitFormButton}
-                    </form>
-                    <form onSubmit={this.handleDemoSubmit}>
-                        {demoUserButton}
-                    </form>
-                    {this.props.navLink}
+                <div className="sessionform">
+                    {this.errorsFlash()}
+                    <div className="sessionform-form-container">
+                        {mainMsgDisplay}
+                        {subMsgDisplay}
+                        <form onSubmit={this.handleSubmit}>
+                            {usernameField}
+                            {this.emailField()}
+                            {passwordField}
+                            {this.homeCityField()}
+                            {submitFormButton}
+                        </form>
+                        <form onSubmit={this.handleDemoSubmit}>
+                            {demoUserButton}
+                        </form>
+                        {this.props.navLink}
+                    </div>
                 </div>
             </>
         )

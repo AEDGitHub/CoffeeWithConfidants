@@ -10,163 +10,221 @@
 section {
     display: flex;
     flex-direction: column;
-    .splash-photo-container {
-        background-image: url("p5-leblanc-background");
-        background-size: cover;
-        background-position: 51% 37%;
-        min-width: 100%;
-        padding: 7rem 0rem 7rem 0rem;
-        text-align: center;
-        .splash-msg-container {
-            margin: auto;
-            width: 71%;
-            max-width: 999px;
-            color: #efefef;
-            .title-text {
-                font-size: 3rem;
-                font-weight: 700;
-                margin-bottom: 0.777rem;
-            }
-            .subtitle-text {
-                font-size: 1.111rem;
-                margin-bottom: 2.333rem;
-            }
-            .main-index-button {
+    .splash {
+        .splash-photo-container {
+            background-image: url("p5-leblanc-background");
+            background-size: cover;
+            background-position: 51% 37%;
+            min-width: 100%;
+            padding: 7rem 0rem 7rem 0rem;
+            text-align: center;
+            .splash-msg-container {
                 margin: auto;
+                width: 71%;
+                max-width: 999px;
+                color: #efefef;
+                .title-text {
+                    font-size: 3rem;
+                    font-weight: 700;
+                    margin-bottom: 0.777rem;
+                }
+                .subtitle-text {
+                    font-size: 1.111rem;
+                    margin-bottom: 2.333rem;
+                }
+                .main-index-button {
+                    margin: auto;
+                    background-color: #ee0000;
+                    padding: 1.111rem;
+                    font-size: 1.111rem;
+                    width: 23rem;
+                    border-radius: 11px;
+                    cursor: pointer;
+                }
+                .main-index-button:hover {
+                    background-color: #aa0004;
+                }
+            }
+        }
+        .splash-runner-container {
+            background-color: #efefef;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-bottom: 3rem;
+            .splash-runner {
+                margin: 0 auto;
+                justify-content: space-between;
+                display: flex;
+                padding: 0rem 1rem;
+                max-width: 999px;
+                .splash-runner-item {
+                    width: 31.113%;
+                    .splash-runner-item-headline {
+                        font-size: 1.667rem;
+                        font-weight: 700;
+                        color: #ee0000;
+                        margin-bottom: 1rem;
+                    }
+                    .splash-runner-item-subtext {
+                        line-height: 1.667rem;
+                    }
+                }
+            }
+        }
+    }
+    .sessionform {
+        .sessionform-errors-flash {
+            height: 2.5rem;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0.555rem 1rem;
+            border-top: 2px solid #efefef;
+            border-bottom: 2px solid #efefef;
+            font-size: 1.111rem;
+            text-align: center;
+            background-color: #ee0000;
+            color: #ffffff;
+        }
+        .sessionform-errors-flash-empty {
+            height: 2.5rem;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0.555rem 1rem;
+            border-top: 2px solid #ffffff;
+            border-bottom: 2px solid #ffffff;
+            font-size: 1.111rem;
+            text-align: center;
+            background-color: #ffffff;
+        }
+        .sessionform-form-container {
+            margin: 0 auto;
+            width: 70%;
+            max-width: 777px;
+
+            padding: 3rem 0rem;
+            .sessionform-main-msg {
+                display: block;
+                font-size: 1.777rem;
+                font-weight: 700;
+                color: #512e59;
+                padding: 1.5rem 0rem;
+            }
+            .sessionform-sub-msg {
+                display: block;
+                max-width: 777px;
+                font-weight: 300;
+                width: 100%;
+            }
+            .sessionform-form-field {
+                margin-top: 1rem;
+                background-color: #ffffff;
+                padding: 1.333rem;
+                display: block;
+                width: 100%;
+                border: 1px solid #717370;
+                border-radius: 4px;
+            }
+            .sessionform-submit-button {
                 background-color: #ee0000;
-                padding: 1.111rem;
+                margin-top: 1rem;
+                padding: 1.333rem;
                 font-size: 1.111rem;
-                width: 23rem;
+                color: #efefef;
+                display: block;
+                text-align: center;
+                width: 100%;
                 border-radius: 11px;
                 cursor: pointer;
             }
-            .main-index-button:hover {
+            .sessionform-submit-button:hover {
                 background-color: #aa0004;
             }
-        }
-    }
-    .splash-runner-container {
-        background-color: #efefef;
-        text-align: center;
-        padding: 2rem 1rem;
-        margin-bottom: 3rem;
-        .splash-runner {
-            margin: 0 auto;
-            justify-content: space-between;
-            display: flex;
-            padding: 0rem 1rem;
-            max-width: 999px;
-            .splash-runner-item {
-                width: 31.113%;
-                .splash-runner-item-headline {
-                    font-size: 1.667rem;
-                    font-weight: 700;
-                    color: #ee0000;
-                    margin-bottom: 1rem;
-                }
-                .splash-runner-item-subtext {
-                    line-height: 1.667rem;
-                }
-            }
-        }
-    }
-    .sessionform-errors-flash {
-        height: 2.5rem;
-        width: 100%;
-        margin: 0 auto;
-        padding: 0.555rem 1rem;
-        border-top: 2px solid #efefef;
-        border-bottom: 2px solid #efefef;
-        font-size: 1.111rem;
-        text-align: center;
-        background-color: #ee0000;
-        color: #ffffff;
-    }
-    .sessionform-errors-flash-empty {
-        height: 2.5rem;
-        width: 100%;
-        margin: 0 auto;
-        padding: 0.555rem 1rem;
-        border-top: 2px solid #ffffff;
-        border-bottom: 2px solid #ffffff;
-        font-size: 1.111rem;
-        text-align: center;
-        background-color: #ffffff;
-    }
-    .sessionform-form-container {
-        margin: 0 auto;
-        min-width: 777px;
-        padding: 3rem 0rem;
-        .sessionform-main-msg {
-            display: block;
-            font-size: 1.777rem;
-            font-weight: 700;
-            color: #512e59;
-            padding: 1.5rem 0rem;
-        }
-        .sessionform-sub-msg {
-            display: block;
-            max-width: 777px;
-            font-weight: 300;
-            width: 100%;
-        }
-        .sessionform-form-field {
-            margin-top: 1rem;
-            background-color: #ffffff;
-            padding: 1.333rem;
-            display: block;
-            width: 100%;
-            border: 1px solid #717370;
-            border-radius: 4px;
-        }
-        .sessionform-submit-button {
-            background-color: #ee0000;
-            margin-top: 1rem;
-            padding: 1.333rem;
-            font-size: 1.111rem;
-            color: #efefef;
-            display: block;
-            text-align: center;
-            width: 100%;
-            border-radius: 11px;
-            cursor: pointer;
-        }
-        .sessionform-submit-button:hover {
-            background-color: #aa0004;
-        }
-        .sessionform-swap-link {
-            margin-top: 1.667rem;
-            display: block;
-            text-align: center;
-            color: #512e59;
-        }
-        .sessionform-swap-link:hover {
-            color: #3a1c41;
-        }
-        .sessionform-dropdown {
-            margin-top: 1rem;
-            border: 1px solid #717370;
-            background: #ffffff;
-            border-radius: 4px;
-            width: 100%;
-            height: 4rem;
-            padding: 1rem;
-            overflow: hidden;
-            select {
-                background: transparent;
-                height: 100%;
-                line-height: 100%;
-                width: 111%;
-                margin-top: 0;
+            .sessionform-swap-link {
+                margin-top: 1.667rem;
                 display: block;
+                text-align: center;
+                color: #512e59;
+            }
+            .sessionform-swap-link:hover {
+                color: #3a1c41;
+            }
+            .sessionform-dropdown {
+                margin-top: 1rem;
+                border: 1px solid #717370;
+                background: #ffffff;
+                border-radius: 4px;
+                width: 100%;
+                height: 4rem;
+                padding: 1rem;
+                overflow: hidden;
+                select {
+                    background: transparent;
+                    height: 100%;
+                    line-height: 100%;
+                    width: 111%;
+                    margin-top: 0;
+                    display: block;
+                }
             }
         }
     }
-    .coffeeschedule-photo-container {
-        .coffeeschedule-msg-container {
-            .title-text {
+    .coffeeschedule {
+        .coffeeschedule-photo-container {
+            .coffeeschedule-msg-container {
+                .title-text {
+                }
+                .subtitle-text {
+                }
             }
-            .subtitle-text {
+        }
+        .coffeeschedule-content-container {
+            .coffeeschedule-msg-container {
+                .title-text {
+                }
+                .msg-text {
+                }
+            }
+            .coffeeschedule-confabs-container {
+                // .month-toggle {
+                .month-msg {
+                }
+                // }
+                // .jump-links {
+                // }
+                .confab-grid-container {
+                    .conurbation-callout {
+                    }
+                    .confab-card {
+                        .card-top {
+                            .avatar-container {
+                                .img {
+                                }
+                                .name {
+                                }
+                            }
+                            .time-container {
+                                .day {
+                                }
+                                .date {
+                                }
+                                .time {
+                                }
+                            }
+                        }
+                        hr {
+                            //horizontal rule, probably just need to put a width on it
+                        }
+                        .attendance-status {
+                            .seats-left {
+                            }
+                            .fancy-graphic {
+                                //probably some more stuff in here
+                            }
+                        }
+                        .squad-up-button {
+                        }
+                    }
+                }
             }
         }
     }
