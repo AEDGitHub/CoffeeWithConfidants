@@ -62,7 +62,7 @@ export const signin = (formConfidant) => {
             }
         )
         // .fail((errors) => {
-        //     dispatch(receiveErrors(errors))
+        //     dispatch(receiveErrors(err.responseJSON))
         // })
     }
 }

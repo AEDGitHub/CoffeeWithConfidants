@@ -40,8 +40,11 @@ fid2 = Confidant.create!(
 party_time0 = Time.new(1999, 12, 31, 22, 00, 00)
 end_time0 = Time.new(1999, 12, 31, 23, 00, 00)
 
-party_time0 = Time.new(2020, 12, 31, 22, 00, 00)
-end_time0 = Time.new(2020, 12, 31, 23, 00, 00)
+party_time1 = Time.new(2020, 12, 31, 22, 00, 00)
+end_time1 = Time.new(2020, 12, 31, 23, 00, 00)
+
+# party_time_month = Time.now
+# end_time_month = party_time_month
 
 fab0 = Confab.create!(
     host_id: fid0_the_demo_confidant.id,
@@ -58,3 +61,11 @@ fab1 = Confab.create!(
     start_time: party_time1,
     end_time: end_time1
 )
+
+# fab2 = Confab.create!(
+#     host_id: fid0_the_demo_confidant.id,
+#     description: "Test 'fab for the month."
+#     max_capacity: 8,
+#     start_time: party_time_month,
+#     end_time: end_time_month 
+# )
