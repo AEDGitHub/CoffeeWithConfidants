@@ -100,7 +100,6 @@ section {
             margin: 0 auto;
             width: 70%;
             max-width: 777px;
-
             padding: 3rem 0rem;
             .sessionform-main-msg {
                 display: block;
@@ -170,18 +169,48 @@ section {
     }
     .coffeeschedule {
         .coffeeschedule-photo-container {
+            background-image: url("p5-leblanc-thesquad");
+            background-size: cover;
+            background-position: 25% 22%;
+            min-width: 100%;
+            padding: 5rem 0rem 5rem 0rem;
+            text-align: center;
             .coffeeschedule-msg-container {
+                margin: auto;
+                width: 71%;
+                max-width: 999px;
+                color: #efefef;
                 .title-text {
+                    font-size: 3rem;
+                    font-weight: 700;
+                    margin-bottom: 0.777rem;
+                    text-shadow: 2px 2px 3px #070707;
                 }
                 .subtitle-text {
+                    font-size: 1.111rem;
+                    text-shadow: 1px 1px 1px #070707;
                 }
             }
         }
         .coffeeschedule-content-container {
+            margin: 0 auto;
+            width: 70%;
+            max-width: 777px;
+            padding: 3rem 0rem;
             .coffeeschedule-msg-container {
                 .title-text {
+                    display: block;
+                    font-size: 1.777rem;
+                    font-weight: 700;
+                    color: #512e59;
                 }
                 .msg-text {
+                    display: block;
+                    font-size: 1.111rem;
+                    line-height: 1.777rem;
+                    max-width: 777px;
+                    font-weight: 300;
+                    width: 100%;
                 }
             }
             .coffeeschedule-confabs-container {
