@@ -194,63 +194,83 @@ section {
         }
         .coffeeschedule-content-container {
             margin: 0 auto;
-            width: 70%;
-            max-width: 777px;
-            padding: 3rem 0rem;
+
+            padding: 3rem 1rem;
             .coffeeschedule-msg-container {
+                margin: 0 auto;
+                max-width: 696px;
+                width: 71%;
+                margin-bottom: 3rem;
                 .title-text {
                     display: block;
-                    font-size: 1.777rem;
+                    font-size: 1.618rem;
                     font-weight: 700;
                     color: #512e59;
                 }
                 .msg-text {
                     display: block;
                     font-size: 1.111rem;
-                    line-height: 1.777rem;
-                    max-width: 777px;
+                    line-height: 1.618rem;
+                    // max-width: 777px;
                     font-weight: 300;
-                    width: 100%;
                 }
             }
             .coffeeschedule-confabs-container {
-                // .month-toggle {
-                .month-msg {
+                margin: 0 auto;
+                max-width: 999px;
+                .month-toggle {
+                    background-color: pink;
+                    .month-msg {
+                    }
                 }
-                // }
                 // .jump-links {
                 // }
                 .confab-grid-container {
-                    .conurbation-callout {
-                    }
-                    .confab-card {
-                        .card-top {
-                            .avatar-container {
-                                .img {
-                                }
-                                .name {
-                                }
-                            }
-                            .time-container {
-                                .day {
-                                }
-                                .date {
-                                }
-                                .time {
-                                }
-                            }
+                    .collection-of-confabs-from-a-conurbation {
+                        display: flex;
+                        flex-wrap: wrap;
+
+                        .conurbation-callout {
+                            background-color: greenyellow;
+                            flex: 0 0 25%;
+                            padding: 1rem 1rem 0rem 0rem;
                         }
-                        hr {
-                            //horizontal rule, probably just need to put a width on it
-                        }
-                        .attendance-status {
-                            .seats-left {
+                        .confab-card {
+                            background-color: greenyellow;
+                            flex: 0 0 25%;
+                            padding: 1rem 0rem 0rem 1rem;
+                            .card-top {
+                                .avatar-container {
+                                    .img {
+                                    }
+                                    .name {
+                                        background-color: rebeccapurple;
+                                    }
+                                }
+                                .time-container {
+                                    .day {
+                                        background-color: red;
+                                    }
+                                    .date {
+                                        background-color: royalblue;
+                                    }
+                                    .time {
+                                        background-color: seagreen;
+                                    }
+                                }
                             }
-                            .fancy-graphic {
-                                //probably some more stuff in here
+                            hr {
+                                //horizontal rule, probably just need to put a width on it
                             }
-                        }
-                        .squad-up-button {
+                            .attendance-status {
+                                .seats-left {
+                                }
+                                .fancy-graphic {
+                                    //probably some more stuff in here
+                                }
+                            }
+                            .squad-up-button {
+                            }
                         }
                     }
                 }

@@ -1,10 +1,10 @@
 import React from "react"
 import { Route } from "react-router-dom"
 import { AuthRoute } from "../../utils/route_utils"
-import Splash from "./splash/splash"
+import Splash from "./splish/splash"
 import SigninFormContainer from "./sessionform/signinform_container"
 import SignupFormContainer from "./sessionform/signupform_container"
-import CoffeeSchedule from "./coffeeschedule/coffee_schedule_container"
+import CoffeeSchedule from "./coffeeschedule/coffeeschedule_container"
 
 const Concerto = () => (
     <>

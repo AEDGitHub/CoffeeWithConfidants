@@ -1,6 +1,7 @@
 /*
 Next steps: build the thing
 destructure props coming in
+abstract away the coffee_event_detail 
 */
 
 import React from "react"
@@ -50,12 +51,13 @@ class CoffeeSchedule extends React.Component {
                                 confidants.
                             </div>
                             <div className="msg-text">
-                                Ever found yourself asking "Why does nobody want
-                                change?" This is the place to meet those who do.
-                                For two hours, squad up at a cafe with a given
-                                host to talk about finding and exposing the
-                                fakers. If none of these times work for you, why
-                                not{" "}
+                                Ever find yourself asking why no one wants
+                                change? This is the place to meet those who do.
+                                For two hours, squad up at a cafe to conspire
+                                about finding and exposing the fakers.
+                                <br></br>
+                                <br></br>
+                                If none of these times work for you, why not{" "}
                                 <Link
                                     to="/signup"
                                     className="coffeeschedule-signup-link"
@@ -65,9 +67,144 @@ class CoffeeSchedule extends React.Component {
                                 and host your own confab?
                             </div>
                         </div>
+
                         <div className="coffeeschedule-confabs-container">
-                            <div className="month-msg"></div>
-                            <div className="confab-grid-container"></div>
+                            <div className="month-toggle">
+                                <div className="month-msg">
+                                    TEA TIMES IN FAKE MONTH (PH)
+                                </div>
+                            </div>
+                            <div className="confab-grid-container">
+                                <div className="collection-of-confabs-from-a-conurbation">
+                                    <div className="conurbation-callout">
+                                        Everdark Frozen Hellscape, Great Falls,
+                                        Montana (PH)
+                                    </div>
+                                    {/* first placeholder card */}
+                                    <div className="confab-card">
+                                        <div className="card-top">
+                                            <div className="avatar-container">
+                                                <div className="img"></div>
+                                                <div className="name">
+                                                    Ryuji(PH)
+                                                </div>
+                                            </div>
+                                            <div className="time-container">
+                                                <div className="day">
+                                                    Sunday(PH)
+                                                </div>
+                                                <div className="date">
+                                                    SEP 19(PH)
+                                                </div>
+                                                <div className="time">
+                                                    14-1600(PH)
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr></hr>
+                                        <div className="attendance-status">
+                                            <div className="seats-left">
+                                                3 SPOTS OPEN(PH)
+                                            </div>
+                                            <div className="fancy-graphic"></div>
+                                        </div>
+                                        <div className="squad-up-button"></div>
+                                    </div>
+                                    {/* second placeholder card */}
+                                    <div className="confab-card">
+                                        <div className="card-top">
+                                            <div className="avatar-container">
+                                                <div className="img"></div>
+                                                <div className="name">
+                                                    Ryuji(PH)
+                                                </div>
+                                            </div>
+                                            <div className="time-container">
+                                                <div className="day">
+                                                    Sunday(PH)
+                                                </div>
+                                                <div className="date">
+                                                    SEP 19(PH)
+                                                </div>
+                                                <div className="time">
+                                                    14-1600(PH)
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr></hr>
+                                        <div className="attendance-status">
+                                            <div className="seats-left">
+                                                3 SPOTS OPEN(PH)
+                                            </div>
+                                            <div className="fancy-graphic"></div>
+                                        </div>
+                                        <div className="squad-up-button"></div>
+                                    </div>
+                                    {/* end second placeholder card */}
+                                    {/* third placeholder card */}
+                                    <div className="confab-card">
+                                        <div className="card-top">
+                                            <div className="avatar-container">
+                                                <div className="img"></div>
+                                                <div className="name">
+                                                    Ryuji(PH)
+                                                </div>
+                                            </div>
+                                            <div className="time-container">
+                                                <div className="day">
+                                                    Sunday(PH)
+                                                </div>
+                                                <div className="date">
+                                                    SEP 19(PH)
+                                                </div>
+                                                <div className="time">
+                                                    14-1600(PH)
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr></hr>
+                                        <div className="attendance-status">
+                                            <div className="seats-left">
+                                                3 SPOTS OPEN(PH)
+                                            </div>
+                                            <div className="fancy-graphic"></div>
+                                        </div>
+                                        <div className="squad-up-button"></div>
+                                    </div>
+                                    {/* end third placeholder card */}
+                                    {/* fourth placeholder card */}
+                                    <div className="confab-card">
+                                        <div className="card-top">
+                                            <div className="avatar-container">
+                                                <div className="img"></div>
+                                                <div className="name">
+                                                    Ryuji(PH)
+                                                </div>
+                                            </div>
+                                            <div className="time-container">
+                                                <div className="day">
+                                                    Sunday(PH)
+                                                </div>
+                                                <div className="date">
+                                                    SEP 19(PH)
+                                                </div>
+                                                <div className="time">
+                                                    14-1600(PH)
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr></hr>
+                                        <div className="attendance-status">
+                                            <div className="seats-left">
+                                                3 SPOTS OPEN(PH)
+                                            </div>
+                                            <div className="fancy-graphic"></div>
+                                        </div>
+                                        <div className="squad-up-button"></div>
+                                    </div>
+                                    {/* end fourth placeholder card */}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
