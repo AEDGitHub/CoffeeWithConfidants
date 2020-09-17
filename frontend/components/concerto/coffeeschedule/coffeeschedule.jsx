@@ -39,18 +39,20 @@ class CoffeeSchedule extends React.Component {
                 <div className="confab-card">
                     <div className="card-top">
                         <div className="avatar-container">
-                            <div className="img"></div>
-                            <div className="name">Ryuji(PH)</div>
+                            <div className="img-container">
+                                <div className="img"></div>
+                            </div>
+                            <div className="name">RYUJI</div>
                         </div>
                         <div className="time-container">
-                            <div className="day">Sunday(PH)</div>
-                            <div className="date">SEP 19(PH)</div>
-                            <div className="time">14-1600(PH)</div>
+                            <div className="day">Sunday</div>
+                            <div className="date">SEP 19</div>
+                            <div className="time">14-1600</div>
                         </div>
                     </div>
                     <hr></hr>
                     <div className="attendance-status">
-                        <div className="seats-left">3 SPOTS OPEN(PH)</div>
+                        <div className="seats-left">3 SPOTS OPEN</div>
                         <div className="fancy-graphic"></div>
                     </div>
                     <div className="squad-up-button"></div>
