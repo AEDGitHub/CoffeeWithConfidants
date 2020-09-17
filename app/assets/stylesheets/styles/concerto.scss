@@ -236,50 +236,51 @@ section {
                             // padding: 0.5rem 0.5rem 0.5rem 0rem;
                             margin: 2rem 0.5rem 3rem 0rem;
                         }
-                        .confab-card {
+                        .confab-card-container {
                             background-color: greenyellow;
                             flex: 0 0 calc(25% - 0.75rem);
-                            // padding: 0.5rem 0.5rem 0.5rem 0.5rem;
                             margin: 2rem 0.5rem 3rem 0.5rem;
-                            .card-top {
-                                .avatar-container {
-                                    .img {
+                            .confab-card {
+                                .card-top {
+                                    .avatar-container {
+                                        .img {
+                                        }
+                                        .name {
+                                            background-color: rebeccapurple;
+                                        }
                                     }
-                                    .name {
-                                        background-color: rebeccapurple;
+                                    .time-container {
+                                        .day {
+                                            background-color: red;
+                                        }
+                                        .date {
+                                            background-color: royalblue;
+                                        }
+                                        .time {
+                                            background-color: seagreen;
+                                        }
                                     }
                                 }
-                                .time-container {
-                                    .day {
-                                        background-color: red;
+                                hr {
+                                    //horizontal rule, probably just need to put a width on it
+                                }
+                                .attendance-status {
+                                    .seats-left {
                                     }
-                                    .date {
-                                        background-color: royalblue;
-                                    }
-                                    .time {
-                                        background-color: seagreen;
+                                    .fancy-graphic {
+                                        //probably some more stuff in here
                                     }
                                 }
-                            }
-                            hr {
-                                //horizontal rule, probably just need to put a width on it
-                            }
-                            .attendance-status {
-                                .seats-left {
+                                .squad-up-button {
                                 }
-                                .fancy-graphic {
-                                    //probably some more stuff in here
-                                }
-                            }
-                            .squad-up-button {
                             }
                         }
-                        .confab-card:nth-child(4n) {
+                        .confab-card-container:nth-child(4n) {
                             // padding: 0.5rem 0rem 0.5rem 0.5rem;
                             margin: 2rem 0rem 3rem 0.5rem;
                             // flex: 0 0 calc(25% - 0.5rem);
                         }
-                        .confab-card:nth-child(4n + 1) {
+                        .confab-card-container:nth-child(4n + 1) {
                             margin: 2rem 0.5rem 3rem 0rem;
                             // padding: 0.5rem 0.5rem 0.5rem 0rem;
                             // flex: 0 0 calc(25% - 0.5rem);

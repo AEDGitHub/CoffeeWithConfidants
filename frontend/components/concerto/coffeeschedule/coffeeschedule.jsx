@@ -12,6 +12,7 @@ class CoffeeSchedule extends React.Component {
         super(props)
         this.state = {}
         // this.confabsListTest = this.confabsListTest.bind(this);
+        this.placeHolderCardsTest = this.placeHolderCardsTest.bind(this)
     }
 
     componentDidMount() {
@@ -31,6 +32,32 @@ class CoffeeSchedule extends React.Component {
     //         <li key={confab.id}>{confab.description}</li>
     //     ))
     // }
+
+    placeHolderCardsTest() {
+        return [0, 1, 2, 3].map(() => (
+            <div className="confab-card-container">
+                <div className="confab-card">
+                    <div className="card-top">
+                        <div className="avatar-container">
+                            <div className="img"></div>
+                            <div className="name">Ryuji(PH)</div>
+                        </div>
+                        <div className="time-container">
+                            <div className="day">Sunday(PH)</div>
+                            <div className="date">SEP 19(PH)</div>
+                            <div className="time">14-1600(PH)</div>
+                        </div>
+                    </div>
+                    <hr></hr>
+                    <div className="attendance-status">
+                        <div className="seats-left">3 SPOTS OPEN(PH)</div>
+                        <div className="fancy-graphic"></div>
+                    </div>
+                    <div className="squad-up-button"></div>
+                </div>
+            </div>
+        ))
+    }
 
     render() {
         return (
@@ -80,129 +107,7 @@ class CoffeeSchedule extends React.Component {
                                         Everdark Frozen Hellscape, Great Falls,
                                         Montana (PH)
                                     </div>
-                                    {/* first placeholder card */}
-                                    <div className="confab-card">
-                                        <div className="card-top">
-                                            <div className="avatar-container">
-                                                <div className="img"></div>
-                                                <div className="name">
-                                                    Ryuji(PH)
-                                                </div>
-                                            </div>
-                                            <div className="time-container">
-                                                <div className="day">
-                                                    Sunday(PH)
-                                                </div>
-                                                <div className="date">
-                                                    SEP 19(PH)
-                                                </div>
-                                                <div className="time">
-                                                    14-1600(PH)
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr></hr>
-                                        <div className="attendance-status">
-                                            <div className="seats-left">
-                                                3 SPOTS OPEN(PH)
-                                            </div>
-                                            <div className="fancy-graphic"></div>
-                                        </div>
-                                        <div className="squad-up-button"></div>
-                                    </div>
-                                    {/* second placeholder card */}
-                                    <div className="confab-card">
-                                        <div className="card-top">
-                                            <div className="avatar-container">
-                                                <div className="img"></div>
-                                                <div className="name">
-                                                    Ryuji(PH)
-                                                </div>
-                                            </div>
-                                            <div className="time-container">
-                                                <div className="day">
-                                                    Sunday(PH)
-                                                </div>
-                                                <div className="date">
-                                                    SEP 19(PH)
-                                                </div>
-                                                <div className="time">
-                                                    14-1600(PH)
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr></hr>
-                                        <div className="attendance-status">
-                                            <div className="seats-left">
-                                                3 SPOTS OPEN(PH)
-                                            </div>
-                                            <div className="fancy-graphic"></div>
-                                        </div>
-                                        <div className="squad-up-button"></div>
-                                    </div>
-                                    {/* end second placeholder card */}
-                                    {/* third placeholder card */}
-                                    <div className="confab-card">
-                                        <div className="card-top">
-                                            <div className="avatar-container">
-                                                <div className="img"></div>
-                                                <div className="name">
-                                                    Ryuji(PH)
-                                                </div>
-                                            </div>
-                                            <div className="time-container">
-                                                <div className="day">
-                                                    Sunday(PH)
-                                                </div>
-                                                <div className="date">
-                                                    SEP 19(PH)
-                                                </div>
-                                                <div className="time">
-                                                    14-1600(PH)
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr></hr>
-                                        <div className="attendance-status">
-                                            <div className="seats-left">
-                                                3 SPOTS OPEN(PH)
-                                            </div>
-                                            <div className="fancy-graphic"></div>
-                                        </div>
-                                        <div className="squad-up-button"></div>
-                                    </div>
-                                    {/* end third placeholder card */}
-                                    {/* fourth placeholder card */}
-                                    <div className="confab-card">
-                                        <div className="card-top">
-                                            <div className="avatar-container">
-                                                <div className="img"></div>
-                                                <div className="name">
-                                                    Ryuji(PH)
-                                                </div>
-                                            </div>
-                                            <div className="time-container">
-                                                <div className="day">
-                                                    Sunday(PH)
-                                                </div>
-                                                <div className="date">
-                                                    SEP 19(PH)
-                                                </div>
-                                                <div className="time">
-                                                    14-1600(PH)
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr></hr>
-                                        <div className="attendance-status">
-                                            <div className="seats-left">
-                                                3 SPOTS OPEN(PH)
-                                            </div>
-                                            <div className="fancy-graphic"></div>
-                                        </div>
-                                        <div className="squad-up-button"></div>
-                                    </div>
-                                    {/* end fourth placeholder card */}
+                                    {this.placeHolderCardsTest()}
                                 </div>
                             </div>
                         </div>
