@@ -229,16 +229,18 @@ section {
                     .collection-of-confabs-from-a-conurbation {
                         display: flex;
                         flex-wrap: wrap;
-
+                        // flex: 1;
                         .conurbation-callout {
                             background-color: greenyellow;
-                            flex: 0 0 25%;
-                            padding: 1rem 1rem 0rem 0rem;
+                            flex: 0 0 calc(25% - 0.75rem);
+                            // padding: 0.5rem 0.5rem 0.5rem 0rem;
+                            margin: 2rem 0.5rem 3rem 0rem;
                         }
                         .confab-card {
                             background-color: greenyellow;
-                            flex: 0 0 25%;
-                            padding: 1rem 0rem 0rem 1rem;
+                            flex: 0 0 calc(25% - 0.75rem);
+                            // padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+                            margin: 2rem 0.5rem 3rem 0.5rem;
                             .card-top {
                                 .avatar-container {
                                     .img {
@@ -271,6 +273,16 @@ section {
                             }
                             .squad-up-button {
                             }
+                        }
+                        .confab-card:nth-child(4n) {
+                            // padding: 0.5rem 0rem 0.5rem 0.5rem;
+                            margin: 2rem 0rem 3rem 0.5rem;
+                            // flex: 0 0 calc(25% - 0.5rem);
+                        }
+                        .confab-card:nth-child(4n + 1) {
+                            margin: 2rem 0.5rem 3rem 0rem;
+                            // padding: 0.5rem 0.5rem 0.5rem 0rem;
+                            // flex: 0 0 calc(25% - 0.5rem);
                         }
                     }
                 }
