@@ -34,7 +34,7 @@ class CoffeeSchedule extends React.Component {
     // }
 
     placeHolderCardsTest() {
-        return [0, 1, 2, 3].map(() => (
+        return [0, 1, 2, 3, 4].map(() => (
             <div className="confab-card-container">
                 <div className="confab-card">
                     <div className="card-top">
@@ -45,17 +45,28 @@ class CoffeeSchedule extends React.Component {
                             <div className="name">RYUJI</div>
                         </div>
                         <div className="time-container">
-                            <div className="day">Sunday</div>
+                            <div className="day">SUNDAY</div>
                             <div className="date">SEP 19</div>
-                            <div className="time">14-1600</div>
+                            <div className="time">14 — 1600</div>
                         </div>
+                    </div>
+                    <div className="confab-description">
+                        Strictly virtual by virtue of COVID! Lorem ipsum, dolor
+                        sit amet consectetur adipisicing elit. Vitae quo
+                        voluptates esse non tempore, nesciunt itaque quam,
+                        placeat consectetur vero ratione! Animi, assumenda
+                        architecto fuga velit nisi ad accusantium quibusdam.
                     </div>
                     <hr></hr>
                     <div className="attendance-status">
-                        <div className="seats-left">3 SPOTS OPEN</div>
-                        <div className="fancy-graphic"></div>
+                        <div className="seats-left">3 SPOTS OPEN!</div>
+                        {/* <div className="fancy-graphic"></div> */}
                     </div>
-                    <div className="squad-up-button"></div>
+                </div>
+                <div className="squad-up-button">
+                    <div className="visibility-shift">
+                        <span>JOIN CONFAB</span>
+                    </div>
                 </div>
             </div>
         ))
@@ -100,14 +111,15 @@ class CoffeeSchedule extends React.Component {
                         <div className="coffeeschedule-confabs-container">
                             <div className="month-toggle">
                                 <div className="month-msg">
-                                    TEA TIMES IN FAKE MONTH (PH)
+                                    TEA TIMES IN SEPTEMBER
                                 </div>
                             </div>
                             <div className="confab-grid-container">
                                 <div className="collection-of-confabs-from-a-conurbation">
-                                    <div className="conurbation-callout">
-                                        Everdark Frozen Hellscape, Great Falls,
-                                        Montana (PH)
+                                    <div className="conurbation-callout-container">
+                                        <div className="conurbation-callout">
+                                            Everdark Frozen Hellscape
+                                        </div>
                                     </div>
                                     {this.placeHolderCardsTest()}
                                 </div>

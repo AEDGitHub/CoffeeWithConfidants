@@ -194,8 +194,8 @@ section {
         }
         .coffeeschedule-content-container {
             margin: 0 auto;
-
             padding: 3rem 1rem;
+            background-color: #efefef;
             .coffeeschedule-msg-container {
                 margin: 0 auto;
                 max-width: 696px;
@@ -218,94 +218,148 @@ section {
             .coffeeschedule-confabs-container {
                 margin: 0 auto;
                 max-width: 999px;
+
                 .month-toggle {
                     background-color: pink;
                     .month-msg {
                     }
                 }
                 // .jump-links {
+                // //not yet
                 // }
                 .confab-grid-container {
                     .collection-of-confabs-from-a-conurbation {
                         display: flex;
                         flex-wrap: wrap;
-                        // flex: 1;
-                        .conurbation-callout {
-                            background-color: greenyellow;
+                        .conurbation-callout-container {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
                             flex: 0 0 calc(25% - 0.75rem);
-                            margin: 2rem 0.5rem 3rem 0rem;
+                            margin: 2rem 0.5rem 3.111rem 0rem;
+                            border: 1px solid #ee0000;
+
+                            .conurbation-callout {
+                                color: #ee0000;
+                                text-align: center;
+                                vertical-align: middle;
+                                font-size: 1.441rem;
+                                font-weight: 800;
+                            }
                         }
                         .confab-card-container {
-                            background-color: greenyellow;
                             flex: 0 0 calc(25% - 0.75rem);
-                            margin: 2rem 0.5rem 3rem 0.5rem;
+                            margin: 2rem 0.5rem 0rem 0.5rem;
                             .confab-card {
-                                height: 15rem;
+                                border: 1px solid #717370;
+                                border-bottom: none;
+                                background-color: #ffffff;
+                                cursor: pointer;
                                 .card-top {
                                     padding: 1rem;
                                     .avatar-container {
                                         float: right;
                                         width: 47%;
+                                        margin-top: -2rem;
                                         padding: 0.222rem;
-                                        border: 2px solid #512e59;
+                                        border: 3px solid #512e59;
                                         border-radius: 2px;
-
+                                        background-color: #ffffff;
+                                        text-align: center;
                                         .img-container {
                                             width: 100%;
-
                                             padding: 50%;
-                                            // max-width: ;
-                                            // max-height: ;
-
+                                            border-radius: 3px;
                                             background-color: hotpink;
                                             .img {
                                                 max-width: 100%;
                                                 max-height: 100%;
                                                 background: black;
-                                                // padding: 0.222rem;
                                             }
                                         }
                                         .name {
-                                            text-align: center;
+                                            padding-top: 0.222rem;
+                                            vertical-align: middle;
                                             font-size: 0.667rem;
                                             color: #ee0000;
                                         }
                                     }
                                     .time-container {
+                                        // padding-top: 2rem;
                                         width: 47%;
+                                        text-align: center;
+                                        color: #070707;
                                         .day {
-                                            background-color: red;
+                                            padding: 0.111rem;
+                                            font-size: 0.777rem;
+                                            font-weight: 700;
+                                            color: #717370;
                                         }
                                         .date {
-                                            background-color: royalblue;
+                                            padding: 0.111rem;
+                                            font-size: 1.441rem;
+                                            font-weight: 800;
                                         }
                                         .time {
-                                            background-color: seagreen;
+                                            padding: 0.111rem;
+                                            font-size: 1rem;
+                                            font-weight: 500;
                                         }
                                     }
+                                }
+                                .confab-description {
+                                    padding: 0rem 1rem;
+                                    padding-top: 0.667rem;
+                                    color: #717370;
+                                    font-weight: 500;
+                                    overflow: hidden;
                                 }
                                 hr {
                                     width: calc(100% - 2rem);
-                                    border: 1px solid #512e59;
-                                    margin: 2rem 1rem 1rem 1rem;
-                                    //horizontal rule, probably just need to put a width on it
+                                    margin: 1rem 1rem 1rem 1rem;
+                                    border: none;
+                                    border-bottom: 1px solid #717370;
                                 }
                                 .attendance-status {
                                     .seats-left {
+                                        padding: 0rem 1rem 1rem 1rem;
+                                        text-align: center;
+                                        font-weight: 500;
+                                        color: #717370;
                                     }
-                                    .fancy-graphic {
-                                        //probably some more stuff in here
+                                    // .fancy-graphic {
+                                    // //not yet
+                                    // }
+                                }
+                            }
+                            .squad-up-button {
+                                border: 1px solid #512e59;
+                                border-radius: 0rem 0rem 0.333rem 0.333rem;
+                                padding: 1rem;
+                                text-align: center;
+                                font-weight: 800;
+                                background-color: #dfdfdf;
+                                color: #512e59;
+                                cursor: pointer;
+                            }
+                            .squad-up-button:hover {
+                                background-color: #512e59;
+                                color: #ffffff;
+                                .visibility-shift {
+                                    span {
+                                        display: none;
                                     }
                                 }
-                                .squad-up-button {
+                                .visibility-shift::before {
+                                    content: "CONTINUE ON";
                                 }
                             }
                         }
                         .confab-card-container:nth-child(4n) {
-                            margin: 2rem 0rem 3rem 0.5rem;
+                            margin: 2rem 0rem 0rem 0.5rem;
                         }
                         .confab-card-container:nth-child(4n + 1) {
-                            margin: 2rem 0.5rem 3rem 0rem;
+                            margin: 2rem 0.5rem 0rem 0rem;
                         }
                     }
                 }
