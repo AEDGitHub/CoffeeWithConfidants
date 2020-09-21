@@ -220,8 +220,10 @@ section {
                 max-width: 999px;
 
                 .month-toggle {
-                    background-color: pink;
+                    padding: 0rem 1rem;
                     .month-msg {
+                        font-size: 0.888rem;
+                        font-weight: 800;
                     }
                 }
                 // .jump-links {
@@ -308,10 +310,12 @@ section {
                                     }
                                 }
                                 .confab-description {
+                                    margin: 0.667rem 0rem;
                                     padding: 0rem 1rem;
-                                    padding-top: 0.667rem;
+                                    // padding-top: 0.667rem;
                                     color: #717370;
                                     font-weight: 500;
+                                    height: 6rem;
                                     overflow: hidden;
                                 }
                                 hr {
