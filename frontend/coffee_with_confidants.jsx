@@ -16,7 +16,7 @@ import {
 
 // ----- window testing after creating actions, reducers, store
 import { signin, logout, signup } from "./actions/session_actions"
-import { getAllApiConurbations } from "./actions/conurbations_actions"
+import { fetchAllApiConurbations } from "./actions/conurbations_actions"
 
 document.addEventListener("DOMContentLoaded", () => {
     let store
@@ -78,5 +78,5 @@ document.addEventListener("DOMContentLoaded", () => {
     window.signin = signin
     window.logout = logout
     window.signup = signup
-    window.getAllApiConurbations = getAllApiConurbations
+    window.fetchAllApiConurbations = fetchAllApiConurbations
 })

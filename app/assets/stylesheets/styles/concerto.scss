@@ -230,6 +230,7 @@ section {
                 // //not yet
                 // }
                 .confab-grid-container {
+                    margin-bottom: 1rem;
                     .collection-of-confabs-from-a-conurbation {
                         display: flex;
                         flex-wrap: wrap;
@@ -239,7 +240,7 @@ section {
                             align-items: center;
                             flex: 0 0 calc(25% - 0.75rem);
                             margin: 2rem 0.5rem 3.111rem 0rem;
-                            border: 1px solid #ee0000;
+                            border: 2px solid #ee0000;
 
                             .conurbation-callout {
                                 color: #ee0000;
@@ -284,6 +285,7 @@ section {
                                             vertical-align: middle;
                                             font-size: 0.667rem;
                                             color: #ee0000;
+                                            overflow: hidden;
                                         }
                                     }
                                     .time-container {

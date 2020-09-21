@@ -14,19 +14,19 @@ export const areConfabsLoaded = ({ entities }) => {
     }
 }
 
-export const getAllConurbations = ({ entities }) =>
+export const selectAllConurbations = ({ entities }) =>
     Object.keys(entities.conurbations).map((id) => entities.conurbations[id])
 
-export const getParticularConurbation = ({ entities }, conurbationName) => {
+export const selectParticularConurbation = ({ entities }, conurbationName) => {
     return Object.values(entities.conurbations).filter(
         (conurbation) => conurbation.name === conurbationName
     )
 }
 
-export const getAllConfabs = ({ entities }) =>
+export const selectAllConfabs = ({ entities }) =>
     Object.keys(entities.confabs).map((id) => entities.confabs[id])
 
-export const getParticularConfab = ({ entities }, confabName) => {
+export const selectParticularConfab = ({ entities }, confabName) => {
     return Object.values(entities.confabs).filter(
         (confab) => confab.name === confabName
     )

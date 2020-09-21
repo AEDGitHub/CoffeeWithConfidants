@@ -12,11 +12,11 @@ frontend store to the frontend component.
 import React from "react"
 import {
     areConurbationsLoaded,
-    getAllConurbations,
-    getParticularConurbation,
+    selectAllConurbations,
+    selectParticularConurbation,
 } from "../../../reducers/selectors"
 import {
-    getAllApiConurbations,
+    fetchAllApiConurbations,
     ditchConurbations,
 } from "../../../actions/conurbations_actions"
 import {
@@ -30,9 +30,9 @@ import SessionForm from "./sessionform"
 
 const mSTP = (state) => {
     return {
-        conurbations: getAllConurbations(state),
+        conurbations: selectAllConurbations(state),
         conurbationsAreLoaded: areConurbationsLoaded(state),
-        demoConfidantConurbationId: getParticularConurbation(
+        demoConfidantConurbationId: selectParticularConurbation(
             state,
             "Quarantine Cosmopolis, San Francisco Bay Area, California"
         ),
@@ -54,7 +54,7 @@ const mSTP = (state) => {
 
 const mDTP = (dispatch) => {
     return {
-        loadConurbations: () => dispatch(getAllApiConurbations()),
+        loadConurbations: () => dispatch(fetchAllApiConurbations()),
         unloadConurbations: () => dispatch(ditchConurbations()),
         unloadSessionErrors: () => dispatch(ditchSessionErrors()),
         processMainForm: (confidant) => dispatch(signup(confidant)),

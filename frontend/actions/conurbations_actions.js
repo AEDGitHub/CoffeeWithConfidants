@@ -18,7 +18,7 @@ export const clearAllConurbations = () => {
 }
 
 // Thunk Action Creators
-export const getAllApiConurbations = () => {
+export const fetchAllApiConurbations = () => {
     return (dispatch) => {
         return ConurbationsApiUtils.getAllApiConurbations().then(
             (conurbations) => {

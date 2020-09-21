@@ -34,15 +34,15 @@ class CoffeeSchedule extends React.Component {
     // }
 
     placeHolderCardsTest() {
-        return [0, 1, 2, 3, 4].map(() => (
-            <div className="confab-card-container">
+        return [0, 1, 2].map((idx) => (
+            <div className="confab-card-container" key={idx}>
                 <div className="confab-card">
                     <div className="card-top">
                         <div className="avatar-container">
                             <div className="img-container">
                                 <div className="img"></div>
                             </div>
-                            <div className="name">RYUJI</div>
+                            <div className="name">SUPERLONGUSERNAME</div>
                         </div>
                         <div className="time-container">
                             <div className="day">SUNDAY</div>
@@ -119,6 +119,16 @@ class CoffeeSchedule extends React.Component {
                                     <div className="conurbation-callout-container">
                                         <div className="conurbation-callout">
                                             Everdark Frozen Hellscape
+                                        </div>
+                                    </div>
+                                    {this.placeHolderCardsTest()}
+                                </div>
+                            </div>
+                            <div className="confab-grid-container">
+                                <div className="collection-of-confabs-from-a-conurbation">
+                                    <div className="conurbation-callout-container">
+                                        <div className="conurbation-callout">
+                                            Pacific Postwar Islands
                                         </div>
                                     </div>
                                     {this.placeHolderCardsTest()}

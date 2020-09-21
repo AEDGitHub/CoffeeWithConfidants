@@ -12,10 +12,10 @@ frontend store to the frontend component.
 import React from "react"
 import {
     areConurbationsLoaded,
-    getAllConurbations,
-    getParticularConurbation,
+    selectAllConurbations,
+    selectParticularConurbation,
 } from "../../../reducers/selectors"
-import { getAllApiConurbations } from "../../../actions/conurbations_actions"
+import { fetchAllApiConurbations } from "../../../actions/conurbations_actions"
 import { signin, ditchSessionErrors } from "../../../actions/session_actions"
 import { Link } from "react-router-dom"
 import { connect } from "react-redux"
@@ -23,9 +23,9 @@ import SessionForm from "./sessionform"
 
 const mSTP = (state) => {
     return {
-        conurbations: getAllConurbations(state),
+        conurbations: selectAllConurbations(state),
         conurbationsAreLoaded: areConurbationsLoaded(state),
-        demoConfidantConurbationId: getParticularConurbation(
+        demoConfidantConurbationId: selectParticularConurbation(
             state,
             "Quarantine Cosmopolis, San Francisco Bay Area, California"
         ),
@@ -46,7 +46,7 @@ const mSTP = (state) => {
 
 const mDTP = (dispatch) => {
     return {
-        loadConurbations: () => dispatch(getAllApiConurbations()),
+        loadConurbations: () => dispatch(fetchAllApiConurbations()),
         unloadSessionErrors: () => dispatch(ditchSessionErrors()),
         processMainForm: (confidant) => dispatch(signin(confidant)),
         processDemoForm: (confidant) => dispatch(signin(confidant)),

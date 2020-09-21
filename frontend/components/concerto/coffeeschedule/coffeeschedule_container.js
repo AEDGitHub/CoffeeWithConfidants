@@ -1,11 +1,11 @@
 import React from "react"
 import {
     areConfabsLoaded,
-    getAllConfabs,
-    getParticularConfab,
+    selectAllConfabs,
+    selectParticularConfab,
 } from "../../../reducers/selectors"
 import {
-    getAllApiConfabs,
+    fetchFilteredApiConfabs,
     ditchConfabs,
 } from "../../../actions/confabs_actions"
 import { connect } from "react-redux"
@@ -13,7 +13,7 @@ import CoffeeSchedule from "./coffeeschedule"
 
 const mSTP = (state) => {
     return {
-        confabs: getAllConfabs(state),
+        confabs: selectAllConfabs(state),
         confabsAreLoaded: areConfabsLoaded(state),
         testState: "This is only a test.",
     }
@@ -21,7 +21,7 @@ const mSTP = (state) => {
 
 const mDTP = (dispatch) => {
     return {
-        loadConfabs: () => dispatch(getAllApiConfabs()),
+        loadConfabs: () => dispatch(fetchFilteredApiConfabs()),
         unloadConfabs: () => dispatch(ditchConfabs()),
     }
 }
