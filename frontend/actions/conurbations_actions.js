@@ -4,7 +4,7 @@ import * as ConurbationsApiUtils from "../utils/conurbations_api_utils"
 export const RECEIVE_ALL_CONURBATIONS = "RECEIVE_ALL_CONURBATIONS"
 export const CLEAR_ALL_CONURBATIONS = "CLEAR_ALL_CONURBATIONS"
 
-const receiveAllConurbations = (conurbations) => {
+const receiveAllConurbations = ({ conurbations }) => {
     return {
         type: RECEIVE_ALL_CONURBATIONS,
         conurbations,
@@ -20,11 +20,9 @@ export const clearAllConurbations = () => {
 // Thunk Action Creators
 export const fetchAllApiConurbations = () => {
     return (dispatch) => {
-        return ConurbationsApiUtils.getAllApiConurbations().then(
-            (conurbations) => {
-                dispatch(receiveAllConurbations(conurbations))
-            }
-        )
+        return ConurbationsApiUtils.getAllApiConurbations().then((payload) => {
+            dispatch(receiveAllConurbations(payload))
+        })
     }
 }
 

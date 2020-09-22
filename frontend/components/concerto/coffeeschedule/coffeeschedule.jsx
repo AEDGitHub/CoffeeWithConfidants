@@ -25,6 +25,9 @@ class CoffeeSchedule extends React.Component {
         if (this.props.confabsAreLoaded) {
             this.props.unloadConfabs()
         }
+        if (this.props.conurbationsAreLoaded) {
+            this.props.unloadConurbations()
+        }
     }
 
     // confabsListTest() {
