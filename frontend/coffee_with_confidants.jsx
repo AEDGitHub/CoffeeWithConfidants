@@ -1,5 +1,5 @@
 /*
-Next steps: Get rid of all window testing utils/variables
+!!Next steps: Get rid of all window testing utils/variables
 */
 
 import React from "react"
@@ -7,14 +7,14 @@ import configureStore from "./store/store"
 import ReactDOM from "react-dom"
 import Confluence from "./components/confluence"
 
-// ----- imports below are for window testing only, remove before production push!
+// !!----- imports below are for window testing only, remove before production push!
 import {
     postApiSession,
     postApiConfidant,
     deleteApiSession,
 } from "./utils/session_api_utils"
 
-// ----- window testing after creating actions, reducers, store
+// !!----- window testing after creating actions, reducers, store
 import { signin, logout, signup } from "./actions/session_actions"
 import { fetchAllApiConurbations } from "./actions/conurbations_actions"
 
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const rootEle = document.getElementById("root")
     ReactDOM.render(<Confluence store={store} />, rootEle)
 
-    // -------- declarations below this line for window testing only
+    // !!-------- declarations below this line for window testing only
     window.demoUser0 = {
         username: "Joker",
         password: "hunter12",
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // window.deleteApiSession = deleteApiSession;
     // window.postApiConfidant = postApiConfidant;
 
-    // -------- window testing after creating actions, reducers, store
+    // !!-------- window testing after creating actions, reducers, store
     window.testUser2 = {
         username: "testUser2",
         password: "hunter12",

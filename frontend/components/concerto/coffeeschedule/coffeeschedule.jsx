@@ -1,7 +1,7 @@
 /*
-Next steps: build the thing
-destructure props coming in
-abstract away the coffee_event_detail 
+todo: build the thing 
+todo: destructure props coming in 
+todo: abstract away the coffee_event_detail 
 */
 
 import React from "react"
@@ -42,10 +42,10 @@ class CoffeeSchedule extends React.Component {
                 <div className="confab-card">
                     <div className="card-top">
                         <div className="avatar-container">
-                            <div className="img-container">
+                            <div className="img-container-01">
                                 <div className="img"></div>
                             </div>
-                            <div className="name">SUPERLONGUSERNAME</div>
+                            <div className="name">MORGANA</div>
                         </div>
                         <div className="time-container">
                             <div className="day">SUNDAY</div>

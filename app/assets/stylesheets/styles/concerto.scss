@@ -12,7 +12,7 @@ section {
     flex-direction: column;
     .splash {
         .splash-photo-container {
-            background-image: url("p5-leblanc-background");
+            background-image: url("P5-leblanc-background");
             background-size: cover;
             background-position: 51% 37%;
             min-width: 100%;
@@ -169,9 +169,15 @@ section {
     }
     .coffeeschedule {
         .coffeeschedule-photo-container {
-            background-image: url("p5-leblanc-thesquad");
+            background-image: linear-gradient(
+                    to bottom,
+                    rgba(81, 46, 89, 0.8),
+                    rgba(81, 46, 89, 0.7)
+                ),
+                url("P5-leblanc-thesquad");
             background-size: cover;
             background-position: 25% 22%;
+
             min-width: 100%;
             padding: 5rem 0rem 5rem 0rem;
             text-align: center;
@@ -184,11 +190,11 @@ section {
                     font-size: 3rem;
                     font-weight: 700;
                     margin-bottom: 0.777rem;
-                    text-shadow: 2px 2px 3px #070707;
+                    // text-shadow: 2px 2px 3px #070707;
                 }
                 .subtitle-text {
                     font-size: 1.111rem;
-                    text-shadow: 1px 1px 1px #070707;
+                    // text-shadow: 1px 1px 1px #070707;
                 }
             }
         }
@@ -269,17 +275,82 @@ section {
                                         border-radius: 2px;
                                         background-color: #ffffff;
                                         text-align: center;
-                                        .img-container {
+                                        //!! below this line is a BF mess. Fix it.
+                                        .img-container-00 {
                                             width: 100%;
                                             padding: 50%;
                                             border-radius: 3px;
-                                            background-color: hotpink;
-                                            .img {
-                                                max-width: 100%;
-                                                max-height: 100%;
-                                                background: black;
-                                            }
+                                            background-image: url("P5-avatar-00-joker");
+                                            background-size: cover;
                                         }
+                                        .img-container-01 {
+                                            width: 100%;
+                                            padding: 50%;
+                                            border-radius: 3px;
+                                            background-image: url("P5-avatar-01-morgana");
+                                            background-size: cover;
+                                            // .img {
+                                            //     width: 100%;
+                                            //     height: 100%;
+                                            // }
+                                        }
+                                        .img-container-02 {
+                                            width: 100%;
+                                            padding: 50%;
+                                            border-radius: 3px;
+                                            background-image: url("P5-avatar-02-ryuji");
+                                            background-size: cover;
+                                        }
+                                        .img-container-03 {
+                                            width: 100%;
+                                            padding: 50%;
+                                            border-radius: 3px;
+                                            background-image: url("P5-avatar-03-ann");
+                                            background-size: cover;
+                                        }
+                                        .img-container-04 {
+                                            width: 100%;
+                                            padding: 50%;
+                                            border-radius: 3px;
+                                            background-image: url("P5-avatar-04-yusuke");
+                                            background-size: cover;
+                                        }
+                                        .img-container-05 {
+                                            width: 100%;
+                                            padding: 50%;
+                                            border-radius: 3px;
+                                            background-image: url("P5-avatar-05-makoto");
+                                            background-size: cover;
+                                        }
+                                        .img-container-06 {
+                                            width: 100%;
+                                            padding: 50%;
+                                            border-radius: 3px;
+                                            background-image: url("P5-avatar-06-futaba");
+                                            background-size: cover;
+                                        }
+                                        .img-container-07 {
+                                            width: 100%;
+                                            padding: 50%;
+                                            border-radius: 3px;
+                                            background-image: url("P5-avatar-07-haru");
+                                            background-size: cover;
+                                        }
+                                        .img-container-08 {
+                                            width: 100%;
+                                            padding: 50%;
+                                            border-radius: 3px;
+                                            background-image: url("P5-avatar-08-goro");
+                                            background-size: cover;
+                                        }
+                                        .img-container-09 {
+                                            width: 100%;
+                                            padding: 50%;
+                                            border-radius: 3px;
+                                            background-image: url("P5-avatar-09-sumire");
+                                            background-size: cover;
+                                        }
+                                        //!! above this line is a BF mess. Fix it.
                                         .name {
                                             padding-top: 0.222rem;
                                             vertical-align: middle;
