@@ -15,9 +15,9 @@ const Splash = () => (
                     <div className="subtitle-text">
                         If you wake up, get up, and get out there.
                     </div>
-                    <div className="main-index-button">
-                        <Link to="/coffee_times">FIND A CONFAB</Link>
-                    </div>
+                    <Link to="/coffee_times">
+                        <div className="main-index-button">FIND A CONFAB</div>
+                    </Link>
                 </div>
             </div>
             <div className="splash-runner-container">

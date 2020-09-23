@@ -9,6 +9,7 @@ import CoffeeScheduleEvent from "./coffee_schedule_event/coffeeschedule_event"
 import {
     shorterConurbationName,
     filterConfabsByConfabLocationId,
+    convertDatetimeStringToObject,
 } from "../../../utils/modification_utils"
 
 class CoffeeSchedule extends React.Component {
@@ -20,6 +21,7 @@ class CoffeeSchedule extends React.Component {
         this.displaysAllConfabsPerConurbation = this.displaysAllConfabsPerConurbation.bind(
             this
         )
+        this.monthDisplay = this.monthDisplay.bind(this)
     }
 
     // !! lifecycle methods
@@ -42,6 +44,19 @@ class CoffeeSchedule extends React.Component {
     // !! interaction handlers
 
     // !! displays, fields, and buttons with variable logic
+
+    monthDisplay() {
+        const rightNow = new Date()
+        const month = convertDatetimeStringToObject(rightNow.toString())
+            ["fullMonth"].toString()
+            .toUpperCase()
+
+        return (
+            <div className="month-toggle">
+                <div className="month-msg">TEA TIMES IN {month}</div>
+            </div>
+        )
+    }
 
     displaysAllConurbationCallouts() {
         return this.props.conurbations.map((conurbation) => (
@@ -105,12 +120,6 @@ class CoffeeSchedule extends React.Component {
             </div>
         )
 
-        const monthDisplay = (
-            <div className="month-toggle">
-                <div className="month-msg">TEA TIMES IN SEPTEMBER</div>
-            </div>
-        )
-
         return (
             <>
                 <div className="coffeeschedule">
@@ -118,7 +127,7 @@ class CoffeeSchedule extends React.Component {
                     <div className="coffeeschedule-content-container">
                         {messageContainer}
                         <div className="coffeeschedule-confabs-container">
-                            {monthDisplay}
+                            {this.monthDisplay()}
                             {this.displaysAllConurbationCallouts()}
                         </div>
                     </div>
