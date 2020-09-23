@@ -1,23 +1,47 @@
 import React from "react"
-// import { convertDatetimeToDay } from "../../../../utils/modification_utils"
+import { convertDatetimeStringToObject } from "../../../../utils/modification_utils"
 
-const CoffeeScheduleEvent = ({ description, startTime, endTime, hostName }) => {
+/*
+    timeObject has following keys and format:
+    {
+        day: string //"Sunday"
+        month: string //"Sep", "Oct" &c
+        dateNum: string //("1":"31")
+        hour: int // (0:23)
+    }
+    */
+
+const CoffeeScheduleEvent = ({
+    description,
+    startTime,
+    endTime,
+    hostName,
+    avatarId,
+}) => {
+    const timeObject = convertDatetimeStringToObject(startTime)
+    const day = timeObject["day"].toUpperCase()
+    const date = timeObject["month"].toUpperCase() + " " + timeObject["dateNum"]
+
+    const hours =
+        timeObject["hour"].toString() +
+        " — " +
+        (timeObject["hour"] + 2).toString() +
+        "00"
+
     return (
         <>
             <div className="confab-card">
                 <div className="card-top">
                     <div className="avatar-container">
-                        <div className="img-container-1">
+                        <div className={`img-container-${avatarId}`}>
                             {/* <div className="img"></div> */}
                         </div>
                         <div className="name">{hostName.toUpperCase()}</div>
                     </div>
                     <div className="time-container">
-                        <div className="day">
-                            {convertDatetimeToDay(startTime)}
-                        </div>
-                        <div className="date">SEP 19</div>
-                        <div className="time">14 — 1600</div>
+                        <div className="day">{day}</div>
+                        <div className="date">{date}</div>
+                        <div className="hours">{hours}</div>
                     </div>
                 </div>
                 <div className="confab-description">{description}</div>

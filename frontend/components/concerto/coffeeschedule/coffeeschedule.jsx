@@ -70,6 +70,7 @@ class CoffeeSchedule extends React.Component {
                     hostName={this.props.confidants[confab.host_id].username}
                     startTime={confab.start_time}
                     endTime={confab.end_time}
+                    avatarId="3"
                 />
             </div>
         ))
