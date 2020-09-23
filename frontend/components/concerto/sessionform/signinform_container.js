@@ -14,7 +14,10 @@ import {
     areConurbationsLoaded,
     selectParticularConurbationByName,
 } from "../../../reducers/selectors"
-import { fetchAllApiConurbations } from "../../../actions/conurbations_actions"
+import {
+    fetchAllApiConurbations,
+    ditchConurbations,
+} from "../../../actions/conurbations_actions"
 import { signin, ditchSessionErrors } from "../../../actions/session_actions"
 import { Link } from "react-router-dom"
 import { connect } from "react-redux"
@@ -46,6 +49,7 @@ const mSTP = (state) => {
 const mDTP = (dispatch) => {
     return {
         loadConurbations: () => dispatch(fetchAllApiConurbations()),
+        unloadConurbations: () => dispatch(ditchConurbations()),
         unloadSessionErrors: () => dispatch(ditchSessionErrors()),
         processMainForm: (confidant) => dispatch(signin(confidant)),
         processDemoForm: (confidant) => dispatch(signin(confidant)),

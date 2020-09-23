@@ -39,7 +39,7 @@ class SessionForm extends React.Component {
     }
 
     componentWillUnmount() {
-        if (this.props.conurbationsAreLoaded) {
+        if (this.props.formType === "signup") {
             this.props.unloadConurbations()
         }
         if (this.props.sessionErrors.length > 0) {
