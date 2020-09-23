@@ -2,6 +2,7 @@ json.confabs do
     @confabs.each do |confab|
         json.set! confab.id do
             json.partial! 'api/confabs/confab', confab: confab
+            json.location_id confab.conurbation.id
         end
     end
 end

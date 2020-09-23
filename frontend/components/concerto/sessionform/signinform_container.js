@@ -12,8 +12,7 @@ frontend store to the frontend component.
 import React from "react"
 import {
     areConurbationsLoaded,
-    selectAllConurbations,
-    selectParticularConurbation,
+    selectParticularConurbationByName,
 } from "../../../reducers/selectors"
 import { fetchAllApiConurbations } from "../../../actions/conurbations_actions"
 import { signin, ditchSessionErrors } from "../../../actions/session_actions"
@@ -23,9 +22,9 @@ import SessionForm from "./sessionform"
 
 const mSTP = (state) => {
     return {
-        conurbations: selectAllConurbations(state),
+        conurbations: state.entities.conurbations,
         conurbationsAreLoaded: areConurbationsLoaded(state),
-        demoConfidantConurbationId: selectParticularConurbation(
+        demoConfidantConurbationId: selectParticularConurbationByName(
             state,
             "Quarantine Cosmopolis, San Francisco Bay Area, California"
         ),

@@ -219,6 +219,13 @@ section {
                     line-height: 1.618rem;
                     // max-width: 777px;
                     font-weight: 300;
+                    a {
+                        font-weight: bold;
+                        color: #512e59;
+                    }
+                    a:hover {
+                        color: #3a1c41;
+                    }
                 }
             }
             .coffeeschedule-confabs-container {
@@ -276,14 +283,14 @@ section {
                                         background-color: #ffffff;
                                         text-align: center;
                                         //!! below this line is a BF mess. Fix it.
-                                        .img-container-00 {
+                                        .img-container-0 {
                                             width: 100%;
                                             padding: 50%;
                                             border-radius: 3px;
                                             background-image: url("P5-avatar-00-joker");
                                             background-size: cover;
                                         }
-                                        .img-container-01 {
+                                        .img-container-1 {
                                             width: 100%;
                                             padding: 50%;
                                             border-radius: 3px;
@@ -294,56 +301,56 @@ section {
                                             //     height: 100%;
                                             // }
                                         }
-                                        .img-container-02 {
+                                        .img-container-2 {
                                             width: 100%;
                                             padding: 50%;
                                             border-radius: 3px;
                                             background-image: url("P5-avatar-02-ryuji");
                                             background-size: cover;
                                         }
-                                        .img-container-03 {
+                                        .img-container-3 {
                                             width: 100%;
                                             padding: 50%;
                                             border-radius: 3px;
                                             background-image: url("P5-avatar-03-ann");
                                             background-size: cover;
                                         }
-                                        .img-container-04 {
+                                        .img-container-4 {
                                             width: 100%;
                                             padding: 50%;
                                             border-radius: 3px;
                                             background-image: url("P5-avatar-04-yusuke");
                                             background-size: cover;
                                         }
-                                        .img-container-05 {
+                                        .img-container-5 {
                                             width: 100%;
                                             padding: 50%;
                                             border-radius: 3px;
                                             background-image: url("P5-avatar-05-makoto");
                                             background-size: cover;
                                         }
-                                        .img-container-06 {
+                                        .img-container-6 {
                                             width: 100%;
                                             padding: 50%;
                                             border-radius: 3px;
                                             background-image: url("P5-avatar-06-futaba");
                                             background-size: cover;
                                         }
-                                        .img-container-07 {
+                                        .img-container-7 {
                                             width: 100%;
                                             padding: 50%;
                                             border-radius: 3px;
                                             background-image: url("P5-avatar-07-haru");
                                             background-size: cover;
                                         }
-                                        .img-container-08 {
+                                        .img-container-8 {
                                             width: 100%;
                                             padding: 50%;
                                             border-radius: 3px;
                                             background-image: url("P5-avatar-08-goro");
                                             background-size: cover;
                                         }
-                                        .img-container-09 {
+                                        .img-container-9 {
                                             width: 100%;
                                             padding: 50%;
                                             border-radius: 3px;
@@ -390,6 +397,7 @@ section {
                                     font-weight: 500;
                                     height: 6rem;
                                     overflow: hidden;
+                                    text-overflow: ellipsis;
                                 }
                                 hr {
                                     width: calc(100% - 2rem);

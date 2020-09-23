@@ -4,24 +4,30 @@ import React from "react"
 import {
     areConfabsLoaded,
     areConurbationsLoaded,
+    selectAllConurbations,
     selectAllConfabs,
-    selectParticularConfab,
 } from "../../../reducers/selectors"
 import {
     fetchFilteredApiConfabs,
     ditchConfabs,
 } from "../../../actions/confabs_actions"
 import { ditchConurbations } from "../../../actions/conurbations_actions"
-
+import { Link } from "react-router-dom"
 import { connect } from "react-redux"
 import CoffeeSchedule from "./coffeeschedule"
 
 const mSTP = (state) => {
     return {
-        confabs: selectAllConfabs(state),
         confabsAreLoaded: areConfabsLoaded(state),
         conurbationsAreLoaded: areConurbationsLoaded(state),
-        testState: "This is only a test.",
+        confidants: state.entities.confidants,
+        conurbations: selectAllConurbations(state),
+        confabs: selectAllConfabs(state),
+        signUpLink: (
+            <Link to="/signup" className="coffeeschedule-signup-link">
+                sign up
+            </Link>
+        ),
     }
 }
 
