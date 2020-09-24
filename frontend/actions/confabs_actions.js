@@ -4,12 +4,18 @@ import * as ConfabsApiUtils from "../utils/confabs_api_utils"
 export const RECEIVE_ALL_CONFABS = "RECEIVE_ALL_CONFABS"
 export const CLEAR_ALL_CONFABS = "CLEAR_ALL_CONFABS"
 
-const receiveAllConfabs = ({ confabs, confidants, conurbations }) => {
+const receiveAllConfabs = ({
+    confabs,
+    confidants,
+    conurbations,
+    conflations,
+}) => {
     return {
         type: RECEIVE_ALL_CONFABS,
         confabs,
         confidants,
         conurbations,
+        conflations,
     }
 }
 
