@@ -38,8 +38,8 @@ export const clearSessionErrors = () => {
 export const signup = (formConfidant) => {
     return (dispatch) => {
         return SessionApiUtils.postApiConfidant(formConfidant).then(
-            (confidant) => {
-                dispatch(receiveCurrentConfidant(confidant))
+            (payload) => {
+                dispatch(receiveCurrentConfidant(payload))
             },
             (err) => {
                 dispatch(receiveErrors(err.responseJSON))
@@ -54,8 +54,8 @@ export const signup = (formConfidant) => {
 export const signin = (formConfidant) => {
     return (dispatch) => {
         return SessionApiUtils.postApiSession(formConfidant).then(
-            (confidant) => {
-                dispatch(receiveCurrentConfidant(confidant))
+            (payload) => {
+                dispatch(receiveCurrentConfidant(payload))
             },
             (err) => {
                 dispatch(receiveErrors(err.responseJSON))

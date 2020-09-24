@@ -9,6 +9,7 @@
 Conurbation.destroy_all
 Confidant.destroy_all
 Confab.destroy_all
+Conflation.destroy_all
 
 urb0 = Conurbation.create!(name: "Quarantine Cosmopolis, San Francisco Bay Area, California")
 urb1 = Conurbation.create!(name: "Desert Metropolis, Phoenix-Tucson Corridor, Arizona")
@@ -71,6 +72,11 @@ fab2 = Confab.create!(
     max_capacity: 4,
     start_time: party_time2,
     end_time: end_time2
+)
+
+flation0 = Conflation.create!(
+    confab_id: fab2.id,
+    attendee_id: fid1.id
 )
 
 # fab2 = Confab.create!(

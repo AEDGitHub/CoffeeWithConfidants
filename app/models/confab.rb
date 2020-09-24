@@ -10,4 +10,13 @@ class Confab < ApplicationRecord
     has_one :conurbation,
         through: :host
 
+    has_many :conflations,
+        foreign_key: :confab_id
+
+        ##!! and here
+    has_many :attendees,
+        through: :conflations,
+        class_name: :Confidant        
+    ##!! to here
+
 end
