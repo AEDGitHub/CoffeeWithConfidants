@@ -15,14 +15,12 @@ class Confidant < ApplicationRecord
         foreign_key: :host_id,
         class_name: :Confab
 
-        #!!check here
     has_many :conflations,
         foreign_key: :attendee_id
 
     has_many :confabs_rsvpd,
         through: :conflations,
         class_name: :Confab
-        #!!to here
 
     def self.find_by_credentials(username, password)
         confidant = Confidant.find_by(username: username)

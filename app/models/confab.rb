@@ -13,10 +13,8 @@ class Confab < ApplicationRecord
     has_many :conflations,
         foreign_key: :confab_id
 
-        ##!! and here
     has_many :attendees,
         through: :conflations,
-        class_name: :Confidant        
-    ##!! to here
+        class_name: :Confidant
 
 end

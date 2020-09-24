@@ -4,7 +4,7 @@ class Api::ConfabsController < ApplicationController
         # @confabs = Confab.all
         @confabs = Confab
             .where(start_time: (DateTime.now..DateTime.now.end_of_month))
-            .includes(:host, :conurbation)        
+            .includes(:host, :conurbation, :conflations, :attendees)
         render :index
     end
 
