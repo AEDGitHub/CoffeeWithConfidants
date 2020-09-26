@@ -1,4 +1,4 @@
-import * as ConfabsApiUtils from "../utils/confabs_api_utils"
+import { getFilteredApiConfabs } from "../utils/confabs_api_utils"
 
 // Confab Actions
 export const RECEIVE_ALL_CONFABS = "RECEIVE_ALL_CONFABS"
@@ -28,7 +28,7 @@ export const clearAllConfabs = () => {
 // Thunk Action Creators
 export const fetchFilteredApiConfabs = () => {
     return (dispatch) => {
-        return ConfabsApiUtils.getFilteredApiConfabs().then((payload) => {
+        return getFilteredApiConfabs().then((payload) => {
             dispatch(receiveAllConfabs(payload))
         })
     }
