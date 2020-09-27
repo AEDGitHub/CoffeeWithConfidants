@@ -27,6 +27,9 @@ export const selectAllConfidants = ({ entities }) =>
 export const selectAllConfabs = ({ entities }) =>
     Object.keys(entities.confabs).map((id) => entities.confabs[id])
 
+export const selectAllConflations = ({ entities }) =>
+    Object.keys(entities.conflations).map((id) => entities.conflations[id])
+
 //!!select conurbations with conurbation data
 
 export const selectParticularConurbationByName = (
@@ -54,6 +57,17 @@ export const selectParticularConfidantByHostId = ({ entities }, hostId) => {
     )
 }
 
+//!!select confidants with conflation data
+
+export const selectParticularConfidantsByAttendeeId = (
+    { entities },
+    attendeeId
+) => {
+    return Object.values(entities.confidants).filter(
+        (confidant) => confidant.id === attendeeId
+    )
+}
+
 //!!select confabs with conurbation data
 
 export const selectParticularConfabsByLocationId = (
@@ -62,5 +76,16 @@ export const selectParticularConfabsByLocationId = (
 ) => {
     return Object.values(entities.confabs).filter(
         (confab) => confab.location_id === locationId
+    )
+}
+
+//!!select conflations with confab data
+
+export const selectParticularConflationsByConfabId = (
+    { entities },
+    confabId
+) => {
+    return Object.values(entities.conflations).filter(
+        (conflation) => conflation.confab_id === confabId
     )
 }

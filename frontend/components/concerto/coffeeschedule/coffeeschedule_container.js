@@ -20,9 +20,9 @@ const mSTP = (state) => {
     return {
         confabsAreLoaded: areConfabsLoaded(state),
         conurbationsAreLoaded: areConurbationsLoaded(state),
-        confidants: state.entities.confidants,
-        conurbations: selectAllConurbations(state),
-        confabs: selectAllConfabs(state),
+        confidants: state.entities.confidants, //use this when you're not going to iterate over the collection
+        conurbations: selectAllConurbations(state), //use selectors when you are going to iterate over a collection
+        confabs: selectAllConfabs(state), //use selectors when you are going to iterate over a collection
         signUpLink: (
             <Link to="/signup" className="coffeeschedule-signup-link">
                 sign up

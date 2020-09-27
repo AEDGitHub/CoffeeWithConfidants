@@ -15,6 +15,7 @@ import {
 class CoffeeSchedule extends React.Component {
     constructor(props) {
         super(props)
+
         this.displaysAllConurbationCallouts = this.displaysAllConurbationCallouts.bind(
             this
         )
@@ -85,7 +86,7 @@ class CoffeeSchedule extends React.Component {
                     hostName={this.props.confidants[confab.host_id].username}
                     startTime={confab.start_time}
                     endTime={confab.end_time}
-                    avatarId="3"
+                    avatarId="3" //todo: this can be made dynamic later, like {this.props.confidants[confab.host_id].avatarId} once that's in place
                 />
             </div>
         ))
