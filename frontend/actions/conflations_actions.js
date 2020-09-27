@@ -1,6 +1,6 @@
 export const CLEAR_ALL_CONFLATIONS = "CLEAR_ALL_CONFLATIONS"
 
-// Conflation Actions
+// Actions
 const clearAllConflations = () => {
     return {
         type: CLEAR_ALL_CONFLATIONS,

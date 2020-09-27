@@ -1,6 +1,6 @@
 import { getAllApiConurbations } from "../utils/conurbations_api_utils"
 
-// Conurbation Actions
+// Actions
 export const RECEIVE_ALL_CONURBATIONS = "RECEIVE_ALL_CONURBATIONS"
 export const CLEAR_ALL_CONURBATIONS = "CLEAR_ALL_CONURBATIONS"
 

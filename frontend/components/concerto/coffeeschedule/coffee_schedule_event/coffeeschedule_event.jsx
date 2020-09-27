@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import { convertDatetimeStringToObject } from "../../../../utils/modification_utils"
 
 /*
@@ -12,6 +13,7 @@ import { convertDatetimeStringToObject } from "../../../../utils/modification_ut
     */
 
 const CoffeeScheduleEvent = ({
+    confabId,
     description,
     startTime,
     endTime,
@@ -30,27 +32,31 @@ const CoffeeScheduleEvent = ({
 
     return (
         <>
-            <div className="confab-card">
-                <div className="card-top">
-                    <div className="avatar-container">
-                        <div className={`img-container-${avatarId}`}>
-                            {/* <div className="img"></div> */}
+            <Link to={`/coffee_times/${confabId}/`}>
+                <div className="confab-card">
+                    <div className="card-top">
+                        {/* <Link to={`/confidants/${hostId}/`}> */}
+                        <div className="avatar-container">
+                            <div className={`img-container-${avatarId}`}>
+                                {/* <div className="img"></div> */}
+                            </div>
+                            <div className="name">{hostName.toUpperCase()}</div>
                         </div>
-                        <div className="name">{hostName.toUpperCase()}</div>
+                        {/* <Link /> */}
+                        <div className="time-container">
+                            <div className="day">{day}</div>
+                            <div className="date">{date}</div>
+                            <div className="hours">{hours}</div>
+                        </div>
                     </div>
-                    <div className="time-container">
-                        <div className="day">{day}</div>
-                        <div className="date">{date}</div>
-                        <div className="hours">{hours}</div>
+                    <div className="confab-description">{description}</div>
+                    <hr></hr>
+                    <div className="attendance-status">
+                        <div className="seats-left">3 SPOTS OPEN!</div>
+                        {/* <div className="fancy-graphic">LATER</div> */}
                     </div>
                 </div>
-                <div className="confab-description">{description}</div>
-                <hr></hr>
-                <div className="attendance-status">
-                    <div className="seats-left">3 SPOTS OPEN!</div>
-                    {/* <div className="fancy-graphic">NOT YET</div> */}
-                </div>
-            </div>
+            </Link>
             <div className="squad-up-button">
                 <div className="visibility-shift">
                     <span>JOIN CONFAB</span>

@@ -1,21 +1,21 @@
 import { getFilteredApiConfabs } from "../utils/confabs_api_utils"
 
-// Confab Actions
+// Actions
 export const RECEIVE_ALL_CONFABS = "RECEIVE_ALL_CONFABS"
 export const CLEAR_ALL_CONFABS = "CLEAR_ALL_CONFABS"
 
 const receiveAllConfabs = ({
     confabs,
     confidants,
-    conurbations,
     conflations,
+    conurbations,
 }) => {
     return {
         type: RECEIVE_ALL_CONFABS,
         confabs,
         confidants,
-        conurbations,
         conflations,
+        conurbations,
     }
 }
 

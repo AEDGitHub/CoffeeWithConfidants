@@ -1,14 +1,4 @@
-/*
-Next steps: eventually I'd like to have a standardized naming convention to
-avoid my own confusion as to whether a component is asking for something from
-the store or actually sending an AJAX call to the backend to grab something
-from the database. For instance, I'm using "ditch" as a verb to remove
-objects from state that are no longer needed, but "get" is confusing because
-an actual GET request takes place from utils -> backend, so I'd like to switch
-back to, say, "fetch" when describing something that's happening from the
-frontend store to the frontend component.
-Also, denature props coming in
-*/
+//todo: denature props coming in
 
 import React from "react"
 
@@ -30,7 +20,7 @@ class SessionForm extends React.Component {
         this.homeCityFieldOptions = this.homeCityFieldOptions.bind(this)
     }
 
-    // !! lifecycle methods
+    // lifecycle methods
 
     componentDidMount() {
         if (this.props.formType === "signup") {
@@ -47,7 +37,7 @@ class SessionForm extends React.Component {
         }
     }
 
-    // !! interaction handlers
+    // interaction handlers
 
     update(field) {
         return (e) =>
@@ -81,7 +71,7 @@ class SessionForm extends React.Component {
         this.props.processDemoForm(demoConfidant)
     }
 
-    // !! displays, fields, and buttons with variable logic
+    // displays, fields, and buttons with variable logic
 
     errorsFlash() {
         if (this.props.sessionErrors.length === 0) {
@@ -140,7 +130,7 @@ class SessionForm extends React.Component {
     }
 
     render() {
-        // !! displays, fields, and buttons with constant logic
+        // displays, fields, and buttons with constant logic
 
         const mainMsgDisplay = (
             <div className="sessionform-main-msg">{this.props.mainMsg}</div>

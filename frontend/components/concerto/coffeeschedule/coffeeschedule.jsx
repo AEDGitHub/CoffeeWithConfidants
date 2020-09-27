@@ -25,7 +25,7 @@ class CoffeeSchedule extends React.Component {
         this.monthDisplay = this.monthDisplay.bind(this)
     }
 
-    // !! lifecycle methods
+    // lifecycle methods
 
     componentDidMount() {
         if (!this.props.confabsAreLoaded) {
@@ -42,9 +42,9 @@ class CoffeeSchedule extends React.Component {
         }
     }
 
-    // !! interaction handlers
+    // interaction handlers
 
-    // !! displays, fields, and buttons with variable logic
+    // displays, fields, and buttons with variable logic
 
     monthDisplay() {
         const rightNow = new Date()
@@ -82,6 +82,7 @@ class CoffeeSchedule extends React.Component {
         return relevantConfabs.map((confab) => (
             <div className="confab-card-container" key={confab.id}>
                 <CoffeeScheduleEvent
+                    confabId={confab.id}
                     description={confab.description}
                     hostName={this.props.confidants[confab.host_id].username}
                     startTime={confab.start_time}
@@ -93,7 +94,7 @@ class CoffeeSchedule extends React.Component {
     }
 
     render() {
-        // !! displays, fields, and buttons with constant logic
+        //displays, fields, and buttons with constant logic
 
         const photoContainer = (
             <div className="coffeeschedule-photo-container">

@@ -1,4 +1,4 @@
-//!!loading checks
+//loading checks
 
 export const areConurbationsLoaded = ({ entities }) => {
     if (Object.keys(entities.conurbations).length > 0) {
@@ -16,7 +16,7 @@ export const areConfabsLoaded = ({ entities }) => {
     }
 }
 
-//!!select all
+//select all
 
 export const selectAllConurbations = ({ entities }) =>
     Object.keys(entities.conurbations).map((id) => entities.conurbations[id])
@@ -30,7 +30,7 @@ export const selectAllConfabs = ({ entities }) =>
 export const selectAllConflations = ({ entities }) =>
     Object.keys(entities.conflations).map((id) => entities.conflations[id])
 
-//!!select conurbations with conurbation data
+//select conurbations with conurbation data
 
 export const selectParticularConurbationByName = (
     { entities },
@@ -41,7 +41,7 @@ export const selectParticularConurbationByName = (
     )
 }
 
-//!!select confab with confab data
+//select confab with confab data
 
 export const selectParticularConfabById = ({ entities }, confabId) => {
     return Object.values(entities.confabs).filter(
@@ -49,7 +49,7 @@ export const selectParticularConfabById = ({ entities }, confabId) => {
     )
 }
 
-//!!select confidants with confab data
+//select confidants with confab data
 
 export const selectParticularConfidantByHostId = ({ entities }, hostId) => {
     return Object.values(entities.confidants).filter(
@@ -57,7 +57,7 @@ export const selectParticularConfidantByHostId = ({ entities }, hostId) => {
     )
 }
 
-//!!select confidants with conflation data
+//select confidants with conflation data
 
 export const selectParticularConfidantsByAttendeeId = (
     { entities },
@@ -68,7 +68,7 @@ export const selectParticularConfidantsByAttendeeId = (
     )
 }
 
-//!!select confabs with conurbation data
+//select confabs with conurbation data
 
 export const selectParticularConfabsByLocationId = (
     { entities },
@@ -79,7 +79,7 @@ export const selectParticularConfabsByLocationId = (
     )
 }
 
-//!!select conflations with confab data
+//select conflations with confab data
 
 export const selectParticularConflationsByConfabId = (
     { entities },

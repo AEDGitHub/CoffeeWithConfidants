@@ -1,4 +1,3 @@
-//!! LIVES AT /coffee_times/{confab.id} in switch
 import React from "react"
 
 class EventShow extends React.Component {
@@ -6,14 +5,14 @@ class EventShow extends React.Component {
         super(props)
     }
 
-    //!! lifecycle methods
+    // lifecycle methods
 
-    //!! interaction handlers
+    // interaction handlers
 
-    //!! displays, fields, and buttons with variable logic
+    // displays, fields, and buttons with variable logic
 
     render() {
-        //!! displays, fields and buttons with constant logic
+        // displays, fields and buttons with constant logic
 
         return (
             <>
