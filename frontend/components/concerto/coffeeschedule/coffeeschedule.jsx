@@ -1,7 +1,6 @@
 /*
 todo: build the thing 
 todo: destructure props coming in 
-todo: abstract away the coffee_event_detail 
 */
 
 import React from "react"

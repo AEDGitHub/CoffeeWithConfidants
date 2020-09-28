@@ -9,7 +9,7 @@ class SessionForm extends React.Component {
             username: "",
             email: "",
             password: "",
-            location_id: null,
+            locationId: null,
             demoUserCityId: null,
         }
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -52,7 +52,7 @@ class SessionForm extends React.Component {
             username: this.state.username,
             email: this.state.email,
             password: this.state.password,
-            location_id: this.state.location_id,
+            locationId: this.state.location_id,
         }
 
         this.props.processMainForm(confidant)
@@ -64,7 +64,7 @@ class SessionForm extends React.Component {
         const demoConfidant = {
             username: "Joker",
             email: "breakintobreakout@fakemail.com",
-            location_id: this.props.demoConfidantConurbationId,
+            locationId: this.props.demoConfidantConurbationId,
             password: "hunter12",
         }
 
@@ -111,7 +111,7 @@ class SessionForm extends React.Component {
                     <select
                         required
                         defaultValue="Home conurbation"
-                        onChange={this.update("location_id")}
+                        onChange={this.update("locationId")}
                     >
                         <option disabled="disabled">Home conurbation</option>
                         {this.homeCityFieldOptions()}
