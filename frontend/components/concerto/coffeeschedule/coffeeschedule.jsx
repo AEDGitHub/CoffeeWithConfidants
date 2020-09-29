@@ -88,6 +88,9 @@ class CoffeeSchedule extends React.Component {
                     endTime={confab.end_time}
                     avatarId="3" //todo: this can be made dynamic later, like {this.props.confidants[confab.host_id].avatarId} once that's in place
                     joinConfab={this.props.joinConfab}
+                    seatsRemaining={
+                        confab.max_capacity - confab.attendee_ids.length
+                    }
                 />
             </div>
         ))

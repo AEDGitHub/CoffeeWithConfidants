@@ -6,7 +6,7 @@ class Api::ConflationsController < ApplicationController
             @confab = @conflation.confab
             render "api/confabs/show"
         else
-            render json: ["Could not create conflation!"]
+            render json: ["Could not create conflation!"], status: 422
         end
     end
 

@@ -20,6 +20,7 @@ const CoffeeScheduleEvent = ({
     hostName,
     avatarId,
     joinConfab,
+    seatsRemaining,
 }) => {
     const timeObject = convertDatetimeStringToObject(startTime)
     const day = timeObject["day"].toUpperCase()
@@ -53,7 +54,9 @@ const CoffeeScheduleEvent = ({
                     <div className="confab-description">{description}</div>
                     <hr></hr>
                     <div className="attendance-status">
-                        <div className="seats-left">3 SPOTS OPEN!</div>
+                        <div className="seats-left">
+                            {seatsRemaining} SPOTS OPEN!
+                        </div>
                         {/* <div className="fancy-graphic">LATER</div> */}
                     </div>
                 </div>

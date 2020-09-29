@@ -24,11 +24,9 @@ export const joinConfab = (confabId) => {
     return (dispatch) => {
         return postApiConflation(confabId).then(
             (payload) => {
-                debugger
                 dispatch(receiveCurrentConflation(payload))
             },
             (err) => {
-                debugger
                 console.log(err.responseJSON)
                 // dispatch(receiveErrors(err.responseJSON))
             }
