@@ -8,4 +8,8 @@ class Api::ConfabsController < ApplicationController
         render :index
     end
 
+    def show
+        @confab = Confab.find(params[:id])
+    end
+
 end

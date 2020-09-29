@@ -8,7 +8,8 @@ class Confab < ApplicationRecord
         class_name: :Confidant
 
     has_one :conurbation,
-        through: :host
+        through: :host,
+        class_name: :Conurbation
 
     has_many :conflations,
         foreign_key: :confab_id

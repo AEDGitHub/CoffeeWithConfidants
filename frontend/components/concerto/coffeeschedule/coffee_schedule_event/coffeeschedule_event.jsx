@@ -19,6 +19,7 @@ const CoffeeScheduleEvent = ({
     endTime,
     hostName,
     avatarId,
+    joinConfab,
 }) => {
     const timeObject = convertDatetimeStringToObject(startTime)
     const day = timeObject["day"].toUpperCase()
@@ -57,7 +58,10 @@ const CoffeeScheduleEvent = ({
                     </div>
                 </div>
             </Link>
-            <div className="squad-up-button">
+            <div
+                className="squad-up-button"
+                onClick={() => joinConfab(confabId)}
+            >
                 <div className="visibility-shift">
                     <span>JOIN CONFAB</span>
                 </div>
