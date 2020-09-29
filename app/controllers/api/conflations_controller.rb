@@ -10,10 +10,6 @@ class Api::ConflationsController < ApplicationController
         end
     end
 
-    def show
-        @conflation = Conflation.find(params[:id])
-    end
-
     private
 
     def conflation_params

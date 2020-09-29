@@ -5,7 +5,7 @@ class CreateConfidants < ActiveRecord::Migration[5.2]
       t.string :email, null: false
       t.string :password_digest, null: false
       t.string :session_token, null: false
-      t.string :location_id, null: false
+      t.integer :location_id, null: false
       t.boolean :is_host, default: true, null: false
 
       t.timestamps

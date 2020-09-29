@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2020_09_24_172556) do
     t.string "email", null: false
     t.string "password_digest", null: false
     t.string "session_token", null: false
-    t.string "location_id", null: false
+    t.integer "location_id", null: false
     t.boolean "is_host", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
