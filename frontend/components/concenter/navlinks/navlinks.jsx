@@ -10,9 +10,9 @@ const NavLinks = ({ currentConfidant, logout }) => {
 
     const variableLinks = currentConfidant ? (
         <>
-            <a className="link-normal" onClick={logout}>
+            <Link className="link-normal" to="/" onClick={logout}>
                 SIGN OUT
-            </a>
+            </Link>
         </>
     ) : (
         <>

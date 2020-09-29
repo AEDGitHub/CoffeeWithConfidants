@@ -1,4 +1,7 @@
-import { RECEIVE_CURRENT_CONFIDANT } from "../actions/session_actions"
+import {
+    RECEIVE_CURRENT_CONFIDANT,
+    LOGOUT_CURRENT_CONFIDANT,
+} from "../actions/session_actions"
 import { RECEIVE_ALL_CONFABS } from "../actions/confabs_actions"
 
 const confidantsReducer = (oldState = {}, action) => {

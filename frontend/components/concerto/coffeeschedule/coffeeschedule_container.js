@@ -9,14 +9,13 @@ import {
 } from "../../../reducers/selectors"
 import {
     fetchFilteredApiConfabs,
+    joinConfab,
     ditchConfabs,
 } from "../../../actions/confabs_actions"
-import { joinConfab } from "../../../actions/conflations_actions"
 import { ditchConurbations } from "../../../actions/conurbations_actions"
 import { Link } from "react-router-dom"
 import { connect } from "react-redux"
 import CoffeeSchedule from "./coffeeschedule"
-import { postApiConflation } from "../../../utils/conflations_api_utils"
 
 const mSTP = (state) => {
     return {
