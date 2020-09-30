@@ -1,7 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import { convertDatetimeStringToObject } from "../../../../utils/modification_utils"
-
 /*
     timeObject has following keys and format:
     {
@@ -18,8 +17,9 @@ const CoffeeScheduleEvent = ({
     startTime,
     endTime,
     hostName,
+    loggedIn,
+    confabJoinButton,
     avatarId,
-    joinConfab,
     seatsRemaining,
 }) => {
     const timeObject = convertDatetimeStringToObject(startTime)
@@ -61,14 +61,15 @@ const CoffeeScheduleEvent = ({
                     </div>
                 </div>
             </Link>
-            <div
+            {confabJoinButton(confabId)}
+            {/* <div
                 className="squad-up-button"
                 onClick={() => joinConfab(confabId)}
             >
                 <div className="visibility-shift">
                     <span>JOIN CONFAB</span>
                 </div>
-            </div>
+            </div> */}
         </>
     )
 }

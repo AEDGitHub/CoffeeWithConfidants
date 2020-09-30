@@ -10,6 +10,7 @@ import {
     filterConfabsByConfabLocationId,
     convertDatetimeStringToObject,
 } from "../../../utils/modification_utils"
+import { Link } from "react-router-dom"
 
 class CoffeeSchedule extends React.Component {
     constructor(props) {
@@ -22,6 +23,7 @@ class CoffeeSchedule extends React.Component {
             this
         )
         this.monthDisplay = this.monthDisplay.bind(this)
+        this.confabJoinButton = this.confabJoinButton.bind(this)
     }
 
     // lifecycle methods
@@ -73,6 +75,25 @@ class CoffeeSchedule extends React.Component {
         ))
     }
 
+    confabJoinButton(confabId) {
+        return this.props.loggedIn ? (
+            <div
+                className="squad-up-button"
+                onClick={() => this.props.joinConfab(confabId)}
+            >
+                <div className="visibility-shift">
+                    <span>JOIN CONFAB</span>
+                </div>
+            </div>
+        ) : (
+            <Link to="/signin/#" className="squad-up-button">
+                <div className="visibility-shift">
+                    <span>JOIN CONFAB</span>
+                </div>
+            </Link>
+        )
+    }
+
     displaysAllConfabsPerConurbation(conurbationId) {
         const relevantConfabs = filterConfabsByConfabLocationId(
             this.props.confabs,
@@ -88,6 +109,7 @@ class CoffeeSchedule extends React.Component {
                     endTime={confab.end_time}
                     avatarId="3" //todo: this can be made dynamic later, like {this.props.confidants[confab.host_id].avatarId} once that's in place
                     joinConfab={this.props.joinConfab}
+                    confabJoinButton={this.confabJoinButton}
                     seatsRemaining={
                         confab.max_capacity - confab.attendee_ids.length
                     }
