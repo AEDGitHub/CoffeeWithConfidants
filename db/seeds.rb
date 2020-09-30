@@ -44,8 +44,18 @@ end_time0 = Time.new(1999, 12, 31, 23, 00, 00)
 party_time1 = Time.new(2020, 12, 31, 22, 00, 00)
 end_time1 = Time.new(2020, 12, 31, 23, 00, 00)
 
-party_time2 = Time.new(2020, 9, 29, 20, 00, 00)
-end_time2 = Time.new(2020, 9, 29, 22, 00, 00)
+party_time2 = Time.new(2020, 10, 22, 20, 00, 00)
+end_time2 = Time.new(2020, 10, 22, 22, 00, 00)
+
+party_time3 = Time.new(2020, 10, 29, 20, 00, 00)
+end_time3 = Time.new(2020, 10, 29, 22, 00, 00)
+
+party_time4 = Time.new(2020, 11, 22, 20, 00, 00)
+end_time2 = Time.new(2020, 10, 22, 22, 00, 00)
+
+party_time5 = Time.new(2020, 11, 29, 20, 00, 00)
+end_time3 = Time.new(2020, 10, 29, 22, 00, 00)
+
 
 # party_time_month = Time.now
 # end_time_month = party_time_month
@@ -68,11 +78,20 @@ fab1 = Confab.create!(
 
 fab2 = Confab.create!(
     host_id: fid2.id,
-    description: "Hopefully I'm the only one you see, otherwise your backend isn't working! ^_^",
+    description: "This is a super long text description to test that your layout works! If your cards get busted because of too much text in the party description, that'd be a real bummer, wouldn't it? ^_^",
     max_capacity: 4,
     start_time: party_time2,
     end_time: end_time2
 )
+
+fab3 = Confab.create!(
+    host_id: fid1.id,
+    description: "Super short description.",
+    max_capacity: 4,
+    start_time: party_time2,
+    end_time: end_time2
+)
+
 
 flation0 = Conflation.create!(
     confab_id: fab2.id,
