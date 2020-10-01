@@ -120,7 +120,7 @@ class CoffeeSchedule extends React.Component {
     confabLeaveButton(confabId, conflationId) {
         return (
             <div
-                className="squad-up-button"
+                className="squad-up-button-joined"
                 onClick={() => this.props.leaveConfab(confabId, conflationId)}
             >
                 <div className="visibility-shift">

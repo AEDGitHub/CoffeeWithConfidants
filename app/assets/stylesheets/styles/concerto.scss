@@ -448,8 +448,23 @@ section {
                                     }
                                 }
                                 .visibility-shift::before {
-                                    content: "CONTINUE ON";
+                                    content: "CONFIRM";
                                 }
+                            }
+                            .squad-up-button-joined {
+                                display: block;
+                                border: 1px solid #ee0000;
+                                border-radius: 0rem 0rem 0.333rem 0.333rem;
+                                padding: 1rem;
+                                text-align: center;
+                                font-weight: 800;
+                                background-color: #dfdfdf;
+                                color: #ee0000;
+                                cursor: pointer;
+                            }
+                            .squad-up-button-joined:hover {
+                                background-color: #ee0000;
+                                color: #ffffff;
                             }
                         }
                         .confab-card-container:nth-child(4n) {
