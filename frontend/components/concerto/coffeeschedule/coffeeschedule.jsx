@@ -5,11 +5,7 @@ todo: destructure props coming in
 
 import React from "react"
 import CoffeeScheduleEvent from "./coffee_schedule_event/coffeeschedule_event"
-import {
-    shorterConurbationName,
-    filterConfabsByConfabLocationId,
-    convertDatetimeStringToObject,
-} from "../../../utils/modification_utils"
+
 import { Link } from "react-router-dom"
 
 class CoffeeSchedule extends React.Component {
@@ -24,6 +20,12 @@ class CoffeeSchedule extends React.Component {
         )
         this.monthDisplay = this.monthDisplay.bind(this)
         this.confabJoinButton = this.confabJoinButton.bind(this)
+        this.confabLeaveButton = this.confabLeaveButton.bind(this)
+        this.generateRelevantConflationArray = this.generateRelevantConflationArray.bind(
+            this
+        )
+        this.amAttendingDisplay = this.amAttendingDisplay.bind(this)
+        this.notAttendingDisplay = this.notAttendingDisplay.bind(this)
     }
 
     // lifecycle methods
@@ -49,7 +51,8 @@ class CoffeeSchedule extends React.Component {
 
     monthDisplay() {
         const rightNow = new Date()
-        const month = convertDatetimeStringToObject(rightNow.toString())
+        const month = this.props
+            .convertDatetimeStringToObject(rightNow.toString())
             ["fullMonth"].toString()
             .toUpperCase()
 
@@ -66,13 +69,33 @@ class CoffeeSchedule extends React.Component {
                 <div className="collection-of-confabs-from-a-conurbation">
                     <div className="conurbation-callout-container">
                         <div className="conurbation-callout">
-                            {shorterConurbationName(conurbation.name)}
+                            {this.props.shorterConurbationName(
+                                conurbation.name
+                            )}
                         </div>
                     </div>
                     {this.displaysAllConfabsPerConurbation(conurbation.id)}
                 </div>
             </div>
         ))
+    }
+
+    amAttendingDisplay() {
+        return (
+            <div className="attendance-status-attending">
+                <div className="seats-left">SEE YOU THERE!</div>
+                {/* <div className="fancy-graphic">LATER</div> */}
+            </div>
+        )
+    }
+
+    notAttendingDisplay(seatsRemaining) {
+        return (
+            <div className="attendance-status-not-attending">
+                <div className="seats-left">{seatsRemaining} SPOTS OPEN!</div>
+                {/* <div className="fancy-graphic">LATER</div> */}
+            </div>
+        )
     }
 
     confabJoinButton(confabId) {
@@ -94,28 +117,71 @@ class CoffeeSchedule extends React.Component {
         )
     }
 
+    confabLeaveButton(confabId, conflationId) {
+        return (
+            <div
+                className="squad-up-button"
+                onClick={() => this.props.leaveConfab(confabId, conflationId)}
+            >
+                <div className="visibility-shift">
+                    <span>LEAVE CONFAB</span>
+                </div>
+            </div>
+        )
+    }
+
+    generateRelevantConflationArray(conflations, confabId, ccId) {
+        return this.props.filterConflationsByConfabIdAndAttendeeId(
+            conflations,
+            confabId,
+            ccId
+        )
+    }
+
     displaysAllConfabsPerConurbation(conurbationId) {
-        const relevantConfabs = filterConfabsByConfabLocationId(
+        const relevantConfabs = this.props.filterConfabsByConfabLocationId(
             this.props.confabs,
             conurbationId
         )
-        return relevantConfabs.map((confab) => (
-            <div className="confab-card-container" key={confab.id}>
-                <CoffeeScheduleEvent
-                    confabId={confab.id}
-                    description={confab.description}
-                    hostName={this.props.confidants[confab.host_id].username}
-                    startTime={confab.start_time}
-                    endTime={confab.end_time}
-                    avatarId="3" //todo: this can be made dynamic later, like {this.props.confidants[confab.host_id].avatarId} once that's in place
-                    joinConfab={this.props.joinConfab}
-                    confabJoinButton={this.confabJoinButton}
-                    seatsRemaining={
-                        confab.max_capacity - confab.attendee_ids.length
-                    }
-                />
-            </div>
-        ))
+        return relevantConfabs.map((confab) => {
+            const seatsRemaining =
+                confab.max_capacity - confab.attendee_ids.length
+            const hostName = this.props.confidants[confab.host_id].username
+            const relevantConflationArray = this.props.loggedIn
+                ? this.generateRelevantConflationArray(
+                      this.props.conflations,
+                      confab.id,
+                      this.props.ccId
+                  )
+                : null
+            const conflationId =
+                relevantConflationArray && relevantConflationArray.length > 0
+                    ? relevantConflationArray.pop().id
+                    : null
+            const confabButton = conflationId
+                ? this.confabLeaveButton
+                : this.confabJoinButton
+            let attendanceDisplay = conflationId
+                ? this.amAttendingDisplay
+                : this.notAttendingDisplay
+
+            return (
+                <div className="confab-card-container" key={confab.id}>
+                    <CoffeeScheduleEvent
+                        confabId={confab.id}
+                        description={confab.description}
+                        hostName={hostName}
+                        startTime={confab.start_time}
+                        // endTime={confab.end_time}
+                        avatarId="3" //todo: this can be made dynamic later, like {this.props.confidants[confab.host_id].avatarId} once that's in place
+                        conflationId={conflationId}
+                        confabButton={confabButton}
+                        attendanceDisplay={attendanceDisplay}
+                        seatsRemaining={seatsRemaining}
+                    />
+                </div>
+            )
+        })
     }
 
     render() {

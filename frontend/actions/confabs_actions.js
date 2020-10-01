@@ -1,24 +1,43 @@
 import { getFilteredApiConfabs } from "../utils/confabs_api_utils"
-import { postApiConflation } from "../utils/conflations_api_utils"
+import {
+    deleteApiConflation,
+    postApiConflation,
+} from "../utils/conflations_api_utils"
 
 // Actions
 export const RECEIVE_ALL_CONFABS = "RECEIVE_ALL_CONFABS"
-export const RECEIVE_CURRENT_CONFAB = "RECEIVE_CURRENT_CONFAB"
+export const RECEIVE_JOINED_CONFAB = "RECEIVE_JOINED_CONFAB"
+export const RECEIVE_ABANDONED_CONFAB = "RECEIVE_ABANDONED_CONFAB"
 export const CLEAR_ALL_CONFABS = "CLEAR_ALL_CONFABS"
 
-const receiveAllConfabs = ({ confabs, confidants, conurbations }) => {
+const receiveAllConfabs = ({
+    confabs,
+    confidants,
+    conurbations,
+    conflations,
+}) => {
     return {
         type: RECEIVE_ALL_CONFABS,
         confabs,
         confidants,
         conurbations,
+        conflations,
     }
 }
 
-const receiveCurrentConfab = ({ confabs }) => {
+const receiveJoinedConfab = ({ confabs, conflations }) => {
     return {
-        type: RECEIVE_CURRENT_CONFAB,
+        type: RECEIVE_JOINED_CONFAB,
         confabs,
+        conflations,
+    }
+}
+
+const receiveAbandonedConfab = ({ confabs }, conflationId) => {
+    return {
+        type: RECEIVE_ABANDONED_CONFAB,
+        confabs,
+        conflationId,
     }
 }
 
@@ -41,11 +60,24 @@ export const joinConfab = (confabId) => {
     return (dispatch) => {
         return postApiConflation(confabId).then(
             (payload) => {
-                dispatch(receiveCurrentConfab(payload))
+                dispatch(receiveJoinedConfab(payload))
             },
             (err) => {
                 console.log(err.responseJSON)
                 // dispatch(receiveErrors(err.responseJSON))
+            }
+        )
+    }
+}
+
+export const leaveConfab = (confabId, conflationId) => {
+    return (dispatch) => {
+        return deleteApiConflation(confabId, conflationId).then(
+            (payload) => {
+                dispatch(receiveAbandonedConfab(payload, conflationId))
+            },
+            (err) => {
+                console.log(err.responseJSON)
             }
         )
     }

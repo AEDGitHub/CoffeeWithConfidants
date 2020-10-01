@@ -7,6 +7,17 @@ export const filterConfabsByConfabLocationId = (confabs, locationId) =>
 export const filterConfidantsByConfabHostId = (confidants, hostId) =>
     Object.values(confidants).filter((confidant) => confidant.id === hostId)
 
+export const filterConflationsByConfabIdAndAttendeeId = (
+    conflations,
+    confabId,
+    attendeeId
+) =>
+    Object.values(conflations).filter(
+        (conflation) =>
+            conflation.confab_id === confabId &&
+            conflation.attendee_id === attendeeId
+    )
+
 export const convertDatetimeStringToObject = (datetimeString) => {
     const finalObj = {}
 

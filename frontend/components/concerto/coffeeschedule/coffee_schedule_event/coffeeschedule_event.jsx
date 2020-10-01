@@ -13,12 +13,13 @@ import { convertDatetimeStringToObject } from "../../../../utils/modification_ut
 
 const CoffeeScheduleEvent = ({
     confabId,
+    conflationId,
     description,
     startTime,
-    endTime,
+    // endTime,
     hostName,
-    loggedIn,
-    confabJoinButton,
+    confabButton,
+    attendanceDisplay,
     avatarId,
     seatsRemaining,
 }) => {
@@ -53,23 +54,16 @@ const CoffeeScheduleEvent = ({
                     </div>
                     <div className="confab-description">{description}</div>
                     <hr></hr>
-                    <div className="attendance-status">
+                    {attendanceDisplay(seatsRemaining)}
+                    {/* <div className="attendance-status">
                         <div className="seats-left">
                             {seatsRemaining} SPOTS OPEN!
-                        </div>
-                        {/* <div className="fancy-graphic">LATER</div> */}
-                    </div>
+                        </div> */}
+                    {/* <div className="fancy-graphic">LATER</div> */}
+                    {/* </div> */}
                 </div>
             </Link>
-            {confabJoinButton(confabId)}
-            {/* <div
-                className="squad-up-button"
-                onClick={() => joinConfab(confabId)}
-            >
-                <div className="visibility-shift">
-                    <span>JOIN CONFAB</span>
-                </div>
-            </div> */}
+            {confabButton(confabId, conflationId)}
         </>
     )
 }

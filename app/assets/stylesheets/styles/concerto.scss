@@ -405,7 +405,18 @@ section {
                                     border: none;
                                     border-bottom: 1px solid #717370;
                                 }
-                                .attendance-status {
+                                .attendance-status-attending {
+                                    .seats-left {
+                                        padding: 0rem 1rem 1rem 1rem;
+                                        text-align: center;
+                                        font-weight: 700;
+                                        color: #512e59;
+                                    }
+                                    // .fancy-graphic {
+                                    //
+                                    // }
+                                }
+                                .attendance-status-not-attending {
                                     .seats-left {
                                         padding: 0rem 1rem 1rem 1rem;
                                         text-align: center;

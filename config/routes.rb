@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     end
     resources :confidants, only: [:show, :create, :update, :destroy]
     resources :confabs, only: [:index, :show, :update, :destroy] do
-      resources :conflations, only: [:create]
+      resources :conflations, only: [:create, :destroy]
     end
     # resources :conflations, only: [:destroy]
   end

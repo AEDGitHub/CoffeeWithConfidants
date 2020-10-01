@@ -1,22 +1,23 @@
 import {
-    CLEAR_ALL_CONFABS,
     RECEIVE_ALL_CONFABS,
     RECEIVE_JOINED_CONFAB,
     RECEIVE_ABANDONED_CONFAB,
 } from "../actions/confabs_actions"
 
-const confabsReducer = (oldState = {}, action) => {
+const conflationsReducer = (oldState = {}, action) => {
     Object.freeze(oldState)
+    // debugger
     switch (action.type) {
-        case CLEAR_ALL_CONFABS:
-            return {}
         case RECEIVE_ALL_CONFABS:
         case RECEIVE_JOINED_CONFAB:
+            return { ...oldState, ...action.conflations }
         case RECEIVE_ABANDONED_CONFAB:
-            return { ...oldState, ...action.confabs }
+            const nextState = { ...oldState }
+            delete nextState[action.conflationId]
+            return nextState
         default:
             return { ...oldState }
     }
 }
 
-export default confabsReducer
+export default conflationsReducer
