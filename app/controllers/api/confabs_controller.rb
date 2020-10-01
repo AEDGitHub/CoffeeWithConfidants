@@ -10,6 +10,7 @@ class Api::ConfabsController < ApplicationController
 
     def show
         @confab = Confab.find(params[:id])
+        render :show
     end
 
 end

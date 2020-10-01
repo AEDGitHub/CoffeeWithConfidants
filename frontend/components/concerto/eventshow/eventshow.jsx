@@ -9,7 +9,7 @@ class EventShow extends React.Component {
 
     componentDidMount() {
         if (!this.props.confabsAreLoaded) {
-            this.props.loadConfabs()
+            this.props.loadConfab(this.props.match.params.confabId)
         }
     }
 
@@ -30,6 +30,13 @@ class EventShow extends React.Component {
                                 <div className="eventshow-confab-info">
                                     <div className="eventshow-confab-info-mainmsg"></div>
                                     <hr></hr>
+                                    <div className="eventshow-confab-info-date"></div>
+                                    <div className="eventshow-confab-info-time"></div>
+                                    <div className="eventshow-confab-info-location"></div>
+                                    <div className="eventshow-confab-info-url"></div>
+                                    <div className="eventshow-confab-info-referral"></div>
+                                    <hr></hr>
+                                    <div className="eventshow-confab-info-seats-left"></div>
                                 </div>
                             </div>
                             <div className="eventshow-confab-rant"></div>

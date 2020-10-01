@@ -6,7 +6,7 @@ import {
 
 // Actions
 export const RECEIVE_ALL_CONFABS = "RECEIVE_ALL_CONFABS"
-export const RECEIVE_JOINED_CONFAB = "RECEIVE_JOINED_CONFAB"
+// export const RECEIVE_JOINED_CONFAB = "RECEIVE_JOINED_CONFAB"
 export const RECEIVE_ABANDONED_CONFAB = "RECEIVE_ABANDONED_CONFAB"
 export const CLEAR_ALL_CONFABS = "CLEAR_ALL_CONFABS"
 
@@ -25,19 +25,25 @@ const receiveAllConfabs = ({
     }
 }
 
-const receiveJoinedConfab = ({ confabs, conflations }) => {
-    return {
-        type: RECEIVE_JOINED_CONFAB,
-        confabs,
-        conflations,
-    }
-}
+// const receiveJoinedConfab = ({ confabs, conflations }) => {
+//     return {
+//         type: RECEIVE_JOINED_CONFAB,
+//         confabs,
+//         conflations,
+//     }
+// }
 
-const receiveAbandonedConfab = ({ confabs }, conflationId) => {
+const receiveAbandonedConfab = (
+    { confabs, confidants, conurbations, conflations },
+    deadConflationId
+) => {
     return {
         type: RECEIVE_ABANDONED_CONFAB,
         confabs,
-        conflationId,
+        confidants,
+        conurbations,
+        conflations,
+        deadConflationId,
     }
 }
 
@@ -48,9 +54,9 @@ const clearAllConfabs = () => {
 }
 
 // Thunk Action Creators
-export const fetchFilteredApiConfabs = () => {
+export const fetchFilteredApiConfabs = (confabId = null) => {
     return (dispatch) => {
-        return getFilteredApiConfabs().then((payload) => {
+        return getFilteredApiConfabs(confabId).then((payload) => {
             dispatch(receiveAllConfabs(payload))
         })
     }
@@ -60,7 +66,7 @@ export const joinConfab = (confabId) => {
     return (dispatch) => {
         return postApiConflation(confabId).then(
             (payload) => {
-                dispatch(receiveJoinedConfab(payload))
+                dispatch(receiveAllConfabs(payload))
             },
             (err) => {
                 console.log(err.responseJSON)

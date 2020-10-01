@@ -23,7 +23,7 @@ const mSTP = (state) => {
 
 const mDTP = (dispatch) => {
     return {
-        loadConfabs: () => dispatch(fetchFilteredApiConfabs()), //todo turn this singular, get only required confab if not present
+        loadConfab: (confabId) => dispatch(fetchFilteredApiConfabs(confabId)), //todo turn this singular, get only required confab if not present
         joinConfab: (confabId) => dispatch(joinConfab(confabId)),
         leaveConfab: (confabId, conflationId) =>
             dispatch(leaveConfab(confabId, conflationId)),

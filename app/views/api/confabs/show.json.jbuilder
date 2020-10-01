@@ -4,10 +4,27 @@ json.confabs do
     end
 end
 
-if @conflation_send
-    json.conflations do
-        json.set! @conflation.id do
-            json.partial! 'api/conflations/conflation', conflation: @conflation
+json.conurbations do
+    json.set! @confab.conurbation.id do
+        json.partial! 'api/conurbations/conurbation', conurbation: @confab.conurbation
+    end    
+end
+
+json.confidants do
+    json.set! @confab.host.id do
+        json.partial! 'api/confidants/confidant', confidant: @confab.host
+    end
+    @confab.attendees.each do |attendee|
+        json.set! attendee.id do
+            json.partial! 'api/confidants/confidant', confidant: attendee
+        end
+    end
+end
+
+json.conflations do
+    @confab.conflations.each do |conflation|
+        json.set! conflation.id do
+            json.partial! 'api/conflations/conflation', conflation: conflation
         end
     end
 end

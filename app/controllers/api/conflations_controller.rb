@@ -3,7 +3,7 @@ class Api::ConflationsController < ApplicationController
     def create
         @conflation = Conflation.new(confab_id: params[:confab_id], attendee_id: current_confidant.id)
         if @conflation.save
-            @conflation_send = true
+            #@conflation_send = true
             @confab = @conflation.confab
             render "api/confabs/show"
         else
@@ -15,7 +15,7 @@ class Api::ConflationsController < ApplicationController
         @conflation = Conflation.find(params[:id])
         if @conflation
             @confab = Confab.find(params[:confab_id])      
-            @conflation_send = false
+            # @conflation_send = false
             @conflation.destroy
             render "api/confabs/show"
         else

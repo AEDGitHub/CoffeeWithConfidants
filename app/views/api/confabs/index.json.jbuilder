@@ -1,7 +1,7 @@
-json.confabs do 
+json.conurbations do
     @confabs.each do |confab|
-        json.set! confab.id do
-            json.partial! 'api/confabs/confab', confab: confab
+        json.set! confab.conurbation.id do
+            json.partial! 'api/conurbations/conurbation', conurbation: confab.conurbation
         end
     end
 end
@@ -19,10 +19,10 @@ json.confidants do
     end
 end
 
-json.conurbations do
+json.confabs do 
     @confabs.each do |confab|
-        json.set! confab.conurbation.id do
-            json.partial! 'api/conurbations/conurbation', conurbation: confab.conurbation
+        json.set! confab.id do
+            json.partial! 'api/confabs/confab', confab: confab
         end
     end
 end

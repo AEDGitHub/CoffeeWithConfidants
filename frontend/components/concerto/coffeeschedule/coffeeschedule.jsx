@@ -31,18 +31,18 @@ class CoffeeSchedule extends React.Component {
     // lifecycle methods
 
     componentDidMount() {
-        if (!this.props.confabsAreLoaded) {
-            this.props.loadConfabs()
-        }
+        // if (!this.props.confabsAreLoaded) {
+        this.props.loadConfabs()
+        // }
     }
 
     componentWillUnmount() {
-        if (this.props.confabsAreLoaded) {
-            this.props.unloadConfabs()
-        }
-        if (this.props.conurbationsAreLoaded) {
-            this.props.unloadConurbations()
-        }
+        // if (this.props.confabsAreLoaded) {
+        //     this.props.unloadConfabs()
+        // }
+        // if (this.props.conurbationsAreLoaded) {
+        //     this.props.unloadConurbations()
+        // }
     }
 
     // interaction handlers
