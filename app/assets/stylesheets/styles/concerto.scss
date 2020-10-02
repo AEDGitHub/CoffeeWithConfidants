@@ -478,4 +478,146 @@ section {
             }
         }
     }
+    .eventshow {
+        background-color: #efefef;
+
+        .eventshow-main-container {
+            margin: 1rem auto;
+            max-width: 999px;
+            display: flex;
+            padding: 1rem;
+
+            .eventshow-confab-column {
+                flex: 1;
+                padding: 1rem;
+                .eventshow-confab-info-container {
+                    background-color: #ffffff;
+
+                    .eventshow-confab-info {
+                        padding: 1rem;
+                        border: 1px solid #717370;
+                        background-color: #ffffff;
+                        display: flex;
+                        flex-direction: column;
+                        font-size: 0.888rem;
+                        .eventshow-confab-info-mainmsg {
+                            color: #ee0000;
+                            text-align: center;
+                            vertical-align: middle;
+                            font-size: 1.111rem;
+                            font-weight: 800;
+                        }
+                        .eventshow-confab-info-date {
+                            color: #070707;
+                            font-size: 1.111rem;
+                            font-weight: 700;
+                        }
+                        .eventshow-confab-info-time {
+                            color: #070707;
+                            font-size: 1.111rem;
+                            font-weight: 700;
+                        }
+                        .eventshow-confab-info-location {
+                            color: #717370;
+                            font-weight: 500;
+                        }
+                        .eventshow-confab-info-url {
+                            color: #717370;
+                            font-weight: 500;
+                        }
+                        .eventshow-confab-info-referral {
+                            color: #717370;
+                            font-weight: 500;
+                        }
+                        .eventshow-confab-info-seats-left {
+                            font-size: 1rem;
+                            color: #717370;
+                            font-weight: 500;
+                            text-align: center;
+                            vertical-align: middle;
+                        }
+                        hr {
+                            // width: calc(100% - 2rem);
+                            width: 100%;
+                            margin: 1rem 1rem 1rem 0rem;
+                            border: none;
+                            border-bottom: 1px solid #717370;
+                        }
+                    }
+                }
+                .eventshow-confab-button-container {
+                    margin-top: 1rem;
+                    .squad-up-button {
+                        display: block;
+                        border: 1px solid #512e59;
+                        border-radius: 0.333rem 0.333rem 0.333rem 0.333rem;
+                        padding: 1rem;
+                        text-align: center;
+                        font-weight: 800;
+                        background-color: #dfdfdf;
+                        color: #512e59;
+                        cursor: pointer;
+                    }
+                    .squad-up-button:hover {
+                        background-color: #512e59;
+                        color: #ffffff;
+                        .visibility-shift {
+                            span {
+                                display: none;
+                            }
+                        }
+                        .visibility-shift::before {
+                            content: "CONFIRM";
+                        }
+                    }
+                    .squad-up-button-joined {
+                        display: block;
+                        border: 1px solid #ee0000;
+                        border-radius: 0rem 0rem 0.333rem 0.333rem;
+                        padding: 1rem;
+                        text-align: center;
+                        font-weight: 800;
+                        background-color: #dfdfdf;
+                        color: #ee0000;
+                        cursor: pointer;
+                    }
+                    .squad-up-button-joined:hover {
+                        background-color: #ee0000;
+                        color: #ffffff;
+                    }
+                }
+                .eventshow-confab-rant {
+                    margin-top: 1rem;
+                    padding: 1rem;
+                    background-color: #dfdfdf;
+                    border: 1px solid #717370;
+                    .eventshow-confab-rant-mainmsg {
+                    }
+                    .eventshow-confab-rant-submsg {
+                    }
+                }
+            }
+            .eventshow-confidant-column {
+                display: flex;
+                margin: 0 auto;
+                max-width: 71%;
+                flex-direction: column;
+                flex: 2;
+                padding: 1rem;
+                .eventshow-confidant-greeting-container {
+                    color: #ee0000;
+                    text-align: center;
+                    vertical-align: middle;
+                    font-size: 1.661rem;
+                    font-weight: 800;
+                }
+                .eventshow-confidant-avatar-container {
+                }
+                .eventshow-confidant-about-container {
+                }
+                .eventshow-confidant-outro-container {
+                }
+            }
+        }
+    }
 }

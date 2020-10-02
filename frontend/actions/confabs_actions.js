@@ -47,7 +47,7 @@ const clearAllConfabs = () => {
 // Thunk Action Creators
 export const fetchFilteredApiConfabs = (confabId = null) => {
     return (dispatch) => {
-        return getFilteredApiConfabs((confabId = null)).then((payload) => {
+        return getFilteredApiConfabs(confabId).then((payload) => {
             dispatch(receiveAllConfabs(payload))
         })
     }

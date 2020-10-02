@@ -48,26 +48,57 @@ class EventShow extends React.Component {
                         <div className="eventshow-confab-column">
                             <div className="eventshow-confab-info-container">
                                 <div className="eventshow-confab-info">
-                                    <div className="eventshow-confab-info-mainmsg"></div>
+                                    <div className="eventshow-confab-info-mainmsg">
+                                        JOIN hostname FOR COFFEE
+                                    </div>
                                     <hr></hr>
                                     <div className="eventshow-confab-info-date">
-                                        {pageObject["date"]}
+                                        Saturday, Oct 10
                                     </div>
                                     <div className="eventshow-confab-info-time">
-                                        {pageObject["day"]}
+                                        2000 — 2200
                                     </div>
-                                    <div className="eventshow-confab-info-location"></div>
-                                    <div className="eventshow-confab-info-url"></div>
-                                    <div className="eventshow-confab-info-referral"></div>
+                                    <div className="eventshow-confab-info-location">
+                                        Something something hellscape
+                                    </div>
+                                    <div className="eventshow-confab-info-url">
+                                        http://herokuapp.coffeewithconfidants.com
+                                    </div>
+                                    <div className="eventshow-confab-info-referral">
+                                        Can't make it? Know someone who can?
+                                        Send them the link!
+                                    </div>
                                     <hr></hr>
-                                    <div className="eventshow-confab-info-seats-left"></div>
+                                    <div className="eventshow-confab-info-seats-left">
+                                        5 SEATS LEFT!
+                                    </div>
                                 </div>
                             </div>
-                            <div className="eventshow-confab-rant"></div>
+                            <div className="eventshow-confab-button-container">
+                                <div className="squad-up-button">
+                                    <div className="visibility-shift">
+                                        <span>JOIN CONFAB</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="eventshow-confab-rant">
+                                <div className="eventshow-confab-rant-mainmsg">
+                                    WHAT EVEN IS COFFEE?
+                                </div>
+                                <br></br>
+                                <div className="eventshow-confab-rant-submsg">
+                                    Coffee is a delightful substance that's
+                                    going to go extinct because human beings
+                                    continue to mercilessly proliferate and are
+                                    destroying the environment in which coffee
+                                    grows!
+                                </div>
+                            </div>
                         </div>
                         <div className="eventshow-confidant-column">
                             <div className="eventshow-confidant-greeting-container">
-                                {/* {confabId} */}
+                                {/* {confabId} */}Meet your Host, hostName.
                             </div>
                             <div className="eventshow-confidant-avatar-container"></div>
                             <div className="eventshow-confidant-about-container">
