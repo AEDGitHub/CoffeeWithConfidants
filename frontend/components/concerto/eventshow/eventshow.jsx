@@ -3,23 +3,32 @@ import React from "react"
 class EventShow extends React.Component {
     constructor(props) {
         super(props)
+        this.confabDescription = this.confabDescription.bind(this)
     }
 
     // lifecycle methods
 
     componentDidMount() {
-        if (!this.props.confabsAreLoaded) {
-            this.props.loadConfab(this.props.match.params.confabId)
-        }
+        // console.log(this.props.match.params.confabId)
+        this.props.loadConfab(this.props.match.params.confabId)
     }
 
     // interaction handlers
 
     // displays, fields, and buttons with variable logic
 
+    confabDescription(confabId) {
+        // return this.props.confabs[confabId].description
+    }
+
     render() {
         // displays, fields and buttons with constant logic
+
+        // const description = confab.description
         const confabId = this.props.match.params.confabId
+        const thisConfabDescription = this.props.confab
+            ? this.props.confab.description
+            : " "
 
         return (
             <>
@@ -43,11 +52,11 @@ class EventShow extends React.Component {
                         </div>
                         <div className="eventshow-confidant-column">
                             <div className="eventshow-confidant-greeting-container">
-                                Meet your host, Ryuji!
+                                {confabId}
                             </div>
                             <div className="eventshow-confidant-avatar-container"></div>
                             <div className="eventshow-confidant-about-container">
-                                Hey, I'm Ryuji
+                                {thisConfabDescription}
                             </div>
                             <div className="eventshow-confidant-outro-container">
                                 No Mo Rules
@@ -59,5 +68,9 @@ class EventShow extends React.Component {
         )
     }
 }
+
+// EventShow.defaultProps = {
+//     confabDescription: "Something",
+// }
 
 export default EventShow

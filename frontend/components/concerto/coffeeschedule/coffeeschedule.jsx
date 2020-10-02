@@ -1,5 +1,4 @@
 /*
-todo: build the thing 
 todo: destructure props coming in 
 */
 
@@ -31,19 +30,10 @@ class CoffeeSchedule extends React.Component {
     // lifecycle methods
 
     componentDidMount() {
-        // if (!this.props.confabsAreLoaded) {
         this.props.loadConfabs()
-        // }
     }
 
-    componentWillUnmount() {
-        // if (this.props.confabsAreLoaded) {
-        //     this.props.unloadConfabs()
-        // }
-        // if (this.props.conurbationsAreLoaded) {
-        //     this.props.unloadConurbations()
-        // }
-    }
+    componentWillUnmount() {}
 
     // interaction handlers
 

@@ -12,12 +12,8 @@ const Concerto = () => (
         <section>
             <AuthRoute path="/signin" component={SigninFormContainer} />
             <AuthRoute path="/signup" component={SignupFormContainer} />
+            <Route exact path="/coffee_times/:confabId" component={EventShow} />
             <Route exact path="/coffee_times" component={CoffeeSchedule} />
-            <Route
-                exact
-                path="/coffee_times/:confabId/"
-                component={EventShow}
-            />
             <Route exact path="/" component={Splash} />
         </section>
     </>

@@ -1,6 +1,5 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import { areConfabsLoaded } from "../../../reducers/selectors"
 import { connect } from "react-redux"
 import {
     fetchFilteredApiConfabs,
@@ -9,12 +8,11 @@ import {
 } from "../../../actions/confabs_actions"
 import EventShow from "./eventshow"
 
-const mSTP = (state) => {
+const mSTP = (state, ownProps) => {
     return {
-        confabsAreLoaded: areConfabsLoaded(state), //todo turn this singular, regarding only the targeted confab
+        confab: state.entities.confabs[ownProps.match.params.confabId],
         confidants: state.entities.confidants,
         conurbations: state.entities.conurbations,
-        confabs: state.entities.confabs,
         conflations: state.entities.conflations,
         ccId: state.session.ccId,
         loggedIn: Boolean(state.session.ccId),
@@ -23,7 +21,7 @@ const mSTP = (state) => {
 
 const mDTP = (dispatch) => {
     return {
-        loadConfab: (confabId) => dispatch(fetchFilteredApiConfabs(confabId)), //todo turn this singular, get only required confab if not present
+        loadConfab: (confabId) => dispatch(fetchFilteredApiConfabs(confabId)),
         joinConfab: (confabId) => dispatch(joinConfab(confabId)),
         leaveConfab: (confabId, conflationId) =>
             dispatch(leaveConfab(confabId, conflationId)),
