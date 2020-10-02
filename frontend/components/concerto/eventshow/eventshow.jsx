@@ -3,13 +3,12 @@ import React from "react"
 class EventShow extends React.Component {
     constructor(props) {
         super(props)
-        this.confabDescription = this.confabDescription.bind(this)
+        this.loadPageObject = this.loadPageObject.bind(this)
     }
 
     // lifecycle methods
 
     componentDidMount() {
-        // console.log(this.props.match.params.confabId)
         this.props.loadConfab(this.props.match.params.confabId)
     }
 
@@ -17,18 +16,30 @@ class EventShow extends React.Component {
 
     // displays, fields, and buttons with variable logic
 
-    confabDescription(confabId) {
-        // return this.props.confabs[confabId].description
+    loadPageObject() {
+        const timeObject = this.props.confab
+            ? this.props.convertDatetimeStringToObject(
+                  this.props.confab.start_time
+              )
+            : null
+
+        return this.props.confab
+            ? {
+                  day: timeObject["day"],
+                  date: timeObject["month"],
+                  description: this.props.confab.description,
+              }
+            : {
+                  day: "Loading Day",
+                  date: "Loading Date",
+                  description: "Loading Description",
+              }
     }
 
     render() {
         // displays, fields and buttons with constant logic
 
-        // const description = confab.description
-        const confabId = this.props.match.params.confabId
-        const thisConfabDescription = this.props.confab
-            ? this.props.confab.description
-            : " "
+        const pageObject = this.loadPageObject()
 
         return (
             <>
@@ -39,8 +50,12 @@ class EventShow extends React.Component {
                                 <div className="eventshow-confab-info">
                                     <div className="eventshow-confab-info-mainmsg"></div>
                                     <hr></hr>
-                                    <div className="eventshow-confab-info-date"></div>
-                                    <div className="eventshow-confab-info-time"></div>
+                                    <div className="eventshow-confab-info-date">
+                                        {pageObject["date"]}
+                                    </div>
+                                    <div className="eventshow-confab-info-time">
+                                        {pageObject["day"]}
+                                    </div>
                                     <div className="eventshow-confab-info-location"></div>
                                     <div className="eventshow-confab-info-url"></div>
                                     <div className="eventshow-confab-info-referral"></div>
@@ -52,11 +67,11 @@ class EventShow extends React.Component {
                         </div>
                         <div className="eventshow-confidant-column">
                             <div className="eventshow-confidant-greeting-container">
-                                {confabId}
+                                {/* {confabId} */}
                             </div>
                             <div className="eventshow-confidant-avatar-container"></div>
                             <div className="eventshow-confidant-about-container">
-                                {thisConfabDescription}
+                                {pageObject["description"]}
                             </div>
                             <div className="eventshow-confidant-outro-container">
                                 No Mo Rules

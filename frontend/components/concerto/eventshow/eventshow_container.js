@@ -6,6 +6,7 @@ import {
     joinConfab,
     leaveConfab,
 } from "../../../actions/confabs_actions"
+import { convertDatetimeStringToObject } from "../../../utils/modification_utils"
 import EventShow from "./eventshow"
 
 const mSTP = (state, ownProps) => {
@@ -16,6 +17,7 @@ const mSTP = (state, ownProps) => {
         conflations: state.entities.conflations,
         ccId: state.session.ccId,
         loggedIn: Boolean(state.session.ccId),
+        convertDatetimeStringToObject: convertDatetimeStringToObject,
     }
 }
 
