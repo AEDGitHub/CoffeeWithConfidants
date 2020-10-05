@@ -1,6 +1,11 @@
 export const shorterConurbationName = (conurbationName) =>
     conurbationName.split(",")[0]
 
+export const restOfConurbationName = (conurbationName) => {
+    const conurbationNameArray = conurbationName.split(", ")
+    return conurbationNameArray[1] + ", " + conurbationNameArray[2]
+}
+
 export const filterConfabsByConfabLocationId = (confabs, locationId) =>
     Object.values(confabs).filter((confab) => confab.location_id === locationId)
 

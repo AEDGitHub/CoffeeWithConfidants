@@ -6,7 +6,11 @@ import {
     joinConfab,
     leaveConfab,
 } from "../../../actions/confabs_actions"
-import { convertDatetimeStringToObject } from "../../../utils/modification_utils"
+import {
+    convertDatetimeStringToObject,
+    shorterConurbationName,
+    restOfConurbationName,
+} from "../../../utils/modification_utils"
 import EventShow from "./eventshow"
 
 const mSTP = (state, ownProps) => {
@@ -18,6 +22,8 @@ const mSTP = (state, ownProps) => {
         ccId: state.session.ccId,
         loggedIn: Boolean(state.session.ccId),
         convertDatetimeStringToObject: convertDatetimeStringToObject,
+        shorterConurbationName: shorterConurbationName,
+        restOfConurbationName: restOfConurbationName,
     }
 }
 
