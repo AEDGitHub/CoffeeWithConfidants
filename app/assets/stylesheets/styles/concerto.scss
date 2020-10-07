@@ -528,12 +528,24 @@ section {
                             color: #717370;
                             font-weight: 500;
                         }
-                        .eventshow-confab-info-seats-left {
-                            font-size: 1rem;
-                            color: #717370;
-                            font-weight: 500;
-                            text-align: center;
-                            vertical-align: middle;
+                        .attendance-status-attending {
+                            .seats-left {
+                                padding: 0rem 1rem 1rem 1rem;
+                                text-align: center;
+                                font-weight: 700;
+                                color: #512e59;
+                            }
+                            // .fancy-graphic {
+                            //
+                            // }
+                        }
+                        .attendance-status-not-attending {
+                            .seats-left {
+                                padding: 0rem 1rem 1rem 1rem;
+                                text-align: center;
+                                font-weight: 500;
+                                color: #717370;
+                            }
                         }
                         hr {
                             // width: calc(100% - 2rem);

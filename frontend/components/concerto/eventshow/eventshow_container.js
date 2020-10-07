@@ -10,11 +10,13 @@ import {
     convertDatetimeStringToObject,
     shorterConurbationName,
     restOfConurbationName,
+    filterConflationsByConfabIdAndAttendeeId,
 } from "../../../utils/modification_utils"
 import EventShow from "./eventshow"
 
 const mSTP = (state, ownProps) => {
     return {
+        data: true,
         confab: state.entities.confabs[ownProps.match.params.confabId],
         confidants: state.entities.confidants,
         conurbations: state.entities.conurbations,
@@ -24,6 +26,7 @@ const mSTP = (state, ownProps) => {
         convertDatetimeStringToObject: convertDatetimeStringToObject,
         shorterConurbationName: shorterConurbationName,
         restOfConurbationName: restOfConurbationName,
+        filterConflationsByConfabIdAndAttendeeId: filterConflationsByConfabIdAndAttendeeId,
     }
 }
 
