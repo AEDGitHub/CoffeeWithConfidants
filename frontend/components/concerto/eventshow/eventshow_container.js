@@ -16,7 +16,6 @@ import EventShow from "./eventshow"
 
 const mSTP = (state, ownProps) => {
     return {
-        data: true,
         confab: state.entities.confabs[ownProps.match.params.confabId],
         confidants: state.entities.confidants,
         conurbations: state.entities.conurbations,
