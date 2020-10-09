@@ -16,37 +16,27 @@ class EventShow extends React.Component {
             conurbation: "",
             description: "",
             seatsRemaining: 0,
-            conflationId: null,
         }
-        this.updateHostNameInState = this.updateHostNameInState.bind(this)
-        // this.loadConfabIntoState = this.loadConfabIntoState.bind(this)
+        this.updateConfabDataInState = this.updateConfabDataInState.bind(this)
         // this.generateAttendanceDisplay = this.generateAttendanceDisplay.bind(
         //     this
         // )
         // this.generateConfabButton = this.generateConfabButton.bind(this)
-        this.generateRelevantConflationId = this.generateRelevantConflationId.bind(
-            this
-        )
-
-        this.props.loadConfab(this.props.match.params.confabId)
     }
 
     // lifecycle methods
 
-    componentWillMount() {
-        console.log("Component Did Mount")
+    componentDidMount() {
         this.props.loadConfab(this.props.match.params.confabId).then(() => {
             if (this.props.confab) {
-                this.updateHostNameInState(this.props.confab)
-                // this.loadConfabIntoState()
+                this.updateConfabDataInState(this.props.confab)
             }
         })
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (!prevProps.confab && this.props.confab) {
-            // this.loadConfabIntoState()
-            console.log("Component Did Update")
+        if (this.props.confab && prevProps.confab !== this.props.confab) {
+            this.updateConfabDataInState(this.props.confab)
         }
     }
 
@@ -56,14 +46,22 @@ class EventShow extends React.Component {
 
     // displays, fields, and buttons with variable logic
 
-    updateHostNameInState(confab) {
+    updateConfabDataInState(confab) {
+        const timeObject = this.props.convertDatetimeStringToObject(
+            confab.start_time
+        )
         this.setState({
+            date: timeObject["dateNum"],
+            day: timeObject["day"],
+            description: confab.description,
             hostName: this.props.confidants[confab.host_id].username,
-            // conflationId: this.generateRelevantConflationId(
-            //     this.props.conflations,
-            //     confab.id,
-            //     this.props.ccId
-            // ),
+            hours:
+                timeObject["hour"].toString() +
+                "00 — " +
+                (timeObject["hour"] + 2).toString() +
+                "00",
+            month: timeObject["month"],
+            seatsRemaining: confab.max_capacity - confab.attendee_ids.length,
         })
     }
 
@@ -117,57 +115,25 @@ class EventShow extends React.Component {
     //     return this.props.loggedIn ? <div></div> : <div></div>
     // }
 
-    generateRelevantConflationId(conflations, confabId, ccId) {
-        const relevantConflationArray = this.props.filterConflationsByConfabIdAndAttendeeId(
-            conflations,
-            confabId,
-            ccId
-        )
-        return relevantConflationArray.pop().id
-    }
-
     // loadConfabIntoState() {
-    //     const timeObject = this.props.convertDatetimeStringToObject(
-    //         this.props.confab.start_time
-    //     )
-    //     const relevantConflationArray = this.props.loggedIn
-    //         ? this.generateRelevantConflationArray(
-    //               this.props.conflations,
-    //               this.props.match.params.confabId,
-    //               this.props.ccId
-    //           )
-    //         : null
-    //     const conflationId =
-    //         relevantConflationArray && relevantConflationArray.length > 0
-    //             ? relevantConflationArray.pop().id
-    //             : null
+    //
 
     //     this.setState({
     //         data: true,
-    //         day: timeObject["day"],
-    //         month: timeObject["month"],
-    //         date: timeObject["dateNum"],
-    //         hours:
-    //             timeObject["hour"].toString() +
-    //             "00 — " +
-    //             (timeObject["hour"] + 2).toString() +
-    //             "00",
+    //
     //         location: this.props.shorterConurbationName(
     //             this.props.conurbations[this.props.confab.location_id].name
     //         ),
     //         conurbation: this.props.restOfConurbationName(
     //             this.props.conurbations[this.props.confab.location_id].name
     //         ),
-    //         description: this.props.confab.description,
-    //         conflationId: conflationId,
-    //         seatsRemaining:
-    //             this.props.confab.max_capacity -
-    //             this.props.confab.attendee_ids.length,
+
+    //
+
     //     })
     // }
 
     render() {
-        console.log("Render")
         // displays, fields and buttons with constant logic
 
         const confabId = this.props.match.params.confabId
@@ -179,7 +145,6 @@ class EventShow extends React.Component {
         const description = this.state.description
         const location = this.state.location
         const conurbation = this.state.conurbation
-        const conflationId = this.state.conflationId
 
         // const confabButtonObject = this.loadConfabButtonObject(conflationId)
         // const seatsRemaining = this.state.seatsRemaining
@@ -222,7 +187,7 @@ class EventShow extends React.Component {
                                     <hr></hr>
                                     {/* {attendanceDisplay} */}
                                     <div className="eventshow-confab-info-seats-left">
-                                        5 SEATS LEFT!
+                                        STATIC SEATS LEFT!
                                     </div>
                                 </div>
                             </div>
