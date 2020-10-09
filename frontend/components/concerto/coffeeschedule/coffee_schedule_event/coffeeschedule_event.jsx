@@ -1,28 +1,17 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import { convertDatetimeStringToObject } from "../../../../utils/modification_utils"
-/*
-    timeObject has following keys and format:
-    {
-        day: string //"Sunday"
-        month: string //"Sep", "Oct" &c
-        dateNum: string //("1":"31")
-        hour: int // (0:23)
-    }
-    */
 
 const CoffeeScheduleEvent = ({
-    confabId,
-    ccId,
-    // conflationId,
-    description,
-    startTime,
-    // endTime,
-    hostName,
-    confabButton,
-    attendanceDisplay,
     avatarId,
+    attendanceDisplay,
+    ccId,
+    confabButton,
+    confabId,
+    description,
+    hostName,
     seatsRemaining,
+    startTime,
 }) => {
     const timeObject = convertDatetimeStringToObject(startTime)
     const day = timeObject["day"].toUpperCase()
@@ -39,14 +28,10 @@ const CoffeeScheduleEvent = ({
             <Link to={`/coffee_times/${confabId}/`}>
                 <div className="confab-card">
                     <div className="card-top">
-                        {/* <Link to={`/confidants/${hostId}/`}> */}
                         <div className="avatar-container">
-                            <div className={`img-container-${avatarId}`}>
-                                {/* <div className="img"></div> */}
-                            </div>
+                            <div className={`img-container-${avatarId}`}></div>
                             <div className="name">{hostName.toUpperCase()}</div>
                         </div>
-                        {/* <Link /> */}
                         <div className="time-container">
                             <div className="day">{day}</div>
                             <div className="date">{date}</div>
@@ -56,12 +41,6 @@ const CoffeeScheduleEvent = ({
                     <div className="confab-description">{description}</div>
                     <hr></hr>
                     {attendanceDisplay(seatsRemaining)}
-                    {/* <div className="attendance-status">
-                        <div className="seats-left">
-                            {seatsRemaining} SPOTS OPEN!
-                        </div> */}
-                    {/* <div className="fancy-graphic">LATER</div> */}
-                    {/* </div> */}
                 </div>
             </Link>
             {confabButton(confabId, ccId)}
