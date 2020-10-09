@@ -11,10 +11,3 @@ export const deleteApiConflation = (confabId, confidantId) => {
         method: "DELETE",
     })
 }
-
-// export const deleteApiConflation = (confabId, conflationId) => {
-//     return $.ajax({
-//         url: `api/confabs/${confabId}/conflations/${conflationId}`,
-//         method: "DELETE",
-//     })
-// }

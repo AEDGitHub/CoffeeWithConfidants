@@ -10,7 +10,6 @@ import {
     convertDatetimeStringToObject,
     shorterConurbationName,
     restOfConurbationName,
-    filterConflationsByConfabIdAndAttendeeId,
 } from "../../../utils/modification_utils"
 import EventShow from "./eventshow"
 
@@ -25,7 +24,6 @@ const mSTP = (state, ownProps) => {
         convertDatetimeStringToObject: convertDatetimeStringToObject,
         shorterConurbationName: shorterConurbationName,
         restOfConurbationName: restOfConurbationName,
-        filterConflationsByConfabIdAndAttendeeId: filterConflationsByConfabIdAndAttendeeId,
     }
 }
 

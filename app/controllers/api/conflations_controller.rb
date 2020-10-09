@@ -11,7 +11,6 @@ class Api::ConflationsController < ApplicationController
     end
 
     def destroy
-#        @conflation = Conflation.find(params[:id])
         @conflation = Conflation.find_by(confab_id: params[:confab_id], attendee_id: params[:id])
         if @conflation
             @confab = Confab.find(params[:confab_id])

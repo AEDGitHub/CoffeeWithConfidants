@@ -1,6 +1,5 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import { convertDatetimeStringToObject } from "../../../../utils/modification_utils"
 
 const CoffeeScheduleEvent = ({
     avatarId,
@@ -8,24 +7,13 @@ const CoffeeScheduleEvent = ({
     ccId,
     confabButton,
     confabId,
+    date,
+    day,
     description,
     hostName,
-    seatsRemaining,
-    day,
-    date,
     hours,
-    // startTime,
+    seatsRemaining,
 }) => {
-    // const timeObject = convertDatetimeStringToObject(startTime)
-    // const day = timeObject["day"].toUpperCase()
-    // const date = timeObject["month"].toUpperCase() + " " + timeObject["dateNum"]
-
-    // const hours =
-    //     timeObject["hour"].toString() +
-    //     " — " +
-    //     (timeObject["hour"] + 2).toString() +
-    //     "00"
-
     return (
         <>
             <Link to={`/coffee_times/${confabId}/`}>

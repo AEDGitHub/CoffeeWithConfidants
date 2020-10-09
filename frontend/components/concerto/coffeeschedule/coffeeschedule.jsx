@@ -147,8 +147,10 @@ class CoffeeSchedule extends React.Component {
             return (
                 <div className="confab-card-container" key={confab.id}>
                     <CoffeeScheduleEvent
+                        attendanceDisplay={attendanceDisplay}
                         avatarId="3"
                         ccId={this.props.ccId}
+                        confabButton={confabButton}
                         confabId={confab.id}
                         day={day}
                         date={date}
@@ -156,9 +158,6 @@ class CoffeeSchedule extends React.Component {
                         hours={hours}
                         hostName={hostName}
                         seatsRemaining={seatsRemaining}
-                        //functions
-                        attendanceDisplay={attendanceDisplay}
-                        confabButton={confabButton}
                     />
                 </div>
             )
