@@ -7,11 +7,12 @@ const conflationsReducer = (oldState = {}, action) => {
     Object.freeze(oldState)
     switch (action.type) {
         case RECEIVE_ALL_CONFABS:
-            return { ...oldState, ...action.conflations }
         case RECEIVE_ABANDONED_CONFAB:
-            const nextState = { ...oldState }
-            delete nextState[action.deadConflationId]
-            return nextState
+            return { ...oldState, ...action.conflations }
+        // case RECEIVE_ABANDONED_CONFAB:
+        //     const nextState = { ...oldState }
+        //     delete nextState[action.deadConflationId]
+        //     return nextState
         default:
             return { ...oldState }
     }

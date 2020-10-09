@@ -13,7 +13,8 @@ import { convertDatetimeStringToObject } from "../../../../utils/modification_ut
 
 const CoffeeScheduleEvent = ({
     confabId,
-    conflationId,
+    ccId,
+    // conflationId,
     description,
     startTime,
     // endTime,
@@ -63,7 +64,7 @@ const CoffeeScheduleEvent = ({
                     {/* </div> */}
                 </div>
             </Link>
-            {confabButton(confabId, conflationId)}
+            {confabButton(confabId, ccId)}
         </>
     )
 }

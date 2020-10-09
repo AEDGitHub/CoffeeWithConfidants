@@ -24,9 +24,9 @@ class EventShow extends React.Component {
         //     this
         // )
         // this.generateConfabButton = this.generateConfabButton.bind(this)
-        // this.generateRelevantConflationArray = this.generateRelevantConflationArray.bind(
-        //     this
-        // )
+        this.generateRelevantConflationId = this.generateRelevantConflationId.bind(
+            this
+        )
 
         this.props.loadConfab(this.props.match.params.confabId)
     }
@@ -59,6 +59,11 @@ class EventShow extends React.Component {
     updateHostNameInState(confab) {
         this.setState({
             hostName: this.props.confidants[confab.host_id].username,
+            // conflationId: this.generateRelevantConflationId(
+            //     this.props.conflations,
+            //     confab.id,
+            //     this.props.ccId
+            // ),
         })
     }
 
@@ -112,13 +117,14 @@ class EventShow extends React.Component {
     //     return this.props.loggedIn ? <div></div> : <div></div>
     // }
 
-    // generateRelevantConflationArray(conflations, confabId, ccId) {
-    //     return this.props.filterConflationsByConfabIdAndAttendeeId(
-    //         conflations,
-    //         confabId,
-    //         ccId
-    //     )
-    // }
+    generateRelevantConflationId(conflations, confabId, ccId) {
+        const relevantConflationArray = this.props.filterConflationsByConfabIdAndAttendeeId(
+            conflations,
+            confabId,
+            ccId
+        )
+        return relevantConflationArray.pop().id
+    }
 
     // loadConfabIntoState() {
     //     const timeObject = this.props.convertDatetimeStringToObject(

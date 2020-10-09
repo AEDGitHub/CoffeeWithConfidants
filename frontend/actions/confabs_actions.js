@@ -24,19 +24,34 @@ const receiveAllConfabs = ({
     }
 }
 
-const receiveAbandonedConfab = (
-    { confabs, confidants, conurbations, conflations },
-    deadConflationId
-) => {
+const receiveAbandonedConfab = ({
+    confabs,
+    confidants,
+    conurbations,
+    conflations,
+}) => {
     return {
         type: RECEIVE_ABANDONED_CONFAB,
         confabs,
         confidants,
         conurbations,
         conflations,
-        deadConflationId,
     }
 }
+
+// const receiveAbandonedConfab = (
+//     { confabs, confidants, conurbations, conflations },
+//     deadConflationId
+// ) => {
+//     return {
+//         type: RECEIVE_ABANDONED_CONFAB,
+//         confabs,
+//         confidants,
+//         conurbations,
+//         conflations,
+//         deadConflationId,
+//     }
+// }
 
 const clearAllConfabs = () => {
     return {
@@ -67,11 +82,11 @@ export const joinConfab = (confabId) => {
     }
 }
 
-export const leaveConfab = (confabId, conflationId) => {
+export const leaveConfab = (confabId, confidantId) => {
     return (dispatch) => {
-        return deleteApiConflation(confabId, conflationId).then(
+        return deleteApiConflation(confabId, confidantId).then(
             (payload) => {
-                dispatch(receiveAbandonedConfab(payload, conflationId))
+                dispatch(receiveAbandonedConfab(payload))
             },
             (err) => {
                 console.log(err.responseJSON)
@@ -79,6 +94,19 @@ export const leaveConfab = (confabId, conflationId) => {
         )
     }
 }
+
+// export const leaveConfab = (confabId, conflationId) => {
+//     return (dispatch) => {
+//         return deleteApiConflation(confabId, conflationId).then(
+//             (payload) => {
+//                 dispatch(receiveAbandonedConfab(payload, conflationId))
+//             },
+//             (err) => {
+//                 console.log(err.responseJSON)
+//             }
+//         )
+//     }
+// }
 
 export const ditchConfabs = () => {
     return (dispatch) => {

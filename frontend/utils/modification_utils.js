@@ -63,3 +63,7 @@ export const convertDatetimeStringToObject = (datetimeString) => {
 
     return finalObj
 }
+
+export const determineWhetherConfidantIsAttending = (confab, confidantId) => {
+    return confab.attendee_ids.includes(confidantId)
+}

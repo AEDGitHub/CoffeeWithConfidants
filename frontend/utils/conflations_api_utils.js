@@ -5,9 +5,16 @@ export const postApiConflation = (confabId) => {
     })
 }
 
-export const deleteApiConflation = (confabId, conflationId) => {
+export const deleteApiConflation = (confabId, confidantId) => {
     return $.ajax({
-        url: `api/confabs/${confabId}/conflations/${conflationId}`,
+        url: `api/confabs/${confabId}/conflations/${confidantId}`,
         method: "DELETE",
     })
 }
+
+// export const deleteApiConflation = (confabId, conflationId) => {
+//     return $.ajax({
+//         url: `api/confabs/${confabId}/conflations/${conflationId}`,
+//         method: "DELETE",
+//     })
+// }

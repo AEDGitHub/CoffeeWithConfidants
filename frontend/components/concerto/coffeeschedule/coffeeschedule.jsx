@@ -107,11 +107,11 @@ class CoffeeSchedule extends React.Component {
         )
     }
 
-    confabLeaveButton(confabId, conflationId) {
+    confabLeaveButton(confabId, confidantId) {
         return (
             <div
                 className="squad-up-button-joined"
-                onClick={() => this.props.leaveConfab(confabId, conflationId)}
+                onClick={() => this.props.leaveConfab(confabId, confidantId)}
             >
                 <div className="visibility-shift">
                     <span>LEAVE CONFAB</span>
@@ -119,6 +119,19 @@ class CoffeeSchedule extends React.Component {
             </div>
         )
     }
+
+    // confabLeaveButton(confabId, conflationId) {
+    //     return (
+    //         <div
+    //             className="squad-up-button-joined"
+    //             onClick={() => this.props.leaveConfab(confabId, conflationId)}
+    //         >
+    //             <div className="visibility-shift">
+    //                 <span>LEAVE CONFAB</span>
+    //             </div>
+    //         </div>
+    //     )
+    // }
 
     generateRelevantConflationArray(conflations, confabId, ccId) {
         return this.props.filterConflationsByConfabIdAndAttendeeId(
@@ -137,34 +150,39 @@ class CoffeeSchedule extends React.Component {
             const seatsRemaining =
                 confab.max_capacity - confab.attendee_ids.length
             const hostName = this.props.confidants[confab.host_id].username
-            const relevantConflationArray = this.props.loggedIn
-                ? this.generateRelevantConflationArray(
-                      this.props.conflations,
-                      confab.id,
-                      this.props.ccId
-                  )
-                : null
-            const conflationId =
-                relevantConflationArray && relevantConflationArray.length > 0
-                    ? relevantConflationArray.pop().id
-                    : null
-            const confabButton = conflationId
+            const currentConfidantAttending = this.props.determineWhetherConfidantIsAttending(
+                confab,
+                this.props.ccId
+            )
+            // const relevantConflationArray = this.props.loggedIn
+            //     ? this.generateRelevantConflationArray(
+            //           this.props.conflations,
+            //           confab.id,
+            //           this.props.ccId
+            //       )
+            //     : null
+            // const conflationId =
+            //     relevantConflationArray && relevantConflationArray.length > 0
+            //         ? relevantConflationArray.pop().id
+            //         : null
+            const confabButton = currentConfidantAttending
                 ? this.confabLeaveButton
                 : this.confabJoinButton
-            let attendanceDisplay = conflationId
+            let attendanceDisplay = currentConfidantAttending
                 ? this.amAttendingDisplay
                 : this.notAttendingDisplay
 
             return (
                 <div className="confab-card-container" key={confab.id}>
                     <CoffeeScheduleEvent
+                        ccId={this.props.ccId}
                         confabId={confab.id}
                         description={confab.description}
                         hostName={hostName}
                         startTime={confab.start_time}
                         // endTime={confab.end_time}
                         avatarId="3" //todo: this can be made dynamic later, like {this.props.confidants[confab.host_id].avatarId} once that's in place
-                        conflationId={conflationId}
+                        // conflationId={conflationId}
                         confabButton={confabButton}
                         attendanceDisplay={attendanceDisplay}
                         seatsRemaining={seatsRemaining}

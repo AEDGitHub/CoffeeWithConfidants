@@ -20,6 +20,7 @@ import {
     filterConfabsByConfabLocationId,
     filterConflationsByConfabIdAndAttendeeId,
     convertDatetimeStringToObject,
+    determineWhetherConfidantIsAttending,
 } from "../../../utils/modification_utils"
 import { Link } from "react-router-dom"
 import { connect } from "react-redux"
@@ -41,6 +42,7 @@ const mSTP = (state) => {
             </Link>
         ),
         shorterConurbationName: shorterConurbationName,
+        determineWhetherConfidantIsAttending: determineWhetherConfidantIsAttending,
         filterConfabsByConfabLocationId: filterConfabsByConfabLocationId,
         filterConflationsByConfabIdAndAttendeeId: filterConflationsByConfabIdAndAttendeeId,
         convertDatetimeStringToObject: convertDatetimeStringToObject,
