@@ -11,17 +11,20 @@ const CoffeeScheduleEvent = ({
     description,
     hostName,
     seatsRemaining,
-    startTime,
+    day,
+    date,
+    hours,
+    // startTime,
 }) => {
-    const timeObject = convertDatetimeStringToObject(startTime)
-    const day = timeObject["day"].toUpperCase()
-    const date = timeObject["month"].toUpperCase() + " " + timeObject["dateNum"]
+    // const timeObject = convertDatetimeStringToObject(startTime)
+    // const day = timeObject["day"].toUpperCase()
+    // const date = timeObject["month"].toUpperCase() + " " + timeObject["dateNum"]
 
-    const hours =
-        timeObject["hour"].toString() +
-        " — " +
-        (timeObject["hour"] + 2).toString() +
-        "00"
+    // const hours =
+    //     timeObject["hour"].toString() +
+    //     " — " +
+    //     (timeObject["hour"] + 2).toString() +
+    //     "00"
 
     return (
         <>
@@ -30,7 +33,7 @@ const CoffeeScheduleEvent = ({
                     <div className="card-top">
                         <div className="avatar-container">
                             <div className={`img-container-${avatarId}`}></div>
-                            <div className="name">{hostName.toUpperCase()}</div>
+                            <div className="name">{hostName}</div>
                         </div>
                         <div className="time-container">
                             <div className="day">{day}</div>

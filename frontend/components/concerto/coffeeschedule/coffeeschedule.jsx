@@ -20,24 +20,13 @@ class CoffeeSchedule extends React.Component {
         this.monthDisplay = this.monthDisplay.bind(this)
         this.confabJoinButton = this.confabJoinButton.bind(this)
         this.confabLeaveButton = this.confabLeaveButton.bind(this)
-        this.generateRelevantConflationArray = this.generateRelevantConflationArray.bind(
-            this
-        )
         this.amAttendingDisplay = this.amAttendingDisplay.bind(this)
         this.notAttendingDisplay = this.notAttendingDisplay.bind(this)
     }
 
-    // lifecycle methods
-
     componentDidMount() {
         this.props.loadConfabs()
     }
-
-    componentWillUnmount() {}
-
-    // interaction handlers
-
-    // displays, fields, and buttons with variable logic
 
     monthDisplay() {
         const rightNow = new Date()
@@ -120,27 +109,6 @@ class CoffeeSchedule extends React.Component {
         )
     }
 
-    // confabLeaveButton(confabId, conflationId) {
-    //     return (
-    //         <div
-    //             className="squad-up-button-joined"
-    //             onClick={() => this.props.leaveConfab(confabId, conflationId)}
-    //         >
-    //             <div className="visibility-shift">
-    //                 <span>LEAVE CONFAB</span>
-    //             </div>
-    //         </div>
-    //     )
-    // }
-
-    generateRelevantConflationArray(conflations, confabId, ccId) {
-        return this.props.filterConflationsByConfabIdAndAttendeeId(
-            conflations,
-            confabId,
-            ccId
-        )
-    }
-
     displaysAllConfabsPerConurbation(conurbationId) {
         const relevantConfabs = this.props.filterConfabsByConfabLocationId(
             this.props.confabs,
@@ -149,11 +117,26 @@ class CoffeeSchedule extends React.Component {
         return relevantConfabs.map((confab) => {
             const seatsRemaining =
                 confab.max_capacity - confab.attendee_ids.length
-            const hostName = this.props.confidants[confab.host_id].username
+            const hostName = this.props.confidants[
+                confab.host_id
+            ].username.toUpperCase()
             const currentConfidantAttending = this.props.determineWhetherConfidantIsAttending(
                 confab,
                 this.props.ccId
             )
+            const timeObject = this.props.convertDatetimeStringToObject(
+                confab.start_time
+            )
+            const day = timeObject["day"].toUpperCase()
+            const date =
+                timeObject["month"].toUpperCase() + " " + timeObject["dateNum"]
+
+            const hours =
+                timeObject["hour"].toString() +
+                " — " +
+                (timeObject["hour"] + 2).toString() +
+                "00"
+
             const confabButton = currentConfidantAttending
                 ? this.confabLeaveButton
                 : this.confabJoinButton
@@ -164,15 +147,18 @@ class CoffeeSchedule extends React.Component {
             return (
                 <div className="confab-card-container" key={confab.id}>
                     <CoffeeScheduleEvent
-                        attendanceDisplay={attendanceDisplay}
-                        avatarId="3" //todo: this can be made dynamic later, like {this.props.confidants[confab.host_id].avatarId} once that's in place
+                        avatarId="3"
                         ccId={this.props.ccId}
-                        confabButton={confabButton}
                         confabId={confab.id}
+                        day={day}
+                        date={date}
                         description={confab.description}
+                        hours={hours}
                         hostName={hostName}
                         seatsRemaining={seatsRemaining}
-                        startTime={confab.start_time}
+                        //functions
+                        attendanceDisplay={attendanceDisplay}
+                        confabButton={confabButton}
                     />
                 </div>
             )
@@ -180,8 +166,6 @@ class CoffeeSchedule extends React.Component {
     }
 
     render() {
-        //displays, fields, and buttons with constant logic
-
         const photoContainer = (
             <div className="coffeeschedule-photo-container">
                 <div className="coffeeschedule-msg-container">
