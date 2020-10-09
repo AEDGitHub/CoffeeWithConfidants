@@ -26,13 +26,3 @@ json.confabs do
         end
     end
 end
-
-json.conflations do
-    @confabs.each do |confab|
-        confab.conflations.each do |conflation|
-            json.set! conflation.id do
-                json.partial! 'api/conflations/conflation', conflation: conflation
-            end
-        end
-    end
-end

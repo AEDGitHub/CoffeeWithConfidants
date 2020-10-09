@@ -1,1 +1,0 @@
-json.extract! conflation, :id, :attendee_id, :confab_id
