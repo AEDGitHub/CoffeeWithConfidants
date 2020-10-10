@@ -21,13 +21,13 @@ import { Link } from "react-router-dom"
 import { connect } from "react-redux"
 import CoffeeSchedule from "./coffeeschedule"
 
-const mSTP = (state) => {
+const mSTP = ({ session, entities: { confidants, conurbations, confabs } }) => {
     return {
-        confidants: state.entities.confidants,
-        conurbations: selectAllConurbations(state),
-        confabs: selectAllConfabs(state),
-        ccId: state.session.ccId,
-        loggedIn: Boolean(state.session.ccId),
+        confidants: confidants,
+        conurbations: selectAllConurbations(conurbations),
+        confabs: selectAllConfabs(confabs),
+        ccId: session.ccId,
+        loggedIn: Boolean(session.ccId),
         signUpLink: (
             <Link to="/signup" className="coffeeschedule-signup-link">
                 sign up
@@ -44,8 +44,8 @@ const mDTP = (dispatch) => {
     return {
         loadConfabs: () => dispatch(fetchFilteredApiConfabs()),
         joinConfab: (confabId) => dispatch(joinConfab(confabId)),
-        leaveConfab: (confabId, conflationId) =>
-            dispatch(leaveConfab(confabId, conflationId)),
+        leaveConfab: (confabId, confidantId) =>
+            dispatch(leaveConfab(confabId, confidantId)),
     }
 }
 

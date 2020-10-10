@@ -12,14 +12,16 @@ import {
 } from "../../../utils/modification_utils"
 import EventShow from "./eventshow"
 
-const mSTP = (state, ownProps) => {
+const mSTP = (
+    { session, entities: { confidants, conurbations, confabs } },
+    ownProps
+) => {
     return {
-        ccId: state.session.ccId,
-        confab: state.entities.confabs[ownProps.match.params.confabId],
-        confidants: state.entities.confidants,
-        conurbations: state.entities.conurbations,
-        conflations: state.entities.conflations,
-        loggedIn: Boolean(state.session.ccId),
+        ccId: session.ccId,
+        confab: confabs[ownProps.match.params.confabId],
+        confidants: confidants,
+        conurbations: conurbations,
+        loggedIn: Boolean(session.ccId),
         convertDatetimeStringToObject: convertDatetimeStringToObject,
         determineWhetherConfidantIsAttending: determineWhetherConfidantIsAttending,
         restOfConurbationName: restOfConurbationName,

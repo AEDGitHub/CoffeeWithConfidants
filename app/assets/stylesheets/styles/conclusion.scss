@@ -22,7 +22,8 @@ footer {
                 font-weight: bold;
                 a {
                 }
-                button {
+                button:hover {
+                    cursor: pointer;
                 }
             }
         }

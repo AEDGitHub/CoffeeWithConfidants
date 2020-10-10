@@ -12,15 +12,15 @@ import { Link } from "react-router-dom"
 import { connect } from "react-redux"
 import SessionForm from "./sessionform"
 
-const mSTP = (state) => {
+const mSTP = ({ entities: { confidants, conurbations, confabs }, errors }) => {
     return {
-        conurbations: state.entities.conurbations,
-        conurbationsAreLoaded: areConurbationsLoaded(state),
+        conurbations: conurbations,
+        conurbationsAreLoaded: areConurbationsLoaded(conurbations),
         demoConfidantConurbationId: selectParticularConurbationByName(
-            state,
+            conurbations,
             "Quarantine Cosmopolis, San Francisco Bay Area, California"
         ),
-        sessionErrors: state.errors.session,
+        sessionErrors: errors.session,
         formType: "signin",
         mainMsg: "Take your time...",
         subMsg: "Welcome back, Confidant! Let's get this caffeine.",
