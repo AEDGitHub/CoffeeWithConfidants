@@ -12,7 +12,7 @@ footer {
         display: flex;
         justify-content: center;
         max-width: 888px;
-        padding: 1rem 1.333rem;
+        padding: 1rem 1.333rem 0rem 1.333rem;
         line-height: 1.618;
         font-size: 1.111rem;
         .footer-links {
@@ -27,8 +27,14 @@ footer {
             }
         }
         .footer-content {
-            font-weight: 400;
+            font-weight: 300;
             width: 75.557%;
+            .last-surprise {
+                color: #19081d;
+            }
+            .last-surprise:hover {
+                cursor: default;
+            }
         }
     }
 }

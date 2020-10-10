@@ -43,7 +43,30 @@ class Conclusion extends React.Component {
             case "About":
                 return (
                     <div>
-                        <p>PLACEHOLDER ABOUT TEXT</p>
+                        <p>
+                            Coffee With Confidants is all about making our
+                            reality less contrived. In the digital age, we're
+                            more "connected" than we've ever been, but we're
+                            also increasingly forced to hide behind masks of our
+                            own construction by conspirators who would do
+                            anything to keep us from exposing their crimes.
+                        </p>
+                        <br></br>
+                        <p>
+                            We're not doing anything new. We're providing a
+                            means to confabulate with others who would enforce
+                            authenticity in a way that would've been unnecessary
+                            20 years ago. So squad up, make your plans, and let
+                            us start the game.
+                        </p>
+                        <a
+                            href="https://youtu.be/5FG85wVSV3o"
+                            className="last-surprise"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            C'mon. They'll never see it coming.
+                        </a>
                     </div>
                 )
             case "Acknowledgements":
