@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import NavLinksContainer from "./navlinks/navlinks_container"
+import NavLinks from "./navlinks/navlinks_container"
 
 class Concenter extends React.Component {
     constructor(props) {
@@ -15,7 +15,7 @@ class Concenter extends React.Component {
                         <Link className="link-logo" to="/">
                             Coffee With Confidants
                         </Link>
-                        <NavLinksContainer />
+                        <NavLinks />
                     </div>
                 </header>
             </>

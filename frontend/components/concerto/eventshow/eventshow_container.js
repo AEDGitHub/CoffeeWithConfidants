@@ -30,8 +30,8 @@ const mSTP = (state, ownProps) => {
 const mDTP = (dispatch) => {
     return {
         joinConfab: (confabId) => dispatch(joinConfab(confabId)),
-        leaveConfab: (confabId, conflationId) =>
-            dispatch(leaveConfab(confabId, conflationId)),
+        leaveConfab: (confabId, confidantId) =>
+            dispatch(leaveConfab(confabId, confidantId)),
         loadConfab: (confabId) => dispatch(fetchFilteredApiConfabs(confabId)),
     }
 }

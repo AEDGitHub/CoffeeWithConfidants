@@ -33,7 +33,7 @@ class EventShow extends React.Component {
         })
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps) {
         if (this.props.confab && prevProps.confab !== this.props.confab) {
             this.updateConfabDataInState(this.props.confab)
         }
