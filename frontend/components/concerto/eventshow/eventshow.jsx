@@ -39,12 +39,6 @@ class EventShow extends React.Component {
         }
     }
 
-    componentWillUnmount() {}
-
-    // interaction handlers
-
-    // displays, fields, and buttons with variable logic
-
     updateConfabDataInState(confab) {
         const timeObject = this.props.convertDatetimeStringToObject(
             confab.start_time
@@ -133,8 +127,6 @@ class EventShow extends React.Component {
     }
 
     render() {
-        // displays, fields and buttons with constant logic
-
         const confabId = this.props.match.params.confabId
         const hostName = this.state.hostName
         const day = this.state.day

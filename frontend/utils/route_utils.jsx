@@ -39,4 +39,4 @@ const mSTP = (state) => {
 }
 
 export const AuthRoute = withRouter(connect(mSTP)(Auth))
-export const ProtectedRoute = withRouter(connect(mSTP))(Protected)
+export const ProtectedRoute = withRouter(connect(mSTP)(Protected))
