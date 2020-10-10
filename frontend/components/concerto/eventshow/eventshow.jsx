@@ -5,23 +5,22 @@ class EventShow extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            data: false,
+            conurbation: "",
             currentUserAttending: false,
-            hostName: "",
-            day: "",
-            month: "",
             date: "",
+            day: "",
+            description: "",
+            hostName: "",
             hours: "",
             location: "",
-            conurbation: "",
-            description: "",
+            month: "",
             seatsRemaining: 0,
         }
+        this.attendanceDisplay = this.attendanceDisplay.bind(this)
+        this.confabJoinButton = this.confabJoinButton.bind(this)
+        this.confabLeaveButton = this.confabLeaveButton.bind(this)
+        this.determineConfabButton = this.determineConfabButton.bind(this)
         this.updateConfabDataInState = this.updateConfabDataInState.bind(this)
-        // this.generateAttendanceDisplay = this.generateAttendanceDisplay.bind(
-        //     this
-        // )
-        // this.generateConfabButton = this.generateConfabButton.bind(this)
     }
 
     // lifecycle methods
@@ -50,7 +49,13 @@ class EventShow extends React.Component {
         const timeObject = this.props.convertDatetimeStringToObject(
             confab.start_time
         )
+        const currentUserAttending = this.props.determineWhetherConfidantIsAttending(
+            confab,
+            this.props.ccId
+        )
+
         this.setState({
+            currentUserAttending: currentUserAttending,
             date: timeObject["dateNum"],
             day: timeObject["day"],
             description: confab.description,
@@ -65,73 +70,67 @@ class EventShow extends React.Component {
         })
     }
 
-    // generateAttendanceDisplay(conflationId, seatsRemaining) {
-    //     return conflationId ? (
-    //         <div className="attendance-status-attending">
-    //             <div className="seats-left">SEE YOU THERE!</div>
-    //             {/* <div className="fancy-graphic">LATER</div> */}
-    //         </div>
-    //     ) : (
-    //         <div className="attendance-status-not-attending">
-    //             <div className="seats-left">{seatsRemaining} SPOTS OPEN!</div>
-    //             {/* <div className="fancy-graphic">LATER</div> */}
-    //         </div>
-    //     )
-    // }
+    attendanceDisplay(seatsRemaining) {
+        return this.state.currentUserAttending ? (
+            <div className="attendance-status-attending">
+                <div className="seats-left">SEE YOU THERE!</div>
+                {/* <div className="fancy-graphic">LATER</div> */}
+            </div>
+        ) : (
+            <div className="attendance-status-not-attending">
+                <div className="seats-left">{seatsRemaining} SPOTS OPEN!</div>
+                {/* <div className="fancy-graphic">LATER</div> */}
+            </div>
+        )
+    }
 
-    // generateConfabJoinButton(confabId) {
-    //     return this.props.loggedIn ? (
-    //         <div
-    //             className="squad-up-button"
-    //             onClick={() => this.props.joinConfab(confabId)}
-    //         >
-    //             <div className="visibility-shift">
-    //                 <span>JOIN CONFAB</span>
-    //             </div>
-    //         </div>
-    //     ) : (
-    //         <Link to="/signin/#" className="squad-up-button">
-    //             <div className="visibility-shift">
-    //                 <span>JOIN CONFAB</span>
-    //             </div>
-    //         </Link>
-    //     )
-    // }
+    confabJoinButton(confabId) {
+        return (
+            <div
+                className="squad-up-button"
+                onClick={() => {
+                    this.props.joinConfab(confabId),
+                        this.setState({ currentUserAttending: true })
+                }}
+            >
+                <div className="visibility-shift">
+                    <span>JOIN CONFAB</span>
+                </div>
+            </div>
+        )
+    }
 
-    // generateConfabLeaveButton(confabId, conflationId) {
-    //     return (
-    //         <div
-    //             className="squad-up-button-joined"
-    //             onClick={() => this.props.leaveConfab(confabId, conflationId)}
-    //         >
-    //             <div className="visibility-shift">
-    //                 <span>LEAVE CONFAB</span>
-    //             </div>
-    //         </div>
-    //     )
-    // }
+    confabLeaveButton(confabId, confidantId) {
+        return (
+            <div
+                className="squad-up-button-joined"
+                onClick={() => {
+                    this.props.leaveConfab(confabId, confidantId),
+                        this.setState({ currentUserAttending: false })
+                }}
+            >
+                <div className="visibility-shift">
+                    <span>LEAVE CONFAB</span>
+                </div>
+            </div>
+        )
+    }
 
-    // determineConfabButton(confabId, conflationId) {
-    //     return this.props.loggedIn ? <div></div> : <div></div>
-    // }
-
-    // loadConfabIntoState() {
-    //
-
-    //     this.setState({
-    //         data: true,
-    //
-    //         location: this.props.shorterConurbationName(
-    //             this.props.conurbations[this.props.confab.location_id].name
-    //         ),
-    //         conurbation: this.props.restOfConurbationName(
-    //             this.props.conurbations[this.props.confab.location_id].name
-    //         ),
-
-    //
-
-    //     })
-    // }
+    determineConfabButton(confabId) {
+        return this.props.loggedIn ? (
+            this.state.currentUserAttending ? (
+                this.confabLeaveButton(confabId, this.props.ccId)
+            ) : (
+                this.confabJoinButton(confabId)
+            )
+        ) : (
+            <Link to="/signin/#" className="squad-up-button">
+                <div className="visibility-shift">
+                    <span>JOIN CONFAB</span>
+                </div>
+            </Link>
+        )
+    }
 
     render() {
         // displays, fields and buttons with constant logic
@@ -145,14 +144,11 @@ class EventShow extends React.Component {
         const description = this.state.description
         const location = this.state.location
         const conurbation = this.state.conurbation
-
-        // const confabButtonObject = this.loadConfabButtonObject(conflationId)
-        // const seatsRemaining = this.state.seatsRemaining
-        // let attendanceDisplay = this.generateAttendanceDisplay(
-        //     conflationId,
-        //     seatsRemaining
-        // )
-        // let confabButton = this.generateConfabButton(confabId, conflationId)
+        const url = `herokuapp.coffeewithconfidants.com/#${this.props.match.url}`
+        const confabButton = this.determineConfabButton(confabId)
+        const attendanceDisplay = this.attendanceDisplay(
+            this.state.seatsRemaining
+        )
 
         return (
             <>
@@ -178,26 +174,21 @@ class EventShow extends React.Component {
                                         {conurbation}
                                     </div>
                                     <div className="eventshow-confab-info-url">
-                                        http://herokuapp.coffeewithconfidants.com
+                                        {url}
                                     </div>
                                     <div className="eventshow-confab-info-referral">
-                                        Can't make it? Know someone who can?
+                                        Can't make it?
+                                        <br></br>
+                                        Know someone who can?
+                                        <br></br>
                                         Send them the link!
                                     </div>
                                     <hr></hr>
-                                    {/* {attendanceDisplay} */}
-                                    <div className="eventshow-confab-info-seats-left">
-                                        STATIC SEATS LEFT!
-                                    </div>
+                                    {attendanceDisplay}
                                 </div>
                             </div>
                             <div className="eventshow-confab-button-container">
-                                {/* {confabButton} */}
-                                <div className="squad-up-button">
-                                    <div className="visibility-shift">
-                                        <span>JOIN CONFAB</span>
-                                    </div>
-                                </div>
+                                {confabButton}
                             </div>
 
                             <div className="eventshow-confab-rant">

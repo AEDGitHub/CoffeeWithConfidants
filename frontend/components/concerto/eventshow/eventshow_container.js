@@ -8,31 +8,33 @@ import {
 } from "../../../actions/confabs_actions"
 import {
     convertDatetimeStringToObject,
-    shorterConurbationName,
+    determineWhetherConfidantIsAttending,
     restOfConurbationName,
+    shorterConurbationName,
 } from "../../../utils/modification_utils"
 import EventShow from "./eventshow"
 
 const mSTP = (state, ownProps) => {
     return {
+        ccId: state.session.ccId,
         confab: state.entities.confabs[ownProps.match.params.confabId],
         confidants: state.entities.confidants,
         conurbations: state.entities.conurbations,
         conflations: state.entities.conflations,
-        ccId: state.session.ccId,
         loggedIn: Boolean(state.session.ccId),
         convertDatetimeStringToObject: convertDatetimeStringToObject,
-        shorterConurbationName: shorterConurbationName,
+        determineWhetherConfidantIsAttending: determineWhetherConfidantIsAttending,
         restOfConurbationName: restOfConurbationName,
+        shorterConurbationName: shorterConurbationName,
     }
 }
 
 const mDTP = (dispatch) => {
     return {
-        loadConfab: (confabId) => dispatch(fetchFilteredApiConfabs(confabId)),
         joinConfab: (confabId) => dispatch(joinConfab(confabId)),
         leaveConfab: (confabId, conflationId) =>
             dispatch(leaveConfab(confabId, conflationId)),
+        loadConfab: (confabId) => dispatch(fetchFilteredApiConfabs(confabId)),
     }
 }
 
