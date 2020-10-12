@@ -54,10 +54,9 @@ class Conclusion extends React.Component {
                         <br></br>
                         <p>
                             We're not doing anything new. We're providing a
-                            means to confabulate with others who would enforce
-                            authenticity in a way that would've been unnecessary
-                            20 years ago. So squad up, make your plans, and let
-                            us start the game.
+                            means to confabulate with others in a way that
+                            would've been unnecessary 20 years ago. So squad up,
+                            make your plans, and let us start the game.
                         </p>
                         <a
                             href="https://youtu.be/5FG85wVSV3o"
