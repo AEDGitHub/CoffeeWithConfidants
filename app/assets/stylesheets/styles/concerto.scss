@@ -631,4 +631,76 @@ section {
             }
         }
     }
+    .confidantedit {
+        background-color: #efefef;
+        .confidantedit-container {
+            margin: 1rem auto;
+            max-width: 999px;
+            display: flex;
+            padding: 1rem;
+            .container-greeting-column {
+                flex: 1;
+                padding: 1rem;
+                background-color: fuchsia;
+                .greeting-column-heading {
+                }
+                .greeting-column-subhead {
+                }
+            }
+            .container-form-column {
+                flex: 3;
+                padding: 1rem;
+                background-color: green;
+                .form-column-heading {
+                    background-color: red;
+                    padding: 1rem;
+                }
+                .form-column-section {
+                    background-color: blue;
+                    padding: 1rem;
+                    .section-information {
+                        background-color: gold;
+                        padding: 1rem;
+                        .information-heading {
+                        }
+                        .information-subsection {
+                            .subsection-username {
+                            }
+                            .subsection-email {
+                            }
+                            .subsection-conurbation {
+                            }
+                        }
+                    }
+                    .section-password {
+                        background-color: brown;
+                        padding: 1rem;
+                        .password-heading {
+                        }
+                        .password-subsection {
+                            .subsection-current-password {
+                            }
+                            .subsection-new-password {
+                            }
+                            .subsection-confirm {
+                            }
+                            .subsection-submit-button {
+                            }
+                        }
+                    }
+                }
+                .form-column-cancel-account {
+                    background-color: black;
+                    .cancel-account-heading {
+                    }
+                    .cancel-account-message {
+                    }
+                    .cancel-account-button {
+                    }
+                    .cancel-account-final-message {
+                    }
+                }
+            }
+        }
+    }
 }
