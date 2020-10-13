@@ -46,9 +46,9 @@ export const selectParticularConfabById = (confabs, confabId) => {
 
 //select confidants with confab data
 
-export const selectParticularConfidantByHostId = (confidants, hostId) => {
+export const selectParticularConfidantById = (confidants, confidantId) => {
     return Object.values(confidants).filter(
-        (confidant) => confidant.id === hostId
+        (confidant) => confidant.id === confidantId
     )
 }
 

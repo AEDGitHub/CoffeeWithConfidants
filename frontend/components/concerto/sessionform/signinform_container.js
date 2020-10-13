@@ -12,7 +12,7 @@ import { Link } from "react-router-dom"
 import { connect } from "react-redux"
 import SessionForm from "./sessionform"
 
-const mSTP = ({ entities: { confidants, conurbations, confabs }, errors }) => {
+const mSTP = ({ entities: { conurbations }, errors }) => {
     return {
         conurbations: conurbations,
         conurbationsAreLoaded: areConurbationsLoaded(conurbations),

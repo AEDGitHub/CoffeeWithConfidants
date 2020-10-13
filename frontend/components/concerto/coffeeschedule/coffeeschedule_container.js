@@ -2,8 +2,8 @@
 
 import React from "react"
 import {
-    selectAllConurbations,
     selectAllConfabs,
+    selectAllConurbations,
 } from "../../../reducers/selectors"
 import {
     fetchFilteredApiConfabs,
@@ -12,22 +12,25 @@ import {
 } from "../../../actions/confabs_actions"
 
 import {
-    shorterConurbationName,
-    filterConfabsByConfabLocationId,
     convertDatetimeStringToObject,
     determineWhetherConfidantIsAttending,
+    filterConfabsByConfabLocationId,
+    shorterConurbationName,
 } from "../../../utils/modification_utils"
 import { Link } from "react-router-dom"
 import { connect } from "react-redux"
 import CoffeeSchedule from "./coffeeschedule"
 
-const mSTP = ({ session, entities: { confidants, conurbations, confabs } }) => {
+const mSTP = ({
+    entities: { confidants, conurbations, confabs },
+    session: { ccId },
+}) => {
     return {
         confidants: confidants,
         conurbations: selectAllConurbations(conurbations),
         confabs: selectAllConfabs(confabs),
-        ccId: session.ccId,
-        loggedIn: Boolean(session.ccId),
+        ccId: ccId,
+        loggedIn: Boolean(ccId),
         signUpLink: (
             <Link to="/signup" className="coffeeschedule-signup-link">
                 sign up

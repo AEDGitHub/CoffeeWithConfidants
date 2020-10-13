@@ -3,6 +3,27 @@ import React from "react"
 class ConfidantEdit extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {
+            username: "",
+            email: "",
+            newPassword: "",
+            confirmPassword: "",
+            locationId: null,
+            demoUserCityId: null,
+        }
+
+        // this.handleSubmit = this.handleSubmit.bind(this)
+    }
+
+    componentDidMount() {
+        this.props.loadConurbations()
+    }
+
+    update(field) {
+        return (e) =>
+            this.setState({
+                [field]: e.target.value,
+            })
     }
 
     render() {
