@@ -23,39 +23,68 @@ class ConfidantEdit extends React.Component {
                                 Edit Your Account
                             </div>
                             <div className="form-column-section">
-                                <div className="section-information">
-                                    <div className="information-heading">
+                                <div className="form-section">
+                                    <div className="form-section-heading">
                                         Personal Information
                                     </div>
-                                    <div className="information-subsection">
-                                        <div className="subsection-username">
-                                            staticUsername
+                                    <div className="form-subsection">
+                                        <div className="subsection-field-area">
+                                            <div className="field-title">
+                                                USERNAME
+                                            </div>
+                                            <div className="form-field">
+                                                staticUsername
+                                            </div>
                                         </div>
-                                        <div className="subsection-email">
-                                            staticEmail
+                                        <div className="subsection-field-area">
+                                            <div className="field-title">
+                                                EMAIL
+                                            </div>
+                                            <div className="form-field">
+                                                staticEmail
+                                            </div>
                                         </div>
-                                        <div className="subsection-conurbation">
-                                            staticConurbation
+                                        <div className="subsection-field-area">
+                                            <div className="field-title">
+                                                CONURBATION
+                                            </div>
+                                            <div className="form-field">
+                                                staticConurbation
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="section-password">
-                                    <div className="password-heading">
+                                <div className="form-section">
+                                    <div className="form-section-heading">
                                         Change Your Password
                                     </div>
-                                    <div className="password-subsection">
-                                        <div className="subsection-current-password">
-                                            staticPlaceholderCurrentPass
+                                    <div className="form-subsection">
+                                        <div className="subsection-field-area">
+                                            <div className="field-title">
+                                                CURRENT PASSWORD
+                                            </div>
+                                            <div className="form-field">
+                                                staticPlaceholderCurrentPass
+                                            </div>
                                         </div>
-                                        <div className="subsection-new-password">
-                                            staticPlaceholderNewPass
+                                        <div className="subsection-field-area">
+                                            <div className="field-title">
+                                                NEW PASSWORD
+                                            </div>
+                                            <div className="form-field">
+                                                staticPlaceholderNewPass
+                                            </div>
                                         </div>
-                                        <div className="subsection-confirm">
-                                            staticPlaceholder Give us another
-                                            one!
+                                        <div className="subsection-field-area">
+                                            <div className="field-title">
+                                                CONFIRM NEW PASSWORD
+                                            </div>
+                                            <div className="form-field">
+                                                Give us another one!
+                                            </div>
                                         </div>
-                                        <div className="subsection-submit-button">
-                                            Save Changes
+                                        <div className="form-submit-button">
+                                            SAVE CHANGES
                                         </div>
                                     </div>
                                 </div>
@@ -64,9 +93,18 @@ class ConfidantEdit extends React.Component {
                                 <div className="cancel-account-heading">
                                     Cancel my account
                                 </div>
-                                <div className="cancel-account-message"></div>
+                                <div className="cancel-account-message">
+                                    When you do this, we'll get rid of your
+                                    information from our database immediately.
+                                </div>
                                 <div className="cancel-account-button"></div>
-                                <div className="cancel-account-final-message"></div>
+                                <div className="cancel-account-final-message">
+                                    To review the personal information we have
+                                    about you, scroll up to your account details
+                                    and take a gander. If you have other
+                                    questions, my contact information is in the
+                                    footer. ~_^
+                                </div>
                             </div>
                         </div>
                     </div>
