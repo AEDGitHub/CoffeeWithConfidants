@@ -48,8 +48,12 @@ class ConfidantEdit extends React.Component {
                                             <div className="field-title">
                                                 CONURBATION
                                             </div>
-                                            <div className="form-field">
-                                                staticConurbation
+                                            <div className="form-dropdown">
+                                                <select>
+                                                    <option>Option 1</option>
+                                                    <option>Option 2</option>
+                                                    <option>Option 3</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -97,7 +101,9 @@ class ConfidantEdit extends React.Component {
                                     When you do this, we'll get rid of your
                                     information from our database immediately.
                                 </div>
-                                <div className="cancel-account-button"></div>
+                                <div className="cancel-account-button">
+                                    CANCEL MY ACCOUNT
+                                </div>
                                 <div className="cancel-account-final-message">
                                     To review the personal information we have
                                     about you, scroll up to your account details

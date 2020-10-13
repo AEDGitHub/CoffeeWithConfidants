@@ -160,9 +160,10 @@ section {
                     background: transparent;
                     height: 100%;
                     line-height: 100%;
-                    width: 111%;
+                    width: 100%;
                     margin-top: 0;
-                    display: block;
+                    // display: block;
+                    cursor: pointer;
                 }
             }
         }
@@ -671,10 +672,11 @@ section {
                             font-weight: 800;
                         }
                         .form-subsection {
-                            padding: 0.333rem 1rem 1rem 1rem;
+                            padding: 0.333rem 1rem 1.333rem 1rem;
                             border-top: 1px solid #512e59;
                             border-bottom: 1px solid #512e59;
                             .subsection-field-area {
+                                // margin: 0 auto;
                                 margin-top: 1rem;
                                 .field-title {
                                     font-size: 0.777rem;
@@ -689,7 +691,28 @@ section {
                                     border: 1px solid #717370;
                                     border-radius: 4px;
                                 }
+                                .form-dropdown {
+                                    margin-top: 0.333rem;
+                                    border: 1px solid #717370;
+                                    background: #ffffff;
+                                    border-radius: 4px;
+                                    width: 100%;
+                                    // display: block;
+                                    height: 4rem;
+                                    padding: 1rem;
+                                    overflow: hidden;
+                                }
+                                select {
+                                    background: transparent;
+                                    height: 100%;
+                                    line-height: 100%;
+                                    width: 100%;
+                                    margin-top: 0;
+                                    cursor: pointer;
+                                }
+                                // }
                             }
+
                             .form-submit-button {
                                 background-color: #ee0000;
                                 margin-top: 1rem;
@@ -716,10 +739,31 @@ section {
                         color: #ee0000;
                     }
                     .cancel-account-message {
+                        margin-top: 1rem;
+                        font-size: 1.111rem;
+                        font-weight: 300;
                     }
                     .cancel-account-button {
+                        margin-top: 1rem;
+                        padding: 1.333rem;
+                        border: 2px solid #ee0000;
+                        font-size: 1.111rem;
+                        font-weight: 800;
+                        color: #ee0000;
+                        display: block;
+                        text-align: center;
+                        width: 100%;
+                        border-radius: 11px;
+                        cursor: pointer;
+                    }
+                    .cancel-account-button:hover {
+                        background-color: #ee0000;
+                        color: #efefef;
                     }
                     .cancel-account-final-message {
+                        margin-top: 1rem;
+                        font-size: 1.111rem;
+                        font-weight: 300;
                     }
                 }
             }
