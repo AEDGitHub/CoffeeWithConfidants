@@ -50,7 +50,7 @@ class SessionForm extends React.Component {
             username: this.state.username,
             email: this.state.email,
             password: this.state.password,
-            locationId: this.state.location_id,
+            location_id: this.state.locationId,
         }
 
         this.props.processMainForm(confidant)
@@ -61,8 +61,6 @@ class SessionForm extends React.Component {
         e.preventDefault()
         const demoConfidant = {
             username: "Joker",
-            email: "breakintobreakout@fakemail.com",
-            locationId: this.props.demoConfidantConurbationId,
             password: "hunter12",
         }
 
