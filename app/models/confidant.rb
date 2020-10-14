@@ -20,7 +20,7 @@ class Confidant < ApplicationRecord
 
     has_many :confabs_rsvpd,
         through: :conflations,
-        class_name: :Confab
+        source: :confab
 
     def self.find_by_credentials(username, password)
         confidant = Confidant.find_by(username: username)

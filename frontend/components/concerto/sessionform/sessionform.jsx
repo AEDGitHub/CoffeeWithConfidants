@@ -52,7 +52,6 @@ class SessionForm extends React.Component {
             password: this.state.password,
             location_id: this.state.locationId,
         }
-
         this.props.processMainForm(confidant)
         this.props.unloadSessionErrors()
     }
@@ -87,7 +86,7 @@ class SessionForm extends React.Component {
         } else {
             return (
                 <input
-                    required
+                    required={true}
                     type="email"
                     className="sessionform-form-field"
                     onChange={this.update("email")}
@@ -105,11 +104,13 @@ class SessionForm extends React.Component {
             return (
                 <div className="sessionform-dropdown">
                     <select
-                        required
+                        required={true}
                         defaultValue="Home conurbation"
                         onChange={this.update("locationId")}
                     >
-                        <option disabled="disabled">Home conurbation</option>
+                        <option disabled="disabled" value="">
+                            Home conurbation
+                        </option>
                         {this.homeCityFieldOptions()}
                     </select>
                 </div>
@@ -138,7 +139,7 @@ class SessionForm extends React.Component {
 
         const usernameField = (
             <input
-                required
+                required={true}
                 type="text"
                 className="sessionform-form-field"
                 onChange={this.update("username")}
@@ -149,7 +150,7 @@ class SessionForm extends React.Component {
 
         const passwordField = (
             <input
-                required
+                required={true}
                 type="password"
                 className="sessionform-form-field"
                 onChange={this.update("password")}

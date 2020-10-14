@@ -8,10 +8,12 @@ import {
 export const RECEIVE_CURRENT_CONFIDANT = "RECEIVE_CURRENT_CONFIDANT"
 export const LOGOUT_CURRENT_CONFIDANT = "LOGOUT_CURRENT_CONFIDANT"
 
-const receiveCurrentConfidant = (confidant) => {
+const receiveCurrentConfidant = ({ confabs, confidants, conurbations }) => {
     return {
         type: RECEIVE_CURRENT_CONFIDANT,
-        confidant,
+        confabs,
+        confidants,
+        conurbations,
     }
 }
 

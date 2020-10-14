@@ -2,6 +2,10 @@ class Api::ConfidantsController < ApplicationController
     before_action :require_login, except: [:new, :create]
     skip_before_action :verify_authenticity_token
 
+    def show
+        @confidant = Confidant.find(params[:id])
+    end
+
     def create
         @confidant = Confidant.new(confidant_params)
         if @confidant.save

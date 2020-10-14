@@ -4,11 +4,7 @@ json.confabs do
     end
 end
 
-json.conurbations do
-    json.set! @confab.conurbation.id do
-        json.partial! 'api/conurbations/conurbation', conurbation: @confab.conurbation
-    end    
-end
+#associations
 
 json.confidants do
     json.set! @confab.host.id do
@@ -19,4 +15,10 @@ json.confidants do
             json.partial! 'api/confidants/confidant', confidant: attendee
         end
     end
+end
+
+json.conurbations do
+    json.set! @confab.conurbation.id do
+        json.partial! 'api/conurbations/conurbation', conurbation: @confab.conurbation
+    end    
 end
