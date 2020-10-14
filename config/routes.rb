@@ -10,7 +10,6 @@ Rails.application.routes.draw do
     resources :confabs, only: [:index, :show, :update, :destroy] do
       resources :conflations, only: [:create, :destroy]
     end
-    # resources :conflations, only: [:destroy]
   end
 
   root "static_pages#root"

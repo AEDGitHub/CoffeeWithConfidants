@@ -1,5 +1,3 @@
-//todo: denature props coming in
-
 import React from "react"
 
 class SessionForm extends React.Component {

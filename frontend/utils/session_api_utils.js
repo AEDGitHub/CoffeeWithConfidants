@@ -1,3 +1,11 @@
+export const patchApiConfidant = (confidant) => {
+    return $.ajax({
+        url: `/api/confidants/${confidant.id}`,
+        method: "PATCH",
+        data: { confidant },
+    })
+}
+
 export const postApiConfidant = (confidant) => {
     return $.ajax({
         url: "/api/confidants",
@@ -11,6 +19,13 @@ export const postApiSession = (confidant) => {
         url: "/api/session",
         method: "POST",
         data: { confidant },
+    })
+}
+
+export const deleteApiConfidant = (confidantId) => {
+    return $.ajax({
+        url: `/api/confidants/${confidantId}`,
+        method: "DELETE",
     })
 }
 

@@ -1,6 +1,8 @@
 import {
+    patchApiConfidant,
     postApiConfidant,
     postApiSession,
+    deleteApiConfidant,
     deleteApiSession,
 } from "../utils/session_api_utils"
 
@@ -77,6 +79,22 @@ export const logout = () => {
     return (dispatch) => {
         return deleteApiSession().then(() => {
             dispatch(logoutCurrentConfidant())
+        })
+    }
+}
+
+export const deleteAccount = (confidantId) => {
+    return (dispatch) => {
+        return deleteApiConfidant(confidantId).then(() => {
+            dispatch(logoutCurrentConfidant())
+        })
+    }
+}
+
+export const updateAccount = (confidant) => {
+    return (dispatch) => {
+        return patchApiConfidant(confidant).then((payload) => {
+            dispatch(receiveCurrentConfidant(payload))
         })
     }
 }

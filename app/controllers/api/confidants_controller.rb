@@ -16,6 +16,26 @@ class Api::ConfidantsController < ApplicationController
         end
     end
 
+    def destroy
+        @dead_confidant = Confidant.find(params[:id])
+        if @dead_confidant == current_confidant
+            logout
+            @dead_confidant.destroy
+        else
+            render json: ["Sorry, no confidant to destroy!"], status: 422
+        end
+    end
+
+    def update
+        @confidant = Confidant.find(params[:id])
+        if @confidant == current_confidant
+            @confidant.update(confidant_params)
+            render :show
+        else
+            render json: ["Sorry, I couldn't update this confidant!"], status: 422
+        end
+    end
+
     private
 
     def confidant_params
