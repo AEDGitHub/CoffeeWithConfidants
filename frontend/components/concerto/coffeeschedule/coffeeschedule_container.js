@@ -10,7 +10,6 @@ import {
     joinConfab,
     leaveConfab,
 } from "../../../actions/confabs_actions"
-
 import {
     convertDatetimeStringToObject,
     determineWhetherConfidantIsAttending,

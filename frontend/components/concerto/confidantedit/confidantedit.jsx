@@ -1,4 +1,5 @@
 import React from "react"
+import { areConfabsLoaded } from "../../../reducers/selectors"
 
 class ConfidantEdit extends React.Component {
     constructor(props) {
@@ -9,14 +10,37 @@ class ConfidantEdit extends React.Component {
             newPassword: "",
             confirmPassword: "",
             locationId: null,
-            demoUserCityId: null,
         }
 
         // this.handleSubmit = this.handleSubmit.bind(this)
+        this.accountDeleteSection = this.accountDeleteSection.bind(this)
+        this.determineAccountDeleteSection = this.determineAccountDeleteSection.bind(
+            this
+        )
+        this.updateConfidantDataInState = this.updateConfidantDataInState.bind(
+            this
+        )
     }
 
     componentDidMount() {
         this.props.loadConurbations()
+    }
+
+    componentDidUpdate(prevProps) {
+        if (
+            this.props.confidant &&
+            prevProps.confidant !== this.props.confidant
+        ) {
+            this.updateConfidantDataInState(this.props.confidant)
+        }
+    }
+
+    updateConfidantDataInState(confidant) {
+        // this.setState({
+        //     username: confidant.username,
+        //     email: confidant.email,
+        //     locationId: confidant.location_id,
+        // })
     }
 
     update(field) {
@@ -26,7 +50,44 @@ class ConfidantEdit extends React.Component {
             })
     }
 
+    accountDeleteSection(confidantId) {
+        return (
+            <div className="form-column-cancel-account">
+                <div className="cancel-account-heading">Cancel my account</div>
+                <div className="cancel-account-message">
+                    When you do this, we'll get rid of your information from our
+                    database immediately.
+                </div>
+                <div
+                    className="cancel-account-button"
+                    onClick={() => {
+                        this.props.deleteAccount(confidantId)
+                    }}
+                >
+                    CANCEL MY ACCOUNT
+                </div>
+                <div className="cancel-account-final-message">
+                    To review the personal information we have about you, scroll
+                    up to your account details and take a gander. If you have
+                    other questions, my contact information is in the footer.
+                    ~_^
+                </div>
+            </div>
+        )
+    }
+
+    determineAccountDeleteSection(confidantId) {
+        return confidantId === 1 ? (
+            <></>
+        ) : (
+            this.accountDeleteSection(confidantId)
+        )
+    }
+
     render() {
+        const ccId = this.props.ccId
+        const accountDeleteSection = this.determineAccountDeleteSection(ccId)
+
         return (
             <>
                 <div className="confidantedit">
@@ -114,25 +175,7 @@ class ConfidantEdit extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="form-column-cancel-account">
-                                <div className="cancel-account-heading">
-                                    Cancel my account
-                                </div>
-                                <div className="cancel-account-message">
-                                    When you do this, we'll get rid of your
-                                    information from our database immediately.
-                                </div>
-                                <div className="cancel-account-button">
-                                    CANCEL MY ACCOUNT
-                                </div>
-                                <div className="cancel-account-final-message">
-                                    To review the personal information we have
-                                    about you, scroll up to your account details
-                                    and take a gander. If you have other
-                                    questions, my contact information is in the
-                                    footer. ~_^
-                                </div>
-                            </div>
+                            {accountDeleteSection}
                         </div>
                     </div>
                 </div>

@@ -13,15 +13,15 @@ import {
 import EventShow from "./eventshow"
 
 const mSTP = (
-    { session, entities: { confidants, conurbations, confabs } },
+    { session: { ccId }, entities: { confidants, conurbations, confabs } },
     ownProps
 ) => {
     return {
-        ccId: session.ccId,
+        ccId: ccId,
         confab: confabs[ownProps.match.params.confabId],
         confidants: confidants,
         conurbations: conurbations,
-        loggedIn: Boolean(session.ccId),
+        loggedIn: Boolean(ccId),
         convertDatetimeStringToObject: convertDatetimeStringToObject,
         determineWhetherConfidantIsAttending: determineWhetherConfidantIsAttending,
         restOfConurbationName: restOfConurbationName,

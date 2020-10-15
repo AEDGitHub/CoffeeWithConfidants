@@ -8,7 +8,6 @@ const sessionErrorsReducer = (oldState = [], action) => {
     Object.freeze(oldState)
     switch (action.type) {
         case RECEIVE_CURRENT_CONFIDANT:
-            return []
         case CLEAR_SESSION_ERRORS:
             return []
         case RECEIVE_SESSION_ERRORS:

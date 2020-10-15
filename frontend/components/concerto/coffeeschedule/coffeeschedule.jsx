@@ -1,7 +1,3 @@
-/*
-todo: destructure props coming in 
-*/
-
 import React from "react"
 import CoffeeScheduleEvent from "./coffee_schedule_event/coffeeschedule_event"
 
