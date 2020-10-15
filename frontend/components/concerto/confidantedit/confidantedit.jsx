@@ -1,5 +1,4 @@
 import React from "react"
-import { areConfabsLoaded } from "../../../reducers/selectors"
 
 class ConfidantEdit extends React.Component {
     constructor(props) {
@@ -11,7 +10,6 @@ class ConfidantEdit extends React.Component {
             confirmPassword: "",
             locationId: null,
         }
-
         // this.handleSubmit = this.handleSubmit.bind(this)
         this.accountDeleteSection = this.accountDeleteSection.bind(this)
         this.determineAccountDeleteSection = this.determineAccountDeleteSection.bind(
@@ -20,27 +18,34 @@ class ConfidantEdit extends React.Component {
         this.updateConfidantDataInState = this.updateConfidantDataInState.bind(
             this
         )
+        this.conurbationDropdown = this.conurbationDropdown.bind(this)
+        this.conurbationDropdownOptions = this.conurbationDropdownOptions.bind(
+            this
+        )
     }
 
     componentDidMount() {
+        // console.log(`componentDidMount now firing!`)
+        // console.log(`LS Username is ${this.state.username}`)
+        // console.log(`LS Email is ${this.state.email}`)
+        // console.log(`LS Location is ${this.state.locationId}`)
         this.props.loadConurbations()
+        this.updateConfidantDataInState(this.props.confidant)
     }
 
-    componentDidUpdate(prevProps) {
-        if (
-            this.props.confidant &&
-            prevProps.confidant !== this.props.confidant
-        ) {
-            this.updateConfidantDataInState(this.props.confidant)
-        }
-    }
+    componentDidUpdate(prevProps) {}
 
     updateConfidantDataInState(confidant) {
-        // this.setState({
-        //     username: confidant.username,
-        //     email: confidant.email,
-        //     locationId: confidant.location_id,
-        // })
+        // console.log(`updateConfidantDataInState now firing!`)
+        // console.log(Object.values(confidant))
+        // console.log(`Props Username is ${confidant.username}`)
+        // console.log(`Props Email is ${confidant.email}`)
+        // console.log(`Props Location is ${confidant.location_id}`)
+        this.setState({
+            username: confidant.username,
+            email: confidant.email,
+            locationId: confidant.location_id,
+        })
     }
 
     update(field) {
@@ -76,8 +81,49 @@ class ConfidantEdit extends React.Component {
         )
     }
 
+    conurbationDropdown() {
+        return (
+            <div className="subsection-field-area">
+                <div className="field-title">CONURBATION</div>
+                <div className="form-dropdown">
+                    {this.props.demoConfidantLoggedIn ? (
+                        <select defaultValue="Make an account to change conurbations!">
+                            <option
+                                disabled="disabled"
+                                value="Make an account to change conurbations!"
+                            >
+                                Make an account to change conurbations!
+                            </option>
+                        </select>
+                    ) : (
+                        <select
+                            defaultValue="Select a new conurbation (optional)"
+                            onChange={this.update("locationId")}
+                        >
+                            <option
+                                disabled="disabled"
+                                value="Select a new conurbation (optional)"
+                            >
+                                Select a new conurbation {"("}optional{")"}
+                            </option>
+                            {this.conurbationDropdownOptions()}
+                        </select>
+                    )}
+                </div>
+            </div>
+        )
+    }
+
+    conurbationDropdownOptions() {
+        return this.props.conurbations.map((conurbation) => (
+            <option value={conurbation.id} key={conurbation.id}>
+                {conurbation.name}
+            </option>
+        ))
+    }
+
     determineAccountDeleteSection(confidantId) {
-        return confidantId === 1 ? (
+        return this.props.demoConfidantLoggedIn ? (
             <></>
         ) : (
             this.accountDeleteSection(confidantId)
@@ -86,7 +132,10 @@ class ConfidantEdit extends React.Component {
 
     render() {
         const ccId = this.props.ccId
+        const username = this.state.username
+        const email = this.state.email
         const accountDeleteSection = this.determineAccountDeleteSection(ccId)
+        const conurbationDropdown = this.conurbationDropdown()
 
         return (
             <>
@@ -94,7 +143,7 @@ class ConfidantEdit extends React.Component {
                     <div className="confidantedit-container">
                         <div className="container-greeting-column">
                             <div className="greeting-column-heading">
-                                Welcome back, staticName!
+                                Welcome back, {username}!
                             </div>
                             <div className="greeting-column-subhead">
                                 Stolen any hearts lately?
@@ -115,7 +164,7 @@ class ConfidantEdit extends React.Component {
                                                 USERNAME
                                             </div>
                                             <div className="form-field">
-                                                staticUsername
+                                                {username}
                                             </div>
                                         </div>
                                         <div className="subsection-field-area">
@@ -123,21 +172,10 @@ class ConfidantEdit extends React.Component {
                                                 EMAIL
                                             </div>
                                             <div className="form-field">
-                                                staticEmail
+                                                {email}
                                             </div>
                                         </div>
-                                        <div className="subsection-field-area">
-                                            <div className="field-title">
-                                                CONURBATION
-                                            </div>
-                                            <div className="form-dropdown">
-                                                <select>
-                                                    <option>Option 1</option>
-                                                    <option>Option 2</option>
-                                                    <option>Option 3</option>
-                                                </select>
-                                            </div>
-                                        </div>
+                                        {conurbationDropdown}
                                     </div>
                                 </div>
                                 <div className="form-section">
