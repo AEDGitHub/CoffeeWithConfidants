@@ -7,24 +7,30 @@ class ConfidantEdit extends React.Component {
             username: "",
             email: "",
             locationId: null,
+            currentPassword: "",
             newUsername: "",
             newEmail: "",
             newLocationId: null,
             newPassword: "",
-            confirmPassword: "",
+            confirmNewPassword: "",
             passwordsMatch: false,
         }
         // this.handleSubmit = this.handleSubmit.bind(this)
-        this.usernameFieldArea = this.usernameFieldArea.bind(this)
-        this.emailFieldArea = this.emailFieldArea.bind(this)
-        this.accountDeleteSection = this.accountDeleteSection.bind(this)
         this.updateConfidantDataInState = this.updateConfidantDataInState.bind(
             this
         )
+        this.usernameFieldArea = this.usernameFieldArea.bind(this)
+        this.emailFieldArea = this.emailFieldArea.bind(this)
         this.conurbationFieldArea = this.conurbationFieldArea.bind(this)
         this.conurbationFieldAreaOptions = this.conurbationFieldAreaOptions.bind(
             this
         )
+        this.currentPasswordFieldArea = this.currentPasswordFieldArea.bind(this)
+        this.newPasswordFieldArea = this.newPasswordFieldArea.bind(this)
+        this.confirmNewPasswordFieldArea = this.confirmNewPasswordFieldArea.bind(
+            this
+        )
+        this.accountDeleteSection = this.accountDeleteSection.bind(this)
     }
 
     componentDidMount() {
@@ -46,6 +52,18 @@ class ConfidantEdit extends React.Component {
         console.log(`LS New Username is ${this.state.newUsername}`)
         console.log(`LS New Email is ${this.state.newEmail}`)
         console.log(`LS New Location is ${this.state.newLocationId}`)
+        console.log(`LS Current Password is ${this.state.currentPassword}`)
+        console.log(`LS Current New Password is ${this.state.newPassword}`)
+        console.log(
+            `LS Current Confirm New Password is ${this.state.confirmNewPassword}`
+        )
+    }
+
+    update(field) {
+        return (e) =>
+            this.setState({
+                [field]: e.target.value,
+            })
     }
 
     updateConfidantDataInState(confidant) {
@@ -61,13 +79,6 @@ class ConfidantEdit extends React.Component {
         })
     }
 
-    update(field) {
-        return (e) =>
-            this.setState({
-                [field]: e.target.value,
-            })
-    }
-
     usernameFieldArea(username, newUsername) {
         return (
             <div className="subsection-field-area">
@@ -76,8 +87,7 @@ class ConfidantEdit extends React.Component {
                     <div className="form-field">
                         <span className="optional">{username}</span>
                         <span className="demo-user">
-                            {"("}Make an account to change the username!
-                            {")"}
+                            Make an account to change the username!
                         </span>
                     </div>
                 ) : (
@@ -101,8 +111,7 @@ class ConfidantEdit extends React.Component {
                     <div className="form-field">
                         <span className="optional">{email}</span>
                         <span className="demo-user">
-                            {"("}Make an account to change the email!
-                            {")"}
+                            Make an account to change the email!
                         </span>
                     </div>
                 ) : (
@@ -118,41 +127,16 @@ class ConfidantEdit extends React.Component {
         )
     }
 
-    accountDeleteSection(confidantId) {
-        return this.props.demoConfidantLoggedIn ? (
-            <></>
-        ) : (
-            <div className="form-column-cancel-account">
-                <div className="cancel-account-heading">Cancel my account</div>
-                <div className="cancel-account-message">
-                    When you do this, we'll get rid of your information from our
-                    database immediately.
-                </div>
-                <div
-                    className="cancel-account-button"
-                    onClick={() => {
-                        this.props.deleteAccount(confidantId)
-                    }}
-                >
-                    CANCEL MY ACCOUNT
-                </div>
-                <div className="cancel-account-final-message">
-                    To review the personal information we have about you, scroll
-                    up to your account details and take a gander. If you have
-                    other questions, my contact information is in the footer.
-                    ~_^
-                </div>
-            </div>
-        )
-    }
-
     conurbationFieldArea() {
         return (
             <div className="subsection-field-area">
                 <div className="field-title">CONURBATION</div>
                 <div className="form-dropdown">
                     {this.props.demoConfidantLoggedIn ? (
-                        <select defaultValue="Make an account to change conurbations!">
+                        <select
+                            className="demo-user"
+                            defaultValue="Make an account to change conurbations!"
+                        >
                             <option
                                 disabled="disabled"
                                 value="Make an account to change conurbations!"
@@ -187,6 +171,106 @@ class ConfidantEdit extends React.Component {
         ))
     }
 
+    currentPasswordFieldArea(currentPassword) {
+        return (
+            <div className="subsection-field-area">
+                <div className="field-title">CURRENT PASSWORD</div>
+                {this.props.demoConfidantLoggedIn ? (
+                    <div className="form-field">
+                        <span className="optional">•••••••</span>
+                        <span className="demo-user">
+                            Make an account to change the password!
+                        </span>
+                    </div>
+                ) : (
+                    <input
+                        type="password"
+                        className="form-field"
+                        onChange={this.update("currentPassword")}
+                        placeholder="•••••••••••"
+                        value={currentPassword}
+                    />
+                )}
+            </div>
+        )
+    }
+
+    newPasswordFieldArea(newPassword) {
+        return (
+            <div className="subsection-field-area">
+                <div className="field-title">NEW PASSWORD</div>
+                {this.props.demoConfidantLoggedIn ? (
+                    <div className="form-field">
+                        <span className="optional">{""}</span>
+                        <span className="demo-user">
+                            Make an account to change the password!
+                        </span>
+                    </div>
+                ) : (
+                    <input
+                        type="password"
+                        className="form-field"
+                        onChange={this.update("newPassword")}
+                        placeholder="Give us another one..."
+                        value={newPassword}
+                    />
+                )}
+            </div>
+        )
+    }
+
+    confirmNewPasswordFieldArea(confirmNewPassword) {
+        return (
+            <div className="subsection-field-area">
+                <div className="field-title">CONFIRM NEW PASSWORD</div>
+                {this.props.demoConfidantLoggedIn ? (
+                    <div className="form-field">
+                        <span className="optional">{""}</span>
+                        <span className="demo-user">
+                            Make an account to change the password!
+                        </span>
+                    </div>
+                ) : (
+                    <input
+                        type="password"
+                        className="form-field"
+                        onChange={this.update("confirmNewPassword")}
+                        placeholder="Give us another one!!!"
+                        value={confirmNewPassword}
+                    />
+                )}
+            </div>
+        )
+    }
+
+    accountDeleteSection(confidantId) {
+        return this.props.demoConfidantLoggedIn ? (
+            <></>
+        ) : (
+            <div className="form-column-cancel-account">
+                <div className="cancel-account-heading">Cancel my account</div>
+                <div className="cancel-account-message">
+                    When you do this, we'll get rid of your information from our
+                    database immediately.
+                </div>
+                <div
+                    className="cancel-account-button"
+                    onClick={() => {
+                        this.props.deleteAccount(confidantId)
+                    }}
+                >
+                    CANCEL MY ACCOUNT
+                </div>
+                <div className="cancel-account-final-message">
+                    To review the personal information we have about you, scroll
+                    up to your account details and take a gander. If you have
+                    other questions, my contact information is in the footer.
+                    ~_^
+                </div>
+            </div>
+        )
+    }
+
     render() {
         const username = this.state.username
         const newUsername = this.state.newUsername
@@ -197,6 +281,19 @@ class ConfidantEdit extends React.Component {
         const emailFieldArea = this.emailFieldArea(email, newEmail)
 
         const conurbationFieldArea = this.conurbationFieldArea()
+
+        const currentPassword = this.state.currentPassword
+        const currentPasswordFieldArea = this.currentPasswordFieldArea(
+            currentPassword
+        )
+
+        const newPassword = this.state.newPassword
+        const newPasswordFieldArea = this.newPasswordFieldArea(newPassword)
+
+        const confirmNewPassword = this.state.confirmNewPassword
+        const confirmNewPasswordFieldArea = this.confirmNewPasswordFieldArea(
+            confirmNewPassword
+        )
 
         const ccId = this.props.ccId
         const accountDeleteSection = this.accountDeleteSection(ccId)
@@ -234,30 +331,9 @@ class ConfidantEdit extends React.Component {
                                             Change Your Password
                                         </div>
                                         <div className="form-subsection">
-                                            <div className="subsection-field-area">
-                                                <div className="field-title">
-                                                    CURRENT PASSWORD
-                                                </div>
-                                                <div className="form-field">
-                                                    staticPlaceholderCurrentPass
-                                                </div>
-                                            </div>
-                                            <div className="subsection-field-area">
-                                                <div className="field-title">
-                                                    NEW PASSWORD
-                                                </div>
-                                                <div className="form-field">
-                                                    staticPlaceholderNewPass
-                                                </div>
-                                            </div>
-                                            <div className="subsection-field-area">
-                                                <div className="field-title">
-                                                    CONFIRM NEW PASSWORD
-                                                </div>
-                                                <div className="form-field">
-                                                    Give us another one!
-                                                </div>
-                                            </div>
+                                            {currentPasswordFieldArea}
+                                            {newPasswordFieldArea}
+                                            {confirmNewPasswordFieldArea}
                                             <div className="form-submit-button">
                                                 SAVE CHANGES
                                             </div>
