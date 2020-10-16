@@ -6,20 +6,23 @@ class ConfidantEdit extends React.Component {
         this.state = {
             username: "",
             email: "",
+            locationId: null,
+            newUsername: "",
+            newEmail: "",
+            newLocationId: null,
             newPassword: "",
             confirmPassword: "",
-            locationId: null,
+            passwordsMatch: false,
         }
         // this.handleSubmit = this.handleSubmit.bind(this)
+        this.usernameFieldArea = this.usernameFieldArea.bind(this)
+        this.emailFieldArea = this.emailFieldArea.bind(this)
         this.accountDeleteSection = this.accountDeleteSection.bind(this)
-        this.determineAccountDeleteSection = this.determineAccountDeleteSection.bind(
-            this
-        )
         this.updateConfidantDataInState = this.updateConfidantDataInState.bind(
             this
         )
-        this.conurbationDropdown = this.conurbationDropdown.bind(this)
-        this.conurbationDropdownOptions = this.conurbationDropdownOptions.bind(
+        this.conurbationFieldArea = this.conurbationFieldArea.bind(this)
+        this.conurbationFieldAreaOptions = this.conurbationFieldAreaOptions.bind(
             this
         )
     }
@@ -29,11 +32,21 @@ class ConfidantEdit extends React.Component {
         // console.log(`LS Username is ${this.state.username}`)
         // console.log(`LS Email is ${this.state.email}`)
         // console.log(`LS Location is ${this.state.locationId}`)
-        this.props.loadConurbations()
+        if (!this.props.demoConfidantLoggedIn) {
+            this.props.loadConurbations()
+        }
         this.updateConfidantDataInState(this.props.confidant)
     }
 
-    componentDidUpdate(prevProps) {}
+    componentDidUpdate(prevProps) {
+        console.log("componentDidUpdate now firing!")
+        console.log(`LS Username is ${this.state.username}`)
+        console.log(`LS Email is ${this.state.email}`)
+        console.log(`LS Location is ${this.state.locationId}`)
+        console.log(`LS New Username is ${this.state.newUsername}`)
+        console.log(`LS New Email is ${this.state.newEmail}`)
+        console.log(`LS New Location is ${this.state.newLocationId}`)
+    }
 
     updateConfidantDataInState(confidant) {
         // console.log(`updateConfidantDataInState now firing!`)
@@ -55,8 +68,60 @@ class ConfidantEdit extends React.Component {
             })
     }
 
-    accountDeleteSection(confidantId) {
+    usernameFieldArea(username, newUsername) {
         return (
+            <div className="subsection-field-area">
+                <div className="field-title">USERNAME</div>
+                {this.props.demoConfidantLoggedIn ? (
+                    <div className="form-field">
+                        <span className="optional">{username}</span>
+                        <span className="demo-user">
+                            {"("}Make an account to change the username!
+                            {")"}
+                        </span>
+                    </div>
+                ) : (
+                    <input
+                        type="text"
+                        className="form-field"
+                        onChange={this.update("newUsername")}
+                        placeholder={username}
+                        value={newUsername ? newUsername : ""}
+                    />
+                )}
+            </div>
+        )
+    }
+
+    emailFieldArea(email, newEmail) {
+        return (
+            <div className="subsection-field-area">
+                <div className="field-title">EMAIL</div>
+                {this.props.demoConfidantLoggedIn ? (
+                    <div className="form-field">
+                        <span className="optional">{email}</span>
+                        <span className="demo-user">
+                            {"("}Make an account to change the email!
+                            {")"}
+                        </span>
+                    </div>
+                ) : (
+                    <input
+                        type="email"
+                        className="form-field"
+                        onChange={this.update("newEmail")}
+                        placeholder={email}
+                        value={newEmail ? newEmail : ""}
+                    />
+                )}
+            </div>
+        )
+    }
+
+    accountDeleteSection(confidantId) {
+        return this.props.demoConfidantLoggedIn ? (
+            <></>
+        ) : (
             <div className="form-column-cancel-account">
                 <div className="cancel-account-heading">Cancel my account</div>
                 <div className="cancel-account-message">
@@ -81,7 +146,7 @@ class ConfidantEdit extends React.Component {
         )
     }
 
-    conurbationDropdown() {
+    conurbationFieldArea() {
         return (
             <div className="subsection-field-area">
                 <div className="field-title">CONURBATION</div>
@@ -98,7 +163,7 @@ class ConfidantEdit extends React.Component {
                     ) : (
                         <select
                             defaultValue="Select a new conurbation (optional)"
-                            onChange={this.update("locationId")}
+                            onChange={this.update("newLocationId")}
                         >
                             <option
                                 disabled="disabled"
@@ -106,7 +171,7 @@ class ConfidantEdit extends React.Component {
                             >
                                 Select a new conurbation {"("}optional{")"}
                             </option>
-                            {this.conurbationDropdownOptions()}
+                            {this.conurbationFieldAreaOptions()}
                         </select>
                     )}
                 </div>
@@ -114,7 +179,7 @@ class ConfidantEdit extends React.Component {
         )
     }
 
-    conurbationDropdownOptions() {
+    conurbationFieldAreaOptions() {
         return this.props.conurbations.map((conurbation) => (
             <option value={conurbation.id} key={conurbation.id}>
                 {conurbation.name}
@@ -122,20 +187,19 @@ class ConfidantEdit extends React.Component {
         ))
     }
 
-    determineAccountDeleteSection(confidantId) {
-        return this.props.demoConfidantLoggedIn ? (
-            <></>
-        ) : (
-            this.accountDeleteSection(confidantId)
-        )
-    }
-
     render() {
-        const ccId = this.props.ccId
         const username = this.state.username
+        const newUsername = this.state.newUsername
+        const usernameFieldArea = this.usernameFieldArea(username, newUsername)
+
         const email = this.state.email
-        const accountDeleteSection = this.determineAccountDeleteSection(ccId)
-        const conurbationDropdown = this.conurbationDropdown()
+        const newEmail = this.state.newEmail
+        const emailFieldArea = this.emailFieldArea(email, newEmail)
+
+        const conurbationFieldArea = this.conurbationFieldArea()
+
+        const ccId = this.props.ccId
+        const accountDeleteSection = this.accountDeleteSection(ccId)
 
         return (
             <>
@@ -154,64 +218,52 @@ class ConfidantEdit extends React.Component {
                                 Edit Your Account
                             </div>
                             <div className="form-column-section">
-                                <div className="form-section">
-                                    <div className="form-section-heading">
-                                        Personal Information
-                                    </div>
-                                    <div className="form-subsection">
-                                        <div className="subsection-field-area">
-                                            <div className="field-title">
-                                                USERNAME
-                                            </div>
-                                            <div className="form-field">
-                                                {username}
-                                            </div>
+                                <form>
+                                    <div className="form-section">
+                                        <div className="form-section-heading">
+                                            Personal Information
                                         </div>
-                                        <div className="subsection-field-area">
-                                            <div className="field-title">
-                                                EMAIL
-                                            </div>
-                                            <div className="form-field">
-                                                {email}
-                                            </div>
-                                        </div>
-                                        {conurbationDropdown}
-                                    </div>
-                                </div>
-                                <div className="form-section">
-                                    <div className="form-section-heading">
-                                        Change Your Password
-                                    </div>
-                                    <div className="form-subsection">
-                                        <div className="subsection-field-area">
-                                            <div className="field-title">
-                                                CURRENT PASSWORD
-                                            </div>
-                                            <div className="form-field">
-                                                staticPlaceholderCurrentPass
-                                            </div>
-                                        </div>
-                                        <div className="subsection-field-area">
-                                            <div className="field-title">
-                                                NEW PASSWORD
-                                            </div>
-                                            <div className="form-field">
-                                                staticPlaceholderNewPass
-                                            </div>
-                                        </div>
-                                        <div className="subsection-field-area">
-                                            <div className="field-title">
-                                                CONFIRM NEW PASSWORD
-                                            </div>
-                                            <div className="form-field">
-                                                Give us another one!
-                                            </div>
-                                        </div>
-                                        <div className="form-submit-button">
-                                            SAVE CHANGES
+                                        <div className="form-subsection">
+                                            {usernameFieldArea}
+                                            {emailFieldArea}
+                                            {conurbationFieldArea}
                                         </div>
                                     </div>
-                                </div>
+                                    <div className="form-section">
+                                        <div className="form-section-heading">
+                                            Change Your Password
+                                        </div>
+                                        <div className="form-subsection">
+                                            <div className="subsection-field-area">
+                                                <div className="field-title">
+                                                    CURRENT PASSWORD
+                                                </div>
+                                                <div className="form-field">
+                                                    staticPlaceholderCurrentPass
+                                                </div>
+                                            </div>
+                                            <div className="subsection-field-area">
+                                                <div className="field-title">
+                                                    NEW PASSWORD
+                                                </div>
+                                                <div className="form-field">
+                                                    staticPlaceholderNewPass
+                                                </div>
+                                            </div>
+                                            <div className="subsection-field-area">
+                                                <div className="field-title">
+                                                    CONFIRM NEW PASSWORD
+                                                </div>
+                                                <div className="form-field">
+                                                    Give us another one!
+                                                </div>
+                                            </div>
+                                            <div className="form-submit-button">
+                                                SAVE CHANGES
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                             {accountDeleteSection}
                         </div>

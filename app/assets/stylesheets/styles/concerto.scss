@@ -676,20 +676,26 @@ section {
                             border-top: 1px solid #512e59;
                             border-bottom: 1px solid #512e59;
                             .subsection-field-area {
-                                // margin: 0 auto;
                                 margin-top: 1rem;
                                 .field-title {
                                     font-size: 0.777rem;
                                     font-weight: 700;
                                 }
                                 .form-field {
+                                    display: flex;
+                                    justify-content: space-between;
                                     margin-top: 0.333rem;
                                     background-color: #ffffff;
                                     padding: 1.333rem;
-                                    display: block;
                                     width: 100%;
                                     border: 1px solid #717370;
                                     border-radius: 4px;
+                                    .optional {
+                                        color: #717370;
+                                    }
+                                    .demo-user {
+                                        color: #ee0000;
+                                    }
                                 }
                                 .form-dropdown {
                                     margin-top: 0.333rem;
@@ -697,7 +703,6 @@ section {
                                     background: #ffffff;
                                     border-radius: 4px;
                                     width: 100%;
-                                    // display: block;
                                     height: 4rem;
                                     padding: 1rem;
                                     overflow: hidden;
