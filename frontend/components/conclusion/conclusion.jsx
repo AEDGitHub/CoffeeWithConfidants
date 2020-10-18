@@ -110,8 +110,8 @@ class Conclusion extends React.Component {
                             {linkedin}
                             {angellist}
                             <br></br>
-                            {this.generateButton("Acknowledgements")}
-                            {this.generateButton("Thank You")}
+                            {/* {this.generateButton("Acknowledgements")}
+                            {this.generateButton("Thank You")} */}
                         </div>
                         <div className="footer-content">
                             {this.determineContent()}

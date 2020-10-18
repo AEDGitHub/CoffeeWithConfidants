@@ -17,7 +17,6 @@ class Api::SessionsController < ApplicationController
         if current_confidant
             logout
             render json: {}
-            # render "api/confidants/show"
         else
             render json: ["There was no one signed in!"], status: 404
         end
