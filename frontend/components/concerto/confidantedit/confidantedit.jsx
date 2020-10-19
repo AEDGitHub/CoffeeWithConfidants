@@ -61,6 +61,10 @@ class ConfidantEdit extends React.Component {
         }
     }
 
+    componentWillUnmount() {
+        this.props.unloadConurbations()
+    }
+
     update(field) {
         return (e) =>
             this.setState({
@@ -90,9 +94,26 @@ class ConfidantEdit extends React.Component {
         const newEmail = this.state.newEmail
         const locationId = this.state.locationId
         const newLocationId = this.state.newLocationId
+        const currentPassword = this.state.currentPassword
+        const newPassword = this.state.newPassword
+        const confirmNewPassword = this.state.confirmNewPassword
 
-        if (this.state.currentPassword) {
-            window.alert("Working on password change!")
+        if (currentPassword) {
+            if (newPassword === confirmNewPassword) {
+                const editedConfidant = {
+                    id: ccId,
+                    username: newUsername ? newUsername : username,
+                    email: newEmail ? newEmail : email,
+                    location_id: newLocationId ? newLocationId : locationId,
+                    password: currentPassword,
+                    new_password: newPassword,
+                }
+                this.props.updateAccount(editedConfidant)
+            } else {
+                window.alert(
+                    "The new password doesn't match the confirm password!"
+                )
+            }
         } else {
             const editedConfidant = {
                 id: ccId,
@@ -242,6 +263,7 @@ class ConfidantEdit extends React.Component {
                     </div>
                 ) : (
                     <input
+                        required={this.state.confirmNewPassword}
                         type="password"
                         className="form-field"
                         onChange={this.update("newPassword")}
@@ -266,6 +288,7 @@ class ConfidantEdit extends React.Component {
                     </div>
                 ) : (
                     <input
+                        required={this.state.newPassword}
                         type="password"
                         className="form-field"
                         onChange={this.update("confirmNewPassword")}

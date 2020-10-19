@@ -29,16 +29,20 @@ class Api::ConfidantsController < ApplicationController
     def update
         @confidant = Confidant.find(params[:id])
         if @confidant == current_confidant
-            if(params[:new_password] && params[:new_password] == params[:confirm_new_password])
-                @confidant.update(
-                    username: params[:username], 
-                    email: params[:email],
-                    location_id: params[:location_id],
-                    password_digest: BCrypt::Password.create(params[:new_password]) 
-                )
-            else
+            # if (params[:password] &&
+            #     params[:new_password] &&
+            #     @confidant.is_password?(params[:password]))
+            # # )
+            #     @confidant.update(
+            #         username: params[:username], 
+            #         email: params[:email],
+            #         location_id: params[:location_id],
+            #         password_digest: BCrypt::Password.create(params[:new_password]) 
+            #     )
+
+            # else
                 @confidant.update(confidant_params)
-            end
+            # end
             render :show
         else
             render json: ["Sorry, I couldn't update this confidant!"], status: 422
@@ -49,7 +53,7 @@ class Api::ConfidantsController < ApplicationController
 
     def confidant_params
         params.require(:confidant)
-        .permit(:username, :password, :email, :location_id, :new_password, :confirm_new_password)
+        .permit(:username, :password, :email, :location_id, :new_password)
     end
 
 end
