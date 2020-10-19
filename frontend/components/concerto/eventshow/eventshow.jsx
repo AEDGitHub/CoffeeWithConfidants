@@ -68,12 +68,10 @@ class EventShow extends React.Component {
         return this.state.currentUserAttending ? (
             <div className="attendance-status-attending">
                 <div className="seats-left">SEE YOU THERE!</div>
-                {/* <div className="fancy-graphic">LATER</div> */}
             </div>
         ) : (
             <div className="attendance-status-not-attending">
                 <div className="seats-left">{seatsRemaining} SPOTS OPEN!</div>
-                {/* <div className="fancy-graphic">LATER</div> */}
             </div>
         )
     }

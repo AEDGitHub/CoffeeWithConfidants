@@ -15,7 +15,6 @@ class ConfidantEdit extends React.Component {
             confirmNewPassword: "",
             passwordsMatch: false,
         }
-        // this.handleSubmit = this.handleSubmit.bind(this)
         this.updateConfidantDataInState = this.updateConfidantDataInState.bind(
             this
         )
@@ -34,10 +33,6 @@ class ConfidantEdit extends React.Component {
     }
 
     componentDidMount() {
-        // console.log(`componentDidMount now firing!`)
-        // console.log(`LS Username is ${this.state.username}`)
-        // console.log(`LS Email is ${this.state.email}`)
-        // console.log(`LS Location is ${this.state.locationId}`)
         if (!this.props.demoConfidantLoggedIn) {
             this.props.loadConurbations()
         }

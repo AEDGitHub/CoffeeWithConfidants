@@ -1,5 +1,3 @@
-//loading checks
-
 export const areConurbationsLoaded = (conurbations) => {
     if (Object.keys(conurbations).length > 0) {
         return true
@@ -16,8 +14,6 @@ export const areConfabsLoaded = (confabs) => {
     }
 }
 
-//select all
-
 export const selectAllConurbations = (conurbations) =>
     Object.keys(conurbations).map((id) => conurbations[id])
 
@@ -26,8 +22,6 @@ export const selectAllConfidants = (confidants) =>
 
 export const selectAllConfabs = (confabs) =>
     Object.keys(confabs).map((id) => confabs[id])
-
-//select conurbations with conurbation data
 
 export const selectParticularConurbationByName = (
     conurbations,
@@ -38,21 +32,15 @@ export const selectParticularConurbationByName = (
     )
 }
 
-//select confab with confab data
-
 export const selectParticularConfabById = (confabs, confabId) => {
     return Object.values(confabs).filter((confab) => confab.id === confabId)
 }
-
-//select confidants with confab data
 
 export const selectParticularConfidantById = (confidants, confidantId) => {
     return Object.values(confidants).filter(
         (confidant) => confidant.id === confidantId
     )
 }
-
-//select confidants with conflation data
 
 export const selectParticularConfidantsByAttendeeId = (
     confidants,
@@ -62,8 +50,6 @@ export const selectParticularConfidantsByAttendeeId = (
         (confidant) => confidant.id === attendeeId
     )
 }
-
-//select confabs with conurbation data
 
 export const selectParticularConfabsByLocationId = (confabs, locationId) => {
     return Object.values(confabs).filter(

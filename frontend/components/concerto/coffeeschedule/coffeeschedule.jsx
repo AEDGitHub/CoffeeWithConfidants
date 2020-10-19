@@ -59,7 +59,6 @@ class CoffeeSchedule extends React.Component {
         return (
             <div className="attendance-status-attending">
                 <div className="seats-left">SEE YOU THERE!</div>
-                {/* <div className="fancy-graphic">LATER</div> */}
             </div>
         )
     }
@@ -68,7 +67,6 @@ class CoffeeSchedule extends React.Component {
         return (
             <div className="attendance-status-not-attending">
                 <div className="seats-left">{seatsRemaining} SPOTS OPEN!</div>
-                {/* <div className="fancy-graphic">LATER</div> */}
             </div>
         )
     }
