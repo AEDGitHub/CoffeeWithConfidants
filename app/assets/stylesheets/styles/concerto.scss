@@ -206,7 +206,7 @@ section {
                 margin: 0 auto;
                 max-width: 696px;
                 width: 71%;
-                margin-bottom: 3rem;
+                margin-bottom: 2rem;
                 .title-text {
                     display: block;
                     font-size: 1.618rem;
@@ -233,12 +233,34 @@ section {
                 max-width: 999px;
 
                 .month-toggle {
-                    padding: 0rem 1rem;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding-bottom: 1rem;
                     .month-msg {
+                        padding: 1rem 0rem;
                         font-size: 0.888rem;
                         font-weight: 800;
                     }
+                    .create-confab-container {
+                        cursor: pointer;
+
+                        .create-confab-button {
+                            box-sizing: border-box;
+                            padding: 1rem 2rem;
+                            border: 1px solid #512e59;
+                            border-radius: 2rem;
+                            color: #512e59;
+                            font-weight: 300;
+                        }
+                        .create-confab-button:hover {
+                            background-color: #512e59;
+                            color: #ffffff;
+                            font-weight: 500;
+                        }
+                    }
                 }
+
                 // .jump-links {
                 //
                 // }

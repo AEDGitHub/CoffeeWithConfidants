@@ -41,7 +41,7 @@ class Api::ConfidantsController < ApplicationController
             #     )
 
             # else
-                @confidant.update(confidant_params)
+            @confidant.update(confidant_params)
             # end
             render :show
         else

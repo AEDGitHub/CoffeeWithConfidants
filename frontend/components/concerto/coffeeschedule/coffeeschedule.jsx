@@ -1,4 +1,5 @@
 import React from "react"
+import Modal from "react-modal"
 import CoffeeScheduleEvent from "./coffee_schedule_event/coffeeschedule_event"
 
 import { Link } from "react-router-dom"
@@ -34,6 +35,9 @@ class CoffeeSchedule extends React.Component {
         return (
             <div className="month-toggle">
                 <div className="month-msg">TEA TIMES IN {month}</div>
+                <div className="create-confab-container">
+                    <div className="create-confab-button">+ CREATE CONFAB</div>
+                </div>
             </div>
         )
     }
