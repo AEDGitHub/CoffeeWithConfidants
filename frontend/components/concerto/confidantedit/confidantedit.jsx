@@ -13,11 +13,11 @@ class ConfidantEdit extends React.Component {
             newLocationId: null,
             newPassword: "",
             confirmNewPassword: "",
-            passwordsMatch: false,
         }
         this.updateConfidantDataInState = this.updateConfidantDataInState.bind(
             this
         )
+        this.handleSubmit = this.handleSubmit.bind(this)
         this.usernameFieldArea = this.usernameFieldArea.bind(this)
         this.emailFieldArea = this.emailFieldArea.bind(this)
         this.conurbationFieldArea = this.conurbationFieldArea.bind(this)
@@ -29,6 +29,7 @@ class ConfidantEdit extends React.Component {
         this.confirmNewPasswordFieldArea = this.confirmNewPasswordFieldArea.bind(
             this
         )
+        this.formSubmitButton = this.formSubmitButton.bind(this)
         this.accountDeleteSection = this.accountDeleteSection.bind(this)
     }
 
@@ -52,6 +53,12 @@ class ConfidantEdit extends React.Component {
         console.log(
             `LS Current Confirm New Password is ${this.state.confirmNewPassword}`
         )
+        if (
+            prevProps.confidant &&
+            prevProps.confidant !== this.props.confidant
+        ) {
+            this.updateConfidantDataInState(this.props.confidant)
+        }
     }
 
     update(field) {
@@ -62,15 +69,43 @@ class ConfidantEdit extends React.Component {
     }
 
     updateConfidantDataInState(confidant) {
-        // console.log(`updateConfidantDataInState now firing!`)
-        // console.log(Object.values(confidant))
-        // console.log(`Props Username is ${confidant.username}`)
-        // console.log(`Props Email is ${confidant.email}`)
-        // console.log(`Props Location is ${confidant.location_id}`)
+        console.log(`updateConfidantDataInState now firing!`)
+        console.log(Object.values(confidant))
+        console.log(`Props Username is ${confidant.username}`)
+        console.log(`Props Email is ${confidant.email}`)
+        console.log(`Props Location is ${confidant.location_id}`)
         this.setState({
             username: confidant.username,
             email: confidant.email,
             locationId: confidant.location_id,
+        })
+    }
+
+    handleSubmit(e) {
+        e.preventDefault()
+        const ccId = this.props.ccId
+        const username = this.state.username
+        const newUsername = this.state.newUsername
+        const email = this.state.email
+        const newEmail = this.state.newEmail
+        const locationId = this.state.locationId
+        const newLocationId = this.state.newLocationId
+
+        if (this.state.currentPassword) {
+            window.alert("Working on password change!")
+        } else {
+            const editedConfidant = {
+                id: ccId,
+                username: newUsername ? newUsername : username,
+                email: newEmail ? newEmail : email,
+                location_id: newLocationId ? newLocationId : locationId,
+            }
+            this.props.updateAccount(editedConfidant)
+        }
+        this.setState({
+            newUsername: "",
+            newEmail: "",
+            newLocationId: null,
         })
     }
 
@@ -179,6 +214,10 @@ class ConfidantEdit extends React.Component {
                     </div>
                 ) : (
                     <input
+                        required={
+                            this.state.newPassword ||
+                            this.state.confirmNewPassword
+                        }
                         type="password"
                         className="form-field"
                         onChange={this.update("currentPassword")}
@@ -238,6 +277,20 @@ class ConfidantEdit extends React.Component {
         )
     }
 
+    formSubmitButton() {
+        return this.props.demoConfidantLoggedIn ? (
+            <div className="form-submit-button-demo-user">
+                EDIT DISABLED FOR DEMO
+            </div>
+        ) : (
+            <input
+                type="submit"
+                className="form-submit-button"
+                value="SAVE CHANGES"
+            />
+        )
+    }
+
     accountDeleteSection(confidantId) {
         return this.props.demoConfidantLoggedIn ? (
             <></>
@@ -290,6 +343,8 @@ class ConfidantEdit extends React.Component {
             confirmNewPassword
         )
 
+        const formSubmitButton = this.formSubmitButton()
+
         const ccId = this.props.ccId
         const accountDeleteSection = this.accountDeleteSection(ccId)
 
@@ -310,7 +365,7 @@ class ConfidantEdit extends React.Component {
                                 Edit Your Account
                             </div>
                             <div className="form-column-section">
-                                <form>
+                                <form onSubmit={this.handleSubmit}>
                                     <div className="form-section">
                                         <div className="form-section-heading">
                                             Personal Information
@@ -329,9 +384,7 @@ class ConfidantEdit extends React.Component {
                                             {currentPasswordFieldArea}
                                             {newPasswordFieldArea}
                                             {confirmNewPasswordFieldArea}
-                                            <div className="form-submit-button">
-                                                SAVE CHANGES
-                                            </div>
+                                            {formSubmitButton}
                                         </div>
                                     </div>
                                 </form>

@@ -735,6 +735,17 @@ section {
                             .form-submit-button:hover {
                                 background-color: #aa0004;
                             }
+                            .form-submit-button-demo-user {
+                                background-color: #ee0000;
+                                margin-top: 1rem;
+                                padding: 1.333rem;
+                                font-size: 1.111rem;
+                                color: #efefef;
+                                display: block;
+                                text-align: center;
+                                width: 100%;
+                                border-radius: 11px;
+                            }
                         }
                     }
                 }
