@@ -7,6 +7,9 @@ import { Link } from "react-router-dom"
 class CoffeeSchedule extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {
+            modalOpen: false,
+        }
 
         this.displaysAllConurbationCallouts = this.displaysAllConurbationCallouts.bind(
             this
@@ -19,6 +22,7 @@ class CoffeeSchedule extends React.Component {
         this.confabLeaveButton = this.confabLeaveButton.bind(this)
         this.amAttendingDisplay = this.amAttendingDisplay.bind(this)
         this.notAttendingDisplay = this.notAttendingDisplay.bind(this)
+        this.createConfabModal = this.createConfabModal.bind(this)
     }
 
     componentDidMount() {
@@ -35,7 +39,10 @@ class CoffeeSchedule extends React.Component {
         return (
             <div className="month-toggle">
                 <div className="month-msg">TEA TIMES IN {month}</div>
-                <div className="create-confab-container">
+                <div
+                    className="create-confab-container"
+                    onClick={() => this.setState({ modalOpen: true })}
+                >
                     <div className="create-confab-button">+ CREATE CONFAB</div>
                 </div>
             </div>
@@ -162,6 +169,33 @@ class CoffeeSchedule extends React.Component {
         })
     }
 
+    createConfabModal() {
+        const modalOpen = this.state.modalOpen
+        return (
+            <div className="coffeeschedule-create-confab-modal-container">
+                <Modal
+                    overlayClassName="create-confab-modal-overlay"
+                    className="create-confab-modal-content"
+                    isOpen={modalOpen}
+                    onRequestClose={() => this.setState({ modalOpen: false })}
+                >
+                    <div
+                        className="confab-modal-exit-button"
+                        onClick={() => this.setState({ modalOpen: false })}
+                    >
+                        ×
+                    </div>
+                    <div className="confab-modal-content-container">
+                        <div className="confab-modal-title">Create Confab</div>
+                        <div className="confab-modal-subhead">
+                            stc I AM NOT A HUMAN BEING
+                        </div>
+                    </div>
+                </Modal>
+            </div>
+        )
+    }
+
     render() {
         const photoContainer = (
             <div className="coffeeschedule-photo-container">
@@ -191,7 +225,7 @@ class CoffeeSchedule extends React.Component {
 
         return (
             <>
-                <div className="coffeeschedule">
+                <div className="coffeeschedule" id="coffeeschedule">
                     {photoContainer}
                     <div className="coffeeschedule-content-container">
                         {messageContainer}
@@ -200,6 +234,7 @@ class CoffeeSchedule extends React.Component {
                             {this.displaysAllConurbationCallouts()}
                         </div>
                     </div>
+                    {this.createConfabModal()}
                 </div>
             </>
         )

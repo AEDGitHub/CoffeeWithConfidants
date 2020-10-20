@@ -247,7 +247,7 @@ section {
 
                         .create-confab-button {
                             box-sizing: border-box;
-                            padding: 1rem 2rem;
+                            padding: 1rem 1.618rem;
                             border: 1px solid #512e59;
                             border-radius: 2rem;
                             color: #512e59;
@@ -806,6 +806,51 @@ section {
                     }
                 }
             }
+        }
+    }
+}
+
+.create-confab-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    background-color: rgba(81, 46, 89, 0.444);
+}
+.create-confab-modal-content {
+    position: relative;
+    margin: 0 auto;
+    top: 7.777rem;
+    bottom: 7.777rem;
+    width: 71%;
+    max-width: 696px;
+    height: calc(100% - 14.441rem);
+    border: 2px solid #717370;
+    border-radius: 1rem;
+    background: #ffffff;
+    padding: 1rem;
+    overflow: auto;
+    outline: none;
+    -webkit-overflow-scrolling: touch;
+    .confab-modal-exit-button {
+        float: right;
+        line-height: 0.888rem;
+        font-size: 1.771rem;
+        font-weight: 400;
+        color: #afafaf;
+        cursor: pointer;
+    }
+    .confab-modal-content-container {
+        margin: 1rem 1.618rem;
+        .confab-modal-title {
+            font-size: 1.618rem;
+            font-weight: 700;
+            color: #512e59;
+        }
+        .confab-modal-subhead {
+            margin-top: 1rem;
         }
     }
 }

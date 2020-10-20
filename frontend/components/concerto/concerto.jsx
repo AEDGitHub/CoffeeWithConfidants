@@ -10,7 +10,7 @@ import Splash from "./splish/splash"
 
 const Concerto = () => (
     <>
-        <section>
+        <section id="concerto">
             <AuthRoute path="/signin" component={SigninFormContainer} />
             <AuthRoute path="/signup" component={SignupFormContainer} />
             <ProtectedRoute path="/confidants/edit" component={ConfidantEdit} />
