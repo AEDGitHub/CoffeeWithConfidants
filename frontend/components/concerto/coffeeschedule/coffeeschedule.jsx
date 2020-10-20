@@ -10,7 +10,7 @@ class CoffeeSchedule extends React.Component {
         this.state = {
             modalOpen: false,
         }
-
+        this.handleSubmit = this.handleSubmit.bind(this)
         this.displaysAllConurbationCallouts = this.displaysAllConurbationCallouts.bind(
             this
         )
@@ -27,6 +27,25 @@ class CoffeeSchedule extends React.Component {
 
     componentDidMount() {
         this.props.loadConfabs()
+    }
+
+    update(field) {
+        return (e) => this.setState({ [field]: e.target.value })
+    }
+
+    handleSubmit(e) {
+        e.preventDefault()
+        const hostId = this.props.ccId
+        const description = this.state.confabDescription
+        const maxCapacity = this.state.confabMaxCapacity
+
+        const confab = {
+            host_id: hostId,
+            description: description,
+            max_capacity: maxCapacity,
+        }
+        this.props.processConfabForm(confab)
+        this.setState({ modalOpen: false })
     }
 
     monthDisplay() {
@@ -188,8 +207,9 @@ class CoffeeSchedule extends React.Component {
                     <div className="confab-modal-content-container">
                         <div className="confab-modal-title">Create Confab</div>
                         <div className="confab-modal-subhead">
-                            stc I AM NOT A HUMAN BEING
+                            Fill in the details below and get ready to conspire!
                         </div>
+                        <form>Something</form>
                     </div>
                 </Modal>
             </div>

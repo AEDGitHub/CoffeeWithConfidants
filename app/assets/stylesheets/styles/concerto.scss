@@ -836,11 +836,17 @@ section {
     -webkit-overflow-scrolling: touch;
     .confab-modal-exit-button {
         float: right;
+        margin: 1rem;
         line-height: 0.888rem;
-        font-size: 1.771rem;
+        font-size: 1.881rem;
         font-weight: 400;
         color: #afafaf;
+    }
+    .confab-modal-exit-button:hover,
+    .confab-modal-exit-button:focus {
         cursor: pointer;
+        text-decoration: none;
+        color: #ee0000;
     }
     .confab-modal-content-container {
         margin: 1rem 1.618rem;
@@ -850,6 +856,13 @@ section {
             color: #512e59;
         }
         .confab-modal-subhead {
+            margin-top: 1rem;
+            font-size: 1.111rem;
+            line-height: 1.618rem;
+            font-weight: 300;
+        }
+        form {
+            display: flex;
             margin-top: 1rem;
         }
     }
