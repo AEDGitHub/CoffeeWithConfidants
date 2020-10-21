@@ -48,6 +48,8 @@ const mDTP = (dispatch) => {
         joinConfab: (confabId) => dispatch(joinConfab(confabId)),
         leaveConfab: (confabId, confidantId) =>
             dispatch(leaveConfab(confabId, confidantId)),
+        postConfab: (conurbationId, confabId) =>
+            dispatch(postConfab(conurbationId, confabId)),
     }
 }
 

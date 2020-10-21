@@ -56,16 +56,16 @@ class Conclusion extends React.Component {
                             We're not doing anything new. We're providing a
                             means to confabulate with others in a way that
                             would've been unnecessary 20 years ago. So squad up,
-                            make your plans, and let us start the game.
+                            make your plans, and let us start the game.{" "}
+                            <a
+                                href="https://youtu.be/5FG85wVSV3o"
+                                className="last-surprise"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                ♫ They'll never see it coming... ♫
+                            </a>
                         </p>
-                        <a
-                            href="https://youtu.be/5FG85wVSV3o"
-                            className="last-surprise"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            C'mon. They'll never see it coming.
-                        </a>
                     </div>
                 )
             case "Acknowledgements":

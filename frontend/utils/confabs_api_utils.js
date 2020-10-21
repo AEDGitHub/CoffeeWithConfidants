@@ -4,3 +4,11 @@ export const getFilteredApiConfabs = (confabId) => {
         method: "GET",
     })
 }
+
+export const postApiConfab = (conurbationId, confab) => {
+    return $.ajax({
+        url: `/api/conurbations/${conurbationId}/confabs`,
+        method: "POST",
+        data: { confab },
+    })
+}

@@ -1,4 +1,7 @@
-import { getFilteredApiConfabs } from "../utils/confabs_api_utils"
+import {
+    getFilteredApiConfabs,
+    postApiConfab,
+} from "../utils/confabs_api_utils"
 import {
     deleteApiConflation,
     postApiConflation,
@@ -27,6 +30,19 @@ export const fetchFilteredApiConfabs = (confabId = null) => {
         return getFilteredApiConfabs(confabId).then((payload) => {
             dispatch(receiveAllConfabs(payload))
         })
+    }
+}
+
+export const createConfab = (conurbationId, confab) => {
+    return (dispatch) => {
+        return postApiConfab(conurbationId, confab).then(
+            (payload) => {
+                dispatch(receiveAllConfabs(payload))
+            },
+            (err) => {
+                console.log(err.responseJSON)
+            }
+        )
     }
 }
 

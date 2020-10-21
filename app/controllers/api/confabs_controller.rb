@@ -6,11 +6,15 @@ class Api::ConfabsController < ApplicationController
             .includes(:host, :conurbation, :conflations, :attendees)
     end
 
-    # def create
-    #     create_params = confab_params
-    #     create_params[:start_time] = DateTime.at()
-    # end
-
+    def create
+        @confab = Confab.new(confab_params)
+        if(@confab.save)
+            render :show
+        else
+            render json: ["Invalid confab details!"], status: 401
+        end
+    end
+    
     def show
         @confab = Confab.find(params[:id])
     end
