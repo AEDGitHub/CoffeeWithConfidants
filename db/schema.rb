@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_24_172556) do
+ActiveRecord::Schema.define(version: 2020_10_21_155936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,13 +19,12 @@ ActiveRecord::Schema.define(version: 2020_09_24_172556) do
     t.integer "host_id", null: false
     t.text "description", null: false
     t.integer "max_capacity", null: false
-    t.datetime "start_time", null: false
-    t.datetime "end_time", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["end_time"], name: "index_confabs_on_end_time"
-    t.index ["host_id", "start_time"], name: "index_confabs_on_host_id_and_start_time", unique: true
-    t.index ["start_time"], name: "index_confabs_on_start_time"
+    t.bigint "start_time_in_ms", null: false
+    t.bigint "end_time_in_ms", null: false
+    t.index ["host_id", "start_time_in_ms"], name: "index_confabs_on_host_id_and_start_time_in_ms", unique: true
+    t.index ["start_time_in_ms"], name: "index_confabs_on_start_time_in_ms"
   end
 
   create_table "confidants", force: :cascade do |t|
@@ -34,6 +33,7 @@ ActiveRecord::Schema.define(version: 2020_09_24_172556) do
     t.string "password_digest", null: false
     t.string "session_token", null: false
     t.integer "location_id", null: false
+    t.integer "avatar_id", default: 1, null: false
     t.boolean "is_host", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -1,6 +1,6 @@
 class Confab < ApplicationRecord
-    validates :host_id, :description, :max_capacity, :start_time, :end_time, presence: true
-    validates :host_id, uniqueness: {scope: :start_time}
+    validates :host_id, :description, :max_capacity, :start_time_in_ms, :end_time_in_ms, presence: true
+    validates :host_id, uniqueness: {scope: :start_time_in_ms}
 
     belongs_to :host,
         primary_key: :id,

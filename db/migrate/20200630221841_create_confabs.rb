@@ -6,7 +6,6 @@ class CreateConfabs < ActiveRecord::Migration[5.2]
       t.integer :max_capacity, null: false
       t.datetime :start_time, null: false
       t.datetime :end_time, null: false
-
       t.timestamps
     end
     add_index :confabs, [:host_id, :start_time], unique: true

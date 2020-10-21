@@ -21,40 +21,43 @@ fid0_the_demo_confidant = Confidant.create!(
     username: "Joker",
     password: "hunter12",
     email: "breakintobreakout@fakemail.com",
-    location_id: urb0.id
+    location_id: urb0.id,
+    avatar_id: 1,
 )
 
 fid1 = Confidant.create!(
     username: "Ryuji",
     password: "hunter12",
     email: "nomorules@fakemail.com",
-    location_id: urb1.id
+    location_id: urb1.id,
+    avatar_id: 2,
 )
 
 fid2 = Confidant.create!(
     username: "Ann",
     password: "hunter12",
     email: "lastsurprise@fakemail.com",
-    location_id: urb2.id
+    location_id: urb2.id,
+    avatar_id: 3,
 )
 
-party_time0 = Time.new(1999, 12, 31, 22, 00, 00)
-end_time0 = Time.new(1999, 12, 31, 23, 00, 00)
+party_time0 = Time.new(1999, 12, 31, 22, 00, 00).to_i * 1000
+end_time0 = Time.new(1999, 12, 31, 23, 00, 00).to_i * 1000
 
-party_time1 = Time.new(2020, 12, 31, 22, 00, 00)
-end_time1 = Time.new(2020, 12, 31, 23, 00, 00)
+party_time1 = Time.new(2020, 12, 31, 22, 00, 00).to_i * 1000
+end_time1 = Time.new(2020, 12, 31, 23, 00, 00).to_i * 1000
 
-party_time2 = Time.new(2020, 10, 22, 20, 00, 00)
-end_time2 = Time.new(2020, 10, 22, 22, 00, 00)
+party_time2 = Time.new(2020, 10, 22, 20, 00, 00).to_i * 1000
+end_time2 = Time.new(2020, 10, 22, 22, 00, 00).to_i * 1000
 
-party_time3 = Time.new(2020, 10, 29, 20, 00, 00)
-end_time3 = Time.new(2020, 10, 29, 22, 00, 00)
+party_time3 = Time.new(2020, 10, 29, 20, 00, 00).to_i * 1000
+end_time3 = Time.new(2020, 10, 29, 22, 00, 00).to_i * 1000
 
-party_time4 = Time.new(2020, 11, 22, 20, 00, 00)
-end_time2 = Time.new(2020, 10, 22, 22, 00, 00)
+party_time4 = Time.new(2020, 11, 22, 20, 00, 00).to_i * 1000
+end_time2 = Time.new(2020, 10, 22, 22, 00, 00).to_i * 1000
 
-party_time5 = Time.new(2020, 11, 29, 20, 00, 00)
-end_time3 = Time.new(2020, 10, 29, 22, 00, 00)
+party_time5 = Time.new(2020, 11, 29, 20, 00, 00).to_i * 1000
+end_time3 = Time.new(2020, 10, 29, 22, 00, 00).to_i * 1000
 
 
 # party_time_month = Time.now
@@ -64,32 +67,32 @@ fab0 = Confab.create!(
     host_id: fid0_the_demo_confidant.id,
     description: "Party like it's 1999!",
     max_capacity: 8,
-    start_time: party_time0,
-    end_time: end_time0
+    start_time_in_ms: party_time0,
+    end_time_in_ms: end_time0
 )
 
 fab1 = Confab.create!(
     host_id: fid1.id,
     description: "Cry me a river in the desert.",
     max_capacity: 7,
-    start_time: party_time1,
-    end_time: end_time1
+    start_time_in_ms: party_time1,
+    end_time_in_ms: end_time1
 )
 
 fab2 = Confab.create!(
     host_id: fid2.id,
     description: "This is a super long text description to test that your layout works! If your cards get busted because of too much text in the party description, that'd be a real bummer, wouldn't it? ^_^",
     max_capacity: 4,
-    start_time: party_time2,
-    end_time: end_time2
+    start_time_in_ms: party_time2,
+    end_time_in_ms: end_time2
 )
 
 fab3 = Confab.create!(
     host_id: fid1.id,
     description: "Super short description.",
     max_capacity: 4,
-    start_time: party_time2,
-    end_time: end_time2
+    start_time_in_ms: party_time2,
+    end_time_in_ms: end_time2
 )
 
 

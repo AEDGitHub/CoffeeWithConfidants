@@ -9,8 +9,12 @@ class CoffeeSchedule extends React.Component {
         super(props)
         this.state = {
             modalOpen: false,
+            // confabDescription: "",
+            // confabMaxCapacity: null,
+            // confabStartTime: null,
+            // confabEndTime: null,
         }
-        this.handleSubmit = this.handleSubmit.bind(this)
+        // this.handleSubmit = this.handleSubmit.bind(this)
         this.displaysAllConurbationCallouts = this.displaysAllConurbationCallouts.bind(
             this
         )
@@ -33,20 +37,22 @@ class CoffeeSchedule extends React.Component {
         return (e) => this.setState({ [field]: e.target.value })
     }
 
-    handleSubmit(e) {
-        e.preventDefault()
-        const hostId = this.props.ccId
-        const description = this.state.confabDescription
-        const maxCapacity = this.state.confabMaxCapacity
+    // handleSubmit(e) {
+    //     e.preventDefault()
+    //     const hostId = this.props.ccId
+    //     const description = this.state.confabDescription
+    //     const maxCapacity = this.state.confabMaxCapacity
+    //     const startTimeUTCSecondsSinceUnixEpoch = null
+    //     const endTimeUTCSecondsSinceUnixEpoch = null
 
-        const confab = {
-            host_id: hostId,
-            description: description,
-            max_capacity: maxCapacity,
-        }
-        this.props.processConfabForm(confab)
-        this.setState({ modalOpen: false })
-    }
+    //     const confab = {
+    //         host_id: hostId,
+    //         description: description,
+    //         max_capacity: maxCapacity,
+    //     }
+    //     this.props.processConfabForm(confab)
+    //     this.setState({ modalOpen: false })
+    // }
 
     monthDisplay() {
         const rightNow = new Date()
@@ -209,7 +215,7 @@ class CoffeeSchedule extends React.Component {
                         <div className="confab-modal-subhead">
                             Fill in the details below and get ready to conspire!
                         </div>
-                        <form>Something</form>
+                        <form>TBD</form>
                     </div>
                 </Modal>
             </div>

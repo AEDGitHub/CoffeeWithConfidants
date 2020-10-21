@@ -304,7 +304,7 @@ section {
                                         border-radius: 2px;
                                         background-color: #ffffff;
                                         text-align: center;
-                                        //todo:  make code below here more dynamic
+                                        //todo:  make code below here dynamic
                                         .img-container-0 {
                                             width: 100%;
                                             padding: 50%;
@@ -570,7 +570,6 @@ section {
                             }
                         }
                         hr {
-                            // width: calc(100% - 2rem);
                             width: 100%;
                             margin: 1rem 1rem 1rem 0rem;
                             border: none;
@@ -827,6 +826,7 @@ section {
     width: 71%;
     max-width: 696px;
     height: calc(100% - 14.441rem);
+    max-height: 777px;
     border: 2px solid #717370;
     border-radius: 1rem;
     background: #ffffff;
@@ -850,6 +850,7 @@ section {
     }
     .confab-modal-content-container {
         margin: 1rem 1.618rem;
+        height: calc(100% - 2rem);
         .confab-modal-title {
             font-size: 1.618rem;
             font-weight: 700;
@@ -864,6 +865,7 @@ section {
         form {
             display: flex;
             margin-top: 1rem;
+            height: calc(100% - 5.347rem);
         }
     }
 }
