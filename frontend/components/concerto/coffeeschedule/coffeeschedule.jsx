@@ -154,8 +154,9 @@ class CoffeeSchedule extends React.Component {
                 confab,
                 this.props.ccId
             )
+            const dateObject = new Date(confab.start_time_in_ms)
             const timeObject = this.props.convertDatetimeStringToObject(
-                confab.start_time
+                dateObject
             )
             const day = timeObject["day"].toUpperCase()
             const date =

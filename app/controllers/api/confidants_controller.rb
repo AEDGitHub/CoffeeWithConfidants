@@ -17,10 +17,10 @@ class Api::ConfidantsController < ApplicationController
     end
 
     def destroy
-        @dead_confidant = Confidant.find(params[:id])
-        if @dead_confidant == current_confidant
+        @confidant = Confidant.find(params[:id])
+        if @confidant == current_confidant
             logout
-            @dead_confidant.destroy
+            @confidant.destroy
         else
             render json: ["Sorry, no confidant to destroy!"], status: 422
         end
@@ -53,7 +53,7 @@ class Api::ConfidantsController < ApplicationController
 
     def confidant_params
         params.require(:confidant)
-        .permit(:username, :password, :email, :location_id, :new_password)
+        .permit(:username, :password, :email, :location_id, :avatar_id)
     end
 
 end

@@ -40,9 +40,8 @@ class EventShow extends React.Component {
     }
 
     updateConfabDataInState(confab) {
-        const timeObject = this.props.convertDatetimeStringToObject(
-            confab.start_time
-        )
+        const dateObject = new Date(confab.start_time_in_ms)
+        const timeObject = this.props.convertDatetimeStringToObject(dateObject)
         const currentUserAttending = this.props.determineWhetherConfidantIsAttending(
             confab,
             this.props.ccId
