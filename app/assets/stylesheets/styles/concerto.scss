@@ -864,6 +864,8 @@ section {
         }
         form {
             display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             margin-top: 1rem;
             height: calc(100% - 5.347rem);
         }

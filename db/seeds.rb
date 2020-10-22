@@ -22,7 +22,7 @@ fid0_the_demo_confidant = Confidant.create!(
     password: "hunter12",
     email: "breakintobreakout@fakemail.com",
     location_id: urb0.id,
-    avatar_id: 1,
+    avatar_id: 0,
 )
 
 fid1 = Confidant.create!(

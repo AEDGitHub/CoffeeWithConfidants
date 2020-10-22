@@ -9,6 +9,7 @@ import {
     fetchFilteredApiConfabs,
     joinConfab,
     leaveConfab,
+    createConfab,
 } from "../../../actions/confabs_actions"
 import {
     convertDatetimeStringToObject,
@@ -48,8 +49,8 @@ const mDTP = (dispatch) => {
         joinConfab: (confabId) => dispatch(joinConfab(confabId)),
         leaveConfab: (confabId, confidantId) =>
             dispatch(leaveConfab(confabId, confidantId)),
-        postConfab: (conurbationId, confabId) =>
-            dispatch(postConfab(conurbationId, confabId)),
+        createConfab: (conurbationId, confab) =>
+            dispatch(createConfab(conurbationId, confab)),
     }
 }
 

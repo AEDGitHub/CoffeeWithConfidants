@@ -9,12 +9,12 @@ class CoffeeSchedule extends React.Component {
         super(props)
         this.state = {
             modalOpen: false,
-            // confabDescription: "",
-            // confabMaxCapacity: null,
-            // confabStartTime: null,
-            // confabEndTime: null,
+            confabDescription: "",
+            confabMaxCapacity: 3,
+            confabStartDate: "",
+            confabStartTime: "12:00",
         }
-        // this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
         this.displaysAllConurbationCallouts = this.displaysAllConurbationCallouts.bind(
             this
         )
@@ -33,26 +33,55 @@ class CoffeeSchedule extends React.Component {
         this.props.loadConfabs()
     }
 
+    componentDidUpdate() {
+        console.log(
+            `The LS confab description is ${this.state.confabDescription}`
+        )
+        console.log(
+            `The LS confab max capacity is ${this.state.confabMaxCapacity}`
+        )
+        // console.log(
+        //     `The LS confab start time in [ms] is ${new Date(
+        //         this.state.confabStartDate
+        //     ).getTime()}`
+        // )
+        console.log(`The LS confab date is ${this.state.confabStartDate}`)
+        console.log(`The LS confab time is ${this.state.confabStartTime}`)
+        console.log(
+            `The LS start time in [ms] is ${new Date(
+                this.state.confabStartDate + "T" + this.state.confabStartTime
+            ).getTime()}`
+        )
+    }
+
     update(field) {
         return (e) => this.setState({ [field]: e.target.value })
     }
 
-    // handleSubmit(e) {
-    //     e.preventDefault()
-    //     const hostId = this.props.ccId
-    //     const description = this.state.confabDescription
-    //     const maxCapacity = this.state.confabMaxCapacity
-    //     const startTimeUTCSecondsSinceUnixEpoch = null
-    //     const endTimeUTCSecondsSinceUnixEpoch = null
+    handleSubmit(e) {
+        e.preventDefault()
 
-    //     const confab = {
-    //         host_id: hostId,
-    //         description: description,
-    //         max_capacity: maxCapacity,
-    //     }
-    //     this.props.processConfabForm(confab)
-    //     this.setState({ modalOpen: false })
-    // }
+        const hostId = this.props.ccId
+        const description = this.state.confabDescription
+        const maxCapacity = this.state.confabMaxCapacity
+        const dateString =
+            this.state.confabStartDate + "T" + this.state.confabStartTime
+        const startTimeInMilliseconds = new Date(dateString).getTime()
+        const endTimeInMilliseconds = startTimeInMilliseconds + 7200000
+
+        const conurbationId = this.props.confidants[hostId].location_id
+
+        const confab = {
+            host_id: hostId,
+            description: description,
+            max_capacity: maxCapacity,
+            start_time_in_ms: startTimeInMilliseconds,
+            end_time_in_ms: endTimeInMilliseconds,
+        }
+
+        this.props.createConfab(conurbationId, confab)
+        this.setState({ modalOpen: false })
+    }
 
     monthDisplay() {
         const rightNow = new Date()
@@ -60,6 +89,7 @@ class CoffeeSchedule extends React.Component {
             .convertDatetimeStringToObject(rightNow.toString())
             ["fullMonth"].toString()
             .toUpperCase()
+        const loggedIn = this.props.loggedIn
 
         return (
             <div className="month-toggle">
@@ -68,7 +98,13 @@ class CoffeeSchedule extends React.Component {
                     className="create-confab-container"
                     onClick={() => this.setState({ modalOpen: true })}
                 >
-                    <div className="create-confab-button">+ CREATE CONFAB</div>
+                    {loggedIn ? (
+                        <div className="create-confab-button">
+                            + CREATE CONFAB
+                        </div>
+                    ) : (
+                        <></>
+                    )}
                 </div>
             </div>
         )
@@ -147,9 +183,9 @@ class CoffeeSchedule extends React.Component {
         return relevantConfabs.map((confab) => {
             const seatsRemaining =
                 confab.max_capacity - confab.attendee_ids.length
-            const hostName = this.props.confidants[
-                confab.host_id
-            ].username.toUpperCase()
+            const hostConfidant = this.props.confidants[confab.host_id]
+            const hostName = hostConfidant.username.toUpperCase()
+            const hostAvatarId = hostConfidant.avatar_id
             const currentConfidantAttending = this.props.determineWhetherConfidantIsAttending(
                 confab,
                 this.props.ccId
@@ -179,7 +215,7 @@ class CoffeeSchedule extends React.Component {
                 <div className="confab-card-container" key={confab.id}>
                     <CoffeeScheduleEvent
                         attendanceDisplay={attendanceDisplay}
-                        avatarId="3"
+                        avatarId={hostAvatarId}
                         ccId={this.props.ccId}
                         confabButton={confabButton}
                         confabId={confab.id}
@@ -216,7 +252,46 @@ class CoffeeSchedule extends React.Component {
                         <div className="confab-modal-subhead">
                             Fill in the details below and get ready to conspire!
                         </div>
-                        <form>TBD</form>
+                        <form
+                            className="confab-modal-form"
+                            onSubmit={this.handleSubmit}
+                        >
+                            <div className="confab-modal-form-input-container">
+                                <input
+                                    required
+                                    type="textarea"
+                                    className="confab-modal-textarea"
+                                    onChange={this.update("confabDescription")}
+                                    placeholder="Write a description!"
+                                    value={this.state.confabDescription}
+                                />
+                                <input
+                                    required
+                                    type="date"
+                                    className="confab-modal-date"
+                                    onChange={this.update("confabStartDate")}
+                                    value={this.state.confabStartDate}
+                                    placeholder={new Date().toString()}
+                                />
+                                <input
+                                    required
+                                    type="time"
+                                    className="confab-modal-time"
+                                    onChange={this.update("confabStartTime")}
+                                    value={this.state.confabStartTime}
+                                />
+                                <input
+                                    required
+                                    type="number"
+                                    className="confab-modal-number"
+                                    onChange={this.update("confabMaxCapacity")}
+                                    value={this.state.confabMaxCapacity}
+                                    min={3}
+                                    max={7}
+                                />
+                            </div>
+                            <input type="submit" value="CREATE CONFAB" />
+                        </form>
                     </div>
                 </Modal>
             </div>
