@@ -13,9 +13,9 @@ Conflation.destroy_all
 
 urb0 = Conurbation.create!(name: "Quarantine Cosmopolis, San Francisco Bay Area, California")
 urb1 = Conurbation.create!(name: "Desert Metropolis, Phoenix-Tucson Corridor, Arizona")
-urb2 = Conurbation.create!(name: "Everdark Frozen Hellscape, Great Falls, Montana")
-urb3 = Conurbation.create!(name: "Rocky Mountain Utopia, Denver-Springs Corridor, Colorado")
-urb4 = Conurbation.create!(name: "Pacific Postwar Occupation Zone, Ryukyu Islands, Japan")
+urb2 = Conurbation.create!(name: "Everdark Frozen Hellscape, Great Falls Outpost, Montana")
+urb3 = Conurbation.create!(name: "Rocky Mountain Utopia, Denver-Springs Range, Colorado")
+urb4 = Conurbation.create!(name: "Pacific Postwar Occupation Zone, Ryukyu Islands Chain, Japan")
 
 fid0_the_demo_confidant = Confidant.create!(
     username: "Joker",
@@ -37,9 +37,10 @@ fid2 = Confidant.create!(
     username: "Ann",
     password: "hunter12",
     email: "lastsurprise@fakemail.com",
-    location_id: urb2.id,
+    location_id: urb4.id,
     avatar_id: 3,
 )
+
 
 party_time0 = Time.new(1999, 12, 31, 22, 00, 00).to_i * 1000
 end_time0 = Time.new(1999, 12, 31, 23, 00, 00).to_i * 1000
@@ -59,9 +60,6 @@ end_time2 = Time.new(2020, 10, 22, 22, 00, 00).to_i * 1000
 party_time5 = Time.new(2020, 11, 29, 20, 00, 00).to_i * 1000
 end_time3 = Time.new(2020, 10, 29, 22, 00, 00).to_i * 1000
 
-
-# party_time_month = Time.now
-# end_time_month = party_time_month
 
 fab0 = Confab.create!(
     host_id: fid0_the_demo_confidant.id,
@@ -100,11 +98,3 @@ flation0 = Conflation.create!(
     confab_id: fab2.id,
     attendee_id: fid1.id
 )
-
-# fab2 = Confab.create!(
-#     host_id: fid0_the_demo_confidant.id,
-#     description: "Test 'fab for the month."
-#     max_capacity: 8,
-#     start_time: party_time_month,
-#     end_time: end_time_month 
-# )

@@ -183,7 +183,8 @@ class CoffeeSchedule extends React.Component {
         return relevantConfabs.map((confab) => {
             const seatsRemaining =
                 confab.max_capacity - confab.attendee_ids.length
-            const hostConfidant = this.props.confidants[confab.host_id]
+            const hostId = confab.host_id
+            const hostConfidant = this.props.confidants[hostId]
             const hostName = hostConfidant.username.toUpperCase()
             const hostAvatarId = hostConfidant.avatar_id
             const currentConfidantAttending = this.props.determineWhetherConfidantIsAttending(
@@ -216,6 +217,7 @@ class CoffeeSchedule extends React.Component {
                     <CoffeeScheduleEvent
                         attendanceDisplay={attendanceDisplay}
                         avatarId={hostAvatarId}
+                        hostId={hostId}
                         ccId={this.props.ccId}
                         confabButton={confabButton}
                         confabId={confab.id}
@@ -256,41 +258,82 @@ class CoffeeSchedule extends React.Component {
                             className="confab-modal-form"
                             onSubmit={this.handleSubmit}
                         >
-                            <div className="confab-modal-form-input-container">
-                                <input
-                                    required
-                                    type="textarea"
-                                    className="confab-modal-textarea"
-                                    onChange={this.update("confabDescription")}
-                                    placeholder="Write a description!"
-                                    value={this.state.confabDescription}
-                                />
-                                <input
-                                    required
-                                    type="date"
-                                    className="confab-modal-date"
-                                    onChange={this.update("confabStartDate")}
-                                    value={this.state.confabStartDate}
-                                    placeholder={new Date().toString()}
-                                />
-                                <input
-                                    required
-                                    type="time"
-                                    className="confab-modal-time"
-                                    onChange={this.update("confabStartTime")}
-                                    value={this.state.confabStartTime}
-                                />
-                                <input
-                                    required
-                                    type="number"
-                                    className="confab-modal-number"
-                                    onChange={this.update("confabMaxCapacity")}
-                                    value={this.state.confabMaxCapacity}
-                                    min={3}
-                                    max={7}
-                                />
+                            <div className="form-input-areas-container">
+                                <div className="form-fields-container">
+                                    <div className="form-field-title">
+                                        DESCRIPTION
+                                    </div>
+                                    <input
+                                        required
+                                        type="text"
+                                        className="form-field-input"
+                                        onChange={this.update(
+                                            "confabDescription"
+                                        )}
+                                        placeholder="Write a description!"
+                                        value={this.state.confabDescription}
+                                    />
+                                </div>
+                                <div className="form-fields-container">
+                                    <div className="form-field-title">DATE</div>
+                                    <input
+                                        required
+                                        type="date"
+                                        className="form-field-input"
+                                        onChange={this.update(
+                                            "confabStartDate"
+                                        )}
+                                        value={this.state.confabStartDate}
+                                        placeholder={new Date().toString()}
+                                    />
+                                </div>
+                                <div className="form-fields-container">
+                                    <div className="form-half-fields-container">
+                                        <div className="half-field-area">
+                                            <div className="half-field-area-title">
+                                                TIME
+                                            </div>
+                                            <input
+                                                required
+                                                type="time"
+                                                className="half-field-area-input"
+                                                onChange={this.update(
+                                                    "confabStartTime"
+                                                )}
+                                                value={
+                                                    this.state.confabStartTime
+                                                }
+                                            />
+                                        </div>
+                                        <div className="half-field-area">
+                                            <div className="half-field-area-title">
+                                                MAXIMUM CAPACITY
+                                            </div>
+                                            <input
+                                                required
+                                                type="number"
+                                                className="half-field-area-input"
+                                                onChange={this.update(
+                                                    "confabMaxCapacity"
+                                                )}
+                                                defaultValue={
+                                                    "Maximum Capacity"
+                                                }
+                                                value={
+                                                    this.state.confabMaxCapacity
+                                                }
+                                                min={3}
+                                                max={7}
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <input type="submit" value="CREATE CONFAB" />
+                            <input
+                                className="confab-modal-submit-button"
+                                type="submit"
+                                value="CREATE CONFAB"
+                            />
                         </form>
                     </div>
                 </Modal>

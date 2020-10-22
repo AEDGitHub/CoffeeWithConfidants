@@ -11,6 +11,7 @@ const CoffeeScheduleEvent = ({
     day,
     description,
     hostName,
+    hostId,
     hours,
     seatsRemaining,
 }) => {
@@ -34,7 +35,11 @@ const CoffeeScheduleEvent = ({
                     {attendanceDisplay(seatsRemaining)}
                 </div>
             </Link>
-            {confabButton(confabId, ccId)}
+            {hostId === ccId ? (
+                <div className="no-squad-up-button"></div>
+            ) : (
+                confabButton(confabId, ccId)
+            )}
         </>
     )
 }
