@@ -18,8 +18,6 @@ class SessionForm extends React.Component {
         this.homeCityFieldOptions = this.homeCityFieldOptions.bind(this)
     }
 
-    // lifecycle methods
-
     componentDidMount() {
         if (this.props.formType === "signup") {
             this.props.loadConurbations()
@@ -32,8 +30,6 @@ class SessionForm extends React.Component {
         }
         this.props.unloadConurbations()
     }
-
-    // interaction handlers
 
     update(field) {
         return (e) =>
@@ -63,8 +59,6 @@ class SessionForm extends React.Component {
 
         this.props.processDemoForm(demoConfidant)
     }
-
-    // displays, fields, and buttons with variable logic
 
     errorsFlash() {
         if (this.props.sessionErrors.length === 0) {
@@ -125,8 +119,6 @@ class SessionForm extends React.Component {
     }
 
     render() {
-        // displays, fields, and buttons with constant logic
-
         const mainMsgDisplay = (
             <div className="sessionform-main-msg">{this.props.mainMsg}</div>
         )

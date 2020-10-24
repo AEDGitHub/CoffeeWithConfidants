@@ -53,7 +53,6 @@ export const joinConfab = (confabId) => {
                 dispatch(receiveAllConfabs(payload))
             },
             (err) => {
-                console.log(err.responseJSON)
                 // dispatch(receiveErrors(err.responseJSON))
             }
         )
@@ -66,9 +65,7 @@ export const leaveConfab = (confabId, confidantId) => {
             (payload) => {
                 dispatch(receiveAllConfabs(payload))
             },
-            (err) => {
-                console.log(err.responseJSON)
-            }
+            (err) => {}
         )
     }
 }

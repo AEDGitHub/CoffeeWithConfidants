@@ -23,8 +23,6 @@ class EventShow extends React.Component {
         this.updateConfabDataInState = this.updateConfabDataInState.bind(this)
     }
 
-    // lifecycle methods
-
     componentDidMount() {
         this.props.loadConfab(this.props.match.params.confabId).then(() => {
             if (this.props.confab) {

@@ -33,27 +33,6 @@ class CoffeeSchedule extends React.Component {
         this.props.loadConfabs()
     }
 
-    componentDidUpdate() {
-        console.log(
-            `The LS confab description is ${this.state.confabDescription}`
-        )
-        console.log(
-            `The LS confab max capacity is ${this.state.confabMaxCapacity}`
-        )
-        // console.log(
-        //     `The LS confab start time in [ms] is ${new Date(
-        //         this.state.confabStartDate
-        //     ).getTime()}`
-        // )
-        console.log(`The LS confab date is ${this.state.confabStartDate}`)
-        console.log(`The LS confab time is ${this.state.confabStartTime}`)
-        console.log(
-            `The LS start time in [ms] is ${new Date(
-                this.state.confabStartDate + "T" + this.state.confabStartTime
-            ).getTime()}`
-        )
-    }
-
     update(field) {
         return (e) => this.setState({ [field]: e.target.value })
     }

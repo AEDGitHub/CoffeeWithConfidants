@@ -9,8 +9,6 @@ if (process.env.NODE_ENV !== "production") {
     middlewares.push(logger)
 }
 
-//comment to make heroku detect git changes
-
 const configureStore = (preloadedState = {}) =>
     createStore(rootReducer, preloadedState, applyMiddleware(...middlewares))
 
