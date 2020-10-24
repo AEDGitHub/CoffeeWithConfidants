@@ -1,12 +1,3 @@
-//color palette:
-// #070707 (p5black)
-// #aa0004 (p5crimson)
-// #ee0000 (p5red)
-// #717370 (p5grey)
-// #512e59 (p5royalPurple)
-// #51210e (p5royalBrown)
-// #eeff00 (p5royalYellow)
-
 section {
     display: flex;
     flex-direction: column;
@@ -162,7 +153,6 @@ section {
                     line-height: 100%;
                     width: 100%;
                     margin-top: 0;
-                    // display: block;
                     cursor: pointer;
                 }
             }
@@ -191,11 +181,9 @@ section {
                     font-size: 3rem;
                     font-weight: 700;
                     margin-bottom: 0.777rem;
-                    // text-shadow: 2px 2px 3px #070707;
                 }
                 .subtitle-text {
                     font-size: 1.111rem;
-                    // text-shadow: 1px 1px 1px #070707;
                 }
             }
         }
@@ -261,10 +249,6 @@ section {
                         }
                     }
                 }
-
-                // .jump-links {
-                //
-                // }
                 .confab-grid-container {
                     margin-bottom: 1rem;
                     .collection-of-confabs-from-a-conurbation {
@@ -274,16 +258,13 @@ section {
                             display: flex;
                             justify-content: center;
                             align-items: center;
-
                             flex: 0 0 calc(25% - 0.75rem);
                             margin: 2rem 0.5rem 3.111rem 0rem;
                             border: 2px solid #ee0000;
-
                             .conurbation-callout {
                                 color: #ee0000;
                                 margin: 0 auto;
                                 text-align: center;
-                                // vertical-align: middle;
                                 font-size: 1.441rem;
                                 font-weight: 800;
                             }
@@ -307,7 +288,6 @@ section {
                                         border-radius: 2px;
                                         background-color: #ffffff;
                                         text-align: center;
-                                        //todo:  make code below here dynamic
                                         .img-container-0 {
                                             width: 100%;
                                             padding: 50%;
@@ -325,10 +305,6 @@ section {
                                                 "P5-avatar-01-morgana.jpg"
                                             );
                                             background-size: cover;
-                                            // .img {
-                                            //     width: 100%;
-                                            //     height: 100%;
-                                            // }
                                         }
                                         .img-container-2 {
                                             width: 100%;
@@ -402,7 +378,6 @@ section {
                                             );
                                             background-size: cover;
                                         }
-                                        //todo: improve code above
                                         .name {
                                             padding-top: 0.222rem;
                                             vertical-align: middle;
@@ -412,7 +387,6 @@ section {
                                         }
                                     }
                                     .time-container {
-                                        // padding-bottom: 0.555rem;
                                         width: 47%;
                                         text-align: center;
                                         color: #070707;
@@ -437,7 +411,6 @@ section {
                                 .confab-description {
                                     margin: 0.555rem 0rem;
                                     padding: 0rem 1rem;
-                                    // padding-top: 0.667rem;
                                     color: #717370;
                                     font-weight: 500;
                                     height: 6rem;
@@ -457,9 +430,6 @@ section {
                                         font-weight: 700;
                                         color: #512e59;
                                     }
-                                    // .fancy-graphic {
-                                    //
-                                    // }
                                 }
                                 .attendance-status-not-attending {
                                     .seats-left {
@@ -468,9 +438,6 @@ section {
                                         font-weight: 500;
                                         color: #717370;
                                     }
-                                    // .fancy-graphic {
-                                    //
-                                    // }
                                 }
                             }
                             .no-squad-up-button {
@@ -585,9 +552,6 @@ section {
                                 font-weight: 700;
                                 color: #512e59;
                             }
-                            // .fancy-graphic {
-                            //
-                            // }
                         }
                         .attendance-status-not-attending {
                             .seats-left {
@@ -721,7 +685,6 @@ section {
                         }
                         .form-subsection {
                             padding: 0.333rem 1rem 1.333rem 1rem;
-                            // border-top: 1px solid #512e59;
                             border-bottom: 1px solid #512e59;
                             .subsection-field-area {
                                 margin-top: 1rem;
@@ -935,9 +898,6 @@ section {
                                 border-radius: 0.222rem;
                             }
                         }
-                        // .half-field-area:last-of-type {
-                        //     margin-left: 1rem;
-                        // }
                     }
                 }
             }
