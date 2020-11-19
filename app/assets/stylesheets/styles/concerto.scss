@@ -1,6 +1,26 @@
 section {
+    position: relative;
     display: flex;
     flex-direction: column;
+    .flash-container {
+        height: 2.5rem;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        border-top: 2px solid #efefef;
+        border-bottom: 2px solid #efefef;
+        background-color: #ee0000;
+
+        .flash-msg {
+            height: 2.5rem;
+            padding: 0.555rem 1rem;
+            // margin: 0 auto;
+            color: #ffffff;
+            font-size: 1.111rem;
+            text-align: center;
+        }
+    }
     .splash {
         .splash-photo-container {
             background-image: image-url("P5-leblanc-background.jpg");
