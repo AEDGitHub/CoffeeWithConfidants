@@ -17,7 +17,10 @@ import { Link } from "react-router-dom"
 import { connect } from "react-redux"
 import SessionForm from "./sessionform"
 
-const mSTP = ({ entities: { conurbations }, errors }) => {
+const mSTP = ({
+    entities: { conurbations },
+    // errors
+}) => {
     return {
         conurbations: selectAllConurbations(conurbations),
         conurbationsAreLoaded: areConurbationsLoaded(conurbations),
@@ -25,7 +28,7 @@ const mSTP = ({ entities: { conurbations }, errors }) => {
             conurbations,
             "Quarantine Cosmopolis, San Francisco Bay Area, California"
         ),
-        sessionErrors: errors.session,
+        //   sessionErrors: errors.session,
         formType: "signup",
         mainMsg: "Ready to squad up?",
         subMsg:
@@ -45,7 +48,7 @@ const mDTP = (dispatch) => {
     return {
         loadConurbations: () => dispatch(fetchAllApiConurbations()),
         unloadConurbations: () => dispatch(ditchConurbations()),
-        unloadSessionErrors: () => dispatch(ditchSessionErrors()),
+        //   unloadSessionErrors: () => dispatch(ditchSessionErrors()),
         processMainForm: (confidant) => dispatch(signup(confidant)),
         processDemoForm: (confidant) => dispatch(signin(confidant)),
     }

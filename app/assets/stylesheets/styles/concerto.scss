@@ -6,16 +6,11 @@ section {
         height: 2.5rem;
         position: absolute;
         width: 100%;
-        top: 0;
-        left: 0;
         border-top: 2px solid #efefef;
         border-bottom: 2px solid #efefef;
         background-color: #ee0000;
-
         .flash-msg {
-            height: 2.5rem;
             padding: 0.555rem 1rem;
-            // margin: 0 auto;
             color: #ffffff;
             font-size: 1.111rem;
             text-align: center;
@@ -190,7 +185,7 @@ section {
             background-position: 25% 22%;
 
             min-width: 100%;
-            padding: 9rem 0rem;
+            padding: 11rem 0rem;
             text-align: center;
             .coffeeschedule-msg-container {
                 margin: auto;

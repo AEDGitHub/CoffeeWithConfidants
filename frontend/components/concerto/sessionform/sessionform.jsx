@@ -12,7 +12,7 @@ class SessionForm extends React.Component {
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleDemoSubmit = this.handleDemoSubmit.bind(this)
-        this.errorsFlash = this.errorsFlash.bind(this)
+        //   this.errorsFlash = this.errorsFlash.bind(this)
         this.emailField = this.emailField.bind(this)
         this.homeCityField = this.homeCityField.bind(this)
         this.homeCityFieldOptions = this.homeCityFieldOptions.bind(this)
@@ -25,9 +25,9 @@ class SessionForm extends React.Component {
     }
 
     componentWillUnmount() {
-        if (this.props.sessionErrors.length > 0) {
-            this.props.unloadSessionErrors()
-        }
+        //   if (this.props.sessionErrors.length > 0) {
+        //       this.props.unloadSessionErrors()
+        //   }
         this.props.unloadConurbations()
     }
 
@@ -47,7 +47,7 @@ class SessionForm extends React.Component {
             location_id: this.state.locationId,
         }
         this.props.processMainForm(confidant)
-        this.props.unloadSessionErrors()
+        //   this.props.unloadSessionErrors()
     }
 
     handleDemoSubmit(e) {
@@ -60,17 +60,17 @@ class SessionForm extends React.Component {
         this.props.processDemoForm(demoConfidant)
     }
 
-    errorsFlash() {
-        if (this.props.sessionErrors.length === 0) {
-            return <div className="sessionform-errors-flash-empty"></div>
-        } else {
-            return this.props.sessionErrors.map((message, idx) => (
-                <div className="sessionform-errors-flash" key={idx}>
-                    {message}
-                </div>
-            ))
-        }
-    }
+    //  errorsFlash() {
+    //      if (this.props.sessionErrors.length === 0) {
+    //          return <div className="sessionform-errors-flash-empty"></div>
+    //      } else {
+    //          return this.props.sessionErrors.map((message, idx) => (
+    //              <div className="sessionform-errors-flash" key={idx}>
+    //                  {message}
+    //              </div>
+    //          ))
+    //      }
+    //  }
 
     emailField() {
         if (this.props.formType === "signin") {
@@ -168,7 +168,7 @@ class SessionForm extends React.Component {
         return (
             <>
                 <div className="sessionform">
-                    {this.errorsFlash()}
+                    {/* {this.errorsFlash()} */}
                     <div className="sessionform-form-container">
                         {mainMsgDisplay}
                         {subMsgDisplay}

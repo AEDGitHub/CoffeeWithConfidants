@@ -4,6 +4,7 @@ import { AuthRoute, ProtectedRoute } from "../../utils/route_utils"
 import CoffeeSchedule from "./coffeeschedule/coffeeschedule_container"
 import ConfidantEdit from "./confidantedit/confidantedit_container"
 import EventShow from "./eventshow/eventshow_container"
+import Flash from "./flash/flash_container"
 import SigninFormContainer from "./sessionform/signinform_container"
 import SignupFormContainer from "./sessionform/signupform_container"
 import Splash from "./splish/splash"
@@ -11,9 +12,10 @@ import Splash from "./splish/splash"
 const Concerto = () => (
     <>
         <section id="concerto">
-            <div className="flash-container">
-                <div className="flash-msg">MESSAGE TEXT</div>
-            </div>
+            {/* <div className="flash-container">
+                <div className="flash-msg">Message Text Test.</div>
+            </div> */}
+            <Flash />
             <AuthRoute path="/signin" component={SigninFormContainer} />
             <AuthRoute path="/signup" component={SignupFormContainer} />
             <ProtectedRoute path="/confidants/edit" component={ConfidantEdit} />
