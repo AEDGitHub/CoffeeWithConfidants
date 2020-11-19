@@ -10,20 +10,20 @@ import SignupFormContainer from "./sessionform/signupform_container"
 import Splash from "./splish/splash"
 
 const Concerto = () => (
-    <>
-        <section id="concerto">
-            {/* <div className="flash-container">
+	<>
+		<section id="concerto">
+			{/* <div className="flash-container">
                 <div className="flash-msg">Message Text Test.</div>
             </div> */}
-            <Flash />
-            <AuthRoute path="/signin" component={SigninFormContainer} />
-            <AuthRoute path="/signup" component={SignupFormContainer} />
-            <ProtectedRoute path="/confidants/edit" component={ConfidantEdit} />
-            <Route exact path="/coffee_times/:confabId" component={EventShow} />
-            <Route exact path="/coffee_times" component={CoffeeSchedule} />
-            <Route exact path="/" component={Splash} />
-        </section>
-    </>
+			<Flash />
+			<AuthRoute path="/signin" component={SigninFormContainer} />
+			<AuthRoute path="/signup" component={SignupFormContainer} />
+			<ProtectedRoute path="/confidants/edit" component={ConfidantEdit} />
+			<Route exact path="/coffee_times/:confabId" component={EventShow} />
+			<Route exact path="/coffee_times" component={CoffeeSchedule} />
+			<Route exact path="/" component={Splash} />
+		</section>
+	</>
 )
 
 export default Concerto

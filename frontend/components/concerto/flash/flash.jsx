@@ -1,13 +1,13 @@
 import React from "react"
 
-const Flash = ({ errors, flash, testMsg }) => {
-    return testMsg ? (
-        <div className="flash-container">
-            <div className="flash-msg">{testMsg}</div>
-        </div>
-    ) : (
-        <></>
-    )
+const Flash = ({ msg, status }) => {
+	return msg ? (
+		<div className={`flash-container-${status}`}>
+			<div className="flash-msg">{msg}</div>
+		</div>
+	) : (
+		<></>
+	)
 }
 
 export default Flash
