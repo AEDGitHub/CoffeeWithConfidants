@@ -17,7 +17,6 @@ class Api::SessionsController < ApplicationController
 	def destroy
 		if current_confidant
 			logout
-			# render json: { flash: 'Signed out.' }
 		else
 			render json: ['There was no one signed in!'], status: 404
 		end

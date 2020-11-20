@@ -12,9 +12,6 @@ import Splash from "./splish/splash"
 const Concerto = () => (
 	<>
 		<section id="concerto">
-			{/* <div className="flash-container">
-                <div className="flash-msg">Message Text Test.</div>
-            </div> */}
 			<Flash />
 			<AuthRoute path="/signin" component={SigninFormContainer} />
 			<AuthRoute path="/signup" component={SignupFormContainer} />

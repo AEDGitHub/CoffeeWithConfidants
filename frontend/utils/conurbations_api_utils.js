@@ -1,6 +1,6 @@
 export const getAllApiConurbations = () => {
-    return $.ajax({
-        url: "/api/conurbations",
-        method: "GET",
-    })
+	return $.ajax({
+		url: "/api/conurbations",
+		method: "GET",
+	})
 }

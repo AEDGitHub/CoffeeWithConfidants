@@ -4,7 +4,7 @@ import Flash from "./flash"
 
 const mSTP = ({ flash: { message, status } }) => {
 	return {
-		msg: message,
+		message: message,
 		status: status,
 	}
 }

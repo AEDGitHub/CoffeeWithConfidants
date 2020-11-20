@@ -1,10 +1,10 @@
 <% if logged_in? %>
-    <script type="text/javascript">
-        window.currentConfidant = <%= render(
-            "api/confidants/confidant.json.jbuilder",
-            confidant: current_confidant
-            ).html_safe %>
-    </script>
+<script type="text/javascript">
+   window.currentConfidant = < %= render(
+      "api/confidants/confidant.json.jbuilder",
+      confidant: current_confidant
+   ).html_safe % >
+</script>
 <% end %>
 
 <main id="root"></main>

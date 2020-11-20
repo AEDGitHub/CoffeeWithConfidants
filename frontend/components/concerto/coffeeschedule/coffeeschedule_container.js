@@ -2,56 +2,56 @@
 
 import React from "react"
 import {
-    selectAllConfabs,
-    selectAllConurbations,
+	selectAllConfabs,
+	selectAllConurbations,
 } from "../../../reducers/selectors"
 import {
-    fetchFilteredApiConfabs,
-    joinConfab,
-    leaveConfab,
-    createConfab,
+	fetchFilteredApiConfabs,
+	joinConfab,
+	leaveConfab,
+	createConfab,
 } from "../../../actions/confabs_actions"
 import {
-    convertDatetimeStringToObject,
-    determineWhetherConfidantIsAttending,
-    filterConfabsByConfabLocationId,
-    shorterConurbationName,
+	convertDatetimeStringToObject,
+	determineWhetherConfidantIsAttending,
+	filterConfabsByConfabLocationId,
+	shorterConurbationName,
 } from "../../../utils/modification_utils"
 import { Link } from "react-router-dom"
 import { connect } from "react-redux"
 import CoffeeSchedule from "./coffeeschedule"
 
 const mSTP = ({
-    entities: { confidants, conurbations, confabs },
-    session: { ccId },
+	entities: { confidants, conurbations, confabs },
+	session: { ccId },
 }) => {
-    return {
-        confidants: confidants,
-        conurbations: selectAllConurbations(conurbations),
-        confabs: selectAllConfabs(confabs),
-        ccId: ccId,
-        loggedIn: Boolean(ccId),
-        signUpLink: (
-            <Link to="/signup" className="coffeeschedule-signup-link">
-                sign up
-            </Link>
-        ),
-        shorterConurbationName: shorterConurbationName,
-        determineWhetherConfidantIsAttending: determineWhetherConfidantIsAttending,
-        filterConfabsByConfabLocationId: filterConfabsByConfabLocationId,
-        convertDatetimeStringToObject: convertDatetimeStringToObject,
-    }
+	return {
+		confidants: confidants,
+		conurbations: selectAllConurbations(conurbations),
+		confabs: selectAllConfabs(confabs),
+		ccId: ccId,
+		loggedIn: Boolean(ccId),
+		signUpLink: (
+			<Link to="/signup" className="coffeeschedule-signup-link">
+				sign up
+			</Link>
+		),
+		shorterConurbationName: shorterConurbationName,
+		determineWhetherConfidantIsAttending: determineWhetherConfidantIsAttending,
+		filterConfabsByConfabLocationId: filterConfabsByConfabLocationId,
+		convertDatetimeStringToObject: convertDatetimeStringToObject,
+	}
 }
 
 const mDTP = (dispatch) => {
-    return {
-        loadConfabs: () => dispatch(fetchFilteredApiConfabs()),
-        joinConfab: (confabId) => dispatch(joinConfab(confabId)),
-        leaveConfab: (confabId, confidantId) =>
-            dispatch(leaveConfab(confabId, confidantId)),
-        createConfab: (conurbationId, confab) =>
-            dispatch(createConfab(conurbationId, confab)),
-    }
+	return {
+		loadConfabs: () => dispatch(fetchFilteredApiConfabs()),
+		joinConfab: (confabId) => dispatch(joinConfab(confabId)),
+		leaveConfab: (confabId, confidantId) =>
+			dispatch(leaveConfab(confabId, confidantId)),
+		createConfab: (conurbationId, confab) =>
+			dispatch(createConfab(conurbationId, confab)),
+	}
 }
 
 export default connect(mSTP, mDTP)(CoffeeSchedule)
