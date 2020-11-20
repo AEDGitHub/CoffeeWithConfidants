@@ -16,7 +16,7 @@ const sessionReducer = (
 		case RECEIVE_CURRENT_CONFIDANT:
 			return {
 				...oldState,
-				ccId: parseInt(Object.keys(action.confidants)[0]),
+				ccId: parseInt(Object.keys(action.entities.confidants)[0]),
 			}
 		default:
 			return { ...oldState }

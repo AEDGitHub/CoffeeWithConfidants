@@ -1,19 +1,19 @@
 import { getAllApiConurbations } from "../utils/conurbations_api_utils"
 
 // Actions
-export const RECEIVE_ALL_CONURBATIONS = "RECEIVE_ALL_CONURBATIONS"
-export const CLEAR_ALL_CONURBATIONS = "CLEAR_ALL_CONURBATIONS"
+export const RECEIVE_CONURBATIONS = "RECEIVE_CONURBATIONS"
+export const CLEAR_CONURBATIONS = "CLEAR_CONURBATIONS"
 
-const receiveAllConurbations = ({ conurbations }) => {
+const receiveConurbations = ({ entities }, type) => {
 	return {
-		type: RECEIVE_ALL_CONURBATIONS,
-		conurbations,
+		type,
+		entities,
 	}
 }
 
-export const clearAllConurbations = () => {
+export const clearConurbations = (type) => {
 	return {
-		type: CLEAR_ALL_CONURBATIONS,
+		type,
 	}
 }
 
@@ -21,13 +21,13 @@ export const clearAllConurbations = () => {
 export const fetchAllApiConurbations = () => {
 	return (dispatch) => {
 		return getAllApiConurbations().then((payload) => {
-			dispatch(receiveAllConurbations(payload))
+			dispatch(receiveConurbations(payload, RECEIVE_CONURBATIONS))
 		})
 	}
 }
 
 export const ditchConurbations = () => {
 	return (dispatch) => {
-		dispatch(clearAllConurbations())
+		dispatch(clearConurbations(CLEAR_CONURBATIONS))
 	}
 }

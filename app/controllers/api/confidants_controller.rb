@@ -10,7 +10,7 @@ class Api::ConfidantsController < ApplicationController
 		@confidant = Confidant.new(confidant_params)
 		if @confidant.save
 			login(@confidant)
-			@flash = generate_flash('Account created. Welcome!', 'success')
+			@flash = generate_flash('Account created.', 'success')
 			render :show
 		else
 			render json: ['Invalid username or email.'], status: 401
@@ -21,7 +21,7 @@ class Api::ConfidantsController < ApplicationController
 		@confidant = Confidant.find(params[:id])
 		if @confidant == current_confidant
 			logout
-			@flash = generate_flash('Account terminated. Farewell!', 'success')
+			@flash = generate_flash('Account terminated.', 'success')
 			@confidant.destroy
 		else
 			render json: ['Sorry, no confidant to destroy!'], status: 422
@@ -43,7 +43,7 @@ class Api::ConfidantsController < ApplicationController
 			#     )
 
 			# else
-
+			@flash = generate_flash('Account updated.', 'success')
 			@confidant.update(confidant_params)
 			# end
 			render :show

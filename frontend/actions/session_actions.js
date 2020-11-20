@@ -10,18 +10,20 @@ import {
 export const RECEIVE_CURRENT_CONFIDANT = "RECEIVE_CURRENT_CONFIDANT"
 export const LOGOUT_CURRENT_CONFIDANT = "LOGOUT_CURRENT_CONFIDANT"
 
-const receiveCurrentConfidant = ({ confabs, confidants, conurbations }) => {
+const receiveConfidant = (
+	{ entities, flash = { message: null, status: null } },
+	type
+) => {
 	return {
-		type: RECEIVE_CURRENT_CONFIDANT,
-		confabs,
-		confidants,
-		conurbations,
+		entities,
+		flash,
+		type,
 	}
 }
 
-const logoutCurrentConfidant = () => {
+const logoutConfidant = (type) => {
 	return {
-		type: LOGOUT_CURRENT_CONFIDANT,
+		type,
 	}
 }
 
@@ -43,42 +45,36 @@ export const clearSessionErrors = () => {
 }
 
 //Thunk Action Creators
-export const signup = (formConfidant) => {
+export const signup = (confidant) => {
 	return (dispatch) => {
-		return postApiConfidant(formConfidant).then(
+		return postApiConfidant(confidant).then(
 			(payload) => {
-				dispatch(receiveCurrentConfidant(payload))
+				dispatch(receiveConfidant(payload, RECEIVE_CURRENT_CONFIDANT))
 			},
 			(err) => {
 				dispatch(receiveErrors(err.responseJSON))
 			}
 		)
-		// .fail((errors) => {
-		//     dispatch(receiveErrors(errors))
-		// })
 	}
 }
 
-export const signin = (formConfidant) => {
+export const signin = (confidant) => {
 	return (dispatch) => {
-		return postApiSession(formConfidant).then(
+		return postApiSession(confidant).then(
 			(payload) => {
-				dispatch(receiveCurrentConfidant(payload))
+				dispatch(receiveConfidant(payload, RECEIVE_CURRENT_CONFIDANT))
 			},
 			(err) => {
 				dispatch(receiveErrors(err.responseJSON))
 			}
 		)
-		// .fail((errors) => {
-		//     dispatch(receiveErrors(err.responseJSON))
-		// })
 	}
 }
 
 export const logout = () => {
 	return (dispatch) => {
 		return deleteApiSession().then(() => {
-			dispatch(logoutCurrentConfidant())
+			dispatch(logoutConfidant(LOGOUT_CURRENT_CONFIDANT))
 		})
 	}
 }
@@ -86,7 +82,7 @@ export const logout = () => {
 export const deleteAccount = (confidantId) => {
 	return (dispatch) => {
 		return deleteApiConfidant(confidantId).then(() => {
-			dispatch(logoutCurrentConfidant())
+			dispatch(logoutConfidant(LOGOUT_CURRENT_CONFIDANT))
 		})
 	}
 }
@@ -94,7 +90,7 @@ export const deleteAccount = (confidantId) => {
 export const updateAccount = (confidant) => {
 	return (dispatch) => {
 		return patchApiConfidant(confidant).then((payload) => {
-			dispatch(receiveCurrentConfidant(payload))
+			dispatch(receiveConfidant(payload, RECEIVE_CURRENT_CONFIDANT))
 		})
 	}
 }

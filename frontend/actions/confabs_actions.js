@@ -7,31 +7,30 @@ import {
 	postApiConflation,
 } from "../utils/conflations_api_utils"
 
-export const RECEIVE_ALL_CONFABS = "RECEIVE_ALL_CONFABS"
-export const RECEIVE_POSTED_CONFAB = "RECEIVE_POSTED_CONFAB"
-export const RECEIVE_JOINED_CONFAB = "RECEIVE_JOINED_CONFAB"
-export const RECEIVE_LEFT_CONFAB = "RECEIVE_LEFT_CONFAB"
-export const CLEAR_ALL_CONFABS = "CLEAR_ALL_CONFABS"
+export const RECEIVE_CONFABS = "RECEIVE_CONFABS"
+export const CLEAR_CONFABS = "CLEAR_CONFABS"
 
-const receiveConfabs = ({ confabs, confidants, conurbations }, type) => {
+const receiveConfabs = (
+	{ entities, flash = { message: null, status: null } },
+	type
+) => {
 	return {
 		type,
-		confabs,
-		confidants,
-		conurbations,
+		entities,
+		flash,
 	}
 }
 
-const clearAllConfabs = () => {
+const clearConfabs = (type) => {
 	return {
-		type: CLEAR_ALL_CONFABS,
+		type,
 	}
 }
 
 export const fetchFilteredApiConfabs = (confabId = null) => {
 	return (dispatch) => {
 		return getFilteredApiConfabs(confabId).then((payload) => {
-			dispatch(receiveConfabs(payload, RECEIVE_ALL_CONFABS))
+			dispatch(receiveConfabs(payload, RECEIVE_CONFABS))
 		})
 	}
 }
@@ -40,7 +39,7 @@ export const createConfab = (conurbationId, confab) => {
 	return (dispatch) => {
 		return postApiConfab(conurbationId, confab).then(
 			(payload) => {
-				dispatch(receiveConfabs(payload, RECEIVE_POSTED_CONFAB))
+				dispatch(receiveConfabs(payload, RECEIVE_CONFABS))
 			},
 			(err) => {
 				console.log(err.responseJSON)
@@ -53,7 +52,7 @@ export const joinConfab = (confabId) => {
 	return (dispatch) => {
 		return postApiConflation(confabId).then(
 			(payload) => {
-				dispatch(receiveConfabs(payload, RECEIVE_JOINED_CONFAB))
+				dispatch(receiveConfabs(payload, RECEIVE_CONFABS))
 			},
 			(err) => {
 				// dispatch(receiveErrors(err.responseJSON))
@@ -66,7 +65,7 @@ export const leaveConfab = (confabId, confidantId) => {
 	return (dispatch) => {
 		return deleteApiConflation(confabId, confidantId).then(
 			(payload) => {
-				dispatch(receiveConfabs(payload, RECEIVE_LEFT_CONFAB))
+				dispatch(receiveConfabs(payload, RECEIVE_CONFABS))
 			},
 			(err) => {}
 		)
@@ -75,6 +74,6 @@ export const leaveConfab = (confabId, confidantId) => {
 
 export const ditchConfabs = () => {
 	return (dispatch) => {
-		dispatch(clearAllConfabs())
+		dispatch(clearConfabs(CLEAR_CONFABS))
 	}
 }
