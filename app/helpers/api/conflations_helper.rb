@@ -1,2 +1,1 @@
-module Api::ConflationsHelper
-end
+module Api::ConflationsHelper; end

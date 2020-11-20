@@ -1,2 +1,1 @@
-module Api::ConurbationsHelper
-end
+module Api::ConurbationsHelper; end

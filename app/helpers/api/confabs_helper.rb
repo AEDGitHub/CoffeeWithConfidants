@@ -1,2 +1,1 @@
-module Api::ConfabsHelper
-end
+module Api::ConfabsHelper; end

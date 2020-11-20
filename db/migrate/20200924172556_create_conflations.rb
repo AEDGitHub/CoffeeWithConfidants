@@ -7,6 +7,6 @@ class CreateConflations < ActiveRecord::Migration[5.2]
       t.timestamps
     end
 
-    add_index :conflations, [:confab_id, :attendee_id], unique: true    
+    add_index :conflations, %i[confab_id attendee_id], unique: true
   end
 end

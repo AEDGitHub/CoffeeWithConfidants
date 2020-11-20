@@ -8,9 +8,8 @@ class CreateConfabs < ActiveRecord::Migration[5.2]
       t.datetime :end_time, null: false
       t.timestamps
     end
-    add_index :confabs, [:host_id, :start_time], unique: true
+    add_index :confabs, %i[host_id start_time], unique: true
     add_index :confabs, :start_time
     add_index :confabs, :end_time
-
   end
 end
