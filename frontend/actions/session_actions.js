@@ -28,8 +28,8 @@ const logoutConfidant = (type) => {
 }
 
 // Session Actions
-export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS"
-export const CLEAR_SESSION_ERRORS = "CLEAR_SESSION_ERRORS"
+// export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS"
+// export const CLEAR_SESSION_ERRORS = "CLEAR_SESSION_ERRORS"
 
 const receiveErrors = (errors) => {
 	return {
@@ -38,11 +38,11 @@ const receiveErrors = (errors) => {
 	}
 }
 
-export const clearSessionErrors = () => {
-	return {
-		type: CLEAR_SESSION_ERRORS,
-	}
-}
+// export const clearSessionErrors = () => {
+// 	return {
+// 		type: CLEAR_SESSION_ERRORS,
+// 	}
+// }
 
 //Thunk Action Creators
 export const signup = (confidant) => {
@@ -95,8 +95,8 @@ export const updateAccount = (confidant) => {
 	}
 }
 
-export const ditchSessionErrors = () => {
-	return (dispatch) => {
-		dispatch(clearSessionErrors())
-	}
-}
+// export const ditchSessionErrors = () => {
+// 	return (dispatch) => {
+// 		dispatch(clearSessionErrors())
+// 	}
+// }
