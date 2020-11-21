@@ -2,29 +2,36 @@ import React from "react"
 import { Link } from "react-router-dom"
 
 const NavLinks = ({ currentConfidant, logout }) => {
-	const constantLinks = (
-		<Link className="link-normal" to="/coffee_times">
-			COFFEE TIMES
+	const generateLink = (
+		linkClass,
+		url,
+		displayText,
+		onClickFunction = null
+	) => (
+		<Link
+			className={`link-${linkClass}`}
+			to={url}
+			onClick={onClickFunction}
+		>
+			{displayText}
 		</Link>
+	)
+
+	const constantLinks = generateLink(
+		"normal",
+		"/coffee_times",
+		"COFFEE TIMES"
 	)
 
 	const variableLinks = currentConfidant ? (
 		<>
-			<Link className="link-normal" to="/confidants/edit">
-				CONTROL
-			</Link>
-			<Link className="link-normal" to="/" onClick={logout}>
-				SIGN OUT
-			</Link>
+			{generateLink("normal", "/confidants/edit", "CONTROL")}
+			{generateLink("normal", "/", "SIGN OUT", logout)}
 		</>
 	) : (
 		<>
-			<Link className="link-normal" to="/signin">
-				SIGN IN
-			</Link>
-			<Link className="link-signup" to="/signup">
-				SIGN UP
-			</Link>
+			{generateLink("normal", "/signin", "SIGN IN")}
+			{generateLink("signup", "/signup", "SIGN UP")}
 		</>
 	)
 
