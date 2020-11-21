@@ -17,12 +17,6 @@ const NavLinks = ({ currentConfidant, logout }) => {
 		</Link>
 	)
 
-	const constantLinks = generateLink(
-		"normal",
-		"/coffee_times",
-		"COFFEE TIMES"
-	)
-
 	const variableLinks = currentConfidant ? (
 		<>
 			{generateLink("normal", "/confidants/edit", "CONTROL")}
@@ -37,7 +31,7 @@ const NavLinks = ({ currentConfidant, logout }) => {
 
 	return (
 		<nav>
-			{constantLinks}
+			{generateLink("normal", "/coffee_times", "COFFEE TIMES")}
 			{variableLinks}
 		</nav>
 	)
