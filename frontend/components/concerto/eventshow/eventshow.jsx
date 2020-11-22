@@ -200,9 +200,6 @@ class EventShow extends React.Component {
 							<div className="eventshow-confidant-about-container">
 								{description}
 							</div>
-							{/* <div className="eventshow-confidant-outro-container">
-                                Under Construction
-                            </div> */}
 						</div>
 					</div>
 				</div>

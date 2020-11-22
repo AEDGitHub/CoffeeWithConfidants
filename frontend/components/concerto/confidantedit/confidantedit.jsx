@@ -7,12 +7,12 @@ class ConfidantEdit extends React.Component {
 			username: "",
 			email: "",
 			locationId: null,
-			currentPassword: "",
+			// currentPassword: "",
 			newUsername: "",
 			newEmail: "",
 			newLocationId: null,
-			newPassword: "",
-			confirmNewPassword: "",
+			// newPassword: "",
+			// confirmNewPassword: "",
 		}
 		this.updateConfidantDataInState = this.updateConfidantDataInState.bind(
 			this
@@ -41,18 +41,6 @@ class ConfidantEdit extends React.Component {
 	}
 
 	componentDidUpdate(prevProps) {
-		// console.log("componentDidUpdate now firing!")
-		// console.log(`LS Username is ${this.state.username}`)
-		// console.log(`LS Email is ${this.state.email}`)
-		// console.log(`LS Location is ${this.state.locationId}`)
-		// console.log(`LS New Username is ${this.state.newUsername}`)
-		// console.log(`LS New Email is ${this.state.newEmail}`)
-		// console.log(`LS New Location is ${this.state.newLocationId}`)
-		// console.log(`LS Current Password is ${this.state.currentPassword}`)
-		// console.log(`LS Current New Password is ${this.state.newPassword}`)
-		// console.log(
-		//     `LS Current Confirm New Password is ${this.state.confirmNewPassword}`
-		// )
 		if (
 			prevProps.confidant &&
 			prevProps.confidant !== this.props.confidant
@@ -73,11 +61,6 @@ class ConfidantEdit extends React.Component {
 	}
 
 	updateConfidantDataInState(confidant) {
-		// console.log(`updateConfidantDataInState now firing!`)
-		// console.log(Object.values(confidant))
-		// console.log(`Props Username is ${confidant.username}`)
-		// console.log(`Props Email is ${confidant.email}`)
-		// console.log(`Props Location is ${confidant.location_id}`)
 		this.setState({
 			username: confidant.username,
 			email: confidant.email,
@@ -94,27 +77,6 @@ class ConfidantEdit extends React.Component {
 		const newEmail = this.state.newEmail
 		const locationId = this.state.locationId
 		const newLocationId = this.state.newLocationId
-		// const currentPassword = this.state.currentPassword
-		// const newPassword = this.state.newPassword
-		// const confirmNewPassword = this.state.confirmNewPassword
-
-		// if (currentPassword) {
-		//     if (newPassword === confirmNewPassword) {
-		//         const editedConfidant = {
-		//             id: ccId,
-		//             username: newUsername ? newUsername : username,
-		//             email: newEmail ? newEmail : email,
-		//             location_id: newLocationId ? newLocationId : locationId,
-		//             password: currentPassword,
-		//             new_password: newPassword,
-		//         }
-		//         this.props.updateAccount(editedConfidant)
-		//     } else {
-		//         window.alert(
-		//             "The new password doesn't match the confirm password!"
-		//         )
-		//     }
-		// } else {
 		const editedConfidant = {
 			id: ccId,
 			username: newUsername ? newUsername : username,
@@ -122,7 +84,7 @@ class ConfidantEdit extends React.Component {
 			location_id: newLocationId ? newLocationId : locationId,
 		}
 		this.props.updateAccount(editedConfidant)
-		// }
+
 		this.setState({
 			newUsername: "",
 			newEmail: "",
@@ -222,84 +184,6 @@ class ConfidantEdit extends React.Component {
 		))
 	}
 
-	// currentPasswordFieldArea(currentPassword) {
-	//     return (
-	//         <div className="subsection-field-area">
-	//             <div className="field-title">CURRENT PASSWORD</div>
-	//             {this.props.demoConfidantLoggedIn ? (
-	//                 <div className="form-field">
-	//                     <span className="optional">•••••••</span>
-	//                     <span className="demo-user">
-	//                         Make an account to change the password!
-	//                     </span>
-	//                 </div>
-	//             ) : (
-	//                 <input
-	//                     required={
-	//                         this.state.newPassword ||
-	//                         this.state.confirmNewPassword
-	//                     }
-	//                     type="password"
-	//                     className="form-field"
-	//                     onChange={this.update("currentPassword")}
-	//                     placeholder="•••••••••••"
-	//                     value={currentPassword}
-	//                 />
-	//             )}
-	//         </div>
-	//     )
-	// }
-
-	// newPasswordFieldArea(newPassword) {
-	//     return (
-	//         <div className="subsection-field-area">
-	//             <div className="field-title">NEW PASSWORD</div>
-	//             {this.props.demoConfidantLoggedIn ? (
-	//                 <div className="form-field">
-	//                     <span className="optional">{""}</span>
-	//                     <span className="demo-user">
-	//                         Make an account to change the password!
-	//                     </span>
-	//                 </div>
-	//             ) : (
-	//                 <input
-	//                     required={this.state.confirmNewPassword}
-	//                     type="password"
-	//                     className="form-field"
-	//                     onChange={this.update("newPassword")}
-	//                     placeholder="Give us another one..."
-	//                     value={newPassword}
-	//                 />
-	//             )}
-	//         </div>
-	//     )
-	// }
-
-	// confirmNewPasswordFieldArea(confirmNewPassword) {
-	//     return (
-	//         <div className="subsection-field-area">
-	//             <div className="field-title">CONFIRM NEW PASSWORD</div>
-	//             {this.props.demoConfidantLoggedIn ? (
-	//                 <div className="form-field">
-	//                     <span className="optional">{""}</span>
-	//                     <span className="demo-user">
-	//                         Make an account to change the password!
-	//                     </span>
-	//                 </div>
-	//             ) : (
-	//                 <input
-	//                     required={this.state.newPassword}
-	//                     type="password"
-	//                     className="form-field"
-	//                     onChange={this.update("confirmNewPassword")}
-	//                     placeholder="Give us another one!!!"
-	//                     value={confirmNewPassword}
-	//                 />
-	//             )}
-	//         </div>
-	//     )
-	// }
-
 	formSubmitButton() {
 		return this.props.demoConfidantLoggedIn ? (
 			<div className="form-submit-button-demo-user">
@@ -353,19 +237,6 @@ class ConfidantEdit extends React.Component {
 
 		const conurbationFieldArea = this.conurbationFieldArea()
 
-		// const currentPassword = this.state.currentPassword
-		// const currentPasswordFieldArea = this.currentPasswordFieldArea(
-		//     currentPassword
-		// )
-
-		// const newPassword = this.state.newPassword
-		// const newPasswordFieldArea = this.newPasswordFieldArea(newPassword)
-
-		// const confirmNewPassword = this.state.confirmNewPassword
-		// const confirmNewPasswordFieldArea = this.confirmNewPasswordFieldArea(
-		//     confirmNewPassword
-		// )
-
 		const formSubmitButton = this.formSubmitButton()
 
 		const ccId = this.props.ccId
@@ -400,13 +271,7 @@ class ConfidantEdit extends React.Component {
 										</div>
 									</div>
 									<div className="form-section">
-										{/* <div className="form-section-heading">
-                                            Change Your Password
-                                        </div> */}
 										<div className="form-subsection">
-											{/* {currentPasswordFieldArea}
-                                            {newPasswordFieldArea}
-                                            {confirmNewPasswordFieldArea} */}
 											{formSubmitButton}
 										</div>
 									</div>

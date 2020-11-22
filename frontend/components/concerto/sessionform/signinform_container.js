@@ -7,15 +7,12 @@ import {
 	fetchAllApiConurbations,
 	ditchConurbations,
 } from "../../../actions/conurbations_actions"
-import { signin, ditchSessionErrors } from "../../../actions/session_actions"
+import { signin } from "../../../actions/session_actions"
 import { Link } from "react-router-dom"
 import { connect } from "react-redux"
 import SessionForm from "./sessionform"
 
-const mSTP = ({
-	entities: { conurbations },
-	// errors
-}) => {
+const mSTP = ({ entities: { conurbations } }) => {
 	return {
 		conurbations: conurbations,
 		conurbationsAreLoaded: areConurbationsLoaded(conurbations),
@@ -23,7 +20,6 @@ const mSTP = ({
 			conurbations,
 			"Quarantine Cosmopolis, San Francisco Bay Area, California"
 		),
-		//   sessionErrors: errors.session,
 		formType: "signin",
 		mainMsg: "Take your time...",
 		subMsg: "Welcome back, Confidant! Let's get this caffeine.",
@@ -42,7 +38,6 @@ const mDTP = (dispatch) => {
 	return {
 		loadConurbations: () => dispatch(fetchAllApiConurbations()),
 		unloadConurbations: () => dispatch(ditchConurbations()),
-		//   unloadSessionErrors: () => dispatch(ditchSessionErrors()),
 		processMainForm: (confidant) => dispatch(signin(confidant)),
 		processDemoForm: (confidant) => dispatch(signin(confidant)),
 	}
