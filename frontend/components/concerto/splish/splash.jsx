@@ -9,6 +9,21 @@ const Splash = () => {
 		</div>
 	)
 
+	const firstSplashRunnerItem = generateSplashRunnerItem(
+		"Show up to a confab",
+		"You and some allies-to-be squad up."
+	)
+
+	const secondSplashRunnerItem = generateSplashRunnerItem(
+		"Converse about anything",
+		"Wax poetic for two hours."
+	)
+
+	const thirdSplashRunnerItem = generateSplashRunnerItem(
+		"Observe the outcome",
+		"All done. Wasn't that fun?"
+	)
+
 	return (
 		<div className="splash">
 			<div className="splash-photo-container">
@@ -24,18 +39,9 @@ const Splash = () => {
 			</div>
 			<div className="splash-runner-container">
 				<div className="splash-runner">
-					{generateSplashRunnerItem(
-						"Show up to a confab",
-						"You and some allies-to-be squad up."
-					)}
-					{generateSplashRunnerItem(
-						"Converse about anything",
-						"Wax poetic for two hours."
-					)}
-					{generateSplashRunnerItem(
-						"Observe the outcome",
-						"All done. Wasn't that fun?"
-					)}
+					{firstSplashRunnerItem}
+					{secondSplashRunnerItem}
+					{thirdSplashRunnerItem}
 				</div>
 			</div>
 		</div>
