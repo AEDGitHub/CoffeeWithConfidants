@@ -181,7 +181,7 @@ class CoffeeSchedule extends React.Component {
 			const hours =
 				timeObject["hour"].toString() +
 				" — " +
-				((timeObject["hour"] + 2) % 24).toString() +
+				(timeObject["hour"] + 2).toString() +
 				"00"
 
 			const confabButton = currentConfidantAttending
@@ -272,17 +272,43 @@ class CoffeeSchedule extends React.Component {
 											<div className="half-field-area-title">
 												TIME
 											</div>
-											<input
-												required
-												type="time"
-												className="half-field-area-input"
-												onChange={this.update(
-													"confabStartTime"
-												)}
-												value={
-													this.state.confabStartTime
-												}
-											/>
+											<div className="half-field-area-input">
+												<select
+													required={true}
+													onChange={this.update(
+														"confabStartTime"
+													)}
+												>
+													<option
+														disabled="disabled"
+														value=""
+													>
+														Please select a time
+													</option>
+													{[
+														"10:00",
+														"11:00",
+														"12:00",
+														"13:00",
+														"14:00",
+														"15:00",
+														"16:00",
+														"17:00",
+														"18:00",
+														"19:00",
+														"20:00",
+														"21:00",
+														"22:00",
+													].map((time, idx) => (
+														<option
+															value={time}
+															key={idx}
+														>
+															{time}
+														</option>
+													))}
+												</select>
+											</div>
 										</div>
 										<div className="half-field-area">
 											<div className="half-field-area-title">
