@@ -57,10 +57,10 @@ const Conclusion = () => {
 						</p>
 					</div>
 				)
-			case "Acknowledgements":
-				return <div>HERE ARE SOME ACKNOWLEDGEMENTS</div>
-			case "Thank You":
-				return <div>THANKS FAM</div>
+			// case "Acknowledgements":
+			// 	return <div>HERE ARE SOME ACKNOWLEDGEMENTS</div>
+			// case "Thank You":
+			// 	return <div>THANKS FAM</div>
 			default:
 				return <div>SOMETHING'S GONE HORRIBLY WRONG</div>
 		}

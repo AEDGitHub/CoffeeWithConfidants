@@ -181,7 +181,7 @@ class CoffeeSchedule extends React.Component {
 			const hours =
 				timeObject["hour"].toString() +
 				" — " +
-				(timeObject["hour"] + 2).toString() +
+				((timeObject["hour"] + 2) % 24).toString() +
 				"00"
 
 			const confabButton = currentConfidantAttending
