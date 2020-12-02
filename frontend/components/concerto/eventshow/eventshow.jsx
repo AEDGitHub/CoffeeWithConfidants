@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
 EventShow = ({
@@ -12,18 +12,16 @@ EventShow = ({
 	restOfConurbationName,
 	shorterConurbationName,
 }) => {
-	this.state = {
-		conurbation: "",
-		currentUserAttending: false,
-		date: "",
-		day: "",
-		description: "",
-		hostName: "",
-		hours: "",
-		location: "",
-		month: "",
-		seatsRemaining: 0,
-	}
+	const [conurbation, setConurbation] = useState("")
+	const [currentUserAttending, setCurrentUserAttending] = useState(false)
+	const [date, setDate] = useState("")
+	const [day, setDay] = useState("")
+	const [description, setDescription] = useState("")
+	const [hostName, setHostName] = useState("")
+	const [hours, setHours] = useState("")
+	const [location, setLocation] = useState("")
+	const [month, setMonth] = useState("")
+	const [seatsRemaining, setSeatsRemaining] = useState(0)
 
 	// componentDidMount() {
 	// 	this.props.loadConfab(this.props.match.params.confabId).then(() => {
@@ -41,18 +39,18 @@ EventShow = ({
 
 	const updateConfabDataInState = (confab) => {
 		const dateObject = new Date(confab.start_time_in_ms)
-		const timeObject = this.props.convertDatetimeStringToObject(dateObject)
-		const currentUserAttending = this.props.determineWhetherConfidantIsAttending(
+		const timeObject = props.convertDatetimeStringToObject(dateObject)
+		const currentUserAttending = props.determineWhetherConfidantIsAttending(
 			confab,
-			this.props.ccId
+			props.ccId
 		)
 
-		this.setState({
+		setState({
 			currentUserAttending: currentUserAttending,
 			date: timeObject["dateNum"],
 			day: timeObject["day"],
 			description: confab.description,
-			hostName: this.props.confidants[confab.host_id].username,
+			hostName: props.confidants[confab.host_id].username,
 			hours:
 				timeObject["hour"].toString() +
 				"00 — " +
@@ -64,7 +62,7 @@ EventShow = ({
 	}
 
 	const attendanceDisplay = (seatsRemaining) => {
-		return this.state.currentUserAttending ? (
+		return state.currentUserAttending ? (
 			<div className="attendance-status-attending">
 				<div className="seats-left">SEE YOU THERE!</div>
 			</div>
@@ -80,8 +78,8 @@ EventShow = ({
 			<div
 				className="squad-up-button"
 				onClick={() => {
-					this.props.joinConfab(confabId),
-						this.setState({ currentUserAttending: true })
+					props.joinConfab(confabId),
+						setState({ currentUserAttending: true })
 				}}
 			>
 				<div className="visibility-shift">
@@ -96,8 +94,8 @@ EventShow = ({
 			<div
 				className="squad-up-button-joined"
 				onClick={() => {
-					this.props.leaveConfab(confabId, confidantId),
-						this.setState({ currentUserAttending: false })
+					props.leaveConfab(confabId, confidantId),
+						setState({ currentUserAttending: false })
 				}}
 			>
 				<div className="visibility-shift">
@@ -108,11 +106,11 @@ EventShow = ({
 	}
 
 	const determineConfabButton = (confabId) => {
-		return this.props.loggedIn ? (
-			this.state.currentUserAttending ? (
-				this.confabLeaveButton(confabId, this.props.ccId)
+		return props.loggedIn ? (
+			state.currentUserAttending ? (
+				confabLeaveButton(confabId, props.ccId)
 			) : (
-				this.confabJoinButton(confabId)
+				confabJoinButton(confabId)
 			)
 		) : (
 			<Link to="/signin/#" className="squad-up-button">
@@ -123,18 +121,18 @@ EventShow = ({
 		)
 	}
 
-	const confabId = this.props.match.params.confabId
-	const hostName = this.state.hostName
-	const day = this.state.day
-	const month = this.state.month
-	const date = this.state.date
-	const hours = this.state.hours
-	const description = this.state.description
-	const location = this.state.location
-	const conurbation = this.state.conurbation
-	const url = `herokuapp.coffeewithconfidants.com/#${this.props.match.url}`
-	const confabButton = this.determineConfabButton(confabId)
-	const attendanceDisplay = this.attendanceDisplay(this.state.seatsRemaining)
+	const confabId = props.match.params.confabId
+	const hostName = state.hostName
+	const day = state.day
+	const month = state.month
+	const date = state.date
+	const hours = state.hours
+	const description = state.description
+	const location = state.location
+	const conurbation = state.conurbation
+	const url = `herokuapp.coffeewithconfidants.com/#${props.match.url}`
+	const confabButton = determineConfabButton(confabId)
+	const attendanceDisplay = attendanceDisplay(state.seatsRemaining)
 
 	return (
 		<>
