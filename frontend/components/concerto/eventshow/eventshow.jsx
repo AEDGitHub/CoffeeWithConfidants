@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
-EventShow = ({
+const EventShow = ({
 	ccId,
 	confab,
 	confidants,
 	conurbations,
 	loggedIn,
+	match,
 	convertDatetimeStringToObject,
 	determineWhetherConfidantIsAttending,
 	restOfConurbationName,
 	shorterConurbationName,
+	joinConfab,
+	leaveConfab,
+	loadConfab,
 }) => {
 	const [conurbation, setConurbation] = useState("")
 	const [currentUserAttending, setCurrentUserAttending] = useState(false)
@@ -22,6 +26,20 @@ EventShow = ({
 	const [location, setLocation] = useState("")
 	const [month, setMonth] = useState("")
 	const [seatsRemaining, setSeatsRemaining] = useState(0)
+
+	useEffect(() => {
+		loadConfab(match.params.confabId).then(() => {
+			if (confab) {
+				updateConfabDataInState(confab)
+			}
+		})
+	}, [])
+
+	useEffect(() => {
+		if (confab) {
+			updateConfabDataInState(confab)
+		}
+	}, [confab])
 
 	// componentDidMount() {
 	// 	this.props.loadConfab(this.props.match.params.confabId).then(() => {
@@ -39,30 +57,28 @@ EventShow = ({
 
 	const updateConfabDataInState = (confab) => {
 		const dateObject = new Date(confab.start_time_in_ms)
-		const timeObject = props.convertDatetimeStringToObject(dateObject)
-		const currentUserAttending = props.determineWhetherConfidantIsAttending(
+		const timeObject = convertDatetimeStringToObject(dateObject)
+		const isCurrentUserAttending = determineWhetherConfidantIsAttending(
 			confab,
-			props.ccId
+			ccId
 		)
-
-		setState({
-			currentUserAttending: currentUserAttending,
-			date: timeObject["dateNum"],
-			day: timeObject["day"],
-			description: confab.description,
-			hostName: props.confidants[confab.host_id].username,
-			hours:
-				timeObject["hour"].toString() +
+		setCurrentUserAttending(isCurrentUserAttending)
+		setDate(timeObject["dateNum"])
+		setDay(timeObject["day"])
+		setDescription(confab.description)
+		setHostName(confidants[confab.host_id].username)
+		setHours(
+			timeObject["hour"].toString() +
 				"00 — " +
 				(timeObject["hour"] + 2).toString() +
-				"00",
-			month: timeObject["month"],
-			seatsRemaining: confab.max_capacity - confab.attendee_ids.length,
-		})
+				"00"
+		)
+		setMonth(timeObject["month"])
+		setSeatsRemaining(confab.max_capacity - confab.attendee_ids.length)
 	}
 
 	const attendanceDisplay = (seatsRemaining) => {
-		return state.currentUserAttending ? (
+		return currentUserAttending ? (
 			<div className="attendance-status-attending">
 				<div className="seats-left">SEE YOU THERE!</div>
 			</div>
@@ -78,8 +94,7 @@ EventShow = ({
 			<div
 				className="squad-up-button"
 				onClick={() => {
-					props.joinConfab(confabId),
-						setState({ currentUserAttending: true })
+					joinConfab(confabId), setCurrentUserAttending(true)
 				}}
 			>
 				<div className="visibility-shift">
@@ -94,8 +109,8 @@ EventShow = ({
 			<div
 				className="squad-up-button-joined"
 				onClick={() => {
-					props.leaveConfab(confabId, confidantId),
-						setState({ currentUserAttending: false })
+					leaveConfab(confabId, confidantId),
+						setCurrentUserAttending(false)
 				}}
 			>
 				<div className="visibility-shift">
@@ -106,9 +121,9 @@ EventShow = ({
 	}
 
 	const determineConfabButton = (confabId) => {
-		return props.loggedIn ? (
-			state.currentUserAttending ? (
-				confabLeaveButton(confabId, props.ccId)
+		return loggedIn ? (
+			currentUserAttending ? (
+				confabLeaveButton(confabId, ccId)
 			) : (
 				confabJoinButton(confabId)
 			)
@@ -121,18 +136,9 @@ EventShow = ({
 		)
 	}
 
-	const confabId = props.match.params.confabId
-	const hostName = state.hostName
-	const day = state.day
-	const month = state.month
-	const date = state.date
-	const hours = state.hours
-	const description = state.description
-	const location = state.location
-	const conurbation = state.conurbation
-	const url = `herokuapp.coffeewithconfidants.com/#${props.match.url}`
+	const confabId = match.params.confabId
+	const url = `herokuapp.coffeewithconfidants.com/#${match.url}`
 	const confabButton = determineConfabButton(confabId)
-	const attendanceDisplay = attendanceDisplay(state.seatsRemaining)
 
 	return (
 		<>
@@ -168,7 +174,7 @@ EventShow = ({
 									Send them the link!
 								</div>
 								<hr></hr>
-								{attendanceDisplay}
+								{attendanceDisplay(seatsRemaining)}
 							</div>
 						</div>
 						<div className="eventshow-confab-button-container">
