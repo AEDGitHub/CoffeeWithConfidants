@@ -1,35 +1,45 @@
-import React, {useState, useEffect} from "react"
+import React, { useState, useEffect } from "react"
 import Modal from "react-modal"
 import CoffeeScheduleEvent from "./coffee_schedule_event/coffeeschedule_event"
 import { Link } from "react-router-dom"
 
-const CoffeeSchedule = ({confidants, conurbations, confabs, ccId, loggedIn, signUpLink, shorterConurbationName, determineWhetherConfidantIsAttending, filterConfabsByConfabLocationId, convertDatetimeStringToObject, loadConfabs, joinConfab, leaveConfab, createConfab}) => {
-   const [modalOpen, setModalOpen] = useState(false)
-   const [confabDescription, setConfabDescription] = useState("")
-   const [confabMaxCapacity, setConfabMaxCapacity] = useState(3)
-   const [confabStartDate, setConfabStartDate] = useState("")
-   const [confabStartTime, setConfabStartTime] = useState("12:00")
+const CoffeeSchedule = ({
+	confidants,
+	conurbations,
+	confabs,
+	ccId,
+	loggedIn,
+	signUpLink,
+	shorterConurbationName,
+	determineWhetherConfidantIsAttending,
+	filterConfabsByConfabLocationId,
+	convertDatetimeStringToObject,
+	loadConfabs,
+	joinConfab,
+	leaveConfab,
+	createConfab,
+}) => {
+	const [modalOpen, setModalOpen] = useState(false)
+	const [confabDescription, setConfabDescription] = useState("")
+	const [confabMaxCapacity, setConfabMaxCapacity] = useState(3)
+	const [confabStartDate, setConfabStartDate] = useState("")
+	const [confabStartTime, setConfabStartTime] = useState("12:00")
 
-	componentDidMount() {
-		this.props.loadConfabs()
-	}
+	useEffect(() => {
+		loadConfabs()
+	}, [])
 
-	update(field) {
-		return (e) => this.setState({ [field]: e.target.value })
-	}
-
-	handleSubmit(e) {
+	const handleSubmit = (e) => {
 		e.preventDefault()
 
-		const hostId = this.props.ccId
-		const description = this.state.confabDescription
-		const maxCapacity = this.state.confabMaxCapacity
-		const dateString =
-			this.state.confabStartDate + "T" + this.state.confabStartTime
+		const hostId = ccId
+		const description = confabDescription
+		const maxCapacity = confabMaxCapacity
+		const dateString = confabStartDate + "T" + confabStartTime
 		const startTimeInMilliseconds = new Date(dateString).getTime()
 		const endTimeInMilliseconds = startTimeInMilliseconds + 7200000
 
-		const conurbationId = this.props.confidants[hostId].location_id
+		const conurbationId = confidants[hostId].location_id
 
 		const confab = {
 			host_id: hostId,
@@ -39,24 +49,22 @@ const CoffeeSchedule = ({confidants, conurbations, confabs, ccId, loggedIn, sign
 			end_time_in_ms: endTimeInMilliseconds,
 		}
 
-		this.props.createConfab(conurbationId, confab)
-		this.setState({ modalOpen: false })
+		createConfab(conurbationId, confab)
+		setModalOpen(true)
 	}
 
-	monthDisplay() {
+	const monthDisplay = () => {
 		const rightNow = new Date()
-		const month = this.props
-			.convertDatetimeStringToObject(rightNow.toString())
+		const month = convertDatetimeStringToObject(rightNow.toString())
 			["fullMonth"].toString()
 			.toUpperCase()
-		const loggedIn = this.props.loggedIn
 
 		return (
 			<div className="month-toggle">
 				<div className="month-msg">TEA TIMES IN {month}</div>
 				<div
 					className="create-confab-container"
-					onClick={() => this.setState({ modalOpen: true })}
+					onClick={() => setModalOpen(true)}
 				>
 					{loggedIn ? (
 						<div className="create-confab-button">
@@ -70,24 +78,22 @@ const CoffeeSchedule = ({confidants, conurbations, confabs, ccId, loggedIn, sign
 		)
 	}
 
-	displaysAllConurbationCallouts() {
-		return this.props.conurbations.map((conurbation) => (
+	const displaysAllConurbationCallouts = () => {
+		return conurbations.map((conurbation) => (
 			<div className="confab-grid-container" key={conurbation.id}>
 				<div className="collection-of-confabs-from-a-conurbation">
 					<div className="conurbation-callout-container">
 						<div className="conurbation-callout">
-							{this.props.shorterConurbationName(
-								conurbation.name
-							)}
+							{shorterConurbationName(conurbation.name)}
 						</div>
 					</div>
-					{this.displaysAllConfabsPerConurbation(conurbation.id)}
+					{displaysAllConfabsPerConurbation(conurbation.id)}
 				</div>
 			</div>
 		))
 	}
 
-	amAttendingDisplay() {
+	const amAttendingDisplay = () => {
 		return (
 			<div className="attendance-status-attending">
 				<div className="seats-left">SEE YOU THERE!</div>
@@ -95,7 +101,7 @@ const CoffeeSchedule = ({confidants, conurbations, confabs, ccId, loggedIn, sign
 		)
 	}
 
-	notAttendingDisplay(seatsRemaining) {
+	const notAttendingDisplay = (seatsRemaining) => {
 		return (
 			<div className="attendance-status-not-attending">
 				<div className="seats-left">{seatsRemaining} SPOTS OPEN!</div>
@@ -103,11 +109,11 @@ const CoffeeSchedule = ({confidants, conurbations, confabs, ccId, loggedIn, sign
 		)
 	}
 
-	confabJoinButton(confabId) {
-		return this.props.loggedIn ? (
+	const confabJoinButton = (confabId) => {
+		return loggedIn ? (
 			<div
 				className="squad-up-button"
-				onClick={() => this.props.joinConfab(confabId)}
+				onClick={() => joinConfab(confabId)}
 			>
 				<div className="visibility-shift">
 					<span>JOIN CONFAB</span>
@@ -122,11 +128,11 @@ const CoffeeSchedule = ({confidants, conurbations, confabs, ccId, loggedIn, sign
 		)
 	}
 
-	confabLeaveButton(confabId, confidantId) {
+	const confabLeaveButton = (confabId, confidantId) => {
 		return (
 			<div
 				className="squad-up-button-joined"
-				onClick={() => this.props.leaveConfab(confabId, confidantId)}
+				onClick={() => leaveConfab(confabId, confidantId)}
 			>
 				<div className="visibility-shift">
 					<span>LEAVE CONFAB</span>
@@ -135,26 +141,24 @@ const CoffeeSchedule = ({confidants, conurbations, confabs, ccId, loggedIn, sign
 		)
 	}
 
-	displaysAllConfabsPerConurbation(conurbationId) {
-		const relevantConfabs = this.props.filterConfabsByConfabLocationId(
-			this.props.confabs,
+	const displaysAllConfabsPerConurbation = (conurbationId) => {
+		const relevantConfabs = filterConfabsByConfabLocationId(
+			confabs,
 			conurbationId
 		)
 		return relevantConfabs.map((confab) => {
 			const seatsRemaining =
 				confab.max_capacity - confab.attendee_ids.length
 			const hostId = confab.host_id
-			const hostConfidant = this.props.confidants[hostId]
+			const hostConfidant = confidants[hostId]
 			const hostName = hostConfidant.username.toUpperCase()
 			const hostAvatarId = hostConfidant.avatar_id
-			const currentConfidantAttending = this.props.determineWhetherConfidantIsAttending(
+			const currentConfidantAttending = determineWhetherConfidantIsAttending(
 				confab,
-				this.props.ccId
+				ccId
 			)
 			const dateObject = new Date(confab.start_time_in_ms)
-			const timeObject = this.props.convertDatetimeStringToObject(
-				dateObject
-			)
+			const timeObject = convertDatetimeStringToObject(dateObject)
 			const day = timeObject["day"].toUpperCase()
 			const date =
 				timeObject["month"].toUpperCase() + " " + timeObject["dateNum"]
@@ -166,11 +170,11 @@ const CoffeeSchedule = ({confidants, conurbations, confabs, ccId, loggedIn, sign
 				"00"
 
 			const confabButton = currentConfidantAttending
-				? this.confabLeaveButton
-				: this.confabJoinButton
+				? confabLeaveButton
+				: confabJoinButton
 			const attendanceDisplay = currentConfidantAttending
-				? this.amAttendingDisplay
-				: this.notAttendingDisplay
+				? amAttendingDisplay
+				: notAttendingDisplay
 
 			return (
 				<div className="confab-card-container" key={confab.id}>
@@ -178,7 +182,7 @@ const CoffeeSchedule = ({confidants, conurbations, confabs, ccId, loggedIn, sign
 						attendanceDisplay={attendanceDisplay}
 						avatarId={hostAvatarId}
 						hostId={hostId}
-						ccId={this.props.ccId}
+						ccId={ccId}
 						confabButton={confabButton}
 						confabId={confab.id}
 						day={day}
@@ -193,19 +197,18 @@ const CoffeeSchedule = ({confidants, conurbations, confabs, ccId, loggedIn, sign
 		})
 	}
 
-	createConfabModal() {
-		const modalOpen = this.state.modalOpen
+	const createConfabModal = () => {
 		return (
 			<div className="coffeeschedule-create-confab-modal-container">
 				<Modal
 					overlayClassName="create-confab-modal-overlay"
 					className="create-confab-modal-content"
 					isOpen={modalOpen}
-					onRequestClose={() => this.setState({ modalOpen: false })}
+					onRequestClose={() => setModalOpen(false)}
 				>
 					<div
 						className="confab-modal-exit-button"
-						onClick={() => this.setState({ modalOpen: false })}
+						onClick={() => setModalOpen(false)}
 					>
 						×
 					</div>
@@ -216,7 +219,7 @@ const CoffeeSchedule = ({confidants, conurbations, confabs, ccId, loggedIn, sign
 						</div>
 						<form
 							className="confab-modal-form"
-							onSubmit={this.handleSubmit}
+							onSubmit={handleSubmit}
 						>
 							<div className="form-input-areas-container">
 								<div className="form-fields-container">
@@ -227,11 +230,11 @@ const CoffeeSchedule = ({confidants, conurbations, confabs, ccId, loggedIn, sign
 										required
 										type="text"
 										className="form-field-input"
-										onChange={this.update(
-											"confabDescription"
-										)}
+										onChange={(e) =>
+											setConfabDescription(e.target.value)
+										}
 										placeholder="Write a description!"
-										value={this.state.confabDescription}
+										value={confabDescription}
 									/>
 								</div>
 								<div className="form-fields-container">
@@ -240,10 +243,10 @@ const CoffeeSchedule = ({confidants, conurbations, confabs, ccId, loggedIn, sign
 										required
 										type="date"
 										className="form-field-input"
-										onChange={this.update(
-											"confabStartDate"
-										)}
-										value={this.state.confabStartDate}
+										onChange={(e) =>
+											setConfabStartDate(e.target.value)
+										}
+										value={confabStartDate}
 										placeholder={new Date().toString()}
 									/>
 								</div>
@@ -256,9 +259,11 @@ const CoffeeSchedule = ({confidants, conurbations, confabs, ccId, loggedIn, sign
 											<div className="half-field-area-input">
 												<select
 													required={true}
-													onChange={this.update(
-														"confabStartTime"
-													)}
+													onChange={(e) =>
+														setConfabStartTime(
+															e.target.value
+														)
+													}
 												>
 													<option
 														disabled="disabled"
@@ -299,12 +304,12 @@ const CoffeeSchedule = ({confidants, conurbations, confabs, ccId, loggedIn, sign
 												required
 												type="number"
 												className="half-field-area-input"
-												onChange={this.update(
-													"confabMaxCapacity"
-												)}
-												value={
-													this.state.confabMaxCapacity
+												onChange={(e) =>
+													setConfabMaxCapacity(
+														e.target.value
+													)
 												}
+												value={confabMaxCapacity}
 												min={3}
 												max={7}
 											/>
@@ -324,49 +329,47 @@ const CoffeeSchedule = ({confidants, conurbations, confabs, ccId, loggedIn, sign
 		)
 	}
 
-	render() {
-		const photoContainer = (
-			<div className="coffeeschedule-photo-container">
-				<div className="coffeeschedule-msg-container">
-					<div className="title-text">GOOD CONVERSATIONS</div>
-					<div className="subtitle-text">THEY'RE HARD TO FIND.</div>
-				</div>
-			</div>
-		)
-
-		const messageContainer = (
+	const photoContainer = (
+		<div className="coffeeschedule-photo-container">
 			<div className="coffeeschedule-msg-container">
-				<div className="title-text">
-					Coffee With Confidants is coffee, with confidants.
-				</div>
-				<div className="msg-text">
-					Ever find yourself asking why no one wants change? This is
-					the place to meet those who do. For two hours, squad up at a
-					cafe to conspire about finding and exposing the fakers.
-					<br></br>
-					<br></br>
-					If none of these times work for you, why not{" "}
-					{this.props.signUpLink} and host your own confab?
-				</div>
+				<div className="title-text">GOOD CONVERSATIONS</div>
+				<div className="subtitle-text">THEY'RE HARD TO FIND.</div>
 			</div>
-		)
+		</div>
+	)
 
-		return (
-			<>
-				<div className="coffeeschedule" id="coffeeschedule">
-					{photoContainer}
-					<div className="coffeeschedule-content-container">
-						{messageContainer}
-						<div className="coffeeschedule-confabs-container">
-							{this.monthDisplay()}
-							{this.displaysAllConurbationCallouts()}
-						</div>
+	const messageContainer = (
+		<div className="coffeeschedule-msg-container">
+			<div className="title-text">
+				Coffee With Confidants is coffee, with confidants.
+			</div>
+			<div className="msg-text">
+				Ever find yourself asking why no one wants change? This is the
+				place to meet those who do. For two hours, squad up at a cafe to
+				conspire about finding and exposing the fakers.
+				<br></br>
+				<br></br>
+				If none of these times work for you, why not {signUpLink} and
+				host your own confab?
+			</div>
+		</div>
+	)
+
+	return (
+		<>
+			<div className="coffeeschedule" id="coffeeschedule">
+				{photoContainer}
+				<div className="coffeeschedule-content-container">
+					{messageContainer}
+					<div className="coffeeschedule-confabs-container">
+						{monthDisplay()}
+						{displaysAllConurbationCallouts()}
 					</div>
-					{this.createConfabModal()}
 				</div>
-			</>
-		)
-	}
+				{createConfabModal()}
+			</div>
+		</>
+	)
 }
 
 //class method, antiquated

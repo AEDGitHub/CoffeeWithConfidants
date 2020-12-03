@@ -41,20 +41,6 @@ const EventShow = ({
 		}
 	}, [confab])
 
-	// componentDidMount() {
-	// 	this.props.loadConfab(this.props.match.params.confabId).then(() => {
-	// 		if (this.props.confab) {
-	// 			this.updateConfabDataInState(this.props.confab)
-	// 		}
-	// 	})
-	// }
-
-	// componentDidUpdate(prevProps) {
-	// 	if (this.props.confab && prevProps.confab !== this.props.confab) {
-	// 		this.updateConfabDataInState(this.props.confab)
-	// 	}
-	// }
-
 	const updateConfabDataInState = (confab) => {
 		const dateObject = new Date(confab.start_time_in_ms)
 		const timeObject = convertDatetimeStringToObject(dateObject)
