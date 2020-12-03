@@ -1,32 +1,14 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
 import Modal from "react-modal"
 import CoffeeScheduleEvent from "./coffee_schedule_event/coffeeschedule_event"
 import { Link } from "react-router-dom"
 
-class CoffeeSchedule extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			modalOpen: false,
-			confabDescription: "",
-			confabMaxCapacity: 3,
-			confabStartDate: "",
-			confabStartTime: "12:00",
-		}
-		this.handleSubmit = this.handleSubmit.bind(this)
-		this.displaysAllConurbationCallouts = this.displaysAllConurbationCallouts.bind(
-			this
-		)
-		this.displaysAllConfabsPerConurbation = this.displaysAllConfabsPerConurbation.bind(
-			this
-		)
-		this.monthDisplay = this.monthDisplay.bind(this)
-		this.confabJoinButton = this.confabJoinButton.bind(this)
-		this.confabLeaveButton = this.confabLeaveButton.bind(this)
-		this.amAttendingDisplay = this.amAttendingDisplay.bind(this)
-		this.notAttendingDisplay = this.notAttendingDisplay.bind(this)
-		this.createConfabModal = this.createConfabModal.bind(this)
-	}
+const CoffeeSchedule = ({confidants, conurbations, confabs, ccId, loggedIn, signUpLink, shorterConurbationName, determineWhetherConfidantIsAttending, filterConfabsByConfabLocationId, convertDatetimeStringToObject, loadConfabs, joinConfab, leaveConfab, createConfab}) => {
+   const [modalOpen, setModalOpen] = useState(false)
+   const [confabDescription, setConfabDescription] = useState("")
+   const [confabMaxCapacity, setConfabMaxCapacity] = useState(3)
+   const [confabStartDate, setConfabStartDate] = useState("")
+   const [confabStartTime, setConfabStartTime] = useState("12:00")
 
 	componentDidMount() {
 		this.props.loadConfabs()
