@@ -26,8 +26,8 @@ function ConfidantEdit({
 			loadConurbations()
 		}
 		updateConfidantDataInState(confidant)
-		return () => {
-			unloadConurbations() //confirm this works
+		return function cleanup() {
+			unloadConurbations()
 		}
 	}, [])
 
