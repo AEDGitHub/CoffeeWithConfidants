@@ -1,166 +1,151 @@
 import React, { useEffect, useState } from "react"
 
 function ConfidantEdit({
-   ccId,
-   confidant,
-   conurbations,
-   demoConfidantLoggedIn,
-   loadConurbations,
-   unloadConurbations,
-   deleteAccount,
-   updateAccount
+	ccId,
+	confidant,
+	conurbations,
+	demoConfidantLoggedIn,
+	loadConurbations,
+	unloadConurbations,
+	deleteAccount,
+	updateAccount,
 }) {
 	const [username, setUsername] = useState("")
-   const [email, setEmail] = useState("")
-   const [locationId, setLocationId] = useState(null)
-   const [newUsername, setNewUsername] = useState("")
-   const [newEmail, setNewEmail] = useState("")
-   const [newLocationId, setNewLocationId] = useState(null)
-   
-   //hook for currentPassword
-   //hook for newPassword
-   //hook for confirmNewPassword
+	const [email, setEmail] = useState("")
+	const [locationId, setLocationId] = useState(null)
+	const [newUsername, setNewUsername] = useState("")
+	const [newEmail, setNewEmail] = useState("")
+	const [newLocationId, setNewLocationId] = useState(null)
 
-   useEffect(()=>{
-      if (!demoConfidantLoggedIn) {
+	//hook for currentPassword
+	//hook for newPassword
+	//hook for confirmNewPassword
+
+	useEffect(() => {
+		if (!demoConfidantLoggedIn) {
 			loadConurbations()
 		}
-      updateConfidantDataInState(confidant);
-      return ()=>{
-         unloadConurbations()   //confirm this works
-      }
-   }, [])
+		updateConfidantDataInState(confidant)
+		return () => {
+			unloadConurbations() //confirm this works
+		}
+	}, [])
 
-   useEffect(()=> {
-      if(confidant){
-         updateConfidantDataInState(confidant)
-      }
-   }, [confidant])
+	useEffect(() => {
+		if (confidant) {
+			updateConfidantDataInState(confidant)
+		}
+	}, [confidant])
 
-	updateConfidantDataInState = (confidant) => {
-      setUsername(confidant.username)
-      setEmail(confidant.email)
-      setLocationId(confidant.location_id)
+	const updateConfidantDataInState = (confidant) => {
+		setUsername(confidant.username)
+		setEmail(confidant.email)
+		setLocationId(confidant.location_id)
 	}
 
-	handleSubmit(e) {
+	const handleSubmit = (e) => {
 		e.preventDefault()
-		const ccId = this.props.ccId
-		const username = this.state.username
-		const newUsername = this.state.newUsername
-		const email = this.state.email
-		const newEmail = this.state.newEmail
-		const locationId = this.state.locationId
-		const newLocationId = this.state.newLocationId
+
 		const editedConfidant = {
 			id: ccId,
 			username: newUsername ? newUsername : username,
 			email: newEmail ? newEmail : email,
 			location_id: newLocationId ? newLocationId : locationId,
 		}
-		this.props.updateAccount(editedConfidant)
+		updateAccount(editedConfidant)
 
-		this.setState({
-			newUsername: "",
-			newEmail: "",
-			newLocationId: null,
-		})
+		setNewUsername("")
+		setNewEmail("")
+		setNewLocationId(null)
 	}
 
-	usernameFieldArea(username, newUsername) {
-		return (
-			<div className="subsection-field-area">
-				<div className="field-title">USERNAME</div>
-				{this.props.demoConfidantLoggedIn ? (
-					<div className="form-field">
-						<span className="optional">{username}</span>
-						<span className="demo-user">
-							Make an account to change the username!
-						</span>
-					</div>
-				) : (
-					<input
-						type="text"
-						className="form-field"
-						onChange={this.update("newUsername")}
-						placeholder={username}
-						value={newUsername ? newUsername : ""}
-					/>
-				)}
-			</div>
-		)
-	}
-
-	emailFieldArea(email, newEmail) {
-		return (
-			<div className="subsection-field-area">
-				<div className="field-title">EMAIL</div>
-				{this.props.demoConfidantLoggedIn ? (
-					<div className="form-field">
-						<span className="optional">{email}</span>
-						<span className="demo-user">
-							Make an account to change the email!
-						</span>
-					</div>
-				) : (
-					<input
-						type="email"
-						className="form-field"
-						onChange={this.update("newEmail")}
-						placeholder={email}
-						value={newEmail ? newEmail : ""}
-					/>
-				)}
-			</div>
-		)
-	}
-
-	conurbationFieldArea() {
-		return (
-			<div className="subsection-field-area">
-				<div className="field-title">CONURBATION</div>
-				<div className="form-dropdown">
-					{this.props.demoConfidantLoggedIn ? (
-						<select
-							className="demo-user"
-							defaultValue="Make an account to change conurbations!"
-						>
-							<option
-								disabled="disabled"
-								value="Make an account to change conurbations!"
-							>
-								Make an account to change conurbations!
-							</option>
-						</select>
-					) : (
-						<select
-							defaultValue="Select a new conurbation (optional)"
-							onChange={this.update("newLocationId")}
-						>
-							<option
-								disabled="disabled"
-								value="Select a new conurbation (optional)"
-							>
-								Select a new conurbation {"("}optional{")"}
-							</option>
-							{this.conurbationFieldAreaOptions()}
-						</select>
-					)}
+	const usernameFieldArea = (username, newUsername) => (
+		<div className="subsection-field-area">
+			<div className="field-title">USERNAME</div>
+			{demoConfidantLoggedIn ? (
+				<div className="form-field">
+					<span className="optional">{username}</span>
+					<span className="demo-user">
+						Make an account to change the username!
+					</span>
 				</div>
-			</div>
-		)
-	}
+			) : (
+				<input
+					type="text"
+					className="form-field"
+					onChange={(e) => setNewUsername(e.target.value)}
+					placeholder={username}
+					value={newUsername ? newUsername : ""}
+				/>
+			)}
+		</div>
+	)
 
-	conurbationFieldAreaOptions() {
-		return this.props.conurbations.map((conurbation) => (
+	const emailFieldArea = (email, newEmail) => (
+		<div className="subsection-field-area">
+			<div className="field-title">EMAIL</div>
+			{demoConfidantLoggedIn ? (
+				<div className="form-field">
+					<span className="optional">{email}</span>
+					<span className="demo-user">
+						Make an account to change the email!
+					</span>
+				</div>
+			) : (
+				<input
+					type="email"
+					className="form-field"
+					onChange={(e) => setNewEmail(e.target.value)}
+					placeholder={email}
+					value={newEmail ? newEmail : ""}
+				/>
+			)}
+		</div>
+	)
+
+	const conurbationFieldArea = () => (
+		<div className="subsection-field-area">
+			<div className="field-title">CONURBATION</div>
+			<div className="form-dropdown">
+				{demoConfidantLoggedIn ? (
+					<select
+						className="demo-user"
+						defaultValue="Make an account to change conurbations!"
+					>
+						<option
+							disabled="disabled"
+							value="Make an account to change conurbations!"
+						>
+							Make an account to change conurbations!
+						</option>
+					</select>
+				) : (
+					<select
+						defaultValue="Select a new conurbation (optional)"
+						onChange={(e) => setNewLocationId(e.target.value)}
+					>
+						<option
+							disabled="disabled"
+							value="Select a new conurbation (optional)"
+						>
+							Select a new conurbation {"("}optional{")"}
+						</option>
+						{conurbationFieldAreaOptions()}
+					</select>
+				)}
+			</div>
+		</div>
+	)
+
+	const conurbationFieldAreaOptions = () =>
+		conurbations.map((conurbation) => (
 			<option value={conurbation.id} key={conurbation.id}>
 				{conurbation.name}
 			</option>
 		))
-	}
 
-	formSubmitButton() {
-		return this.props.demoConfidantLoggedIn ? (
+	const formSubmitButton = () =>
+		demoConfidantLoggedIn ? (
 			<div className="form-submit-button-demo-user">
 				EDIT DISABLED FOR DEMO
 			</div>
@@ -171,10 +156,9 @@ function ConfidantEdit({
 				value="SAVE CHANGES"
 			/>
 		)
-	}
 
-	accountDeleteSection(confidantId) {
-		return this.props.demoConfidantLoggedIn ? (
+	const accountDeleteSection = (confidantId) =>
+		demoConfidantLoggedIn ? (
 			<></>
 		) : (
 			<div className="form-column-cancel-account">
@@ -186,7 +170,7 @@ function ConfidantEdit({
 				<div
 					className="cancel-account-button"
 					onClick={() => {
-						this.props.deleteAccount(confidantId)
+						deleteAccount(confidantId)
 					}}
 				>
 					CANCEL MY ACCOUNT
@@ -199,67 +183,52 @@ function ConfidantEdit({
 				</div>
 			</div>
 		)
-	}
 
-	render() {
-		const username = this.state.username
-		const newUsername = this.state.newUsername
-		const usernameFieldArea = this.usernameFieldArea(username, newUsername)
-
-		const email = this.state.email
-		const newEmail = this.state.newEmail
-		const emailFieldArea = this.emailFieldArea(email, newEmail)
-
-		const conurbationFieldArea = this.conurbationFieldArea()
-
-		const formSubmitButton = this.formSubmitButton()
-
-		const ccId = this.props.ccId
-		const accountDeleteSection = this.accountDeleteSection(ccId)
-
-		return (
-			<>
-				<div className="confidantedit">
-					<div className="confidantedit-container">
-						<div className="container-greeting-column">
-							<div className="greeting-column-heading">
-								Welcome back, {username}!
-							</div>
-							<div className="greeting-column-subhead">
-								Stolen any hearts lately?
-							</div>
+	return (
+		<>
+			<div className="confidantedit">
+				<div className="confidantedit-container">
+					<div className="container-greeting-column">
+						<div className="greeting-column-heading">
+							Welcome back, {username}!
 						</div>
-						<div className="container-form-column">
-							<div className="form-column-heading">
-								Edit Your Account
-							</div>
-							<div className="form-column-section">
-								<form onSubmit={this.handleSubmit}>
-									<div className="form-section">
-										<div className="form-section-heading">
-											Personal Information
-										</div>
-										<div className="form-subsection">
-											{usernameFieldArea}
-											{emailFieldArea}
-											{conurbationFieldArea}
-										</div>
-									</div>
-									<div className="form-section">
-										<div className="form-subsection">
-											{formSubmitButton}
-										</div>
-									</div>
-								</form>
-							</div>
-							{accountDeleteSection}
+						<div className="greeting-column-subhead">
+							Stolen any hearts lately?
 						</div>
 					</div>
+					<div className="container-form-column">
+						<div className="form-column-heading">
+							Edit Your Account
+						</div>
+						<div className="form-column-section">
+							<form onSubmit={handleSubmit}>
+								<div className="form-section">
+									<div className="form-section-heading">
+										Personal Information
+									</div>
+									<div className="form-subsection">
+										{usernameFieldArea(
+											username,
+											newUsername
+										)}
+										{emailFieldArea(email, newEmail)}
+										{conurbationFieldArea()}
+									</div>
+								</div>
+								<div className="form-section">
+									<div className="form-subsection">
+										{formSubmitButton()}
+									</div>
+								</div>
+							</form>
+						</div>
+						{accountDeleteSection(ccId)}
+					</div>
 				</div>
-			</>
-		)
-	}
-
+			</div>
+		</>
+	)
+}
 
 // class ConfidantEdit extends React.Component {
 // 	constructor(props) {
