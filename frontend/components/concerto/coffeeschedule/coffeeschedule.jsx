@@ -3,7 +3,7 @@ import Modal from "react-modal"
 import CoffeeScheduleEvent from "./coffee_schedule_event/coffeeschedule_event"
 import { Link } from "react-router-dom"
 
-const CoffeeSchedule = ({
+function CoffeeSchedule({
 	confidants,
 	conurbations,
 	confabs,
@@ -18,7 +18,7 @@ const CoffeeSchedule = ({
 	joinConfab,
 	leaveConfab,
 	createConfab,
-}) => {
+}) {
 	const [modalOpen, setModalOpen] = useState(false)
 	const [confabDescription, setConfabDescription] = useState("")
 	const [confabMaxCapacity, setConfabMaxCapacity] = useState(3)
