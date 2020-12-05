@@ -22,39 +22,25 @@ function ConfidantEdit({
    //hook for confirmNewPassword
 
    useEffect(()=>{
-      	if (!demoConfidantLoggedIn) {
+      if (!demoConfidantLoggedIn) {
 			loadConurbations()
 		}
-		updateConfidantDataInState(confidant), []
-   })
+      updateConfidantDataInState(confidant);
+      return ()=>{
+         unloadConurbations()   //confirm this works
+      }
+   }, [])
 
+   useEffect(()=> {
+      if(confidant){
+         updateConfidantDataInState(confidant)
+      }
+   }, [confidant])
 
-	componentDidUpdate(prevProps) {
-		if (
-			prevProps.confidant &&
-			prevProps.confidant !== this.props.confidant
-		) {
-			this.updateConfidantDataInState(this.props.confidant)
-		}
-	}
-
-	componentWillUnmount() {
-		this.props.unloadConurbations()
-	}
-
-	update(field) {
-		return (e) =>
-			this.setState({
-				[field]: e.target.value,
-			})
-	}
-
-	updateConfidantDataInState(confidant) {
-		this.setState({
-			username: confidant.username,
-			email: confidant.email,
-			locationId: confidant.location_id,
-		})
+	updateConfidantDataInState = (confidant) => {
+      setUsername(confidant.username)
+      setEmail(confidant.email)
+      setLocationId(confidant.location_id)
 	}
 
 	handleSubmit(e) {
