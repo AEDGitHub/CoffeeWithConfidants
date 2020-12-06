@@ -138,16 +138,16 @@ function SessionForm({
 		<>
 			<div className="sessionform">
 				<div className="sessionform-form-container">
-					{mainMsgDisplay()}
-					{subMsgDisplay()}
+					{mainMsgDisplay}
+					{subMsgDisplay}
 					<form onSubmit={handleSubmit}>
-						{usernameField()}
+						{usernameField}
 						{emailField()}
-						{passwordField()}
+						{passwordField}
 						{homeCityField()}
-						{submitFormButton()}
+						{submitFormButton}
 					</form>
-					<form onSubmit={handleDemoSubmit}>{demoUserButton()}</form>
+					<form onSubmit={handleDemoSubmit}>{demoUserButton}</form>
 					{navLink}
 				</div>
 			</div>
