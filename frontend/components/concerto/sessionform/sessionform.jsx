@@ -16,31 +16,20 @@ function SessionForm({
    processMainForm,
    processDemoForm,
 }) {
-	
-		this.state = {
-			username: "",
-			email: "",
-			password: "",
-			locationId: null,
-			demoUserCityId: null,
-		}
+   const [username, setUsername] = useState("")
+   const [email, setEmail] = useState("")
+   const [password, setPassword] = useState("")
+   const [locationId, setLocationId] = useState(null)
+   const [demoUserCityId, setDemoUserCityId] = useState(null)
 
-	componentDidMount() {
-		if (this.props.formType === "signup") {
-			this.props.loadConurbations()
-		}
-	}
-
-	componentWillUnmount() {
-		this.props.unloadConurbations()
-	}
-
-	update(field) {
-		return (e) =>
-			this.setState({
-				[field]: e.target.value,
-			})
-	}
+   useEffect(()=>{
+      if (formType === "signup") {
+         loadConurbations()
+      }
+      return function cleanup(){
+         unloadConurbations()
+      }
+   }, [])
 
 	handleSubmit(e) {
 		e.preventDefault()
