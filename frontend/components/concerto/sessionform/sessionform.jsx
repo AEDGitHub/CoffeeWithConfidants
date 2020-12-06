@@ -1,8 +1,22 @@
 import React, { useState, useEffect } from "react"
 
-class SessionForm extends React.Component {
-	constructor(props) {
-		super(props)
+function SessionForm({
+   conurbations,
+   conurbationsAreLoaded,
+   demoConfidantConurbationId,
+   formType,
+   mainMsg,
+   subMsg,
+   unPlaceholder,
+   pwPlaceholder,
+   submitButtonText,
+   navLink,
+   loadConurbations,
+   unloadConurbations,
+   processMainForm,
+   processDemoForm,
+}) {
+	
 		this.state = {
 			username: "",
 			email: "",
@@ -10,12 +24,6 @@ class SessionForm extends React.Component {
 			locationId: null,
 			demoUserCityId: null,
 		}
-		this.handleSubmit = this.handleSubmit.bind(this)
-		this.handleDemoSubmit = this.handleDemoSubmit.bind(this)
-		this.emailField = this.emailField.bind(this)
-		this.homeCityField = this.homeCityField.bind(this)
-		this.homeCityFieldOptions = this.homeCityFieldOptions.bind(this)
-	}
 
 	componentDidMount() {
 		if (this.props.formType === "signup") {
