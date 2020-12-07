@@ -1,18 +1,8 @@
-export const areConurbationsLoaded = (conurbations) => {
-	if (Object.keys(conurbations).length > 0) {
-		return true
-	} else {
-		return false
-	}
-}
+export const areConurbationsLoaded = (conurbations) =>
+	Object.keys(conurbations).length > 0 ? true : false
 
-export const areConfabsLoaded = (confabs) => {
-	if (Object.keys(confabs).length > 0) {
-		return true
-	} else {
-		return false
-	}
-}
+export const areConfabsLoaded = (confabs) =>
+	Object.keys(confabs).length > 0 ? true : false
 
 export const selectAllConurbations = (conurbations) =>
 	Object.keys(conurbations).map((id) => conurbations[id])
@@ -26,33 +16,24 @@ export const selectAllConfabs = (confabs) =>
 export const selectParticularConurbationByName = (
 	conurbations,
 	conurbationName
-) => {
-	return Object.values(conurbations).filter(
+) =>
+	Object.values(conurbations).filter(
 		(conurbation) => conurbation.name === conurbationName
 	)
-}
 
-export const selectParticularConfabById = (confabs, confabId) => {
-	return Object.values(confabs).filter((confab) => confab.id === confabId)
-}
+export const selectParticularConfabById = (confabs, confabId) =>
+	Object.values(confabs).filter((confab) => confab.id === confabId)
 
-export const selectParticularConfidantById = (confidants, confidantId) => {
-	return Object.values(confidants).filter(
+export const selectParticularConfidantById = (confidants, confidantId) =>
+	Object.values(confidants).filter(
 		(confidant) => confidant.id === confidantId
 	)
-}
 
 export const selectParticularConfidantsByAttendeeId = (
 	confidants,
 	attendeeId
-) => {
-	return Object.values(confidants).filter(
-		(confidant) => confidant.id === attendeeId
-	)
-}
+) =>
+	Object.values(confidants).filter((confidant) => confidant.id === attendeeId)
 
-export const selectParticularConfabsByLocationId = (confabs, locationId) => {
-	return Object.values(confabs).filter(
-		(confab) => confab.location_id === locationId
-	)
-}
+export const selectParticularConfabsByLocationId = (confabs, locationId) =>
+	Object.values(confabs).filter((confab) => confab.location_id === locationId)
