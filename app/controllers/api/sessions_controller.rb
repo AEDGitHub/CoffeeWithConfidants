@@ -9,8 +9,10 @@ class Api::SessionsController < ApplicationController
 			login(@confidant)
 			@flash = generate_flash('Signed in!', 'success')
 			render 'api/confidants/show'
-		else
-			render json: ['Invalid username or password.'], status: 422
+      else
+         #! @flash = generate_flash('Error', 'failure')
+         #! render 'api/errors/show', status: 422
+         render json: ['Invalid username or password.'], status: 422
 		end
 	end
 

@@ -7,6 +7,7 @@ import {
 } from "../../../reducers/selectors"
 import {
 	fetchFilteredApiConfabs,
+	ditchConfabs,
 	joinConfab,
 	leaveConfab,
 	createConfab,
@@ -51,6 +52,7 @@ const mDTP = (dispatch) => {
 			dispatch(leaveConfab(confabId, confidantId)),
 		createConfab: (conurbationId, confab) =>
 			dispatch(createConfab(conurbationId, confab)),
+		unloadConfabs: () => dispatch(ditchConfabs()),
 	}
 }
 

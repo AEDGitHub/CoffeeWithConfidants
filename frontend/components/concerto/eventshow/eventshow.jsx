@@ -15,6 +15,7 @@ const EventShow = ({
 	joinConfab,
 	leaveConfab,
 	loadConfab,
+	unloadConfabs,
 }) => {
 	const [conurbation, setConurbation] = useState("")
 	const [currentUserAttending, setCurrentUserAttending] = useState(false)
@@ -33,6 +34,9 @@ const EventShow = ({
 				updateConfabDataInState(confab)
 			}
 		})
+		return function cleanup() {
+			unloadConfabs()
+		}
 	}, [])
 
 	useEffect(() => {

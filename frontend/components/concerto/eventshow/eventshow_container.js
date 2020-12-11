@@ -3,6 +3,7 @@ import {
 	fetchFilteredApiConfabs,
 	joinConfab,
 	leaveConfab,
+	ditchConfabs,
 } from "../../../actions/confabs_actions"
 import {
 	convertDatetimeStringToObject,
@@ -35,6 +36,7 @@ const mDTP = (dispatch) => {
 		leaveConfab: (confabId, confidantId) =>
 			dispatch(leaveConfab(confabId, confidantId)),
 		loadConfab: (confabId) => dispatch(fetchFilteredApiConfabs(confabId)),
+		unloadConfabs: () => dispatch(ditchConfabs()),
 	}
 }
 

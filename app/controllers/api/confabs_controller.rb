@@ -10,8 +10,9 @@ class Api::ConfabsController < ApplicationController
 		if (@confab.save)
 			@flash = generate_flash('Confab created.', 'success')
 			render :show
-		else
-			render json: ['Invalid confab details!'], status: 401
+      else
+         #! @flash = generate_flash('Couldn't make confab.")
+         render json: ['Invalid confab details!'], status: 401
 		end
 	end
 

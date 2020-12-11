@@ -15,6 +15,7 @@ function CoffeeSchedule({
 	filterConfabsByConfabLocationId,
 	convertDatetimeStringToObject,
 	loadConfabs,
+	unloadConfabs,
 	joinConfab,
 	leaveConfab,
 	createConfab,
@@ -27,6 +28,9 @@ function CoffeeSchedule({
 
 	useEffect(() => {
 		loadConfabs()
+		return function cleanup() {
+			unloadConfabs()
+		}
 	}, [])
 
 	const handleSubmit = (e) => {

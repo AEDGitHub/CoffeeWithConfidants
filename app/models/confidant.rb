@@ -11,7 +11,7 @@ class Confidant < ApplicationRecord
 	validates :username, :email, :session_token, uniqueness: true
 	validates :password, length: { minimum: 7 }, allow_nil: true
 
-	after_initialize :ensure_session_token
+	after_initialize :ensure_session_token #!before_validation
 
 	belongs_to :conurbation, foreign_key: :location_id
 
