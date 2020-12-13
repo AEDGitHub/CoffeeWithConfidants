@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
-import { getWeekdayStringFromDateObject } from "../../../utils/time_utils"
+import {
+	getWeekdayStringFromDateObject,
+	getMonthStringFromDateObject,
+} from "../../../utils/time_utils"
 
 const EventShow = ({
 	ccId,
@@ -64,7 +67,7 @@ const EventShow = ({
 				(timeObj["hour"] + 2).toString() +
 				"00"
 		)
-		setMonth(timeObj["month"])
+		setMonth(getMonthStringFromDateObject(dateObj))
 		setSeatsRemaining(confab.max_capacity - confab.attendee_ids.length)
 	}
 

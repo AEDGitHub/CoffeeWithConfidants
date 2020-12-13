@@ -12,7 +12,7 @@ import {
 } from "../../../utils/modification_utils"
 import {
 	convertDatetimeStringToObject,
-	getWeekdayStringFromDateObject,
+	// getWeekdayStringFromDateObject,
 } from "../../../utils/time_utils"
 import EventShow from "./eventshow"
 

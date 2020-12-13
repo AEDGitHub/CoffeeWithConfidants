@@ -2,7 +2,10 @@ import React, { useState, useEffect } from "react"
 import Modal from "react-modal"
 import CoffeeScheduleEvent from "./coffee_schedule_event/coffeeschedule_event"
 import { Link } from "react-router-dom"
-import { getWeekdayStringFromDateObject } from "../../../utils/time_utils"
+import {
+	getWeekdayStringFromDateObject,
+	getMonthStringFromDateObject,
+} from "../../../utils/time_utils"
 
 function CoffeeSchedule({
 	confidants,
@@ -167,8 +170,10 @@ function CoffeeSchedule({
 			const timeObj = convertDatetimeStringToObject(dateObj)
 			// const day = timeObj["day"].toUpperCase()
 			const day = getWeekdayStringFromDateObject(dateObj)
+			const monthStr = getMonthStringFromDateObject(dateObj)
+			const truncatedMonthStr = monthStr.slice(0, 3)
 			const date =
-				timeObj["month"].toUpperCase() + " " + timeObj["dateNum"]
+				truncatedMonthStr.toUpperCase() + " " + timeObj["dateNum"]
 
 			const hours =
 				timeObj["hour"].toString() +

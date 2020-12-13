@@ -20,7 +20,7 @@ import {
 import {
 	convertDatetimeStringToObject,
 	// getWeekdayStringFromStartTimeInMs,
-	getWeekdayStringFromDateObject,
+	// getWeekdayStringFromDateObject,
 } from "../../../utils/time_utils"
 import { Link } from "react-router-dom"
 import { connect } from "react-redux"
@@ -43,8 +43,8 @@ const mSTP = ({
 		),
 		shorterConurbationName: shorterConurbationName,
 		determineWhetherConfidantIsAttending: determineWhetherConfidantIsAttending,
-		getWeekdayStringFromDateObject: getWeekdayStringFromDateObject,
-		// getWeekdayStringFromStartTimeInMs: getWeekdayStringFromStartTimeInMs,
+		// getWeekdayStringFromDateObject: getWeekdayStringFromDateObject,
+		// // getWeekdayStringFromStartTimeInMs: getWeekdayStringFromStartTimeInMs,
 		filterConfabsByConfabLocationId: filterConfabsByConfabLocationId,
 		convertDatetimeStringToObject: convertDatetimeStringToObject,
 	}
