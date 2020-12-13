@@ -6,11 +6,11 @@ import {
 	ditchConfabs,
 } from "../../../actions/confabs_actions"
 import {
-	convertDatetimeStringToObject,
 	determineWhetherConfidantIsAttending,
 	restOfConurbationName,
 	shorterConurbationName,
 } from "../../../utils/modification_utils"
+import { convertDatetimeStringToObject } from "../../../utils/time_utils"
 import EventShow from "./eventshow"
 
 const mSTP = (

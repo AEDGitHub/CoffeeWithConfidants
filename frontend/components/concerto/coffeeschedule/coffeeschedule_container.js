@@ -13,11 +13,11 @@ import {
 	createConfab,
 } from "../../../actions/confabs_actions"
 import {
-	convertDatetimeStringToObject,
 	determineWhetherConfidantIsAttending,
 	filterConfabsByConfabLocationId,
 	shorterConurbationName,
 } from "../../../utils/modification_utils"
+import { convertDatetimeStringToObject } from "../../../utils/time_utils"
 import { Link } from "react-router-dom"
 import { connect } from "react-redux"
 import CoffeeSchedule from "./coffeeschedule"
