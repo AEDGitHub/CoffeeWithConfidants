@@ -10,10 +10,7 @@ import {
 	restOfConurbationName,
 	shorterConurbationName,
 } from "../../../utils/modification_utils"
-import {
-	convertDatetimeStringToObject,
-	// getWeekdayStringFromDateObject,
-} from "../../../utils/time_utils"
+import { convertDatetimeStringToObject } from "../../../utils/time_utils"
 import EventShow from "./eventshow"
 
 const mSTP = (

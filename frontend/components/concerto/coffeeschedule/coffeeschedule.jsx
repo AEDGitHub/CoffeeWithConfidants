@@ -169,7 +169,8 @@ function CoffeeSchedule({
 			const dateObj = new Date(confab.start_time_in_ms)
 			const timeObj = convertDatetimeStringToObject(dateObj)
 			// const day = timeObj["day"].toUpperCase()
-			const day = getWeekdayStringFromDateObject(dateObj)
+			const dayStr = getWeekdayStringFromDateObject(dateObj)
+			const day = dayStr.toUpperCase()
 			const monthStr = getMonthStringFromDateObject(dateObj)
 			const truncatedMonthStr = monthStr.slice(0, 3)
 			const date =
