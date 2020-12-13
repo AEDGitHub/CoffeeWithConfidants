@@ -17,7 +17,11 @@ import {
 	filterConfabsByConfabLocationId,
 	shorterConurbationName,
 } from "../../../utils/modification_utils"
-import { convertDatetimeStringToObject } from "../../../utils/time_utils"
+import {
+	convertDatetimeStringToObject,
+	// getWeekdayStringFromStartTimeInMs,
+	getWeekdayStringFromDateObject,
+} from "../../../utils/time_utils"
 import { Link } from "react-router-dom"
 import { connect } from "react-redux"
 import CoffeeSchedule from "./coffeeschedule"
@@ -39,6 +43,8 @@ const mSTP = ({
 		),
 		shorterConurbationName: shorterConurbationName,
 		determineWhetherConfidantIsAttending: determineWhetherConfidantIsAttending,
+		getWeekdayStringFromDateObject: getWeekdayStringFromDateObject,
+		// getWeekdayStringFromStartTimeInMs: getWeekdayStringFromStartTimeInMs,
 		filterConfabsByConfabLocationId: filterConfabsByConfabLocationId,
 		convertDatetimeStringToObject: convertDatetimeStringToObject,
 	}

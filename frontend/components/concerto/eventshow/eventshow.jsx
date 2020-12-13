@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
+import { getWeekdayStringFromDateObject } from "../../../utils/time_utils"
 
 const EventShow = ({
 	ccId,
@@ -46,24 +47,24 @@ const EventShow = ({
 	}, [confab])
 
 	const updateConfabDataInState = (confab) => {
-		const dateObject = new Date(confab.start_time_in_ms)
-		const timeObject = convertDatetimeStringToObject(dateObject)
+		const dateObj = new Date(confab.start_time_in_ms)
+		const timeObj = convertDatetimeStringToObject(dateObj)
 		const isCurrentUserAttending = determineWhetherConfidantIsAttending(
 			confab,
 			ccId
 		)
 		setCurrentUserAttending(isCurrentUserAttending)
-		setDate(timeObject["dateNum"])
-		setDay(timeObject["day"])
+		setDate(timeObj["dateNum"])
+		setDay(getWeekdayStringFromDateObject(dateObj))
 		setDescription(confab.description)
 		setHostName(confidants[confab.host_id].username)
 		setHours(
-			timeObject["hour"].toString() +
+			timeObj["hour"].toString() +
 				"00 — " +
-				(timeObject["hour"] + 2).toString() +
+				(timeObj["hour"] + 2).toString() +
 				"00"
 		)
-		setMonth(timeObject["month"])
+		setMonth(timeObj["month"])
 		setSeatsRemaining(confab.max_capacity - confab.attendee_ids.length)
 	}
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import Modal from "react-modal"
 import CoffeeScheduleEvent from "./coffee_schedule_event/coffeeschedule_event"
 import { Link } from "react-router-dom"
+import { getWeekdayStringFromDateObject } from "../../../utils/time_utils"
 
 function CoffeeSchedule({
 	confidants,
@@ -161,16 +162,18 @@ function CoffeeSchedule({
 				confab,
 				ccId
 			)
-			const dateObject = new Date(confab.start_time_in_ms)
-			const timeObject = convertDatetimeStringToObject(dateObject)
-			const day = timeObject["day"].toUpperCase()
+			const startTimeInMs = confab.start_time_in_ms
+			const dateObj = new Date(confab.start_time_in_ms)
+			const timeObj = convertDatetimeStringToObject(dateObj)
+			// const day = timeObj["day"].toUpperCase()
+			const day = getWeekdayStringFromDateObject(dateObj)
 			const date =
-				timeObject["month"].toUpperCase() + " " + timeObject["dateNum"]
+				timeObj["month"].toUpperCase() + " " + timeObj["dateNum"]
 
 			const hours =
-				timeObject["hour"].toString() +
+				timeObj["hour"].toString() +
 				" — " +
-				(timeObject["hour"] + 2).toString() +
+				(timeObj["hour"] + 2).toString() +
 				"00"
 
 			const confabButton = currentConfidantAttending
