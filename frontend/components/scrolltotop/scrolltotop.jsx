@@ -1,16 +1,19 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { withRouter } from "react-router-dom"
 
-class ScrollToTop extends React.Component {
-	componentDidUpdate(prevProps) {
-		if (this.props.location !== prevProps.location) {
+function ScrollToTop({ history, children }) {
+	useEffect(() => {
+		const quitListening = history.listen(() => {
 			window.scrollTo(0, 0)
+		})
+		return () => {
+			quitListening()
 		}
-	}
+	}, [])
 
-	render() {
-		return this.props.children
-	}
+	return <>{children}</>
 }
+
+//shout-out to zurfyx on SO for this gem: https://stackoverflow.com/a/54343182
 
 export default withRouter(ScrollToTop)
