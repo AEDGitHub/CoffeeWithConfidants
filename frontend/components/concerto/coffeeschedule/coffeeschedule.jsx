@@ -48,8 +48,13 @@ function CoffeeSchedule({
 		const description = confabDescription
 		const maxCapacity = confabMaxCapacity
 		const dateString = confabStartDate + "T" + confabStartTime
-		const startTimeInMilliseconds = new Date(dateString).getTime()
-		const endTimeInMilliseconds = startTimeInMilliseconds + 7200000
+		const currentDateObj = new Date(dateString)
+		const futureDateObj = getFutureDateObjectSomeNumberOfHoursAwayFromCurrentDateObject(
+			currentDateObj,
+			2
+		)
+		const startTimeInMilliseconds = currentDateObj.getTime()
+		const endTimeInMilliseconds = futureDateObj.getTime()
 
 		const conurbationId = confidants[hostId].location_id
 
@@ -62,13 +67,14 @@ function CoffeeSchedule({
 		}
 
 		createConfab(conurbationId, confab)
-		setModalOpen(true)
+		setModalOpen(false)
+		window.scrollTo(0, 0)
 	}
 
 	const monthDisplay = () => {
-		const rightNow = new Date()
+		const currentDateObj = new Date()
 		const currentMonth = getMonthStringFromDateObject(
-			rightNow
+			currentDateObj
 		).toUpperCase()
 
 		return (
@@ -159,38 +165,37 @@ function CoffeeSchedule({
 			conurbationId
 		)
 		return relevantConfabs.map((confab) => {
+			const confabId = confab.id
+
 			const seatsRemaining =
 				confab.max_capacity - confab.attendee_ids.length
+
 			const hostId = confab.host_id
 			const hostConfidant = confidants[hostId]
 			const hostName = hostConfidant.username.toUpperCase()
 			const hostAvatarId = hostConfidant.avatar_id
+
 			const currentConfidantAttending = determineWhetherConfidantIsAttending(
 				confab,
 				ccId
 			)
+
 			const startTimeInMs = confab.start_time_in_ms
-			const dateObj = new Date(confab.start_time_in_ms)
+			const dateObj = new Date(startTimeInMs)
 			const futureDateObj = getFutureDateObjectSomeNumberOfHoursAwayFromCurrentDateObject(
 				dateObj,
 				2
 			)
-			const timeObj = convertDatetimeStringToObject(dateObj)
-			// const day = timeObj["day"].toUpperCase()
+
 			const dayStr = getWeekdayStringFromDateObject(dateObj)
 			const day = dayStr.toUpperCase()
+
 			const monthStr = getTruncatedMonthStringFromDateObject(dateObj)
 			const month = monthStr.toUpperCase()
 			const dateNum = dateObj.getDate()
 			const dateNumStr = dateNum.toString()
-			// const truncatedMonthStr = monthStr.slice(0, 3)
 			const date = month + " " + dateNumStr
 
-			// const hours =
-			// 	timeObj["hour"].toString() +
-			// 	" — " +
-			// 	(timeObj["hour"] + 2).toString() +
-			// 	"00"
 			const startHrsStr = getPrefixHoursStringFromDateObject(dateObj)
 			const endHrsStr = getFullHoursStringFromDateObject(futureDateObj)
 			const hours = startHrsStr + " — " + endHrsStr
@@ -203,14 +208,14 @@ function CoffeeSchedule({
 				: notAttendingDisplay
 
 			return (
-				<div className="confab-card-container" key={confab.id}>
+				<div className="confab-card-container" key={confabId}>
 					<CoffeeScheduleEvent
 						attendanceDisplay={attendanceDisplay}
 						avatarId={hostAvatarId}
 						hostId={hostId}
 						ccId={ccId}
 						confabButton={confabButton}
-						confabId={confab.id}
+						confabId={confabId}
 						day={day}
 						date={date}
 						description={confab.description}
