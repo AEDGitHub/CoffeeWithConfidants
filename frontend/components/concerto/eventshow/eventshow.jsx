@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import {
 	getWeekdayStringFromDateObject,
 	getMonthStringFromDateObject,
+	getFullHoursStringFromDateObject,
 } from "../../../utils/time_utils"
 
 const EventShow = ({
@@ -51,6 +52,7 @@ const EventShow = ({
 
 	const updateConfabDataInState = (confab) => {
 		const dateObj = new Date(confab.start_time_in_ms)
+		const day = getWeekdayStringFromDateObject(dateObj)
 		const timeObj = convertDatetimeStringToObject(dateObj)
 		const isCurrentUserAttending = determineWhetherConfidantIsAttending(
 			confab,
@@ -58,7 +60,7 @@ const EventShow = ({
 		)
 		setCurrentUserAttending(isCurrentUserAttending)
 		setDate(timeObj["dateNum"])
-		setDay(getWeekdayStringFromDateObject(dateObj))
+		setDay(day)
 		setDescription(confab.description)
 		setHostName(confidants[confab.host_id].username)
 		setHours(

@@ -5,6 +5,9 @@ import { Link } from "react-router-dom"
 import {
 	getWeekdayStringFromDateObject,
 	getMonthStringFromDateObject,
+	getTruncatedMonthStringFromDateObject,
+	getPrefixHoursStringFromDateObject,
+	getFullHoursStringFromDateObject,
 } from "../../../utils/time_utils"
 
 function CoffeeSchedule({
@@ -63,13 +66,13 @@ function CoffeeSchedule({
 
 	const monthDisplay = () => {
 		const rightNow = new Date()
-		const month = convertDatetimeStringToObject(rightNow.toString())
-			["fullMonth"].toString()
-			.toUpperCase()
+		const currentMonth = getMonthStringFromDateObject(
+			rightNow
+		).toUpperCase()
 
 		return (
 			<div className="month-toggle">
-				<div className="month-msg">TEA TIMES IN {month}</div>
+				<div className="month-msg">TEA TIMES IN {currentMonth}</div>
 				<div
 					className="create-confab-container"
 					onClick={() => setModalOpen(true)}
@@ -171,10 +174,10 @@ function CoffeeSchedule({
 			// const day = timeObj["day"].toUpperCase()
 			const dayStr = getWeekdayStringFromDateObject(dateObj)
 			const day = dayStr.toUpperCase()
-			const monthStr = getMonthStringFromDateObject(dateObj)
-			const truncatedMonthStr = monthStr.slice(0, 3)
-			const date =
-				truncatedMonthStr.toUpperCase() + " " + timeObj["dateNum"]
+			const monthStr = getTruncatedMonthStringFromDateObject(dateObj)
+			const month = monthStr.toUpperCase()
+			// const truncatedMonthStr = monthStr.slice(0, 3)
+			const date = month + " " + timeObj["dateNum"]
 
 			const hours =
 				timeObj["hour"].toString() +
