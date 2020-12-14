@@ -21,7 +21,6 @@ function CoffeeSchedule({
 	shorterConurbationName,
 	determineWhetherConfidantIsAttending,
 	filterConfabsByConfabLocationId,
-	convertDatetimeStringToObject,
 	loadConfabs,
 	unloadConfabs,
 	joinConfab,
@@ -48,13 +47,13 @@ function CoffeeSchedule({
 		const description = confabDescription
 		const maxCapacity = confabMaxCapacity
 		const dateString = confabStartDate + "T" + confabStartTime
-		const currentDateObj = new Date(dateString)
-		const futureDateObj = getFutureDateObjectSomeNumberOfHoursAwayFromCurrentDateObject(
-			currentDateObj,
+		const startDateObj = new Date(dateString)
+		const endDateObj = getFutureDateObjectSomeNumberOfHoursAwayFromCurrentDateObject(
+			startDateObj,
 			2
 		)
-		const startTimeInMilliseconds = currentDateObj.getTime()
-		const endTimeInMilliseconds = futureDateObj.getTime()
+		const startTimeInMilliseconds = startDateObj.getTime()
+		const endTimeInMilliseconds = endDateObj.getTime()
 
 		const conurbationId = confidants[hostId].location_id
 
@@ -72,9 +71,9 @@ function CoffeeSchedule({
 	}
 
 	const monthDisplay = () => {
-		const currentDateObj = new Date()
+		const startDateObj = new Date()
 		const currentMonth = getMonthStringFromDateObject(
-			currentDateObj
+			startDateObj
 		).toUpperCase()
 
 		return (

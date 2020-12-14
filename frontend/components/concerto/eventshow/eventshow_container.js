@@ -10,7 +10,6 @@ import {
 	restOfConurbationName,
 	shorterConurbationName,
 } from "../../../utils/modification_utils"
-import { convertDatetimeStringToObject } from "../../../utils/time_utils"
 import EventShow from "./eventshow"
 
 const mSTP = (
@@ -23,7 +22,6 @@ const mSTP = (
 		confidants: confidants,
 		conurbations: conurbations,
 		loggedIn: Boolean(ccId),
-		convertDatetimeStringToObject: convertDatetimeStringToObject,
 		determineWhetherConfidantIsAttending: determineWhetherConfidantIsAttending,
 		restOfConurbationName: restOfConurbationName,
 		shorterConurbationName: shorterConurbationName,

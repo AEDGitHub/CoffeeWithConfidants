@@ -14,7 +14,6 @@ const EventShow = ({
 	conurbations,
 	loggedIn,
 	match,
-	convertDatetimeStringToObject,
 	determineWhetherConfidantIsAttending,
 	restOfConurbationName,
 	shorterConurbationName,
@@ -52,26 +51,28 @@ const EventShow = ({
 	}, [confab])
 
 	const updateConfabDataInState = (confab) => {
-		const dateObj = new Date(confab.start_time_in_ms)
-		const day = getWeekdayStringFromDateObject(dateObj)
-		const date = dateObj.getDate()
-		const timeObj = convertDatetimeStringToObject(dateObj)
 		const isCurrentUserAttending = determineWhetherConfidantIsAttending(
 			confab,
 			ccId
 		)
+		const startDateObj = new Date(confab.start_time_in_ms)
+		const date = startDateObj.getDate()
+		const day = getWeekdayStringFromDateObject(startDateObj)
+
+		const endDateObj = getFutureDateObjectSomeNumberOfHoursAwayFromCurrentDateObject(
+			startDateObj,
+			2
+		)
+		const startHrsStr = getFullHoursStringFromDateObject(startDateObj)
+		const endHrsStr = getFullHoursStringFromDateObject(endDateObj)
+		const hours = startHrsStr + " — " + endHrsStr
 		setCurrentUserAttending(isCurrentUserAttending)
 		setDate(date)
 		setDay(day)
 		setDescription(confab.description)
 		setHostName(confidants[confab.host_id].username)
-		setHours(
-			timeObj["hour"].toString() +
-				"00 — " +
-				(timeObj["hour"] + 2).toString() +
-				"00"
-		)
-		setMonth(getMonthStringFromDateObject(dateObj))
+		setHours(hours)
+		setMonth(getMonthStringFromDateObject(startDateObj))
 		setSeatsRemaining(confab.max_capacity - confab.attendee_ids.length)
 	}
 
