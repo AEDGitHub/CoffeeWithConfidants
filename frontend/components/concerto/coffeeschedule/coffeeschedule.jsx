@@ -8,6 +8,7 @@ import {
 	getTruncatedMonthStringFromDateObject,
 	getPrefixHoursStringFromDateObject,
 	getFullHoursStringFromDateObject,
+	getFutureDateObjectSomeNumberOfHoursAwayFromCurrentDateObject,
 } from "../../../utils/time_utils"
 
 function CoffeeSchedule({
@@ -170,20 +171,29 @@ function CoffeeSchedule({
 			)
 			const startTimeInMs = confab.start_time_in_ms
 			const dateObj = new Date(confab.start_time_in_ms)
+			const futureDateObj = getFutureDateObjectSomeNumberOfHoursAwayFromCurrentDateObject(
+				dateObj,
+				2
+			)
 			const timeObj = convertDatetimeStringToObject(dateObj)
 			// const day = timeObj["day"].toUpperCase()
 			const dayStr = getWeekdayStringFromDateObject(dateObj)
 			const day = dayStr.toUpperCase()
 			const monthStr = getTruncatedMonthStringFromDateObject(dateObj)
 			const month = monthStr.toUpperCase()
+			const dateNum = dateObj.getDate()
+			const dateNumStr = dateNum.toString()
 			// const truncatedMonthStr = monthStr.slice(0, 3)
-			const date = month + " " + timeObj["dateNum"]
+			const date = month + " " + dateNumStr
 
-			const hours =
-				timeObj["hour"].toString() +
-				" — " +
-				(timeObj["hour"] + 2).toString() +
-				"00"
+			// const hours =
+			// 	timeObj["hour"].toString() +
+			// 	" — " +
+			// 	(timeObj["hour"] + 2).toString() +
+			// 	"00"
+			const startHrsStr = getPrefixHoursStringFromDateObject(dateObj)
+			const endHrsStr = getFullHoursStringFromDateObject(futureDateObj)
+			const hours = startHrsStr + " — " + endHrsStr
 
 			const confabButton = currentConfidantAttending
 				? confabLeaveButton
@@ -300,7 +310,6 @@ function CoffeeSchedule({
 														"19:00",
 														"20:00",
 														"21:00",
-														"22:00",
 													].map((time, idx) => (
 														<option
 															value={time}

@@ -4,6 +4,7 @@ import {
 	getWeekdayStringFromDateObject,
 	getMonthStringFromDateObject,
 	getFullHoursStringFromDateObject,
+	getFutureDateObjectSomeNumberOfHoursAwayFromCurrentDateObject,
 } from "../../../utils/time_utils"
 
 const EventShow = ({
@@ -53,13 +54,14 @@ const EventShow = ({
 	const updateConfabDataInState = (confab) => {
 		const dateObj = new Date(confab.start_time_in_ms)
 		const day = getWeekdayStringFromDateObject(dateObj)
+		const date = dateObj.getDate()
 		const timeObj = convertDatetimeStringToObject(dateObj)
 		const isCurrentUserAttending = determineWhetherConfidantIsAttending(
 			confab,
 			ccId
 		)
 		setCurrentUserAttending(isCurrentUserAttending)
-		setDate(timeObj["dateNum"])
+		setDate(date)
 		setDay(day)
 		setDescription(confab.description)
 		setHostName(confidants[confab.host_id].username)

@@ -1,3 +1,14 @@
+export const getFutureDateObjectSomeNumberOfHoursAwayFromCurrentDateObject = (
+	currentDateObj,
+	someNumHrs = 0
+) => {
+	const currentDateObjectInMilliseconds = currentDateObj.getTime()
+	const hoursConvertedToMilliseconds = someNumHrs * 60 * 60 * 1000 // n hrs * 60 min/hr * 60 s/min * 1000ms/s
+	const newTimeInMilliseconds =
+		currentDateObjectInMilliseconds + hoursConvertedToMilliseconds
+	return new Date(newTimeInMilliseconds)
+}
+
 export const getWeekdayStringFromDateObject = (dateObj) => {
 	const weekdayObj = {
 		0: "Sunday",
@@ -56,7 +67,7 @@ export const getPrefixHoursStringFromDateObject = (dateObj) => {
 
 export const getFullHoursStringFromDateObject = (dateObj) => {
 	const suffixStr = "00"
-	return getHoursPrefixStringFromDateObject(dateObj) + suffixStr
+	return getPrefixHoursStringFromDateObject(dateObj) + suffixStr
 }
 
 export const convertDatetimeStringToObject = (datetimeString) => {
