@@ -28,13 +28,13 @@ const logoutConfidant = (type) => {
 }
 
 // Session Actions
-// export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS"
+export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS"
 // export const CLEAR_SESSION_ERRORS = "CLEAR_SESSION_ERRORS"
 
-const receiveErrors = (errors) => {
+const receiveErrors = ({ flash = { message: null, status: null } }, type) => {
 	return {
-		type: RECEIVE_SESSION_ERRORS,
-		errors,
+		flash,
+		type,
 	}
 }
 
@@ -52,7 +52,9 @@ export const signup = (confidant) => {
 				dispatch(receiveConfidant(payload, RECEIVE_CURRENT_CONFIDANT))
 			},
 			(err) => {
-				dispatch(receiveErrors(err.responseJSON))
+				dispatch(
+					receiveErrors(err.responseJSON, RECEIVE_SESSION_ERRORS)
+				)
 			}
 		)
 	}
@@ -65,7 +67,9 @@ export const signin = (confidant) => {
 				dispatch(receiveConfidant(payload, RECEIVE_CURRENT_CONFIDANT))
 			},
 			(err) => {
-				dispatch(receiveErrors(err.responseJSON))
+				dispatch(
+					receiveErrors(err.responseJSON, RECEIVE_SESSION_ERRORS)
+				)
 			}
 		)
 	}

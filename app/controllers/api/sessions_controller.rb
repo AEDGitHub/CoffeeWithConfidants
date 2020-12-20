@@ -12,7 +12,8 @@ class Api::SessionsController < ApplicationController
       else
          #! @flash = generate_flash('Error', 'failure')
          #! render 'api/errors/show', status: 422
-         render json: ['Invalid username or password.'], status: 422
+         #render json: {['Invalid username or password.']}, status: 422
+         render json: {flash: {message: "Invalid username or password.", status: "failure" }}, status: 422
 		end
 	end
 

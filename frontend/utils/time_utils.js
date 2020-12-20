@@ -41,7 +41,7 @@ export const getMonthStringFromDateObject = (dateObj) => {
 }
 
 export const getTruncatedMonthStringFromDateObject = (dateObj) => {
-	const monthStrObj = {
+	const trnctdMonthStrObj = {
 		0: "Jan",
 		1: "Feb",
 		2: "Mar",
@@ -55,7 +55,7 @@ export const getTruncatedMonthStringFromDateObject = (dateObj) => {
 		10: "Nov",
 		11: "Dec",
 	}
-	return monthStrObj[dateObj.getMonth()]
+	return trnctdMonthStrObj[dateObj.getMonth()]
 }
 
 export const getPrefixHoursStringFromDateObject = (dateObj) => {
