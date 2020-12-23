@@ -10,10 +10,11 @@ class Api::ConfidantsController < ApplicationController
 		@confidant = Confidant.new(confidant_params)
 		if @confidant.save
 			login(@confidant)
-			@flash = generate_flash('Account created.', 'success')
+			@flash = success_flash("Account created.")
 			render :show
-		else
-			render json: ['Invalid username or email.'], status: 401
+      else
+         @flash = failure_flash("Invalid username or email.")
+			render json: {flash: @flash}, status: 401
 		end
 	end
 
@@ -21,10 +22,11 @@ class Api::ConfidantsController < ApplicationController
 		@confidant = Confidant.find(params[:id])
 		if @confidant == current_confidant
 			logout
-			@flash = generate_flash('Account terminated.', 'success')
+			@flash = success_flash("Account terminated.")
 			@confidant.destroy
-		else
-			render json: ['Sorry, no confidant to destroy!'], status: 422
+      else
+         @flash = failure_flash("Could not terminate account.")
+			render json: {flash: @flash}, status: 422
 		end
 	end
 
@@ -43,12 +45,13 @@ class Api::ConfidantsController < ApplicationController
 			#     )
 
 			# else
-			@flash = generate_flash('Account updated.', 'success')
-			@confidant.update(confidant_params)
 			# end
+			@confidant.update(confidant_params)
+			@flash = success_flash("Account updated.")
 			render :show
-		else
-			render json: ["Sorry, I couldn't update this confidant!"],
+      else
+         @flash = failure_flash("Confidant could not be updated.")
+			render json: {flash: @flash},
 			       status: 422
 		end
 	end

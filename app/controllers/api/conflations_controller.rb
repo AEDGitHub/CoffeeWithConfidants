@@ -6,10 +6,11 @@ class Api::ConflationsController < ApplicationController
 			)
 		if @conflation.save
 			@confab = @conflation.confab
-			@flash = generate_flash('Confab joined!', 'success')
+			@flash = success_flash("Confab joined!")
 			render 'api/confabs/show'
-		else
-			render json: ['Could not join confab!'], status: 422
+      else
+         @flash = failure_flash("Could not join confab.")
+			render json: {flash: @flash}, status: 422
 		end
 	end
 
@@ -21,10 +22,11 @@ class Api::ConflationsController < ApplicationController
 		if @conflation
 			@confab = Confab.find(params[:confab_id])
 			@conflation.destroy
-			@flash = generate_flash('Left confab.', 'success')
+			@flash = success_flash("Left confab.")
 			render 'api/confabs/show'
-		else
-			render json: ['Could not leave confab!'], status: 422
+      else
+         @flash = failure_flash("Could not leave confab!")
+			render json: {flash: @flash}, status: 422
 		end
 	end
 end

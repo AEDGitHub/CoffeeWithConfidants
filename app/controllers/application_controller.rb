@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 	# protect_from_forgery with: :exception #taken out for testing purposes
-	helper_method :current_confidant, :logged_in?, :generate_flash
+	helper_method :current_confidant, :logged_in?, :success_flash, :failure_flash
 
 	private
 
@@ -28,7 +28,11 @@ class ApplicationController < ActionController::Base
 		!!current_confidant
 	end
 
-	def generate_flash(message, status)
-		{ message: message, status: status }
-	end
+	def success_flash(message)
+		{ message: message, status: 'success' }
+   end
+   
+   def failure_flash(message)
+      { message: message, status: 'failure' }
+   end
 end

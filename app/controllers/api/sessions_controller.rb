@@ -7,21 +7,20 @@ class Api::SessionsController < ApplicationController
 			)
 		if @confidant
 			login(@confidant)
-			@flash = generate_flash('Signed in!', 'success')
+			@flash = success_flash('Signed in!')
 			render 'api/confidants/show'
       else
-         #! @flash = generate_flash('Error', 'failure')
-         #! render 'api/errors/show', status: 422
-         #render json: {['Invalid username or password.']}, status: 422
-         render json: {flash: {message: "Invalid username or password.", status: "failure" }}, status: 422
+         @flash = failure_flash("Invalid username or password.")
+         render json: {flash: @flash}, status: 422
 		end
 	end
 
 	def destroy
-		if current_confidant
+      if current_confidant
 			logout
-		else
-			render json: ['There was no one signed in!'], status: 404
+      else
+         @flash = failure_flash("There was no one signed in!")
+			render json: {flash: @flash}, status: 404
 		end
 	end
 
