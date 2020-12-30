@@ -76,7 +76,7 @@ const Conclusion = () => {
 
 	const linkedin = generateOffsiteLink(
 		"LinkedIn",
-		"https://www.linkedin.com/in/eric-arndt-9850281a5/"
+		"https://www.linkedin.com/in/arndtericdaniel/"
 	)
 
 	const angellist = generateOffsiteLink(
