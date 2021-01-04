@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
 
-const Conclusion = () => {
+function Conclusion() {
 	const [content, setContent] = useState("About")
 
 	const generateButton = (buttonName) => {

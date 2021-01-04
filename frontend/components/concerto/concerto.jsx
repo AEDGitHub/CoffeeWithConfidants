@@ -9,8 +9,8 @@ import SigninFormContainer from "./sessionform/signinform_container"
 import SignupFormContainer from "./sessionform/signupform_container"
 import Splash from "./splish/splash"
 
-const Concerto = () => (
-	<>
+function Concerto() {
+	return (
 		<section id="concerto">
 			<Flash />
 			<AuthRoute path="/signin" component={SigninFormContainer} />
@@ -20,7 +20,7 @@ const Concerto = () => (
 			<Route exact path="/coffee_times" component={CoffeeSchedule} />
 			<Route exact path="/" component={Splash} />
 		</section>
-	</>
-)
+	)
+}
 
 export default Concerto

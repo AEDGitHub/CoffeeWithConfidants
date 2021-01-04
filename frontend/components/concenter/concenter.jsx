@@ -2,8 +2,8 @@ import React from "react"
 import { Link } from "react-router-dom"
 import NavLinks from "./navlinks/navlinks_container"
 
-const Concenter = () => (
-	<>
+function Concenter() {
+	return (
 		<header>
 			<div className="header-container">
 				<Link className="link-logo" to="/">
@@ -12,7 +12,7 @@ const Concenter = () => (
 				<NavLinks />
 			</div>
 		</header>
-	</>
-)
+	)
+}
 
 export default Concenter
