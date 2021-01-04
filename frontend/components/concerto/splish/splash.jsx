@@ -1,14 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
-const Splash = () => {
-	const generateSplashRunnerItem = (headline, subtext) => (
-		<div className="splash-runner-item">
-			<div className="splash-runner-item-headline">{headline}</div>
-			<div className="splash-runner-item-subtext">{subtext}</div>
-		</div>
-	)
-
+function Splash() {
 	const firstSplashRunnerItem = generateSplashRunnerItem(
 		"Show up to a confab",
 		"You and some allies-to-be squad up."
@@ -46,6 +39,15 @@ const Splash = () => {
 			</div>
 		</div>
 	)
+
+	function generateSplashRunnerItem(headline, subtext) {
+		return (
+			<div className="splash-runner-item">
+				<div className="splash-runner-item-headline">{headline}</div>
+				<div className="splash-runner-item-subtext">{subtext}</div>
+			</div>
+		)
+	}
 }
 
 export default Splash
