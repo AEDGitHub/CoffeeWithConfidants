@@ -6,6 +6,7 @@ function ConfidantEdit({
 	conurbations,
 	demoConfidantLoggedIn,
 	loadConurbations,
+	unloadConfabs,
 	unloadConurbations,
 	deleteAccount,
 	updateAccount,
@@ -28,6 +29,7 @@ function ConfidantEdit({
 		updateConfidantDataInState(confidant)
 		return function cleanup() {
 			unloadConurbations()
+			unloadConfabs()
 		}
 	}, [])
 

@@ -1,10 +1,11 @@
 import { connect } from "react-redux"
 import { selectAllConurbations } from "../../../reducers/selectors"
-import { deleteAccount, updateAccount } from "../../../actions/session_actions"
+import { ditchConfabs } from "../../../actions/confabs_actions"
 import {
 	fetchAllApiConurbations,
 	ditchConurbations,
 } from "../../../actions/conurbations_actions"
+import { deleteAccount, updateAccount } from "../../../actions/session_actions"
 import ConfidantEdit from "./confidantedit"
 
 const mSTP = ({
@@ -22,7 +23,9 @@ const mSTP = ({
 const mDTP = (dispatch) => {
 	return {
 		loadConurbations: () => dispatch(fetchAllApiConurbations()),
+		unloadConfabs: () => dispatch(ditchConfabs()),
 		unloadConurbations: () => dispatch(ditchConurbations()),
+
 		deleteAccount: (confidantId) => dispatch(deleteAccount(confidantId)),
 		updateAccount: (confidant) => dispatch(updateAccount(confidant)),
 	}
