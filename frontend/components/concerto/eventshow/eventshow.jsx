@@ -66,12 +66,19 @@ function EventShow({
 		const startHrsStr = getFullHoursStringFromDateObject(startDateObj)
 		const endHrsStr = getFullHoursStringFromDateObject(endDateObj)
 		const hours = startHrsStr + " — " + endHrsStr
+
+		const fullConurbationName = conurbations[confab.location_id].name
+		const conurbation = restOfConurbationName(fullConurbationName)
+		const location = shorterConurbationName(fullConurbationName)
+
+		setConurbation(conurbation)
 		setCurrentUserAttending(isCurrentUserAttending)
 		setDate(date)
 		setDay(day)
 		setDescription(confab.description)
 		setHostName(confidants[confab.host_id].username)
 		setHours(hours)
+		setLocation(location)
 		setMonth(getMonthStringFromDateObject(startDateObj))
 		setSeatsRemaining(confab.max_capacity - confab.attendee_ids.length)
 	}

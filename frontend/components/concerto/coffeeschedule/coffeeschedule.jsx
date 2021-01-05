@@ -23,6 +23,7 @@ function CoffeeSchedule({
 	filterConfabsByConfabLocationId,
 	loadConfabs,
 	unloadConfabs,
+	unloadFlash,
 	joinConfab,
 	leaveConfab,
 	createConfab,
@@ -37,6 +38,7 @@ function CoffeeSchedule({
 		loadConfabs()
 		return function cleanup() {
 			unloadConfabs()
+			unloadFlash()
 		}
 	}, [])
 

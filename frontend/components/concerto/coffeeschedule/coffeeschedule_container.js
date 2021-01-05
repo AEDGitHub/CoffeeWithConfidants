@@ -12,6 +12,7 @@ import {
 	leaveConfab,
 	createConfab,
 } from "../../../actions/confabs_actions"
+import { ditchFlash } from "../../../actions/flash_actions"
 import {
 	determineWhetherConfidantIsAttending,
 	filterConfabsByConfabLocationId,
@@ -51,6 +52,7 @@ const mDTP = (dispatch) => {
 		createConfab: (conurbationId, confab) =>
 			dispatch(createConfab(conurbationId, confab)),
 		unloadConfabs: () => dispatch(ditchConfabs()),
+		unloadFlash: () => dispatch(ditchFlash()),
 	}
 }
 
