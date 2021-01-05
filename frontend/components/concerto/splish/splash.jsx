@@ -1,7 +1,7 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Link } from "react-router-dom"
 
-function Splash() {
+function Splash({ unloadFlash }) {
 	const firstSplashRunnerItem = generateSplashRunnerItem(
 		"Show up to a confab",
 		"You and some allies-to-be squad up."
@@ -16,6 +16,12 @@ function Splash() {
 		"Observe the outcome",
 		"All done. Wasn't that fun?"
 	)
+
+	useEffect(() => {
+		return function cleanup() {
+			unloadFlash()
+		}
+	}, [])
 
 	return (
 		<div className="splash">

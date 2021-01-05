@@ -7,7 +7,7 @@ import EventShow from "./eventshow/eventshow_container"
 import Flash from "./flash/flash_container"
 import SigninFormContainer from "./sessionform/signinform_container"
 import SignupFormContainer from "./sessionform/signupform_container"
-import Splash from "./splish/splash"
+import Splash from "./splish/splash_container"
 
 function Concerto() {
 	return (
