@@ -8,12 +8,13 @@ import {
 	fetchAllApiConurbations,
 	ditchConurbations,
 } from "../../../actions/conurbations_actions"
+import { ditchFlash } from "../../../actions/flash_actions"
 import { signin, signup } from "../../../actions/session_actions"
 import { Link } from "react-router-dom"
 import { connect } from "react-redux"
 import SessionForm from "./sessionform"
 
-const mSTP = ({ entities: { conurbations } }) => {
+const mSTP = ({ entities: { conurbations }, flash: { status } }) => {
 	return {
 		conurbations: selectAllConurbations(conurbations),
 		conurbationsAreLoaded: areConurbationsLoaded(conurbations),
@@ -21,6 +22,7 @@ const mSTP = ({ entities: { conurbations } }) => {
 			conurbations,
 			"Quarantine Cosmopolis, San Francisco Bay Area, California"
 		),
+		flashStatus: status,
 		formType: "signup",
 		mainMsg: "Ready to squad up?",
 		subMsg:
@@ -40,6 +42,7 @@ const mDTP = (dispatch) => {
 	return {
 		loadConurbations: () => dispatch(fetchAllApiConurbations()),
 		unloadConurbations: () => dispatch(ditchConurbations()),
+		unloadFlash: () => dispatch(ditchFlash()),
 		processMainForm: (confidant) => dispatch(signup(confidant)),
 		processDemoForm: (confidant) => dispatch(signin(confidant)),
 	}

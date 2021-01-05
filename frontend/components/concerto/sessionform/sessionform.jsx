@@ -4,6 +4,7 @@ function SessionForm({
 	conurbations,
 	conurbationsAreLoaded,
 	demoConfidantConurbationId,
+	flashStatus,
 	formType,
 	mainMsg,
 	subMsg,
@@ -13,6 +14,7 @@ function SessionForm({
 	navLink,
 	loadConurbations,
 	unloadConurbations,
+	unloadFlash,
 	processMainForm,
 	processDemoForm,
 }) {
@@ -30,6 +32,14 @@ function SessionForm({
 			unloadConurbations()
 		}
 	}, [])
+
+	useEffect(() => {
+		return function cleanup() {
+			if (flashStatus === "failure") {
+				unloadFlash()
+			}
+		}
+	}, [flashStatus])
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
