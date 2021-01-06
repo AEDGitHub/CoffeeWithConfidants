@@ -6,7 +6,7 @@ class Api::SessionsController < ApplicationController
         params[:confidant][:password]
       )
     if @confidant
-      login(@confidant)
+		login(@confidant)
       @flash = success_flash('Signed in!')
       render 'api/confidants/show'
     else
