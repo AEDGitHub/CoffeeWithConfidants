@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react"
-import Modal from "react-modal"
-import CoffeeScheduleEvent from "./coffee_schedule_event/coffeeschedule_event"
-import { Link } from "react-router-dom"
+import React, { useState, useEffect } from 'react'
+import Modal from 'react-modal'
+import CoffeeScheduleEvent from './coffee_schedule_event/coffeeschedule_event'
+import { Link } from 'react-router-dom'
 import {
 	getWeekdayStringFromDateObject,
 	getMonthStringFromDateObject,
@@ -9,7 +9,7 @@ import {
 	getPrefixHoursStringFromDateObject,
 	getFullHoursStringFromDateObject,
 	getFutureDateObjectSomeNumberOfHoursAwayFromCurrentDateObject,
-} from "../../../utils/time_utils"
+} from '../../../utils/time_utils'
 
 function CoffeeSchedule({
 	confidants,
@@ -29,10 +29,10 @@ function CoffeeSchedule({
 	createConfab,
 }) {
 	const [modalOpen, setModalOpen] = useState(false)
-	const [confabDescription, setConfabDescription] = useState("")
+	const [confabDescription, setConfabDescription] = useState('')
 	const [confabMaxCapacity, setConfabMaxCapacity] = useState(3)
-	const [confabStartDate, setConfabStartDate] = useState("")
-	const [confabStartTime, setConfabStartTime] = useState("12:00")
+	const [confabStartDate, setConfabStartDate] = useState('')
+	const [confabStartTime, setConfabStartTime] = useState('12:00')
 
 	useEffect(() => {
 		loadConfabs()
@@ -48,7 +48,7 @@ function CoffeeSchedule({
 		const hostId = ccId
 		const description = confabDescription
 		const maxCapacity = confabMaxCapacity
-		const dateString = confabStartDate + "T" + confabStartTime
+		const dateString = confabStartDate + 'T' + confabStartTime
 		const startDateObj = new Date(dateString)
 		const endDateObj = getFutureDateObjectSomeNumberOfHoursAwayFromCurrentDateObject(
 			startDateObj,
@@ -86,9 +86,7 @@ function CoffeeSchedule({
 					onClick={() => setModalOpen(true)}
 				>
 					{loggedIn ? (
-						<div className="create-confab-button">
-							+ CREATE CONFAB
-						</div>
+						<div className="create-confab-button">+ CREATE CONFAB</div>
 					) : (
 						<></>
 					)}
@@ -130,10 +128,7 @@ function CoffeeSchedule({
 
 	const confabJoinButton = (confabId) => {
 		return loggedIn ? (
-			<div
-				className="squad-up-button"
-				onClick={() => joinConfab(confabId)}
-			>
+			<div className="squad-up-button" onClick={() => joinConfab(confabId)}>
 				<div className="visibility-shift">
 					<span>JOIN CONFAB</span>
 				</div>
@@ -164,12 +159,14 @@ function CoffeeSchedule({
 		const relevantConfabs = filterConfabsByConfabLocationId(
 			confabs,
 			conurbationId
+		).sort(
+			(confab, otherConfab) =>
+				confab.start_time_in_ms - otherConfab.start_time_in_ms
 		)
 		return relevantConfabs.map((confab) => {
 			const confabId = confab.id
 
-			const seatsRemaining =
-				confab.max_capacity - confab.attendee_ids.length
+			const seatsRemaining = confab.max_capacity - confab.attendee_ids.length
 
 			const hostId = confab.host_id
 			const hostConfidant = confidants[hostId]
@@ -195,11 +192,11 @@ function CoffeeSchedule({
 			const month = monthStr.toUpperCase()
 			const dateNum = dateObj.getDate()
 			const dateNumStr = dateNum.toString()
-			const date = month + " " + dateNumStr
+			const date = month + ' ' + dateNumStr
 
 			const startHrsStr = getPrefixHoursStringFromDateObject(dateObj)
 			const endHrsStr = getFullHoursStringFromDateObject(futureDateObj)
-			const hours = startHrsStr + " — " + endHrsStr
+			const hours = startHrsStr + ' — ' + endHrsStr
 
 			const confabButton = currentConfidantAttending
 				? confabLeaveButton
@@ -249,15 +246,10 @@ function CoffeeSchedule({
 						<div className="confab-modal-subhead">
 							Fill in the details below and get ready to conspire!
 						</div>
-						<form
-							className="confab-modal-form"
-							onSubmit={handleSubmit}
-						>
+						<form className="confab-modal-form" onSubmit={handleSubmit}>
 							<div className="form-input-areas-container">
 								<div className="form-fields-container">
-									<div className="form-field-title">
-										DESCRIPTION
-									</div>
+									<div className="form-field-title">DESCRIPTION</div>
 									<input
 										required
 										type="text"
@@ -292,35 +284,27 @@ function CoffeeSchedule({
 												<select
 													required={true}
 													onChange={(e) =>
-														setConfabStartTime(
-															e.target.value
-														)
+														setConfabStartTime(e.target.value)
 													}
 												>
-													<option
-														disabled="disabled"
-														value=""
-													>
+													<option disabled="disabled" value="">
 														Please select a time
 													</option>
 													{[
-														"10:00",
-														"11:00",
-														"12:00",
-														"13:00",
-														"14:00",
-														"15:00",
-														"16:00",
-														"17:00",
-														"18:00",
-														"19:00",
-														"20:00",
-														"21:00",
+														'10:00',
+														'11:00',
+														'12:00',
+														'13:00',
+														'14:00',
+														'15:00',
+														'16:00',
+														'17:00',
+														'18:00',
+														'19:00',
+														'20:00',
+														'21:00',
 													].map((time, idx) => (
-														<option
-															value={time}
-															key={idx}
-														>
+														<option value={time} key={idx}>
 															{time}
 														</option>
 													))}
@@ -336,9 +320,7 @@ function CoffeeSchedule({
 												type="number"
 												className="half-field-area-input"
 												onChange={(e) =>
-													setConfabMaxCapacity(
-														e.target.value
-													)
+													setConfabMaxCapacity(e.target.value)
 												}
 												value={confabMaxCapacity}
 												min={3}
@@ -375,13 +357,13 @@ function CoffeeSchedule({
 				Coffee With Confidants is coffee, with confidants.
 			</div>
 			<div className="msg-text">
-				Ever find yourself asking why no one wants change? This is the
-				place to meet those who do. For two hours, squad up at a cafe to
-				conspire about finding and exposing the fakers.
+				Ever find yourself asking why no one wants change? This is the place
+				to meet those who do. For two hours, squad up at a cafe to conspire
+				about finding and exposing the fakers.
 				<br></br>
 				<br></br>
-				If none of these times work for you, why not {signUpLink} and
-				host your own confab?
+				If none of these times work for you, why not {signUpLink} and host
+				your own confab?
 			</div>
 		</div>
 	)
