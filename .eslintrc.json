@@ -1,0 +1,20 @@
+{
+	"parser": "@babel/eslint-parser",
+	"extends": [
+		"eslint:recommended",
+		"plugin:react/recommended",
+		"plugin:node/recommended",
+		"airbnb",
+		"prettier",
+		"prettier/react"
+	],
+	"plugins": ["react", "prettier"],
+	"rules": {
+		"class-methods-use-this": "off",
+		"func-names": "off",
+		"no-process-exit": "off",
+		"no-unused-vars": "warn",
+		"object-shorthand": "off",
+		"prettier/prettier": "error"
+	}
+}

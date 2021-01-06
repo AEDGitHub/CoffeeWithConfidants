@@ -1,13 +1,13 @@
-import React from "react"
-import { Route } from "react-router-dom"
-import { AuthRoute, ProtectedRoute } from "../../utils/route_utils"
-import CoffeeSchedule from "./coffeeschedule/coffeeschedule_container"
-import ConfidantEdit from "./confidantedit/confidantedit_container"
-import EventShow from "./eventshow/eventshow_container"
-import Flash from "./flash/flash_container"
-import SigninFormContainer from "./sessionform/signinform_container"
-import SignupFormContainer from "./sessionform/signupform_container"
-import Splash from "./splish/splash_container"
+import React from 'react'
+import { Route } from 'react-router-dom'
+import { AuthRoute, ProtectedRoute } from '../../utils/route_utils'
+import CoffeeSchedule from './coffeeschedule/coffeeschedule_container'
+import ConfidantEdit from './confidantedit/confidantedit_container'
+import EventShow from './eventshow/eventshow_container'
+import Flash from './flash/flash_container'
+import SigninFormContainer from './sessionform/signinform_container'
+import SignupFormContainer from './sessionform/signupform_container'
+import Splash from './splish/splash_container'
 
 function Concerto() {
 	return (

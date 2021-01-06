@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import {
 	getWeekdayStringFromDateObject,
 	getMonthStringFromDateObject,
 	getFullHoursStringFromDateObject,
 	getFutureDateObjectSomeNumberOfHoursAwayFromCurrentDateObject,
-} from "../../../utils/time_utils"
+} from '../../../utils/time_utils'
 
 function EventShow({
 	ccId,
@@ -22,15 +22,15 @@ function EventShow({
 	loadConfab,
 	unloadConfabs,
 }) {
-	const [conurbation, setConurbation] = useState("")
+	const [conurbation, setConurbation] = useState('')
 	const [currentUserAttending, setCurrentUserAttending] = useState(false)
-	const [date, setDate] = useState("")
-	const [day, setDay] = useState("")
-	const [description, setDescription] = useState("")
-	const [hostName, setHostName] = useState("")
-	const [hours, setHours] = useState("")
-	const [location, setLocation] = useState("")
-	const [month, setMonth] = useState("")
+	const [date, setDate] = useState('')
+	const [day, setDay] = useState('')
+	const [description, setDescription] = useState('')
+	const [hostName, setHostName] = useState('')
+	const [hours, setHours] = useState('')
+	const [location, setLocation] = useState('')
+	const [month, setMonth] = useState('')
 	const [seatsRemaining, setSeatsRemaining] = useState(0)
 
 	useEffect(() => {
@@ -65,7 +65,7 @@ function EventShow({
 		)
 		const startHrsStr = getFullHoursStringFromDateObject(startDateObj)
 		const endHrsStr = getFullHoursStringFromDateObject(endDateObj)
-		const hours = startHrsStr + " — " + endHrsStr
+		const hours = startHrsStr + ' — ' + endHrsStr
 
 		const fullConurbationName = conurbations[confab.location_id].name
 		const conurbation = restOfConurbationName(fullConurbationName)
@@ -169,9 +169,7 @@ function EventShow({
 								<div className="eventshow-confab-info-conurbation">
 									{conurbation}
 								</div>
-								<div className="eventshow-confab-info-url">
-									{url}
-								</div>
+								<div className="eventshow-confab-info-url">{url}</div>
 								<div className="eventshow-confab-info-referral">
 									Can't make it?
 									<br></br>
@@ -193,11 +191,10 @@ function EventShow({
 							</div>
 							<br></br>
 							<div className="eventshow-confab-rant-submsg">
-								Coffee is a delightful substance that's going to
-								go extinct because human beings continue to
-								mercilessly proliferate and are thereby
-								destroying the environment in which coffee
-								grows!
+								Coffee is a delightful substance that's going to go
+								extinct because human beings continue to mercilessly
+								proliferate and are thereby destroying the environment
+								in which coffee grows!
 							</div>
 						</div>
 					</div>

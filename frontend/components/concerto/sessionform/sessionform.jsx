@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect } from 'react'
 
 function SessionForm({
 	conurbations,
@@ -18,14 +18,14 @@ function SessionForm({
 	processMainForm,
 	processDemoForm,
 }) {
-	const [username, setUsername] = useState("")
-	const [email, setEmail] = useState("")
-	const [password, setPassword] = useState("")
+	const [username, setUsername] = useState('')
+	const [email, setEmail] = useState('')
+	const [password, setPassword] = useState('')
 	const [locationId, setLocationId] = useState(null)
 	const [demoUserCityId, setDemoUserCityId] = useState(null)
 
 	useEffect(() => {
-		if (formType === "signup") {
+		if (formType === 'signup') {
 			loadConurbations()
 		}
 		return function cleanup() {
@@ -35,7 +35,7 @@ function SessionForm({
 
 	useEffect(() => {
 		return function cleanup() {
-			if (flashStatus === "failure") {
+			if (flashStatus === 'failure') {
 				unloadFlash()
 			}
 		}
@@ -55,14 +55,14 @@ function SessionForm({
 	const handleDemoSubmit = (e) => {
 		e.preventDefault()
 		const demoConfidant = {
-			username: "Joker",
-			password: "hunter12",
+			username: 'Joker',
+			password: 'hunter12',
 		}
 		processDemoForm(demoConfidant)
 	}
 
 	const emailField = () =>
-		formType === "signin" ? (
+		formType === 'signin' ? (
 			<></>
 		) : (
 			<input
@@ -76,7 +76,7 @@ function SessionForm({
 		)
 
 	const homeCityField = () =>
-		formType === "signin" ? (
+		formType === 'signin' ? (
 			<></>
 		) : (
 			<div className="sessionform-dropdown">

@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react';
 
 function Flash({ message, status }) {
 	return message ? (
@@ -7,7 +7,7 @@ function Flash({ message, status }) {
 		</div>
 	) : (
 		<></>
-	)
+	);
 }
 
-export default Flash
+export default Flash;

@@ -1,8 +1,8 @@
-import { getAllApiConurbations } from "../utils/conurbations_api_utils"
+import { getAllApiConurbations } from '../utils/conurbations_api_utils'
 
 // Actions
-export const RECEIVE_CONURBATIONS = "RECEIVE_CONURBATIONS"
-export const CLEAR_CONURBATIONS = "CLEAR_CONURBATIONS"
+export const RECEIVE_CONURBATIONS = 'RECEIVE_CONURBATIONS'
+export const CLEAR_CONURBATIONS = 'CLEAR_CONURBATIONS'
 
 const receiveConurbations = ({ entities }, type) => {
 	return {

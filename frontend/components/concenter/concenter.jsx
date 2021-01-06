@@ -1,6 +1,6 @@
-import React from "react"
-import { Link } from "react-router-dom"
-import NavLinks from "./navlinks/navlinks_container"
+import React from 'react'
+import { Link } from 'react-router-dom'
+import NavLinks from './navlinks/navlinks_container'
 
 function Concenter() {
 	return (

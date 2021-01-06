@@ -1,19 +1,19 @@
-import React, { useEffect } from "react"
-import { Link } from "react-router-dom"
+import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 function Splash({ unloadFlash }) {
 	const firstSplashRunnerItem = generateSplashRunnerItem(
-		"Show up to a confab",
-		"You and some allies-to-be squad up."
+		'Show up to a confab',
+		'You and some allies-to-be squad up.'
 	)
 
 	const secondSplashRunnerItem = generateSplashRunnerItem(
-		"Converse about anything",
-		"Wax poetic for two hours."
+		'Converse about anything',
+		'Wax poetic for two hours.'
 	)
 
 	const thirdSplashRunnerItem = generateSplashRunnerItem(
-		"Observe the outcome",
+		'Observe the outcome',
 		"All done. Wasn't that fun?"
 	)
 
