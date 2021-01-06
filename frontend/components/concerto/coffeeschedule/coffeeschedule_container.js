@@ -1,26 +1,27 @@
 //todo: remember to have a ditchConfidants method that does not drop the current user from GS
 
-import React from "react"
+import React from 'react'
 import {
 	selectAllConfabs,
 	selectAllConurbations,
-} from "../../../reducers/selectors"
+} from '../../../reducers/selectors'
 import {
 	fetchFilteredApiConfabs,
 	ditchConfabs,
 	joinConfab,
 	leaveConfab,
 	createConfab,
-} from "../../../actions/confabs_actions"
-import { ditchFlash } from "../../../actions/flash_actions"
+} from '../../../actions/confabs_actions'
+import { ditchFlash } from '../../../actions/flash_actions'
 import {
 	determineWhetherConfidantIsAttending,
 	filterConfabsByConfabLocationId,
 	shorterConurbationName,
-} from "../../../utils/modification_utils"
-import { Link } from "react-router-dom"
-import { connect } from "react-redux"
-import CoffeeSchedule from "./coffeeschedule"
+	sortConfabsByStartDate,
+} from '../../../utils/modification_utils'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import CoffeeSchedule from './coffeeschedule'
 
 const mSTP = ({
 	entities: { confidants, conurbations, confabs },
@@ -37,9 +38,10 @@ const mSTP = ({
 				sign up
 			</Link>
 		),
-		shorterConurbationName: shorterConurbationName,
 		determineWhetherConfidantIsAttending: determineWhetherConfidantIsAttending,
 		filterConfabsByConfabLocationId: filterConfabsByConfabLocationId,
+		shorterConurbationName: shorterConurbationName,
+		sortConfabsByStartDate: sortConfabsByStartDate,
 	}
 }
 

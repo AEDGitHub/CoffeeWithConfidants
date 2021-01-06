@@ -10,6 +10,7 @@ import {
 	getFullHoursStringFromDateObject,
 	getFutureDateObjectSomeNumberOfHoursAwayFromCurrentDateObject,
 } from '../../../utils/time_utils'
+import { sortConfabsByStartDate } from '../../../utils/modification_utils'
 
 function CoffeeSchedule({
 	confidants,
@@ -159,10 +160,9 @@ function CoffeeSchedule({
 		const relevantConfabs = filterConfabsByConfabLocationId(
 			confabs,
 			conurbationId
-		).sort(
-			(confab, otherConfab) =>
-				confab.start_time_in_ms - otherConfab.start_time_in_ms
 		)
+		sortConfabsByStartDate(relevantConfabs)
+
 		return relevantConfabs.map((confab) => {
 			const confabId = confab.id
 
