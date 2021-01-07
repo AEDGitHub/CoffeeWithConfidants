@@ -27,6 +27,7 @@ function EventShow({
 	const [date, setDate] = useState('')
 	const [day, setDay] = useState('')
 	const [description, setDescription] = useState('')
+	const [hostId, setHostId] = useState(0)
 	const [hostName, setHostName] = useState('')
 	const [hours, setHours] = useState('')
 	const [location, setLocation] = useState('')
@@ -66,6 +67,7 @@ function EventShow({
 		const startHrsStr = getFullHoursStringFromDateObject(startDateObj)
 		const endHrsStr = getFullHoursStringFromDateObject(endDateObj)
 		const hours = startHrsStr + ' — ' + endHrsStr
+		const hostId = confab.host_id
 
 		const fullConurbationName = conurbations[confab.location_id].name
 		const conurbation = restOfConurbationName(fullConurbationName)
@@ -77,6 +79,7 @@ function EventShow({
 		setDay(day)
 		setDescription(confab.description)
 		setHostName(confidants[confab.host_id].username)
+		setHostId(hostId)
 		setHours(hours)
 		setLocation(location)
 		setMonth(getMonthStringFromDateObject(startDateObj))
@@ -181,10 +184,13 @@ function EventShow({
 								{attendanceDisplay(seatsRemaining)}
 							</div>
 						</div>
-						<div className="eventshow-confab-button-container">
-							{confabButton}
-						</div>
-
+						{hostId === ccId ? (
+							<></>
+						) : (
+							<div className="eventshow-confab-button-container">
+								{confabButton}
+							</div>
+						)}
 						<div className="eventshow-confab-rant">
 							<div className="eventshow-confab-rant-mainmsg">
 								WHAT EVEN IS COFFEE?
