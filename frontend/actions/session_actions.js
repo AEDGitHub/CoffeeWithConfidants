@@ -4,11 +4,12 @@ import {
 	postApiSession,
 	deleteApiConfidant,
 	deleteApiSession,
-} from "../utils/session_api_utils"
+} from '../utils/session_api_utils'
+import { receiveError } from './flash_actions'
 
 // Confidant Actions
-export const RECEIVE_CURRENT_CONFIDANT = "RECEIVE_CURRENT_CONFIDANT"
-export const LOGOUT_CURRENT_CONFIDANT = "LOGOUT_CURRENT_CONFIDANT"
+export const RECEIVE_CURRENT_CONFIDANT = 'RECEIVE_CURRENT_CONFIDANT'
+export const LOGOUT_CURRENT_CONFIDANT = 'LOGOUT_CURRENT_CONFIDANT'
 
 const receiveConfidant = (
 	{ entities, flash = { message: null, status: null } },
@@ -27,23 +28,6 @@ const logoutConfidant = (type) => {
 	}
 }
 
-// Session Actions
-export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS"
-// export const CLEAR_SESSION_ERRORS = "CLEAR_SESSION_ERRORS"
-
-const receiveErrors = ({ flash = { message: null, status: null } }, type) => {
-	return {
-		flash,
-		type,
-	}
-}
-
-// export const clearSessionErrors = () => {
-// 	return {
-// 		type: CLEAR_SESSION_ERRORS,
-// 	}
-// }
-
 //Thunk Action Creators
 export const signup = (confidant) => {
 	return (dispatch) => {
@@ -52,9 +36,7 @@ export const signup = (confidant) => {
 				dispatch(receiveConfidant(payload, RECEIVE_CURRENT_CONFIDANT))
 			},
 			(err) => {
-				dispatch(
-					receiveErrors(err.responseJSON, RECEIVE_SESSION_ERRORS)
-				)
+				dispatch(receiveError(err.responseJSON))
 			}
 		)
 	}
@@ -67,9 +49,7 @@ export const signin = (confidant) => {
 				dispatch(receiveConfidant(payload, RECEIVE_CURRENT_CONFIDANT))
 			},
 			(err) => {
-				dispatch(
-					receiveErrors(err.responseJSON, RECEIVE_SESSION_ERRORS)
-				)
+				dispatch(receiveError(err.responseJSON))
 			}
 		)
 	}
@@ -98,9 +78,3 @@ export const updateAccount = (confidant) => {
 		})
 	}
 }
-
-// export const ditchSessionErrors = () => {
-// 	return (dispatch) => {
-// 		dispatch(clearSessionErrors())
-// 	}
-// }

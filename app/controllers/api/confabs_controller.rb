@@ -9,7 +9,7 @@ class Api::ConfabsController < ApplicationController
   def create
     @confab = Confab.new(confab_params)
     if (@confab.save)
-      @flash = success_flash('Confab created.')
+      @flash = success_flash('Confab created!')
       render :show
     else
       @flash = failure_flash("Couldn't create confab.")

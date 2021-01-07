@@ -10,10 +10,10 @@ class Api::ConfidantsController < ApplicationController
     @confidant = Confidant.new(confidant_params)
     if @confidant.save
       login(@confidant)
-      @flash = success_flash('Account created.')
+      @flash = success_flash('Account created!')
       render :show
     else
-      @flash = failure_flash('Invalid username or email.')
+      @flash = failure_flash('Please select another username/email combination.')
       render json: { flash: @flash }, status: 401
     end
   end
@@ -25,7 +25,7 @@ class Api::ConfidantsController < ApplicationController
       @flash = success_flash('Account terminated.')
       @confidant.destroy
     else
-      @flash = failure_flash('Could not terminate account.')
+      @flash = failure_flash('Could not terminate account!')
       render json: { flash: @flash }, status: 422
     end
   end
@@ -47,7 +47,7 @@ class Api::ConfidantsController < ApplicationController
       # else
       # end
       @confidant.update(confidant_params)
-      @flash = success_flash('Account updated.')
+      @flash = success_flash('Account updated!')
       render :show
     else
       @flash = failure_flash('Confidant could not be updated.')
