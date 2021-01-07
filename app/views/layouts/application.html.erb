@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<meta name="author" content="Eric Arndt" />
+		<meta name="title" property="og:title" content="Coffee With Confidants" />
+		<meta
+			name="description"
+			property="og:description"
+			content="Meetup app inspired by Tea With Strangers. Built with PostgreSQL, Ruby on Rails, Redux, and React w/ Hooks."
+		/>
+		<meta
+			name="image"
+			property="og:image"
+			content="https://raw.githubusercontent.com/AEDGitHub/CoffeeWithConfidants/master/github_assets/cwc_preview.png"
+		/>
+		<meta
+			name="url"
+			property="og:url"
+			content="https://coffeewithconfidants.herokuapp.com/"
+		/>
+		<title>Coffee With Confidants</title>
+		<%= csrf_meta_tags %> <%= csp_meta_tag %> <%= stylesheet_link_tag
+		'application', media: 'all', 'data-turbolinks-track': 'reload' %> <%=
+		javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+	</head>
 
-<head>
-   <title>Coffee With Confidants</title>
-   <%= csrf_meta_tags %>
-   <%= csp_meta_tag %>
-
-   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-</head>
-
-<body>
-   <%= yield %>
-</body>
-
+	<body>
+		<%= yield %>
+	</body>
 </html>
