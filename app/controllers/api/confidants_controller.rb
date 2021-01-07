@@ -3,7 +3,6 @@ class Api::ConfidantsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def show
-	 @get_request = true
     @confidant = Confidant.find(params[:id])
   end
 
