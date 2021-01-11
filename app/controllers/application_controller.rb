@@ -11,7 +11,6 @@ class ApplicationController < ActionController::Base
 
   def require_login
     redirect_to new_session_url unless logged_in?
-    #I anticipate this will have to change to accomodate API namespace, ask Lina!
   end
 
   def login(confidant)
