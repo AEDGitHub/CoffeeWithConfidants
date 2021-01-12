@@ -1,6 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap');
 
 body {
-    font-family: Roboto;
-    font-weight: 500;
+	font-family: Roboto;
+	font-weight: 500;
+}
+
+header,
+footer {
+	flex-shrink: 0;
+}
+
+main {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
 }

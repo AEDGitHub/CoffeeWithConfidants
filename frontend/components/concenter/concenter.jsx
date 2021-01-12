@@ -4,7 +4,7 @@ import NavLinks from './navlinks/navlinks_container'
 
 function Concenter() {
 	return (
-		<header>
+		<header id="concenter">
 			<div className="header-container">
 				<Link className="link-logo" to="/">
 					Coffee With Confidants

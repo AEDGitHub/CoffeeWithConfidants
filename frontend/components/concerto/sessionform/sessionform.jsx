@@ -145,23 +145,21 @@ function SessionForm({
 	)
 
 	return (
-		<>
-			<div className="sessionform">
-				<div className="sessionform-form-container">
-					{mainMsgDisplay}
-					{subMsgDisplay}
-					<form onSubmit={handleSubmit}>
-						{usernameField}
-						{emailField()}
-						{passwordField}
-						{homeCityField()}
-						{submitFormButton}
-					</form>
-					<form onSubmit={handleDemoSubmit}>{demoUserButton}</form>
-					{navLink}
-				</div>
+		<div className="sessionform">
+			<div className="sessionform-form-container">
+				{mainMsgDisplay}
+				{subMsgDisplay}
+				<form onSubmit={handleSubmit}>
+					{usernameField}
+					{emailField()}
+					{passwordField}
+					{homeCityField()}
+					{submitFormButton}
+				</form>
+				<form onSubmit={handleDemoSubmit}>{demoUserButton}</form>
+				{navLink}
 			</div>
-		</>
+		</div>
 	)
 }
 

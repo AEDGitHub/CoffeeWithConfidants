@@ -1,8 +1,8 @@
-import React, { useState } from "react"
-import { Link } from "react-router-dom"
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 function Conclusion() {
-	const [content, setContent] = useState("About")
+	const [content, setContent] = useState('About')
 
 	const generateButton = (buttonName) => {
 		return (
@@ -29,23 +29,22 @@ function Conclusion() {
 
 	const determineContent = () => {
 		switch (content) {
-			case "About":
+			case 'About':
 				return (
 					<div>
 						<p>
-							Coffee With Confidants is all about making our
-							reality less contrived. In the digital age, we're
-							more "connected" than we've ever been, but we're
-							also increasingly forced to hide behind masks of our
-							own construction by conspirators who would do
-							anything to keep us from exposing their crimes.
+							Coffee With Confidants is all about making our reality less
+							contrived. In the digital age, we're more "connected" than
+							we've ever been, but we're also increasingly forced to hide
+							behind masks of our own construction by conspirators who
+							would do anything to keep us from exposing their crimes.
 						</p>
 						<br></br>
 						<p>
-							We're not doing anything new. We're providing a
-							means to confabulate with others in a way that
-							would've been unnecessary 20 years ago. So squad up,
-							make your plans, and let us start the game.{" "}
+							We're not doing anything new. We're providing a means to
+							confabulate with others in a way that would've been
+							unnecessary 20 years ago. So squad up, make your plans, and
+							let us start the game.{' '}
 							<a
 								href="https://youtu.be/5FG85wVSV3o"
 								className="last-surprise"
@@ -72,36 +71,34 @@ function Conclusion() {
 		</div>
 	)
 
-	const github = generateOffsiteLink("GitHub", "https://github.com/AEDGitHub")
+	const github = generateOffsiteLink('GitHub', 'https://github.com/AEDGitHub')
 
 	const linkedin = generateOffsiteLink(
-		"LinkedIn",
-		"https://www.linkedin.com/in/arndtericdaniel/"
+		'LinkedIn',
+		'https://www.linkedin.com/in/arndtericdaniel/'
 	)
 
 	const angellist = generateOffsiteLink(
-		"AngelList",
-		"https://angel.co/u/eric-daniel-arndt"
+		'AngelList',
+		'https://angel.co/u/eric-daniel-arndt'
 	)
 
 	return (
-		<>
-			<footer>
-				<div className="footer-container">
-					<div className="footer-links">
-						{generateButton("About")}
-						{coffeeTimes}
-						{github}
-						{linkedin}
-						{angellist}
-						<br></br>
-						{/* {generateButton("Acknowledgements")}
+		<footer id="conclusion">
+			<div className="footer-container">
+				<div className="footer-links">
+					{generateButton('About')}
+					{coffeeTimes}
+					{github}
+					{linkedin}
+					{angellist}
+					<br></br>
+					{/* {generateButton("Acknowledgements")}
 						{generateButton("Thank You")} */}
-					</div>
-					<div className="footer-content">{determineContent()}</div>
 				</div>
-			</footer>
-		</>
+				<div className="footer-content">{determineContent()}</div>
+			</div>
+		</footer>
 	)
 }
 

@@ -1,7 +1,9 @@
 section {
-	position: relative;
+	flex: 1;
+	// position: relative;
 	display: flex;
 	flex-direction: column;
+	background-color: #efefef;
 	.flash-container-success {
 		height: 2.5rem;
 		position: absolute;
@@ -32,7 +34,7 @@ section {
 	}
 	.splash {
 		.splash-photo-container {
-			background-image: image-url("P5-leblanc-background.jpg");
+			background-image: image-url('P5-leblanc-background.jpg');
 			background-size: cover;
 			background-position: 51% 37%;
 			min-width: 100%;
@@ -67,7 +69,6 @@ section {
 			}
 		}
 		.splash-runner-container {
-			background-color: #efefef;
 			text-align: center;
 			padding: 2rem 1rem;
 			.splash-runner {
@@ -92,7 +93,6 @@ section {
 		}
 	}
 	.sessionform {
-		background-color: #efefef;
 		.sessionform-errors-flash {
 			height: 2.5rem;
 			width: 100%;
@@ -194,7 +194,7 @@ section {
 					rgba(81, 46, 89, 0.8),
 					rgba(81, 46, 89, 0.7)
 				),
-				image-url("P5-leblanc-thesquad.jpg");
+				image-url('P5-leblanc-thesquad.jpg');
 			background-size: cover;
 			background-position: 25% 22%;
 
@@ -219,7 +219,6 @@ section {
 		.coffeeschedule-content-container {
 			margin: 0 auto;
 			padding: 3rem 1rem;
-			background-color: #efefef;
 			.coffeeschedule-msg-container {
 				margin: 0 auto;
 				max-width: 696px;
@@ -322,7 +321,7 @@ section {
 											padding: 50%;
 											border-radius: 3px;
 											background-image: image-url(
-												"P5-avatar-00-joker.jpg"
+												'P5-avatar-00-joker.jpg'
 											);
 											background-size: cover;
 										}
@@ -331,7 +330,7 @@ section {
 											padding: 50%;
 											border-radius: 3px;
 											background-image: image-url(
-												"P5-avatar-01-morgana.jpg"
+												'P5-avatar-01-morgana.jpg'
 											);
 											background-size: cover;
 										}
@@ -340,7 +339,7 @@ section {
 											padding: 50%;
 											border-radius: 3px;
 											background-image: image-url(
-												"P5-avatar-02-ryuji.jpg"
+												'P5-avatar-02-ryuji.jpg'
 											);
 											background-size: cover;
 										}
@@ -349,7 +348,7 @@ section {
 											padding: 50%;
 											border-radius: 3px;
 											background-image: image-url(
-												"P5-avatar-03-ann.jpg"
+												'P5-avatar-03-ann.jpg'
 											);
 											background-size: cover;
 										}
@@ -358,7 +357,7 @@ section {
 											padding: 50%;
 											border-radius: 3px;
 											background-image: image-url(
-												"P5-avatar-04-yusuke.jpg"
+												'P5-avatar-04-yusuke.jpg'
 											);
 											background-size: cover;
 										}
@@ -367,7 +366,7 @@ section {
 											padding: 50%;
 											border-radius: 3px;
 											background-image: image-url(
-												"P5-avatar-05-makoto.jpg"
+												'P5-avatar-05-makoto.jpg'
 											);
 											background-size: cover;
 										}
@@ -376,7 +375,7 @@ section {
 											padding: 50%;
 											border-radius: 3px;
 											background-image: image-url(
-												"P5-avatar-06-futaba.jpg"
+												'P5-avatar-06-futaba.jpg'
 											);
 											background-size: cover;
 										}
@@ -385,7 +384,7 @@ section {
 											padding: 50%;
 											border-radius: 3px;
 											background-image: image-url(
-												"P5-avatar-07-haru.jpg"
+												'P5-avatar-07-haru.jpg'
 											);
 											background-size: cover;
 										}
@@ -394,7 +393,7 @@ section {
 											padding: 50%;
 											border-radius: 3px;
 											background-image: image-url(
-												"P5-avatar-08-goro.jpg"
+												'P5-avatar-08-goro.jpg'
 											);
 											background-size: cover;
 										}
@@ -403,7 +402,7 @@ section {
 											padding: 50%;
 											border-radius: 3px;
 											background-image: image-url(
-												"P5-avatar-09-sumire.jpg"
+												'P5-avatar-09-sumire.jpg'
 											);
 											background-size: cover;
 										}
@@ -494,7 +493,7 @@ section {
 									}
 								}
 								.visibility-shift::before {
-									content: "CONFIRM";
+									content: 'CONFIRM';
 								}
 							}
 							.squad-up-button-joined {
@@ -525,14 +524,11 @@ section {
 		}
 	}
 	.eventshow {
-		background-color: #efefef;
-
 		.eventshow-main-container {
 			margin: 1rem auto;
 			max-width: 999px;
 			display: flex;
 			padding: 1rem;
-
 			.eventshow-confab-column {
 				flex: 1;
 				padding: 1rem;
@@ -620,7 +616,7 @@ section {
 							}
 						}
 						.visibility-shift::before {
-							content: "CONFIRM";
+							content: 'CONFIRM';
 						}
 					}
 					.squad-up-button-joined {
@@ -674,9 +670,8 @@ section {
 		}
 	}
 	.confidantedit {
-		background-color: #efefef;
 		.confidantedit-container {
-			margin: 1rem auto;
+			margin: 2rem auto;
 			max-width: 999px;
 			display: flex;
 			padding: 1rem;
