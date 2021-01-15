@@ -39,7 +39,7 @@ function Conclusion() {
 							behind masks of our own construction by conspirators who
 							would do anything to keep us from exposing their crimes.
 						</p>
-						<br></br>
+						<br />
 						<p>
 							We're not doing anything new. We're providing a means to
 							confabulate with others in a way that would've been
@@ -56,9 +56,30 @@ function Conclusion() {
 						</p>
 					</div>
 				)
-			// case "Acknowledgements":
-			// 	return <div>HERE ARE SOME ACKNOWLEDGEMENTS</div>
-			// case "Thank You":
+			case 'Acknowledgements':
+				return (
+					<div>
+						<p>
+							Persona 5 and all related intellectual property belongs
+							solely to Atlus.
+						</p>
+						<br />
+						<p>
+							More people helped me with this project than I have room to
+							acknowledge here, but I'd be remiss to not directly mention
+							my project advisor Lina, my circle leader Joe, and my
+							career coach Sami.
+						</p>
+						<br />
+						<p>
+							Where I shone, it was due to their insights and to those of
+							the amazing people I find myself fortunate enough to be
+							surrounded by; where I faltered, it was due to my own thick
+							skull.
+						</p>
+					</div>
+				)
+			// case 'Thank You':
 			// 	return <div>THANKS FAM</div>
 			default:
 				return <div>SOMETHING'S GONE HORRIBLY WRONG</div>
@@ -93,8 +114,8 @@ function Conclusion() {
 					{linkedin}
 					{angellist}
 					<br></br>
-					{/* {generateButton("Acknowledgements")}
-						{generateButton("Thank You")} */}
+					{generateButton('Acknowledgements')}
+					{/* {generateButton('Thank You')} */}
 				</div>
 				<div className="footer-content">{determineContent()}</div>
 			</div>
