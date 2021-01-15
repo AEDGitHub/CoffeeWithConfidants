@@ -79,8 +79,28 @@ function Conclusion() {
 						</p>
 					</div>
 				)
-			// case 'Thank You':
-			// 	return <div>THANKS FAM</div>
+			case 'Thank You':
+				return (
+					<div>
+						<p>
+							From my hometown, thank you so much to Karen, Hannah and
+							Braden, for giving care I wish I could give myself.
+						</p>
+						<br />
+						<p>
+							My eternal gratitude to my best friend and true brother
+							Zach. I can't put into words what you mean to me, so all
+							I'll say is that I hope one day I can repay you.
+						</p>
+						<br />
+						<p>
+							Infinite thanks also to the third Magi, Rob, as well as my
+							other "Fratres in Luce": Ash, Em, Dillon, Alan, Randy, and
+							all the rest. At various times when I called, each one of
+							you answered, and I shall never forget.
+						</p>
+					</div>
+				)
 			default:
 				return <div>SOMETHING'S GONE HORRIBLY WRONG</div>
 		}
@@ -115,7 +135,7 @@ function Conclusion() {
 					{angellist}
 					<br></br>
 					{generateButton('Acknowledgements')}
-					{/* {generateButton('Thank You')} */}
+					{generateButton('Thank You')}
 				</div>
 				<div className="footer-content">{determineContent()}</div>
 			</div>
